@@ -1,5 +1,4 @@
 <?php
-require 'app/services/flash_manager.php';
 class ApplicationController
 {
   protected $errors = [];

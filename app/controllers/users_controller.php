@@ -1,10 +1,4 @@
 <?php
-
-require "app/controllers/application_controller.php";
-require 'app/models/user.php';
-require 'app/services/view_manager.php';
-
-
 class UsersController extends ApplicationController
 {
   private $user;

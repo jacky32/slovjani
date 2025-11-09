@@ -1,5 +1,4 @@
 <?php
-require "app/models/application_record.php";
 class User extends ApplicationRecord
 {
   private $username;

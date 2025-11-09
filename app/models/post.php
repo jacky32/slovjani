@@ -1,5 +1,4 @@
 <?php
-require "app/models/application_record.php";
 class Post extends ApplicationRecord
 {
   private $id;

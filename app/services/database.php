@@ -1,5 +1,4 @@
 <?php
-require 'db/script_manager.php';
 class Database
 {
   private $connectionParams;

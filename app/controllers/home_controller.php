@@ -1,6 +1,4 @@
 <?php
-require "app/controllers/application_controller.php";
-require 'app/services/view_manager.php';
 
 class HomeController extends ApplicationController
 {

@@ -33,7 +33,7 @@ class ViewManager
       extract($vars);
     }
     ob_start();
-    include "app/views/$filename";
+    include "app/views/$filename.html.php";
     echo ob_get_clean();
     return;
   }

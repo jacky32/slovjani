@@ -1,8 +1,4 @@
 <?php
-require "app/controllers/application_controller.php";
-require 'app/models/post.php';
-require 'app/services/view_manager.php';
-
 class PostsController extends ApplicationController
 {
   private $post;
