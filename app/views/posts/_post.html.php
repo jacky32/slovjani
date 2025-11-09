@@ -6,6 +6,7 @@
   </div>
   <p class='list-col-wrap text-xs'><?= $post->get_body() ?></p>
   <form action='/posts/destroy' method='POST'>
+    <?php $this->renderCSRFToken('/posts/destroy'); ?>
     <input type='hidden' name='id' value='<?= $post->get_id() ?>' />
     <?= ($post->get_author_id() == $this->auth->getUserId() ? "<button class='btn btn-error' type='submit'>Smazat</button>" : "") ?>
   </form>

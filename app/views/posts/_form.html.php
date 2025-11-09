@@ -8,6 +8,8 @@
     echo "</div>";
   }
   ?>
+  <?php $this->renderCSRFToken('/posts'); ?>
+
   <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
     <legend class="fieldset-legend">Nový příspěvek</legend>
 

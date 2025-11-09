@@ -1,6 +1,6 @@
   <section class='hero'>
     <div class='hero-content flex-col'>
-      <?php $this->renderPartial("posts/_form") ?>
+      <?php $this->renderPartial("posts/_form", isset($errors) ? ['errors' => $errors] : []) ?>
       <ul class="list bg-base-100 rounded-box shadow-md w-lg mt-4">
         <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Příspěvky</li>
         <?php

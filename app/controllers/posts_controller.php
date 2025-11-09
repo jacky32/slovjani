@@ -20,8 +20,9 @@ class PostsController extends ApplicationController
   public function create($request)
   {
     try {
-      // if (isset($request['body'])) {
-      // }
+      // Verify CSRF token
+      $this->verifyCSRF('/posts');
+      // Create new post
       $post = new Post([
         'name' => $request['name'],
         'body' => $request['body'],
@@ -41,18 +42,27 @@ class PostsController extends ApplicationController
 
   public function destroy($request)
   {
-    $post = Post::find($request['id']);
-    if ($post && $post->get_author_id() == $this->auth->getUserId()) {
-      $post->destroy();
-      $this->addFlash('success', "Příspěvek byl úspěšně smazán.");
-    } else {
-      if (!$post) {
-        $this->addFlash('error', "Příspěvek neexistuje.");
-      } else if ($post->get_author_id() != $this->auth->getUserId()) {
-        $this->addFlash('error', "Nemáte oprávnění smazat tento příspěvek.");
+    try {
+      // Verify CSRF token
+      $this->verifyCSRF('/posts/destroy');
+
+      // Find post and check ownership
+      $post = Post::find($request['id']);
+      if ($post && $post->get_author_id() == $this->auth->getUserId()) {
+        $post->destroy();
+        $this->addFlash('success', "Příspěvek byl úspěšně smazán.");
+      } else {
+        if (!$post) {
+          $this->addFlash('error', "Příspěvek neexistuje.");
+        } else if ($post->get_author_id() != $this->auth->getUserId()) {
+          $this->addFlash('error', "Nemáte oprávnění smazat tento příspěvek.");
+        }
+        $this->addFlash('error', "Nastala chyba");
       }
-      $this->addFlash('error', "Nastala chyba");
+      header("Location: /posts");
+    } catch (Exception $e) {
+      $this->addFlash('error', $e->getMessage());
+      header("Location: /posts");
     }
-    header("Location: /posts");
   }
 }

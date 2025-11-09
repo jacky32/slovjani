@@ -9,7 +9,7 @@
       <ul
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a href="/">Domů</a></li>
+        <li><a href="/">Medžuslovjanski jazyk</a></li>
         <li><a href="/posts">Příspěvky</a></li>
       </ul>
     </div>
@@ -17,8 +17,17 @@
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a href="/">Domů</a></li>
+      <li><a href="/">Medžuslovjanski jazyk</a></li>
       <li><a href="/posts">Příspěvky</a></li>
+      <?php
+      if ($this->auth->isLoggedIn()) {
+        echo '
+          <li><a href="/admin/ekonomika">Ekonomika</a></li>
+          <li><a href="/admin/cinnost">Činnost</a></li>
+          <li><a href="/admin/hlasovani">Hlasování</a></li>
+        ';
+      }
+      ?>
     </ul>
   </div>
   <div class="navbar-end">
