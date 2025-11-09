@@ -27,16 +27,19 @@ class ViewManager
     return $this->content;
   }
 
+  public function renderPartial($filename, $vars = null)
+  {
+    if (is_array($vars) && !empty($vars)) {
+      extract($vars);
+    }
+    ob_start();
+    include "app/views/$filename";
+    echo ob_get_clean();
+    return;
+  }
+
   public function __destruct()
   {
     include 'app/views/layouts/application.html.php';
   }
-
-
-  // public function renderView($variables = null)
-  // {
-  // ob_start();
-  // require "../{$this->controller}/{$this->action}.html.php";
-  // $this->content = ob_get_clean();
-  // }
 }
