@@ -48,13 +48,13 @@ class PostsController extends ApplicationController
 
       // Find post and check ownership
       $post = Post::find($request['id']);
-      if ($post && $post->get_author_id() == $this->auth->getUserId()) {
+      if ($post && $post->author_id == $this->auth->getUserId()) {
         $post->destroy();
         $this->addFlash('success', "Příspěvek byl úspěšně smazán.");
       } else {
         if (!$post) {
           $this->addFlash('error', "Příspěvek neexistuje.");
-        } else if ($post->get_author_id() != $this->auth->getUserId()) {
+        } else if ($post->author_id != $this->auth->getUserId()) {
           $this->addFlash('error', "Nemáte oprávnění smazat tento příspěvek.");
         }
         $this->addFlash('error', "Nastala chyba");

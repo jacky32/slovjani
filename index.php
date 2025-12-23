@@ -1,6 +1,7 @@
 <?php
 $appConfig = require './config/application.php';
 require 'lib/helpers.php';
+require 'lib/active_model/active_model.php';
 require __DIR__ . '/vendor/autoload.php';
 
 // Autoloader

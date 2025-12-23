@@ -1,9 +1,9 @@
 <?php
 class User extends ApplicationRecord
 {
-  private $username;
-  private $email;
-  private $password;
+  public $username;
+  public $email;
+  public $password;
 
   protected $db_attributes = ['username', 'email', 'password'];
 
@@ -11,29 +11,15 @@ class User extends ApplicationRecord
   {
     parent::__construct($data, $this->db_attributes);
     if (isset($data['username'])) {
-      $this->set_username($data['username']);
+      $this->username = $data['username'];
     }
     if (isset($data['email'])) {
-      $this->set_email($data['email']);
+      $this->email = $data['email'];
     }
     if (isset($data['password'])) {
-      $this->set_password($data['password']);
+      $this->password = $data['password'];
     }
   }
-
-  // function validate()
-  // {
-  //   if ($this->get_email() == null) throw new Exception("Email cannot be empty");
-  //   if (strlen($this->get_username()) > 255) throw new Exception("Name cannot be longer than 255 characters");
-  //   if (strlen($this->get_password()) < 6) throw new Exception("Password must be at least 6 characters long");
-  // }
-
-  // function save()
-  // {
-  //   $this->validate();
-  //   $sql = "INSERT INTO users (name, email, password) VALUES ('" . $this->get_username() . "', '" . $this->get_email() . "', '" . password_hash('salt', $this->get_password()) . "');";
-  //   $this->connection->query($sql);
-  // }
 
   public static function all()
   {
