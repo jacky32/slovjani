@@ -16,3 +16,18 @@
 
 - for user authentication
 - https://github.com/delight-im/PHP-Auth?tab=readme-ov-file#usage
+
+# Lokalizace
+
+- Pro možnost využití YAMLu se musí nainstalovat libyaml a extension skrz PECL
+
+```bash
+  apt-get install -y libyaml-dev
+  pecl install yaml
+```
+
+- pak se musí v php.ini aktivovat skrz
+
+```
+  extension=yaml.so
+```

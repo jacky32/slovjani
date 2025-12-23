@@ -57,7 +57,7 @@ services:
     volumes:
       - ./:/var/www/html
       - ./php.ini:/usr/local/etc/php/conf.d/my-edited-php.ini
-    command: php -S 0.0.0.0:3000 -t /var/www/html
+    command: php -S 0.0.0.0:3000 -t /var/www/html index.php
     links:
       - mysql
     depends_on:
