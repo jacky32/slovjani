@@ -5,13 +5,25 @@ class Post extends ApplicationRecord
   public $author_id;
   public $name;
   public $body;
+  public $author;
 
   protected $db_attributes = ['id', 'name', 'body', 'author_id'];
 
+  static array $relations  = [
+    'belongs_to' => [
+      'author' => [
+        'class_name' => User::class,
+        'foreign_key' => 'author_id'
+      ]
+    ]
+  ];
+
+
   public function __construct($data = [])
   {
-    parent::__construct($data, $this->db_attributes);
+    parent::__construct($data, $this->db_attributes, self::$relations);
   }
+
 
   // Methods
 

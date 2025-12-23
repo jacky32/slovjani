@@ -4,7 +4,7 @@ class ApplicationRecord extends ActiveModel
   protected $db;
   protected $connection;
 
-  public function __construct($data = [], $db_attributes = [])
+  public function __construct($data = [], $db_attributes = [], $relations = [])
   {
     $this->db = new Database();
     $this->connection = $this->db->getConnection();
@@ -13,6 +13,17 @@ class ApplicationRecord extends ActiveModel
       if (isset($data[$attribute])) {
         $this->$attribute = $data[$attribute];
       }
+    }
+    $this->setBelongsToRelations($relations['belongs_to'] ?? []);
+  }
+
+  public function setBelongsToRelations($belongs_to = [])
+  {
+    foreach ($belongs_to as $relation => $options) {
+      $foreign_key = $this->{$options['foreign_key']};
+      $class_name = $options['class_name'];
+
+      $this->{$relation} = $class_name::find($foreign_key);
     }
   }
 
