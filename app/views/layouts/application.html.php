@@ -17,9 +17,11 @@
   ?>
   <?php require '_menu.html.php'; ?>
   <?php require '_flash.html.php'; ?>
-  <main class='grow'>
+  <main id="container">
     <?php echo $this->content; ?>
   </main>
+  <div id="footer"></div>
+  <div id="footer2"></div>
 </body>
 
 </html>
