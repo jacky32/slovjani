@@ -38,10 +38,18 @@ class ViewManager
     return;
   }
 
+  public function renderErrors()
+  {
+    ob_start();
+    include 'app/views/layouts/forms/_errors.html.php';
+    echo ob_get_clean();
+    return;
+  }
+
   public function renderCSRFToken($formAction)
   {
     ob_start();
-    include 'app/views/layouts/_csrf_token.html.php';
+    include 'app/views/layouts/forms/_csrf_token.html.php';
     echo ob_get_clean();
     return;
   }
