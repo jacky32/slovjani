@@ -9,9 +9,4 @@ use ActiveModel\Validations\PresenceValidator;
 trait Validations
 {
   use PresenceValidator;
-  // protected $presenceValidator;
-  // public function __construct()
-  // {
-  //   $this->presenceValidator = new PresenceValidator();
-  // }
 }

@@ -10,19 +10,7 @@ class Post extends ApplicationRecord
 
   public function __construct($data = [])
   {
-    parent::__construct($data);
-    if (isset($data['id'])) {
-      $this->id = $data['id'];
-    }
-    if (isset($data['body'])) {
-      $this->body = $data['body'];
-    }
-    if (isset($data['name'])) {
-      $this->name = $data['name'];
-    }
-    if (isset($data['author_id'])) {
-      $this->author_id = $data['author_id'];
-    }
+    parent::__construct($data, $this->db_attributes);
   }
 
   // Methods

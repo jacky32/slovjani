@@ -10,15 +10,6 @@ class User extends ApplicationRecord
   public function __construct($data = [])
   {
     parent::__construct($data, $this->db_attributes);
-    if (isset($data['username'])) {
-      $this->username = $data['username'];
-    }
-    if (isset($data['email'])) {
-      $this->email = $data['email'];
-    }
-    if (isset($data['password'])) {
-      $this->password = $data['password'];
-    }
   }
 
   public static function all()
