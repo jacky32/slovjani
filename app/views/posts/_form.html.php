@@ -2,28 +2,28 @@
   <?php $this->renderErrors(); ?>
   <?php $this->renderCSRFToken('/posts'); ?>
 
-  <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-    <legend class="fieldset-legend">Nový příspěvek</legend>
+  <fieldset class="p-4 border fieldset bg-base-200 border-base-300 rounded-box w-xs">
+    <legend class="fieldset-legend"><?= t("posts.new.title") ?></legend>
 
-    <label class='floating-label my-1'>
-      <span>Název</span>
+    <label class='my-1 floating-label'>
+      <span><?= Post::humanAttributeName("name") ?></span>
       <input
         required
         type='text'
         name='name'
-        placeholder='Název'
+        placeholder='<?= Post::humanAttributeName("name") ?>'
         class='input input-md' />
     </label>
 
-    <label class='floating-label my-1'>
-      <span>Obsah</span>
+    <label class='my-1 floating-label'>
+      <span><?= Post::humanAttributeName("body") ?></span>
       <textarea
         required
         name='body'
-        placeholder='Obsah'
+        placeholder='<?= Post::humanAttributeName("body") ?>'
         class='input input-md'></textarea>
     </label>
 
-    <button class="btn btn-primary mt-4">Přidat příspěvek</button>
+    <button class="mt-4 btn btn-primary"><?= t("create") ?></button>
   </fieldset>
 </form>

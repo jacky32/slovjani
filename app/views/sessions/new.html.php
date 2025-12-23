@@ -2,32 +2,31 @@
   <div class='hero-content'>
     <form action="/login" method="POST">
       <?php $this->renderErrors(); ?>
-      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-        <legend class="fieldset-legend">Přihlášení</legend>
+      <fieldset class="p-4 border fieldset bg-base-200 border-base-300 rounded-box w-xs">
+        <legend class="fieldset-legend"><?= t("sessions.new.title") ?></legend>
 
-        <label class='floating-label my-1'>
-          <span>Email</span>
+        <label class='my-1 floating-label'>
+          <span><?= User::humanAttributeName("email") ?></span>
           <input
             required
             type='email'
             name='email'
-            placeholder='Email'
+            placeholder='<?= User::humanAttributeName("email") ?>'
             class='input input-md' />
         </label>
 
-        <label class='floating-label my-1'>
-          <span>Heslo</span>
+        <label class='my-1 floating-label'>
+          <span><?= User::humanAttributeName("password") ?></span>
           <input
             required
             type='password'
             name='password'
-            placeholder='Heslo'
+            placeholder='<?= User::humanAttributeName("password") ?>'
             class='input input-md' />
         </label>
 
-        <button class="btn btn-primary mt-4">Přihlásit</button>
-
-        <a a href="/registration" class="btn btn-neutral mt-2">K registraci</a>
+        <button class="mt-4 btn btn-primary"><?= t("sessions.new.submit") ?></button>
+        <a href="/registration" class="mt-2 btn btn-neutral"><?= t("sessions.new.to_register") ?></a>
       </fieldset>
     </form>
   </div>

@@ -8,6 +8,12 @@ class ActiveModel
   use Validations;
 
   protected $attributes = [];
+
+  public static function humanAttributeName($attribute)
+  {
+    return t("attributes." . toSnakeCase(static::class) . "." . $attribute);
+  }
+
   // public function __call($method, $arguments)
   // {
   //   // Handle set_* methods

@@ -4,7 +4,7 @@ class ApplicationRecord extends ActiveModel
   protected $db;
   protected $connection;
 
-  public function __construct($data = [], $db_attributes = [], $relations = [])
+  public function __construct($data = [], $db_attributes = [])
   {
     $this->db = new Database();
     $this->connection = $this->db->getConnection();
@@ -14,7 +14,7 @@ class ApplicationRecord extends ActiveModel
         $this->$attribute = $data[$attribute];
       }
     }
-    $this->setBelongsToRelations($relations['belongs_to'] ?? []);
+    $this->setBelongsToRelations(static::$relations['belongs_to'] ?? []);
   }
 
   public function setBelongsToRelations($belongs_to = [])

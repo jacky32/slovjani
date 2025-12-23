@@ -16,6 +16,7 @@ class User extends ApplicationRecord
   {
     $users = [];
     $sql = "SELECT * FROM users;";
+    error_log("[MySQL] " . $sql);
     $database = new Database();
     $connection = $database->getConnection();
     $result = $connection->query($sql);
@@ -34,6 +35,7 @@ class User extends ApplicationRecord
       return null;
     }
     $sql = "SELECT * FROM users WHERE id = " . $id . ";";
+    error_log("[MySQL] " . $sql);
     $database = new Database();
     $connection = $database->getConnection();
     $result = $connection->query($sql);

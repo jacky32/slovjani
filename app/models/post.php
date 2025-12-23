@@ -30,6 +30,7 @@ class Post extends ApplicationRecord
   function get_author()
   {
     $sql = "SELECT username FROM users WHERE id = " . $this->author_id . ";";
+    error_log("[MySQL] " . $sql);
     $result = $this->connection->query($sql);
     if ($row = $result->fetch_assoc()) {
       return $row['username'];
@@ -52,12 +53,14 @@ class Post extends ApplicationRecord
     $this->validate();
     $sql = "INSERT INTO posts (name, body, author_id) VALUES
     ('" . $this->name . "', '" . $this->body . "', '" . $this->author_id . "');";
+    error_log("[MySQL] " . $sql);
     $this->connection->query($sql);
   }
 
   function destroy()
   {
     $sql = "DELETE FROM posts WHERE id = " . $this->id . ";";
+    error_log("[MySQL] " . $sql);
     $this->connection->query($sql);
   }
 
@@ -67,6 +70,7 @@ class Post extends ApplicationRecord
       return null;
     }
     $sql = "SELECT * FROM posts WHERE id = " . $id . ";";
+    error_log("[MySQL] " . $sql);
     $database = new Database();
     $connection = $database->getConnection();
     $result = $connection->query($sql);
@@ -83,6 +87,7 @@ class Post extends ApplicationRecord
   {
     $posts = [];
     $sql = "SELECT * FROM posts;";
+    error_log("[MySQL] " . $sql);
     $database = new Database();
     $connection = $database->getConnection();
     $result = $connection->query($sql);

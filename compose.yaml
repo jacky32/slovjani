@@ -27,14 +27,14 @@ services:
     healthcheck:
       test:
         [
-          'CMD',
-          'mysqladmin',
-          'ping',
-          '-h',
-          'localhost',
-          '-u',
-          'php_app',
-          '--password=php_app',
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "php_app",
+          "--password=php_app",
         ]
       interval: 5s
       timeout: 5s
@@ -56,6 +56,7 @@ services:
       - 3000:3000
     volumes:
       - ./:/var/www/html
+      - ./php.ini:/usr/local/etc/php/conf.d/my-edited-php.ini
     command: php -S 0.0.0.0:3000 -t /var/www/html
     links:
       - mysql

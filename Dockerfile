@@ -5,7 +5,9 @@ RUN apt-get update && \
   apt-get upgrade -y && \
   apt-get install -y git
 # Install necessary PHP extensions
+RUN apt-get install -y libyaml-dev
 RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN pecl install yaml
 
 # Install Composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer

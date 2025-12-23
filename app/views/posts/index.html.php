@@ -1,13 +1,13 @@
   <section class='hero'>
-    <div class='hero-content flex-col'>
+    <div class='flex-col hero-content'>
       <?php $this->renderPartial("posts/_form", isset($errors) ? ['errors' => $errors] : []) ?>
-      <ul class="list bg-base-100 rounded-box shadow-md w-lg mt-4">
-        <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Příspěvky</li>
+      <ul class="mt-4 shadow-md list bg-base-100 rounded-box w-lg">
+        <li class="p-4 pb-2 text-xs tracking-wide opacity-60"><?= t("menu.posts") ?></li>
         <?php
         if (count($posts) == 0) {
           echo "<li class='list-row'>
-              <div class='text-xs uppercase font-semibold opacity-60'>
-                Nenalezeny žádné příspěvky.
+              <div class='text-xs font-semibold uppercase opacity-60'>
+                " . t("posts.index.no_posts_found") . "
               </div>
             </li>";
         } else {
