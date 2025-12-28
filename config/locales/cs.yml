@@ -24,6 +24,10 @@ posts:
     no_posts_found: Žádné příspěvky nebyly nalezeny.
   new:
     title: Nový příspěvek
+  show:
+    author: Autor
+    created_at: Vytvořeno dne
+    post_not_found: Příspěvek nebyl nalezen.
 
 registrations:
   new:

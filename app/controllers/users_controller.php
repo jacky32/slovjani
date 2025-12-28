@@ -18,24 +18,6 @@ class UsersController extends ApplicationController
 
   public function create($request)
   {
-    // TODO: CSRF
-    // if (!empty($_POST['token'])) {
-    //   if (hash_equals($_SESSION['token'], $_POST['token'])) {
-
-    //   } else {
-
-    //   }
-    // }
-
-    // try {
-    //   $user = new \User();
-    //   if (isset($request['name'])) {
-    //     $user->set_name($request['name']);
-    //   }
-    //   if (isset($request['email'])) {
-    //     $user->set_email($request['email']);
-    //   }
-    //   $user->save();
     try {
       $this->auth->register($_POST['email'], $_POST['password'], $_POST['username']);
       // , function ($selector, $token) {
@@ -60,15 +42,7 @@ class UsersController extends ApplicationController
       header("Location: /registration");
       die();
     }
-    // header("Location: /registration/new");
     $this->addFlash('success', "Úspěšně zaregistrován");
     header("Location: /login");
-    // } catch (\Exception $e) {
-    //   $errors[] = $e->getMessage();
-    //   $this->render("registrations/new", [
-    //     "users" => \User::all(),
-    //     "errors" => $errors,
-    //   ]);
-    // }
   }
 }

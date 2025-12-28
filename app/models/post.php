@@ -6,6 +6,7 @@ class Post extends ApplicationRecord
   public $name;
   public $body;
   public $author;
+  public $created_at;
 
   protected $db_attributes = ['id', 'name', 'body', 'author_id'];
 
@@ -27,17 +28,17 @@ class Post extends ApplicationRecord
 
   // Methods
 
-  function get_author()
-  {
-    $sql = "SELECT username FROM users WHERE id = " . $this->author_id . ";";
-    error_log("[MySQL] " . $sql);
-    $result = $this->connection->query($sql);
-    if ($row = $result->fetch_assoc()) {
-      return $row['username'];
-    } else {
-      return " - ";
-    }
-  }
+  // function get_author()
+  // {
+  //   $sql = "SELECT username FROM users WHERE id = " . $this->author_id . ";";
+  //   error_log("[MySQL] " . $sql);
+  //   $result = $this->connection->query($sql);
+  //   if ($row = $result->fetch_assoc()) {
+  //     return $row['username'];
+  //   } else {
+  //     return " - ";
+  //   }
+  // }
 
   function validate()
   {
@@ -48,6 +49,9 @@ class Post extends ApplicationRecord
     // if (strlen($this->get_body()) > 255) throw new Exception("Body cannot be longer than 255 characters");
   }
 
+  // TODO: use prepared statements to prevent SQL injection
+  // https://www.php.net/manual/en/pdo.prepared-statements.php
+  // TODO: Move SQL actions to ApplicationRecord
   function save()
   {
     $this->validate();

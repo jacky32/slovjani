@@ -1,6 +1,5 @@
 <section id="leftpane">
   <div class=''>
-    <!-- <?php $this->renderPartial("posts/_form", isset($errors) ? ['errors' => $errors] : []) ?> -->
     <ul class="listarticles">
       <li><?= t("menu.posts") ?></li>
       <?php
@@ -12,7 +11,7 @@
           </li>";
       } else {
         foreach ($posts as $post) {
-          $this->renderPartial('posts/_post', ['post' => $post]);
+          $this->renderPartial('posts/_post', ['post' => $post, 'id' => isset($id) ? $id : null]);
         }
       }
       ?>

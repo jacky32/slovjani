@@ -45,23 +45,6 @@ class SessionsController extends ApplicationController
     }
     $this->addFlash('success', "Úspěšně přihlášen");
     header("Location: /");
-    // try {
-    // $user = new \User();
-    // if (isset($request['name'])) {
-    //   $user->set_name($request['name']);
-    // }
-    // if (isset($request['email'])) {
-    //   $user->set_email($request['email']);
-    // }
-    // $user->save();
-    // header("Location: /login");
-    // } catch (\Exception $e) {
-    //   $errors[] = $e->getMessage();
-    //   $this->render("sessions/index", [
-    //     "users" => \User::all(),
-    //     "errors" => $errors,
-    //   ]);
-    // }
   }
 
   public function destroy($request)

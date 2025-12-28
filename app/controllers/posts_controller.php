@@ -17,6 +17,21 @@ class PostsController extends ApplicationController
     ]);
   }
 
+  public function show($request)
+  {
+    $post = $this->findPostById();
+    if ($post) {
+      $this->render("posts/show", [
+        "post" => $post,
+        "posts" => Post::all(),
+        "id" => $post->id
+      ]);
+    } else {
+      $this->addFlash('error', t("posts.show.post_not_found"));
+      header("Location: /posts");
+    }
+  }
+
   public function create($request)
   {
     try {
@@ -47,7 +62,7 @@ class PostsController extends ApplicationController
       $this->verifyCSRF('/posts/destroy');
 
       // Find post and check ownership
-      $post = Post::find($request['id']);
+      $post = $this->findPostById();
       if ($post && $post->author_id == $this->auth->getUserId()) {
         $post->destroy();
         $this->addFlash('success', "Příspěvek byl úspěšně smazán.");
@@ -64,5 +79,13 @@ class PostsController extends ApplicationController
       $this->addFlash('error', $e->getMessage());
       header("Location: /posts");
     }
+  }
+
+  private function findPostById()
+  {
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    preg_match('/posts\/\d+/', $uri, $matches);
+    $id = explode('/', $matches[0])[1];
+    return Post::find($id);
   }
 }

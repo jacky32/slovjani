@@ -14,6 +14,8 @@ class ActiveModel
     return t("attributes." . toSnakeCase(static::class) . "." . $attribute);
   }
 
+  // TODO: implement auto-setting timestamps after create/update
+
   // public function __call($method, $arguments)
   // {
   //   // Handle set_* methods

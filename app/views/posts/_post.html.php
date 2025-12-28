@@ -1,4 +1,6 @@
 <li>
-  <!-- TODO: if current controller is posts#show and current post is this post only then should be active -->
-  <a class="active" href="/posts/<?= $post->id ?>"><?= $post->name ?></a>
+  <?php
+  $class = (isset($id) && $id == $post->id) ? "class='active'" : "";
+  ?>
+  <a <?= $class ?> href="/posts/<?= $post->id ?>"><?= $post->name ?></a>
 </li>
