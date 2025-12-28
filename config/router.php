@@ -3,7 +3,6 @@ class Router
 {
   public $controllerName;
   public $action;
-  private $requestMethod;
   private $routeAction;
 
   private function isGet()
@@ -17,11 +16,12 @@ class Router
   }
   public function regRoute($regexp)
   {
-    if (preg_match($regexp, $this->routeAction)) {
-      return true;
-    } else {
-      return false;
-    }
+    return (bool) preg_match($regexp, $this->routeAction);
+  }
+
+  private function resourcePattern($base, $suffix = '')
+  {
+    return '/^' . preg_quote($base, '/') . $suffix . '$/';
   }
 
   public function resources($resource, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
@@ -29,51 +29,53 @@ class Router
     $this->controllerName = ucfirst($resource) . 'Controller';
     $base = '/' . $resource;
 
-    switch ($this->routeAction) {
-      case $this->regRoute($base . '\/\d+\/destroy/'):
-        if ($this->isPost() && in_array('destroy', $actions)) {
-          $this->action = 'destroy';
-          break;
-        }
-      case $this->regRoute($base . '\/\d+/'):
-        if ($this->isGet() && (in_array('show', $actions))) {
-          $this->action = 'show';
-          break;
-        }
-        if ($this->isPost() && (in_array('update', $actions))) {
-          $this->action = 'update';
-          break;
-        }
-      case $base . '/new':
-        if ($this->isGet() && in_array('new', $actions)) {
-          $this->action = 'new';
-          break;
-        }
-      case $this->regRoute($base . '\/\d+\/edit/'):
-        if ($this->isGet() && in_array('edit', $actions)) {
-          $this->action = 'edit';
-          break;
-        }
-      case $base:
-        if ($this->isGet() && in_array('index', $actions)) {
-          $this->action = 'index';
-          break;
-        }
-        if ($this->isPost() && in_array('create', $actions)) {
-          $this->action = 'create';
-          break;
-        }
-    }
-    if (isset($this->action)) {
+    // POST /resource/:id/destroy - destroy
+    if ($this->regRoute($this->resourcePattern($base, '\/\d+\/destroy')) && $this->isPost() && in_array('destroy', $actions)) {
+      $this->action = 'destroy';
       return true;
-    } else {
-      return false;
     }
+
+    // GET /resource/:id/edit - edit
+    if ($this->regRoute($this->resourcePattern($base, '\/\d+\/edit')) && $this->isGet() && in_array('edit', $actions)) {
+      $this->action = 'edit';
+      return true;
+    }
+
+    // GET /resource/:id - show
+    if ($this->regRoute($this->resourcePattern($base, '\/\d+')) && $this->isGet() && in_array('show', $actions)) {
+      $this->action = 'show';
+      return true;
+    }
+
+    // POST /resource/:id - update
+    if ($this->regRoute($this->resourcePattern($base, '\/\d+')) && $this->isPost() && in_array('update', $actions)) {
+      $this->action = 'update';
+      return true;
+    }
+
+    // GET /resource/new - new
+    if ($this->routeAction === $base . '/new' && $this->isGet() && in_array('new', $actions)) {
+      $this->action = 'new';
+      return true;
+    }
+
+    // GET /resource - index
+    if ($this->routeAction === $base && $this->isGet() && in_array('index', $actions)) {
+      $this->action = 'index';
+      return true;
+    }
+
+    // POST /resource - create
+    if ($this->routeAction === $base && $this->isPost() && in_array('create', $actions)) {
+      $this->action = 'create';
+      return true;
+    }
+
+    return false;
   }
 
   public function __construct()
   {
-    $this->requestMethod = $_SERVER['REQUEST_METHOD'];
     $this->routeAction = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
     if ($this->resources('posts')) {
@@ -94,15 +96,14 @@ class Router
         }
       case '/registration':
         $this->controllerName = 'UsersController';
-        switch ($this->requestMethod) {
-          case 'GET':
-            $this->action = 'new';
-            break;
-          case 'POST':
-            $this->action = 'create';
-            break;
+        if ($this->isGet()) {
+          $this->action = 'new';
+          break;
         }
-        break;
+        if ($this->isPost()) {
+          $this->action = 'create';
+          break;
+        }
       case '/':
         $this->controllerName = 'HomeController';
         $this->action = 'index';
