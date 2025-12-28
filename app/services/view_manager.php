@@ -20,7 +20,7 @@ class ViewManager
   {
     $this->controllerData = extract($data);
     ob_start();
-    $this->title = isset($title) ? $title : 'název';
+    $this->title = isset($title) ? $title : 'Slované';
     include "app/views/$view.html.php";
     $this->content = ob_get_contents();
     ob_end_clean();

@@ -1,0 +1,7 @@
+#header-text.menu {
+  display: flex;
+
+  form {
+    margin-bottom: 0;
+  }
+}
