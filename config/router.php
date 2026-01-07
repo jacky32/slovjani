@@ -1,29 +1,70 @@
 <?php
+
+/**
+ * Simple Router class to map URLs to controller actions.
+ * Supports RESTful resource routing for basic CRUD operations.
+ */
 class Router
 {
   public $controllerName;
   public $action;
   private $routeAction;
 
+  /**
+   * isGet
+   * Checks if the request method is GET
+   *
+   * @return bool
+   */
   private function isGet()
   {
     return $_SERVER['REQUEST_METHOD'] === 'GET';
   }
 
+  /**
+   * isPost
+   * Checks if the request method is POST
+   *
+   * @return bool
+   */
   private function isPost()
   {
     return $_SERVER['REQUEST_METHOD'] === 'POST';
   }
+
+  /**
+   * regRoute
+   * Checks if the current route matches a given regular expression
+   *
+   * @param string $regexp
+   * @return bool
+   */
   public function regRoute($regexp)
   {
     return (bool) preg_match($regexp, $this->routeAction);
   }
 
+  /**
+   * resourcePattern
+   * Builds a regex pattern for resource routes
+   *
+   * @param string $base
+   * @param string $suffix
+   * @return string generated regex pattern
+   */
   private function resourcePattern($base, $suffix = '')
   {
     return '/^' . preg_quote($base, '/') . $suffix . '$/';
   }
 
+  /**
+   * resources
+   * Defines RESTful routes for a given resource and specified actions.
+   *
+   * @param string $resource Resource name (e.g., 'posts'). Must be plural.
+   * @param array $actions Optional. List of actions to create routes for. Defaults to all CRUD actions.
+   * @return bool True if a route is matched, false otherwise.
+   */
   public function resources($resource, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
   {
     $this->controllerName = ucfirst($resource) . 'Controller';
