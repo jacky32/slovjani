@@ -41,6 +41,7 @@ class Router
    */
   public function regRoute($regexp)
   {
+    // TODO: check (bool) meaning
     return (bool) preg_match($regexp, $this->routeAction);
   }
 
