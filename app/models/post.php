@@ -55,11 +55,31 @@ class Post extends ApplicationRecord
   function save()
   {
     $this->validate();
+    if (isset($this->id)) {
+      $this->update();
+    } else {
+      $this->create();
+    }
+  }
+  function update()
+  {
+    $sql = "UPDATE posts SET name = '" . $this->name . "', body = '" . $this->body . "' WHERE id = " . $this->id . ";";
+    error_log("[MySQL] " . $sql);
+    $this->connection->query($sql);
+  }
+  function create()
+  {
     $sql = "INSERT INTO posts (name, body, author_id) VALUES
     ('" . $this->name . "', '" . $this->body . "', '" . $this->author_id . "');";
     error_log("[MySQL] " . $sql);
     $this->connection->query($sql);
+    $this->id = $this->connection->insert_id;
   }
+  //   $sql = "INSERT INTO posts (name, body, author_id) VALUES
+  //   ('" . $this->name . "', '" . $this->body . "', '" . $this->author_id . "');";
+  //   error_log("[MySQL] " . $sql);
+  //   $this->connection->query($sql);
+  // }
 
   function destroy()
   {

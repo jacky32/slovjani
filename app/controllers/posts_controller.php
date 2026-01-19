@@ -2,6 +2,7 @@
 class PostsController extends ApplicationController
 {
   private $post;
+  private $id;
 
   public function __construct($postModel)
   {
@@ -13,7 +14,7 @@ class PostsController extends ApplicationController
   public function index($request)
   {
     $this->render("posts/index", [
-      "posts" => Post::all()
+      "posts" => Post::all() // TODO: Pagination
     ]);
   }
 
@@ -23,12 +24,64 @@ class PostsController extends ApplicationController
     if ($post) {
       $this->render("posts/show", [
         "post" => $post,
-        "posts" => Post::all(),
-        "id" => $post->id
+        "posts" => Post::all()
       ]);
     } else {
       $this->addFlash('error', t("posts.show.post_not_found"));
       header("Location: /posts");
+    }
+  }
+
+  public function new($request)
+  {
+    $this->render("posts/new", [
+      "posts" => Post::all()
+    ]);
+  }
+
+  public function edit($request)
+  {
+    $post = $this->findPostById();
+    if ($post) {
+      $this->render("posts/edit", [
+        "post" => $post,
+        "posts" => Post::all()
+      ]);
+    } else {
+      $this->addFlash('error', t("posts.show.post_not_found"));
+      header("Location: /posts");
+    }
+  }
+
+  public function update($request)
+  {
+    try {
+      // Verify CSRF token
+      $this->verifyCSRF('/posts/' . $this->parseIdFromUri());
+
+      // Find post and check ownership
+      $post = $this->findPostById();
+      if ($post && $post->author_id == $this->auth->getUserId()) {
+        $post->name = $request['name'];
+        $post->body = $request['body'];
+        $post->save();
+        $this->addFlash('success', t("posts.update.success"));
+        header("Location: /posts/" . $post->id);
+      } else {
+        if (!$post) {
+          $this->addFlash('error', t("posts.show.post_not_found"));
+        } else if ($post->author_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
+          $this->addFlash('error', t("posts.update.unauthorized"));
+        }
+        header("Location: /posts");
+      }
+    } catch (Exception $e) {
+      $errors[] = $e->getMessage();
+      $this->render("posts/edit", [
+        "post" => $post,
+        "posts" => Post::all(),
+        "errors" => $errors,
+      ]);
     }
   }
 
@@ -79,6 +132,14 @@ class PostsController extends ApplicationController
       $this->addFlash('error', $e->getMessage());
       header("Location: /posts");
     }
+  }
+
+  private function parseIdFromUri()
+  {
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    preg_match('/posts\/\d+/', $uri, $matches);
+    $id = explode('/', $matches[0])[1];
+    return $id;
   }
 
   private function findPostById()

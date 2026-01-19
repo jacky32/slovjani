@@ -1,4 +1,4 @@
-<?= $this->renderPartial("posts/_left_pane", ['posts' => $posts, "id" => $id, 'errors' => isset($errors) ? $errors : []]) ?>
+<?= $this->renderPartial("posts/_left_pane", ['posts' => $posts, "id" => $post->id, 'errors' => isset($errors) ? $errors : []]) ?>
 <section id="rightpane">
   <!-- <?php $this->renderPartial("posts/_form", isset($errors) ? ['errors' => $errors] : []) ?> -->
   <h1>
@@ -15,6 +15,7 @@
     ?>
   </small>
   <p><?= $post->body ?></p>
+  <a href='/posts/<?= $post->id ?>/edit' class='button'><?= t("edit") ?></a>
   <form action='/posts/<?= $post->id ?>/destroy' method='POST'>
     <?php $this->renderCSRFToken('/posts/destroy'); ?>
     <input type='hidden' name='id' value='<?= $post->id ?>' />
