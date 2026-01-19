@@ -29,6 +29,8 @@ class ScriptManager
     $sql = file_get_contents('db/schema.sql');
     $sql = str_replace("DB_NAME", $connectionParams['dbname'], $sql);
     if ($reset) {
+      $output[] = "<br />Dropping existing database " . $connectionParams['dbname'];
+      // echo "<br />Dropping existing database " . $connectionParams['dbname'];
       $sql = "DROP DATABASE IF EXISTS " . $connectionParams['dbname'] . "; " . $sql;
     }
     if (mysqli_multi_query($conn, $sql)) {

@@ -1,5 +1,7 @@
 create: Vytvořit
+new: Nový
 update: Aktualizovat
+edit: Upravit
 delete: Smazat
 
 errors:
@@ -28,6 +30,9 @@ posts:
     author: Autor
     created_at: Vytvořeno dne
     post_not_found: Příspěvek nebyl nalezen.
+  update:
+    unauthorized: Nemáte oprávnění upravit tento příspěvek.
+    success: Příspěvek byl úspěšně aktualizován.
 
 registrations:
   new:

@@ -3,12 +3,18 @@
 class User {
   id : Integer
   name : String
+  created_at : Datetime
+  updated_at : Datetime
 }
 
 class Voting {
   id : Integer
   datetime_start : Datetime
   datetime_end : Datetime
+  name : String
+  description : Text
+  created_at : Datetime
+  updated_at : Datetime
 }
 
 class Question {
@@ -16,6 +22,8 @@ class Question {
   voting_id : Integer
   name : String
   description : Text
+  created_at : Datetime
+  updated_at : Datetime
 }
 
 enum VoteOption {
@@ -24,12 +32,13 @@ enum VoteOption {
   ABSTAIN
 }
 
-class UserQuestion {
+class UsersQuestion {
   id : Integer
   user_id : Integer
   question_id : Integer
   chosen_option : VoteOption
-  timestamp : Datetime
+  created_at : Datetime
+  updated_at : Datetime
 }
 
 ' Vazby
