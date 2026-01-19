@@ -31,3 +31,23 @@
 ```
   extension=yaml.so
 ```
+
+# PlantUML
+
+Je potřeba nainstalovat plantuml, např. přes Homebrew (macOS):
+
+```bash
+  brew install plantuml
+```
+
+Následně lze konkrétní diagramy exportovat takto:
+
+```bash
+  plantuml docs/diagrams/sitemap.plantuml
+```
+
+Pro přegenerování všech diagramů lze využít wildcard:
+
+```bash
+  plantuml docs/diagrams/*.plantuml
+```
