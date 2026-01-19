@@ -1,0 +1,40 @@
+@startuml "Voting System Class Diagram"
+
+class User {
+  id : Integer
+  name : String
+}
+
+class Voting {
+  id : Integer
+  datetime_start : Datetime
+  datetime_end : Datetime
+}
+
+class Question {
+  id : Integer
+  voting_id : Integer
+  name : String
+  description : Text
+}
+
+enum VoteOption {
+  YES
+  NO
+  ABSTAIN
+}
+
+class UserQuestion {
+  id : Integer
+  user_id : Integer
+  question_id : Integer
+  chosen_option : VoteOption
+  timestamp : Datetime
+}
+
+' Vazby
+Voting "1" *-- "N" Question : obsahuje >
+User "1" -- "N" UserQuestion : hlasuje >
+Question "1" -- "N" UserQuestion : má hlasy >
+
+@enduml
