@@ -8,14 +8,7 @@
   <link href="/assets/stylesheets/override.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body class='flex flex-col h-screen'>
-  <?php
-  // if ($this->auth->isLoggedIn()) {
-  //   echo 'User ' . $this->auth->getUsername() . ' is signed in';
-  // } else {
-  //   echo 'User is not signed in yet';
-  // }
-  ?>
+<body>
   <?php require '_menu.html.php'; ?>
   <?php require '_flash.html.php'; ?>
   <main id="container">

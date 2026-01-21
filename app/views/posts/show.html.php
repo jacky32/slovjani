@@ -1,6 +1,5 @@
 <?= $this->renderPartial("posts/_left_pane", ['posts' => $posts, "id" => $post->id, 'errors' => isset($errors) ? $errors : []]) ?>
 <section id="rightpane">
-  <!-- <?php $this->renderPartial("posts/_form", isset($errors) ? ['errors' => $errors] : []) ?> -->
   <h1>
     <?= $post->name ?>
   </h1>

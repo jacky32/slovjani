@@ -3,15 +3,156 @@ require __DIR__ . '/validations/validations.php';
 
 use ActiveModel\Validations;
 
-class ActiveModel
+abstract class ActiveModel
 {
   use Validations;
 
+  protected $db;
+  protected $connection;
+
+  protected $id;
   protected $attributes = [];
+
+  protected static array $db_attributes = [];
+  protected static array $validations = [];
+
+  public function __construct($data = [])
+  {
+    $this->db = new Database();
+    $this->connection = $this->db->getConnection();
+
+    foreach (static::$db_attributes as $attribute) {
+      if (isset($data[$attribute])) {
+        $this->$attribute = $data[$attribute];
+      }
+    }
+  }
+
+  public function __destruct()
+  {
+    $this->closeConnection();
+  }
+
+
+  public function getConnection()
+  {
+    return $this->connection;
+  }
+
+  public function closeConnection()
+  {
+    if ($this->connection) {
+      $this->connection->close();
+    }
+  }
 
   public static function humanAttributeName($attribute)
   {
     return t("attributes." . toSnakeCase(static::class) . "." . $attribute);
+  }
+
+  function save()
+  {
+    $this->validate();
+    if (isset($this->id)) {
+      $this->update();
+    } else {
+      $this->create();
+    }
+  }
+
+  function validate()
+  {
+    foreach (static::$validations as $validation_type => $attributes) {
+      switch ($validation_type) {
+        case "presence":
+          $this->validates_presence_of($attributes);
+          break;
+      }
+    }
+  }
+
+
+  function create()
+  {
+    foreach (static::$db_attributes as $attribute) {
+      if ($attribute != 'id') {
+        $attributes_parts[] = $attribute . " = '" . $this->{$attribute} . "'";
+      }
+    }
+
+    $sql = "INSERT INTO " . toSnakeCase(static::class) . "s (" . implode(", ", array_filter(static::$db_attributes, fn($attr) => $attr !== 'id')) . ") VALUES" .
+      " (" . implode(", ", array_map(fn($attr) => "'" . $this->{$attr} . "'", array_filter(static::$db_attributes, fn($attr) => $attr !== 'id'))) . ");";
+    // ('" . $this->name . "', '" . $this->body . "', '" . $this->author_id . "');";
+    error_log("[MySQL] " . $sql);
+    $this->connection->query($sql);
+    $this->id = $this->connection->insert_id;
+  }
+
+  function update()
+  {
+    foreach (static::$db_attributes as $attribute) {
+      if ($attribute != 'id') {
+        $attributes_parts[] = $attribute . " = '" . $this->{$attribute} . "'";
+      }
+    }
+
+    $sql = "UPDATE " . toSnakeCase(static::class) . "s SET " . implode(", ", $attributes_parts) . " WHERE id = " . $this->id . ";";
+    error_log("[MySQL] " . $sql);
+    $this->connection->query($sql);
+  }
+
+  function destroy()
+  {
+    $sql = "DELETE FROM " . toSnakeCase(static::class) . "s WHERE id = " . $this->id . ";";
+    error_log("[MySQL] " . $sql);
+    $this->connection->query($sql);
+  }
+
+
+  public static function all()
+  {
+    $results = [];
+    $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s;";
+    error_log("[MySQL] " . $sql);
+    $database = new Database();
+    $connection = $database->getConnection();
+    $result = $connection->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+      $attributes = [];
+      foreach (static::$db_attributes as $attr) {
+        $attributes[$attr] = $row[$attr] ?? null;
+      }
+      $results[] = new static($attributes);
+    }
+
+    return $results;
+  }
+
+
+
+  public static function find($id)
+  {
+    if (empty($id) || !is_numeric($id)) {
+      return null;
+    }
+    $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s WHERE id = " . $id . ";";
+    error_log("[MySQL] " . $sql);
+    $database = new Database();
+    $connection = $database->getConnection();
+    $result = $connection->query($sql);
+
+    if ($row = $result->fetch_assoc()) {
+      $attributes = [];
+      foreach (static::$db_attributes as $attr) {
+        $attributes[$attr] = $row[$attr] ?? null;
+      }
+      $post = new static($attributes);
+      return $post;
+    } else {
+      return null;
+    }
   }
 
   // TODO: implement auto-setting timestamps after create/update

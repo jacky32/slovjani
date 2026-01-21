@@ -5,29 +5,21 @@ class User extends ApplicationRecord
   public $email;
   public $password;
 
-  protected $db_attributes = ['username', 'email', 'password'];
+  protected static array $db_attributes = ['username', 'email', 'password'];
 
   public function __construct($data = [])
   {
-    parent::__construct($data, $this->db_attributes);
+    parent::__construct($data);
   }
 
-  public static function all()
+  public function validate()
   {
-    $users = [];
-    $sql = "SELECT * FROM users;";
-    error_log("[MySQL] " . $sql);
-    $database = new Database();
-    $connection = $database->getConnection();
-    $result = $connection->query($sql);
-
-    while ($row = $result->fetch_assoc()) {
-      $user = new User(["username" => $row['username'], "email" => $row['email'], "password" => $row['password']]);
-      $users[] = $user;
-    }
-
-    return $users;
+    $this->validates_presence_of(["username", "email", "password"]);
   }
+
+  public function create() {}
+
+  public function update() {}
 
   public static function find($id)
   {

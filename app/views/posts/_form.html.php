@@ -6,21 +6,21 @@
     <legend class="fieldset-legend"><?= t("posts.new.title") ?></legend>
 
     <label class='my-1 floating-label'>
-      <span><?= Post::humanAttributeName("name") ?></span>
+      <!-- <span><?= Post::humanAttributeName("name") ?></span> -->
       <input
         required
         type='text'
-        name='name'
+        name='post[name]'
         placeholder='<?= Post::humanAttributeName("name") ?>'
         value='<?= isset($post) ? htmlspecialchars($post->name) : '' ?>'
         class='input input-md' />
     </label>
 
     <label class='my-1 floating-label'>
-      <span><?= Post::humanAttributeName("body") ?></span>
+      <!-- <span><?= Post::humanAttributeName("body") ?></span> -->
       <textarea
         required
-        name='body'
+        name='post[body]'
         placeholder='<?= Post::humanAttributeName("body") ?>'
         class='input input-md'><?= isset($post) ? htmlspecialchars($post->body) : '' ?></textarea>
     </label>

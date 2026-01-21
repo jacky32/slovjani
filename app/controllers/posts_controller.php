@@ -39,6 +39,32 @@ class PostsController extends ApplicationController
     ]);
   }
 
+  public function create($request)
+  {
+    try {
+      // Verify CSRF token
+      $this->verifyCSRF('/posts');
+      echo $request['post']['name'];
+      echo $request['post']['body'];
+
+      // Create new post
+      $post = new Post([
+        'name' => $request['post']['name'],
+        'body' => $request['post']['body'],
+        'author_id' => $this->auth->getUserId()
+      ]);
+      $post->save();
+      $this->addFlash('success', "Příspěvek byl úspěšně vytvořen.");
+      header("Location: /posts");
+    } catch (Exception $e) {
+      $errors[] = $e->getMessage();
+      $this->render("posts/new", [
+        "posts" => Post::all(),
+        "errors" => $errors,
+      ]);
+    }
+  }
+
   public function edit($request)
   {
     $post = $this->findPostById();
@@ -62,8 +88,8 @@ class PostsController extends ApplicationController
       // Find post and check ownership
       $post = $this->findPostById();
       if ($post && $post->author_id == $this->auth->getUserId()) {
-        $post->name = $request['name'];
-        $post->body = $request['body'];
+        $post->name = $request['post']['name'];
+        $post->body = $request['post']['body'];
         $post->save();
         $this->addFlash('success', t("posts.update.success"));
         header("Location: /posts/" . $post->id);
@@ -73,35 +99,12 @@ class PostsController extends ApplicationController
         } else if ($post->author_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
           $this->addFlash('error', t("posts.update.unauthorized"));
         }
-        header("Location: /posts");
+        header("Location: /posts/" . $post->id . "/edit");
       }
     } catch (Exception $e) {
       $errors[] = $e->getMessage();
       $this->render("posts/edit", [
         "post" => $post,
-        "posts" => Post::all(),
-        "errors" => $errors,
-      ]);
-    }
-  }
-
-  public function create($request)
-  {
-    try {
-      // Verify CSRF token
-      $this->verifyCSRF('/posts');
-      // Create new post
-      $post = new Post([
-        'name' => $request['name'],
-        'body' => $request['body'],
-        'author_id' => $this->auth->getUserId()
-      ]);
-      $post->save();
-      $this->addFlash('success', "Příspěvek byl úspěšně vytvořen.");
-      header("Location: /posts");
-    } catch (Exception $e) {
-      $errors[] = $e->getMessage();
-      $this->render("posts/index", [
         "posts" => Post::all(),
         "errors" => $errors,
       ]);
