@@ -35,13 +35,4 @@ class Post extends ApplicationRecord
   // https://www.php.net/manual/en/pdo.prepared-statements.php
   // TODO: Move SQL actions to ActiveModel
 
-
-  function create()
-  {
-    $sql = "INSERT INTO posts (name, body, author_id) VALUES
-    ('" . $this->name . "', '" . $this->body . "', '" . $this->author_id . "');";
-    error_log("[MySQL] " . $sql);
-    $this->connection->query($sql);
-    $this->id = $this->connection->insert_id;
-  }
 }
