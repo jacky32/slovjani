@@ -11,6 +11,7 @@ class Voting {
   id : Integer
   datetime_start : Datetime
   datetime_end : Datetime
+  creator_id : Integer
   name : String
   description : Text
   created_at : Datetime
@@ -43,7 +44,8 @@ class UsersQuestion {
 
 ' Vazby
 Voting "1" *-- "N" Question : obsahuje >
-User "1" -- "N" UserQuestion : hlasuje >
-Question "1" -- "N" UserQuestion : má hlasy >
+User "1" -- "N" UsersQuestion : hlasuje >
+Question "1" -- "N" UsersQuestion : má hlasy >
+User "1" - "N" Voting : vytváří >
 
 @enduml
