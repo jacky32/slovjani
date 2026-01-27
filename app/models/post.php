@@ -2,25 +2,25 @@
 class Post extends ApplicationRecord
 {
   public $id;
-  public $author_id;
+  public $creator_id;
   public $name;
   public $body;
   public $author;
   public $created_at;
 
-  protected static array $db_attributes = ['id', 'name', 'body', 'author_id'];
+  protected static array $db_attributes = ['id', 'name', 'body', 'creator_id'];
 
   protected static array $relations  = [
     'belongs_to' => [
       'author' => [
         'class_name' => User::class,
-        'foreign_key' => 'author_id'
+        'foreign_key' => 'creator_id'
       ]
     ]
   ];
 
   protected static array $validations = [
-    "presence" => ["name", "body", "author_id"]
+    "presence" => ["name", "body", "creator_id"]
     //   // if (strlen($this->get_body()) > 255) throw new Exception("Body cannot be longer than 255 characters");
   ];
 
@@ -30,9 +30,5 @@ class Post extends ApplicationRecord
   }
 
   // Methods
-
-  // TODO: use prepared statements to prevent SQL injection
-  // https://www.php.net/manual/en/pdo.prepared-statements.php
-  // TODO: Move SQL actions to ActiveModel
 
 }

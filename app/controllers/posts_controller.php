@@ -51,7 +51,7 @@ class PostsController extends ApplicationController
       $post = new Post([
         'name' => $request['post']['name'],
         'body' => $request['post']['body'],
-        'author_id' => $this->auth->getUserId()
+        'creator_id' => $this->auth->getUserId()
       ]);
       $post->save();
       $this->addFlash('success', "Příspěvek byl úspěšně vytvořen.");
@@ -87,7 +87,7 @@ class PostsController extends ApplicationController
 
       // Find post and check ownership
       $post = $this->findPostById();
-      if ($post && $post->author_id == $this->auth->getUserId()) {
+      if ($post && $post->creator_id == $this->auth->getUserId()) {
         $post->name = $request['post']['name'];
         $post->body = $request['post']['body'];
         $post->save();
@@ -96,7 +96,7 @@ class PostsController extends ApplicationController
       } else {
         if (!$post) {
           $this->addFlash('error', t("posts.show.post_not_found"));
-        } else if ($post->author_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
+        } else if ($post->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
           $this->addFlash('error', t("posts.update.unauthorized"));
         }
         header("Location: /posts/" . $post->id . "/edit");
@@ -119,13 +119,13 @@ class PostsController extends ApplicationController
 
       // Find post and check ownership
       $post = $this->findPostById();
-      if ($post && $post->author_id == $this->auth->getUserId()) {
+      if ($post && $post->creator_id == $this->auth->getUserId()) {
         $post->destroy();
         $this->addFlash('success', "Příspěvek byl úspěšně smazán.");
       } else {
         if (!$post) {
           $this->addFlash('error', "Příspěvek neexistuje.");
-        } else if ($post->author_id != $this->auth->getUserId()) {
+        } else if ($post->creator_id != $this->auth->getUserId()) {
           $this->addFlash('error', "Nemáte oprávnění smazat tento příspěvek.");
         }
         $this->addFlash('error', "Nastala chyba");

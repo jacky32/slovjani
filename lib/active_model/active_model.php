@@ -83,7 +83,7 @@ abstract class ActiveModel
 
     $sql = "INSERT INTO " . toSnakeCase(static::class) . "s (" . implode(", ", array_filter(static::$db_attributes, fn($attr) => $attr !== 'id')) . ") VALUES" .
       " (" . implode(", ", array_map(fn($attr) => "'" . $this->{$attr} . "'", array_filter(static::$db_attributes, fn($attr) => $attr !== 'id'))) . ");";
-    // ('" . $this->name . "', '" . $this->body . "', '" . $this->author_id . "');";
+    // ('" . $this->name . "', '" . $this->body . "', '" . $this->creator_id . "');";
     error_log("[MySQL] " . $sql);
     $this->connection->query($sql);
     $this->id = $this->connection->insert_id;

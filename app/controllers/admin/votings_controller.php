@@ -61,7 +61,7 @@ class VotingsController extends ApplicationController
 
       // Find post and check ownership
       $voting = $this->findVotingById();
-      if ($voting && $voting->author_id == $this->auth->getUserId()) {
+      if ($voting && $voting->creator_id == $this->auth->getUserId()) {
         $voting->datetime_start = $request['datetime_start'];
         $voting->datetime_end = $request['datetime_end'];
         $voting->save();
@@ -70,7 +70,7 @@ class VotingsController extends ApplicationController
       } else {
         if (!$voting) {
           $this->addFlash('error', t("votings.show.voting_not_found"));
-        } else if ($voting->author_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
+        } else if ($voting->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
           $this->addFlash('error', t("votings.update.unauthorized"));
         }
         header("Location: /votings");
@@ -94,7 +94,7 @@ class VotingsController extends ApplicationController
       $voting = new Voting([
         'datetime_start' => $request['datetime_start'],
         'datetime_end' => $request['datetime_end'],
-        'author_id' => $this->auth->getUserId()
+        'creator_id' => $this->auth->getUserId()
       ]);
       $voting->save();
       $this->addFlash('success', "Hlasování bylo úspěšně vytvořeno.");
@@ -116,13 +116,13 @@ class VotingsController extends ApplicationController
 
       // Find voting and check ownership
       $voting = $this->findVotingById();
-      if ($voting && $voting->author_id == $this->auth->getUserId()) {
+      if ($voting && $voting->creator_id == $this->auth->getUserId()) {
         $voting->destroy();
         $this->addFlash('success', "Hlasování bylo úspěšně smazáno.");
       } else {
         if (!$voting) {
           $this->addFlash('error', "Hlasování neexistuje.");
-        } else if ($voting->author_id != $this->auth->getUserId()) {
+        } else if ($voting->creator_id != $this->auth->getUserId()) {
           $this->addFlash('error', "Nemáte oprávnění smazat toto hlasování.");
         }
         $this->addFlash('error', "Nastala chyba");
