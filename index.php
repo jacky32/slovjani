@@ -3,7 +3,7 @@
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 // Define allowed static file extensions
-$allowedExtensions = ['css', 'js', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'ico', 'woff', 'woff2', 'ttf', 'eot'];
+$allowedExtensions = ['css', 'js', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'ico', 'woff', 'woff2', 'ttf', 'otf', 'eot'];
 
 // Check if file exists in public directory
 $filePath = __DIR__ . '/public' . $uri;
@@ -28,6 +28,7 @@ if ($realPath && $publicDir && strpos($realPath, $publicDir) === 0 && is_file($r
       'woff' => 'font/woff',
       'woff2' => 'font/woff2',
       'ttf' => 'font/ttf',
+      'otf' => 'application/x-font-opentype',
       'eot' => 'application/vnd.ms-fontobject'
     ];
     $mimeType = $mimeTypes[strtolower($extension)] ?? 'application/octet-stream';

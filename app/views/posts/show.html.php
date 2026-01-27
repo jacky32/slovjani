@@ -18,6 +18,6 @@
   <form action='/posts/<?= $post->id ?>/destroy' method='POST'>
     <?php $this->renderCSRFToken('/posts/destroy'); ?>
     <input type='hidden' name='id' value='<?= $post->id ?>' />
-    <?= ($post->author_id == $this->auth->getUserId() ? "<button class='btn btn-error' type='submit'>" . t("delete") . "</button>" : "") ?>
+    <?= ($post->author_id == $this->auth->getUserId() ? "<button class='button' type='submit'>" . t("delete") . "</button>" : "") ?>
   </form>
 </section>

@@ -17,11 +17,11 @@
       <?php
       if ($this->auth->isLoggedIn()) {
         echo '<form action="/logout" method="POST">
-                <button type="submit">' . t("menu.logout") . '</button>
+                <button type="submit" class="button">' . t("menu.logout") . '</button>
               </form>
               ';
       } else {
-        echo '<a href="/login">' . t("menu.login") . '</a>';
+        echo '<a href="/login" class="button">' . t("menu.login") . '</a>';
       }
       ?>
     </li>
