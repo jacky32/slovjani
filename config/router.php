@@ -66,10 +66,10 @@ class Router
    * @param array $actions Optional. List of actions to create routes for. Defaults to all CRUD actions.
    * @return bool True if a route is matched, false otherwise.
    */
-  public function resources($resource, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
+  public function resources($resource, $admin = false, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
   {
-    $this->controllerName = ucfirst($resource) . 'Controller';
-    $base = '/' . $resource;
+    $this->controllerName = ($admin ? 'Admin' : '') . ucfirst($resource) . 'Controller';
+    $base = '/' . ($admin ? 'admin/' : '') . $resource;
 
     // POST /resource/:id/destroy - destroy
     if ($this->regRoute($this->resourcePattern($base, '\/\d+\/destroy')) && $this->isPost() && in_array('destroy', $actions)) {
@@ -121,6 +121,18 @@ class Router
     $this->routeAction = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
     if ($this->resources('posts')) {
+      return;
+    }
+
+    if ($this->resources('economics', true)) {
+      return;
+    }
+
+    if ($this->resources('pursuits', true)) {
+      return;
+    }
+
+    if ($this->resources('votings', true)) {
       return;
     }
 

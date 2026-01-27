@@ -7,9 +7,9 @@
     <?php
     if ($this->auth->isLoggedIn()) {
       echo '
-        <li><a href="/admin/ekonomika">' . t("menu.economics") . '</a></li>
-        <li><a href="/admin/cinnost">' . t("menu.activity") . '</a></li>
-        <li><a href="/admin/hlasovani">' . t("menu.votings") . '</a></li>
+        <li><a href="/admin/economics">' . t("menu.economics") . '</a></li>
+        <li><a href="/admin/pursuits">' . t("menu.pursuits") . '</a></li>
+        <li><a href="/admin/votings">' . t("menu.votings") . '</a></li>
       ';
     }
     ?>

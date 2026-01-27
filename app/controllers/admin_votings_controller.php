@@ -1,5 +1,6 @@
 <?php
-class VotingsController extends ApplicationController
+
+class AdminVotingsController extends AdminController
 {
   private $voting;
   private $id;
@@ -13,7 +14,7 @@ class VotingsController extends ApplicationController
 
   public function index($request)
   {
-    $this->render("votings/index", [
+    $this->render("admin/votings/index", [
       "votings" => Voting::all() // TODO: Pagination
     ]);
   }
@@ -22,20 +23,20 @@ class VotingsController extends ApplicationController
   {
     $voting = $this->findVotingById();
     if ($voting) {
-      $this->render("votings/show", [
+      $this->render("admin/votings/show", [
         "voting" => $voting,
         "votings" => Voting::all()
       ]);
     } else {
-      $this->addFlash('error', t("posts.show.post_not_found"));
-      header("Location: /posts");
+      $this->addFlash('error', t("votings.show.voting_not_found"));
+      header("Location: /admin/votings");
     }
   }
 
   public function new($request)
   {
-    $this->render("posts/new", [
-      "posts" => Post::all()
+    $this->render("admin/votings/new", [
+      "votings" => Voting::all()
     ]);
   }
 
@@ -43,13 +44,13 @@ class VotingsController extends ApplicationController
   {
     $voting = $this->findVotingById();
     if ($voting) {
-      $this->render("votings/edit", [
+      $this->render("admin/votings/edit", [
         "voting" => $voting,
         "votings" => Voting::all()
       ]);
     } else {
       $this->addFlash('error', t("votings.show.voting_not_found"));
-      header("Location: /votings");
+      header("Location: /admin/votings");
     }
   }
 
@@ -57,27 +58,29 @@ class VotingsController extends ApplicationController
   {
     try {
       // Verify CSRF token
-      $this->verifyCSRF('/votings/' . $this->parseIdFromUri());
+      $this->verifyCSRF('/admin/votings/' . $this->parseIdFromUri());
 
-      // Find post and check ownership
+      // Find voting and check ownership
       $voting = $this->findVotingById();
       if ($voting && $voting->creator_id == $this->auth->getUserId()) {
-        $voting->datetime_start = $request['datetime_start'];
-        $voting->datetime_end = $request['datetime_end'];
+        $voting->name = $request['voting']['name'];
+        $voting->description = $request['voting']['description'];
+        $voting->datetime_start = $request['voting']['datetime_start'];
+        $voting->datetime_end = $request['voting']['datetime_end'];
         $voting->save();
         $this->addFlash('success', t("votings.update.success"));
-        header("Location: /votings/" . $voting->id);
+        header("Location: /admin/votings/" . $voting->id);
       } else {
         if (!$voting) {
           $this->addFlash('error', t("votings.show.voting_not_found"));
         } else if ($voting->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
           $this->addFlash('error', t("votings.update.unauthorized"));
         }
-        header("Location: /votings");
+        header("Location: /admin/votings");
       }
     } catch (Exception $e) {
       $errors[] = $e->getMessage();
-      $this->render("votings/edit", [
+      $this->render("admin/votings/edit", [
         "voting" => $voting,
         "votings" => Voting::all(),
         "errors" => $errors,
@@ -89,19 +92,21 @@ class VotingsController extends ApplicationController
   {
     try {
       // Verify CSRF token
-      $this->verifyCSRF('/votings');
+      $this->verifyCSRF('/admin/votings');
       // Create new voting
       $voting = new Voting([
-        'datetime_start' => $request['datetime_start'],
-        'datetime_end' => $request['datetime_end'],
+        'name' => $request['voting']['name'],
+        'description' => $request['voting']['description'],
+        'datetime_start' => $request['voting']['datetime_start'],
+        'datetime_end' => $request['voting']['datetime_end'],
         'creator_id' => $this->auth->getUserId()
       ]);
       $voting->save();
       $this->addFlash('success', "Hlasování bylo úspěšně vytvořeno.");
-      header("Location: /votings");
+      header("Location: /admin/votings");
     } catch (Exception $e) {
       $errors[] = $e->getMessage();
-      $this->render("votings/index", [
+      $this->render("admin/votings/index", [
         "votings" => Voting::all(),
         "errors" => $errors,
       ]);
@@ -112,7 +117,7 @@ class VotingsController extends ApplicationController
   {
     try {
       // Verify CSRF token
-      $this->verifyCSRF('/votings/destroy');
+      $this->verifyCSRF('/admin/votings/destroy');
 
       // Find voting and check ownership
       $voting = $this->findVotingById();
@@ -127,10 +132,10 @@ class VotingsController extends ApplicationController
         }
         $this->addFlash('error', "Nastala chyba");
       }
-      header("Location: /votings");
+      header("Location: /admin/votings");
     } catch (Exception $e) {
       $this->addFlash('error', $e->getMessage());
-      header("Location: /votings");
+      header("Location: /admin/votings");
     }
   }
 

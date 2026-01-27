@@ -77,6 +77,9 @@ abstract class ActiveModel
   {
     foreach (static::$db_attributes as $attribute) {
       if ($attribute != 'id') {
+        if ($attribute == 'created_at' || $attribute == 'updated_at') {
+          $this->{$attribute} = date('Y-m-d H:i:s');
+        }
         $attributes_parts[] = $attribute . " = '" . $this->{$attribute} . "'";
       }
     }
@@ -93,6 +96,9 @@ abstract class ActiveModel
   {
     foreach (static::$db_attributes as $attribute) {
       if ($attribute != 'id') {
+        if ($attribute == 'updated_at') {
+          $this->{$attribute} = date('Y-m-d H:i:s');
+        }
         $attributes_parts[] = $attribute . " = '" . $this->{$attribute} . "'";
       }
     }

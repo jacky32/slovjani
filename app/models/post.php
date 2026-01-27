@@ -2,17 +2,18 @@
 class Post extends ApplicationRecord
 {
   public $id;
-  public $creator_id;
   public $name;
   public $body;
-  public $author;
+  public $creator_id;
+  public $creator;
   public $created_at;
+  public $updated_at;
 
   protected static array $db_attributes = ['id', 'name', 'body', 'creator_id'];
 
   protected static array $relations  = [
     'belongs_to' => [
-      'author' => [
+      'creator' => [
         'class_name' => User::class,
         'foreign_key' => 'creator_id'
       ]

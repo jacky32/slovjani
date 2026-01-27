@@ -44,8 +44,6 @@ class PostsController extends ApplicationController
     try {
       // Verify CSRF token
       $this->verifyCSRF('/posts');
-      echo $request['post']['name'];
-      echo $request['post']['body'];
 
       // Create new post
       $post = new Post([
