@@ -68,6 +68,15 @@ abstract class ActiveModel
         case "presence":
           $this->validates_presence_of($attributes);
           break;
+        case "inclusion":
+          $this->validates_inclusion_of($attributes);
+          break;
+        case "uniqueness":
+          $this->validates_uniqueness_of($attributes);
+          break;
+        case "length":
+          $this->validates_length_of($attributes);
+          break;
       }
     }
   }
