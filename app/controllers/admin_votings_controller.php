@@ -80,6 +80,9 @@ class AdminVotingsController extends AdminController
       }
     } catch (Exception $e) {
       $errors[] = $e->getMessage();
+      if ($e instanceof \ActiveModel\ValidationException) {
+        $this->addFlash('error', $e->getMessage());
+      }
       $this->render("admin/votings/edit", [
         "voting" => $voting,
         "votings" => Voting::all(),
@@ -106,6 +109,9 @@ class AdminVotingsController extends AdminController
       header("Location: /admin/votings");
     } catch (Exception $e) {
       $errors[] = $e->getMessage();
+      if ($e instanceof \ActiveModel\ValidationException) {
+        $this->addFlash('error', $e->getMessage());
+      }
       $this->render("admin/votings/index", [
         "votings" => Voting::all(),
         "errors" => $errors,

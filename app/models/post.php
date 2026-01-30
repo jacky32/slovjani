@@ -9,7 +9,7 @@ class Post extends ApplicationRecord
   public $created_at;
   public $updated_at;
 
-  protected static array $db_attributes = ['id', 'name', 'body', 'creator_id'];
+  protected static array $db_attributes = ['id', 'name', 'body', 'creator_id', 'created_at', 'updated_at'];
 
   protected static array $relations  = [
     'belongs_to' => [
@@ -21,8 +21,8 @@ class Post extends ApplicationRecord
   ];
 
   protected static array $validations = [
-    "presence" => ["name", "body", "creator_id"]
-    //   // if (strlen($this->get_body()) > 255) throw new Exception("Body cannot be longer than 255 characters");
+    "presence" => ["name", "body", "creator_id"],
+    "length" => ["name" => ["min" => 5, "max" => 100], "body" => ["min" => 10, "max" => 5000]]
   ];
 
   public function __construct($data = [])

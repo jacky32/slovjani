@@ -56,6 +56,9 @@ class PostsController extends ApplicationController
       header("Location: /posts");
     } catch (Exception $e) {
       $errors[] = $e->getMessage();
+      if ($e instanceof \ActiveModel\ValidationException) {
+        $this->addFlash('error', $e->getMessage());
+      }
       $this->render("posts/new", [
         "posts" => Post::all(),
         "errors" => $errors,
@@ -101,6 +104,9 @@ class PostsController extends ApplicationController
       }
     } catch (Exception $e) {
       $errors[] = $e->getMessage();
+      if ($e instanceof \ActiveModel\ValidationException) {
+        $this->addFlash('error', $e->getMessage());
+      }
       $this->render("posts/edit", [
         "post" => $post,
         "posts" => Post::all(),

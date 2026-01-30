@@ -10,6 +10,13 @@ class ApplicationController
     $conn = new PDO("mysql:host=" . getenv("MYSQL_HOST") . ";dbname=" . getenv("MYSQL_DATABASE"), getenv("MYSQL_USER"), getenv("MYSQL_PASSWORD"));
     $this->auth = new \Delight\Auth\Auth($conn);
     $this->viewManager = new ViewManager($this->auth);
+
+    // set_exception_handler(function (Exception $exception) {
+    //   error_log("  ");
+    //   error_log($exception->getMessage());
+    //   error_log("  ");
+    //   $this->addFlash('error', $exception->getMessage());
+    // });
   }
 
   protected function verifyCSRF($formAction)
