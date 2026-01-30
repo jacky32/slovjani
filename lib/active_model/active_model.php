@@ -1,5 +1,7 @@
 <?php
 require __DIR__ . '/validations/validations.php';
+require __DIR__ . '/relations/query_builder.php';
+require __DIR__ . '/relations/collection.php';
 
 use ActiveModel\Validations;
 
@@ -15,6 +17,14 @@ abstract class ActiveModel
 
   protected static array $db_attributes = [];
   protected static array $validations = [];
+
+  /**
+   * Get db_attributes for QueryBuilder
+   */
+  public static function getDbAttributes(): array
+  {
+    return static::$db_attributes;
+  }
 
   public function __construct($data = [])
   {
@@ -126,25 +136,25 @@ abstract class ActiveModel
   }
 
 
-  public static function all()
-  {
-    $results = [];
-    $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s;";
-    error_log("[MySQL] " . $sql);
-    $database = new Database();
-    $connection = $database->getConnection();
-    $result = $connection->query($sql);
+  // public static function all()
+  // {
+  //   $results = [];
+  //   $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s;";
+  //   error_log("[MySQL] " . $sql);
+  //   $database = new Database();
+  //   $connection = $database->getConnection();
+  //   $result = $connection->query($sql);
 
-    while ($row = $result->fetch_assoc()) {
-      $attributes = [];
-      foreach (static::$db_attributes as $attr) {
-        $attributes[$attr] = $row[$attr] ?? null;
-      }
-      $results[] = new static($attributes);
-    }
+  //   while ($row = $result->fetch_assoc()) {
+  //     $attributes = [];
+  //     foreach (static::$db_attributes as $attr) {
+  //       $attributes[$attr] = $row[$attr] ?? null;
+  //     }
+  //     $results[] = new static($attributes);
+  //   }
 
-    return $results;
-  }
+  //   return $results;
+  // }
 
 
 
@@ -171,26 +181,40 @@ abstract class ActiveModel
     }
   }
 
-  // TODO: implement auto-setting timestamps after create/update
+  /**
+   * Chainable where query - returns QueryBuilder
+   *
+   * Usage:
+   *   Post::where(['author_id' => 1])->get();
+   *   Post::where('status', 'active')->first();
+   *   Post::where(['author_id' => 1])->where(['status' => 'active'])->orderBy('created_at', 'DESC')->get();
+   */
+  public static function where($conditions = [], $value = null): QueryBuilder
+  {
+    $builder = new QueryBuilder(static::class);
+    return $builder->where($conditions, $value);
+  }
 
-  // public function __call($method, $arguments)
-  // {
-  //   // Handle set_* methods
-  //   // if (strpos($method, 'set_') === 0) {
-  //   //   $property = substr($method, 4);
-  //   //   $this->attributes[$property] = $arguments[0];
-  //   //   return $this;
-  //   // }
+  /**
+   * Return all records as Collection
+   */
+  public static function all(): Collection
+  {
+    $results = [];
+    $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s;";
+    error_log("[MySQL] " . $sql);
+    $database = new Database();
+    $connection = $database->getConnection();
+    $result = $connection->query($sql);
 
-  //   // Handle get_* methods
-  //   // if (strpos($method, 'get_') === 0) {
-  //   //   $property = substr($method, 4);
-  //   //   return $this->attributes[$property] ?? null;
-  //   // }
-  //   // if ($this->attributes[$method] ?? false) {
-  //   //   return $this->attributes[$method];
-  //   // }
+    while ($row = $result->fetch_assoc()) {
+      $attributes = [];
+      foreach (static::$db_attributes as $attr) {
+        $attributes[$attr] = $row[$attr] ?? null;
+      }
+      $results[] = new static($attributes);
+    }
 
-  //   throw new Exception("Method $method does not exist");
-  // }
+    return new Collection($results);
+  }
 }
