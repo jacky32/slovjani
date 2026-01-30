@@ -95,44 +95,90 @@ abstract class ActiveModel
 
   function create()
   {
+    $columns = [];
+    $placeholders = [];
+    $values = [];
+    $types = '';
+
     foreach (static::$db_attributes as $attribute) {
-      if ($attribute != 'id') {
-        if ($attribute == 'created_at' || $attribute == 'updated_at') {
+      if ($attribute !== 'id') {
+        if ($attribute === 'created_at' || $attribute === 'updated_at') {
           $this->{$attribute} = date('Y-m-d H:i:s');
         }
-        $attributes_parts[] = $attribute . " = '" . $this->{$attribute} . "'";
+        $columns[] = "`{$attribute}`";
+        $placeholders[] = '?';
+        $values[] = $this->{$attribute};
+        $types .= $this->getBindingType($this->{$attribute});
       }
     }
 
-    $sql = "INSERT INTO " . toSnakeCase(static::class) . "s (" . implode(", ", array_filter(static::$db_attributes, fn($attr) => $attr !== 'id')) . ") VALUES" .
-      " (" . implode(", ", array_map(fn($attr) => "'" . $this->{$attr} . "'", array_filter(static::$db_attributes, fn($attr) => $attr !== 'id'))) . ");";
-    // ('" . $this->name . "', '" . $this->body . "', '" . $this->creator_id . "');";
+    $table = toSnakeCase(static::class) . 's';
+    $sql = "INSERT INTO `{$table}` (" . implode(", ", $columns) . ") VALUES (" . implode(", ", $placeholders) . ");";
     error_log("[MySQL] " . $sql);
-    $this->connection->query($sql);
+
+    $stmt = $this->connection->prepare($sql);
+    if (!empty($values)) {
+      $stmt->bind_param($types, ...$values);
+    }
+    $stmt->execute();
     $this->id = $this->connection->insert_id;
   }
 
   function update()
   {
+    $setParts = [];
+    $values = [];
+    $types = '';
+
     foreach (static::$db_attributes as $attribute) {
-      if ($attribute != 'id') {
-        if ($attribute == 'updated_at') {
+      if ($attribute !== 'id') {
+        if ($attribute === 'updated_at') {
           $this->{$attribute} = date('Y-m-d H:i:s');
         }
-        $attributes_parts[] = $attribute . " = '" . $this->{$attribute} . "'";
+        $setParts[] = "`{$attribute}` = ?";
+        $values[] = $this->{$attribute};
+        $types .= $this->getBindingType($this->{$attribute});
       }
     }
 
-    $sql = "UPDATE " . toSnakeCase(static::class) . "s SET " . implode(", ", $attributes_parts) . " WHERE id = " . $this->id . ";";
+    // Add id for WHERE clause
+    $values[] = $this->id;
+    $types .= 'i';
+
+    $table = toSnakeCase(static::class) . 's';
+    $sql = "UPDATE `{$table}` SET " . implode(", ", $setParts) . " WHERE id = ?;";
     error_log("[MySQL] " . $sql);
-    $this->connection->query($sql);
+
+    $stmt = $this->connection->prepare($sql);
+    $stmt->bind_param($types, ...$values);
+    $stmt->execute();
   }
 
   function destroy()
   {
-    $sql = "DELETE FROM " . toSnakeCase(static::class) . "s WHERE id = " . $this->id . ";";
+    $table = toSnakeCase(static::class) . 's';
+    $sql = "DELETE FROM `{$table}` WHERE id = ?;";
     error_log("[MySQL] " . $sql);
-    $this->connection->query($sql);
+
+    $stmt = $this->connection->prepare($sql);
+    $stmt->bind_param('i', $this->id);
+    $stmt->execute();
+  }
+
+  /**
+   * Get mysqli binding type for a value
+   */
+  private function getBindingType($value): string
+  {
+    if (is_int($value)) {
+      return 'i';
+    } elseif (is_float($value)) {
+      return 'd';
+    } elseif (is_null($value)) {
+      return 's'; // NULL handled as string
+    } else {
+      return 's';
+    }
   }
 
 
@@ -163,19 +209,24 @@ abstract class ActiveModel
     if (empty($id) || !is_numeric($id)) {
       return null;
     }
-    $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s WHERE id = " . $id . ";";
+
+    $table = toSnakeCase(static::class) . 's';
+    $sql = "SELECT * FROM `{$table}` WHERE id = ?;";
     error_log("[MySQL] " . $sql);
+
     $database = new Database();
     $connection = $database->getConnection();
-    $result = $connection->query($sql);
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
       $attributes = [];
       foreach (static::$db_attributes as $attr) {
         $attributes[$attr] = $row[$attr] ?? null;
       }
-      $post = new static($attributes);
-      return $post;
+      return new static($attributes);
     } else {
       return null;
     }
