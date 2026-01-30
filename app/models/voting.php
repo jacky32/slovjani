@@ -7,9 +7,11 @@ class Voting extends ApplicationRecord
   public $name;
   public $description;
   public $creator_id;
-  public $creator;
   public $created_at;
   public $updated_at;
+
+  public $creator;
+  public $questions;
 
   protected static array $db_attributes = ['id', 'datetime_start', 'datetime_end', 'name', 'description', 'creator_id', 'created_at', 'updated_at'];
 
@@ -18,6 +20,12 @@ class Voting extends ApplicationRecord
       'creator' => [
         'class_name' => User::class,
         'foreign_key' => 'creator_id'
+      ]
+    ],
+    'has_many' => [
+      'questions' => [
+        'class_name' => Question::class,
+        'foreign_key' => 'voting_id'
       ]
     ]
   ];

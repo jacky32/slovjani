@@ -41,7 +41,6 @@ class Router
    */
   public function regRoute($regexp)
   {
-    // TODO: check (bool) meaning
     return (bool) preg_match($regexp, $this->routeAction);
   }
 
@@ -116,22 +115,93 @@ class Router
     return false;
   }
 
+  /**
+   * nestedResources
+   * Defines nested RESTful routes for a child resource under a parent.
+   * e.g., /admin/votings/:voting_id/questions
+   *
+   * @param string $parent Parent resource name (e.g., 'votings')
+   * @param string $child Child resource name (e.g., 'questions')
+   * @param bool $admin Whether to prefix with /admin
+   * @param array $actions List of actions to create routes for
+   * @return bool True if a route is matched, false otherwise.
+   */
+  public function nestedResources($parent, $child, $admin = false, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
+  {
+    $this->controllerName = ($admin ? 'Admin' : '') . ucfirst($child) . 'Controller';
+    $prefix = $admin ? '\/admin\/' : '\/';
+    $basePattern = '/^' . $prefix . $parent . '\/\d+\/' . $child;
+
+    // POST /parent/:id/child/:id/destroy - destroy
+    if ($this->regRoute($basePattern . '\/\d+\/destroy$/') && $this->isPost() && in_array('destroy', $actions)) {
+      $this->action = 'destroy';
+      return true;
+    }
+
+    // GET /parent/:id/child/:id/edit - edit
+    if ($this->regRoute($basePattern . '\/\d+\/edit$/') && $this->isGet() && in_array('edit', $actions)) {
+      $this->action = 'edit';
+      return true;
+    }
+
+    // GET /parent/:id/child/:id - show
+    if ($this->regRoute($basePattern . '\/\d+$/') && $this->isGet() && in_array('show', $actions)) {
+      $this->action = 'show';
+      return true;
+    }
+
+    // POST /parent/:id/child/:id - update
+    if ($this->regRoute($basePattern . '\/\d+$/') && $this->isPost() && in_array('update', $actions)) {
+      $this->action = 'update';
+      return true;
+    }
+
+    // GET /parent/:id/child/new - new
+    if ($this->regRoute($basePattern . '\/new$/') && $this->isGet() && in_array('new', $actions)) {
+      $this->action = 'new';
+      return true;
+    }
+
+    // GET /parent/:id/child - index
+    if ($this->regRoute($basePattern . '$/') && $this->isGet() && in_array('index', $actions)) {
+      $this->action = 'index';
+      return true;
+    }
+
+    // POST /parent/:id/child - create
+    if ($this->regRoute($basePattern . '$/') && $this->isPost() && in_array('create', $actions)) {
+      $this->action = 'create';
+      return true;
+    }
+
+    return false;
+  }
+
   public function __construct()
   {
     $this->routeAction = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+    // /posts
     if ($this->resources('posts')) {
       return;
     }
 
+    // /admin/economics
     if ($this->resources('economics', true)) {
       return;
     }
 
+    // /admin/pursuits
     if ($this->resources('pursuits', true)) {
       return;
     }
 
+    // /admin/votings/:id/questions
+    if ($this->nestedResources('votings', 'questions', true, ["new", "create", "edit", "update", "destroy"])) {
+      return;
+    }
+
+    // /admin/votings
     if ($this->resources('votings', true)) {
       return;
     }

@@ -1,52 +1,41 @@
 <?php
 
-class AdminVotingsController extends AdminController
+class AdminQuestionsController extends AdminController
 {
+  private $voting_id;
+  private $question_id;
+
   public function __construct()
   {
     parent::__construct();
-  }
 
-
-  public function index($request)
-  {
-    $this->render("admin/votings/index", [
-      "votings" => Voting::all() // TODO: Pagination
-    ]);
-  }
-
-  public function show($request)
-  {
-    $voting = $this->findVotingById();
-    if ($voting) {
-      $this->render("admin/votings/show", [
-        "voting" => $voting,
-        "votings" => Voting::all()
-      ]);
-    } else {
-      $this->addFlash('error', t("votings.show.voting_not_found"));
-      header("Location: /admin/votings");
-    }
+    preg_match('/votings\/(\d+)\/questions(?:\/(\d+))?/', $_SERVER['REQUEST_URI'], $matches);
+    $this->voting_id = $matches[1];
+    $this->question_id = $matches[2] ?? null;
   }
 
   public function new($request)
   {
-    $this->render("admin/votings/new", [
-      "votings" => Voting::all()
+    $this->render("admin/questions/new", [
+      "voting" => Voting::find($this->voting_id)
     ]);
   }
 
   public function edit($request)
   {
-    $voting = $this->findVotingById();
-    if ($voting) {
-      $this->render("admin/votings/edit", [
-        "voting" => $voting,
-        "votings" => Voting::all()
+    $question = Question::find($this->question_id);
+    if ($question) {
+      $this->render("admin/questions/edit", [
+        "question" => $question,
+        "voting" => Voting::find($this->voting_id)
       ]);
     } else {
-      $this->addFlash('error', t("votings.show.voting_not_found"));
-      header("Location: /admin/votings");
+      $this->addFlash('error', t("questions.edit.question_not_found"));
+      if ($this->voting_id) {
+        header("Location: /admin/votings/" . $this->voting_id);
+      } else {
+        header("Location: /admin/votings");
+      }
     }
   }
 
@@ -54,10 +43,11 @@ class AdminVotingsController extends AdminController
   {
     try {
       // Verify CSRF token
-      $this->verifyCSRF('/admin/votings/' . $this->parseIdFromUri());
+      $this->verifyCSRF('/admin/votings/' . $this->voting_id . '/questions/' . $this->question_id);
 
       // Find voting and check ownership
-      $voting = $this->findVotingById();
+      $voting = Voting::find($this->voting_id);
+      $question = $voting->questions->find($this->question_id);
       if ($voting && $voting->creator_id == $this->auth->getUserId()) {
         $voting->name = $request['voting']['name'];
         $voting->description = $request['voting']['description'];
