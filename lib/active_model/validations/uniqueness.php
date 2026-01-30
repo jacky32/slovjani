@@ -2,6 +2,8 @@
 
 namespace ActiveModel\Validations;
 
+class UniquenessException extends \ActiveModel\ValidationException {};
+
 trait UniquenessValidator
 {
   // 'uniqueness' => [['user_id', 'question_id']] -- composite unique key
@@ -31,9 +33,9 @@ trait UniquenessValidator
       if ($row['count'] > 0) {
         if (is_array($attribute)) {
           $attr_names = implode(", ", $attribute);
-          throw new \Exception("Combination of {$attr_names} must be unique");
+          throw new UniquenessException("Combination of {$attr_names} must be unique");
         } else {
-          throw new \Exception("{$attribute} must be unique");
+          throw new UniquenessException("{$attribute} must be unique");
         }
       }
     }

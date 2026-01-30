@@ -64,6 +64,7 @@ abstract class ActiveModel
   function validate()
   {
     foreach (static::$validations as $validation_type => $attributes) {
+      // error_log("Validating {$validation_type} for attributes: " . json_encode($attributes));
       switch ($validation_type) {
         case "presence":
           $this->validates_presence_of($attributes);
