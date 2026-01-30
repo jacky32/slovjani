@@ -1,5 +1,5 @@
 <?php
-class Question extends ApplicationRecord
+class UsersQuestion extends ApplicationRecord
 {
   public $id;
   public $question_id;

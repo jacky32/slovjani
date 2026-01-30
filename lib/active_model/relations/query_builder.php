@@ -135,7 +135,7 @@ class QueryBuilder
   public function count(): int
   {
     $sql = $this->buildCountSql();
-    error_log("[MySQL] " . $sql);
+    Logger::sql($sql, $this->bindings);
 
     $database = new Database();
     $connection = $database->getConnection();
@@ -167,7 +167,7 @@ class QueryBuilder
   private function executeQuery(): array
   {
     $sql = $this->buildSql();
-    error_log("[MySQL] " . $sql);
+    Logger::sql($sql, $this->bindings);
 
     $database = new Database();
     $connection = $database->getConnection();

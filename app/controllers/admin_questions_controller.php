@@ -48,19 +48,17 @@ class AdminQuestionsController extends AdminController
       // Find voting and check ownership
       $voting = Voting::find($this->voting_id);
       $question = $voting->questions->find($this->question_id);
-      if ($voting && $voting->creator_id == $this->auth->getUserId()) {
-        $voting->name = $request['voting']['name'];
-        $voting->description = $request['voting']['description'];
-        $voting->datetime_start = $request['voting']['datetime_start'];
-        $voting->datetime_end = $request['voting']['datetime_end'];
-        $voting->save();
-        $this->addFlash('success', t("votings.update.success"));
+      if ($voting && $question && $voting->creator_id == $this->auth->getUserId()) {
+        $question->name = $request['question']['name'];
+        $question->description = $request['question']['description'];
+        $question->save();
+        $this->addFlash('success', t("questions.update.success"));
         header("Location: /admin/votings/" . $voting->id);
       } else {
         if (!$voting) {
           $this->addFlash('error', t("votings.show.voting_not_found"));
         } else if ($voting->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
-          $this->addFlash('error', t("votings.update.unauthorized"));
+          $this->addFlash('error', t("questions.update.unauthorized"));
         }
         header("Location: /admin/votings");
       }

@@ -25,7 +25,7 @@ trait UniquenessValidator
       }
       $table = toSnakeCase((new \ReflectionClass($this))->getShortName()) . "s";
       $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$condition_str}";
-      error_log("[MySQL] " . $query);
+      \Logger::sql($query);
       $database = new \Database();
       $connection = $database->getConnection();
       $result = $connection->query($query);

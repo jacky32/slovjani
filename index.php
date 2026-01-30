@@ -46,6 +46,7 @@ if ($realPath && $publicDir && strpos($realPath, $publicDir) === 0 && is_file($r
   }
 }
 
+require 'lib/logger.php';
 $appConfig = require './config/application.php';
 require 'lib/helpers.php';
 require 'lib/active_model/active_model.php';
@@ -84,5 +85,7 @@ if ($db) {
   $dbConnection = $db->getConnection();
 }
 
+Logger::info("Started " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_URI'] . " for " . $_SERVER['REMOTE_ADDR'] . " at " . date('Y-m-d H:i:s'));
+Logger::info("Processing " . $controllerName . "#" . $action);
 $controller = new $controllerName($dbConnection);
 $controller->{$action}($_REQUEST);

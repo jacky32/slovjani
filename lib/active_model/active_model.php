@@ -74,7 +74,6 @@ abstract class ActiveModel
   function validate()
   {
     foreach (static::$validations as $validation_type => $attributes) {
-      // error_log("Validating {$validation_type} for attributes: " . json_encode($attributes));
       switch ($validation_type) {
         case "presence":
           $this->validates_presence_of($attributes);
@@ -113,8 +112,8 @@ abstract class ActiveModel
     }
 
     $table = toSnakeCase(static::class) . 's';
-    $sql = "INSERT INTO `{$table}` (" . implode(", ", $columns) . ") VALUES (" . implode(", ", $placeholders) . ");";
-    error_log("[MySQL] " . $sql);
+    $sql = "INSERT INTO `{$table}` (" . implode(", ", $columns) . ") VALUES (" . implode(", ", $placeholders) . ")";
+    Logger::sql($sql, $values);
 
     $stmt = $this->connection->prepare($sql);
     if (!empty($values)) {
@@ -146,8 +145,8 @@ abstract class ActiveModel
     $types .= 'i';
 
     $table = toSnakeCase(static::class) . 's';
-    $sql = "UPDATE `{$table}` SET " . implode(", ", $setParts) . " WHERE id = ?;";
-    error_log("[MySQL] " . $sql);
+    $sql = "UPDATE `{$table}` SET " . implode(", ", $setParts) . " WHERE id = ?";
+    Logger::sql($sql, $values);
 
     $stmt = $this->connection->prepare($sql);
     $stmt->bind_param($types, ...$values);
@@ -157,8 +156,8 @@ abstract class ActiveModel
   function destroy()
   {
     $table = toSnakeCase(static::class) . 's';
-    $sql = "DELETE FROM `{$table}` WHERE id = ?;";
-    error_log("[MySQL] " . $sql);
+    $sql = "DELETE FROM `{$table}` WHERE id = ?";
+    Logger::sql($sql, [$this->id]);
 
     $stmt = $this->connection->prepare($sql);
     $stmt->bind_param('i', $this->id);
@@ -175,34 +174,11 @@ abstract class ActiveModel
     } elseif (is_float($value)) {
       return 'd';
     } elseif (is_null($value)) {
-      return 's'; // NULL handled as string
+      return 's';
     } else {
       return 's';
     }
   }
-
-
-  // public static function all()
-  // {
-  //   $results = [];
-  //   $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s;";
-  //   error_log("[MySQL] " . $sql);
-  //   $database = new Database();
-  //   $connection = $database->getConnection();
-  //   $result = $connection->query($sql);
-
-  //   while ($row = $result->fetch_assoc()) {
-  //     $attributes = [];
-  //     foreach (static::$db_attributes as $attr) {
-  //       $attributes[$attr] = $row[$attr] ?? null;
-  //     }
-  //     $results[] = new static($attributes);
-  //   }
-
-  //   return $results;
-  // }
-
-
 
   public static function find($id)
   {
@@ -211,8 +187,8 @@ abstract class ActiveModel
     }
 
     $table = toSnakeCase(static::class) . 's';
-    $sql = "SELECT * FROM `{$table}` WHERE id = ?;";
-    error_log("[MySQL] " . $sql);
+    $sql = "SELECT * FROM `{$table}` WHERE id = ?";
+    Logger::sql($sql, [$id]);
 
     $database = new Database();
     $connection = $database->getConnection();
@@ -252,8 +228,8 @@ abstract class ActiveModel
   public static function all(): Collection
   {
     $results = [];
-    $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s;";
-    error_log("[MySQL] " . $sql);
+    $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s";
+    Logger::sql($sql);
     $database = new Database();
     $connection = $database->getConnection();
     $result = $connection->query($sql);

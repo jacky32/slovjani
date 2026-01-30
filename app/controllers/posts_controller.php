@@ -1,13 +1,14 @@
 <?php
 class PostsController extends ApplicationController
 {
-  private $post;
   private $id;
 
-  public function __construct($postModel)
+  public function __construct()
   {
     parent::__construct();
-    $this->post = $postModel;
+
+    preg_match('/posts\/(\d+)/', $_SERVER['REQUEST_URI'], $matches);
+    $this->id = $matches[1] ?? null;
   }
 
 
@@ -20,7 +21,7 @@ class PostsController extends ApplicationController
 
   public function show($request)
   {
-    $post = $this->findPostById();
+    $post = Post::find($this->id);
     if ($post) {
       $this->render("posts/show", [
         "post" => $post,
@@ -49,6 +50,7 @@ class PostsController extends ApplicationController
       $post = new Post([
         'name' => $request['post']['name'],
         'body' => $request['post']['body'],
+        'status' => $request['post']['status'],
         'creator_id' => $this->auth->getUserId()
       ]);
       $post->save();
@@ -68,7 +70,7 @@ class PostsController extends ApplicationController
 
   public function edit($request)
   {
-    $post = $this->findPostById();
+    $post = Post::find($this->id);
     if ($post) {
       $this->render("posts/edit", [
         "post" => $post,
@@ -84,13 +86,14 @@ class PostsController extends ApplicationController
   {
     try {
       // Verify CSRF token
-      $this->verifyCSRF('/posts/' . $this->parseIdFromUri());
+      $this->verifyCSRF('/posts/' . $this->id);
 
       // Find post and check ownership
-      $post = $this->findPostById();
+      $post = Post::find($this->id);
       if ($post && $post->creator_id == $this->auth->getUserId()) {
         $post->name = $request['post']['name'];
         $post->body = $request['post']['body'];
+        $post->status = $request['post']['status'];
         $post->save();
         $this->addFlash('success', t("posts.update.success"));
         header("Location: /posts/" . $post->id);
@@ -119,10 +122,10 @@ class PostsController extends ApplicationController
   {
     try {
       // Verify CSRF token
-      $this->verifyCSRF('/posts/destroy');
+      $this->verifyCSRF('/posts/' . $this->id . '/destroy');
 
       // Find post and check ownership
-      $post = $this->findPostById();
+      $post = Post::find($this->id);
       if ($post && $post->creator_id == $this->auth->getUserId()) {
         $post->destroy();
         $this->addFlash('success', "Příspěvek byl úspěšně smazán.");
@@ -139,21 +142,5 @@ class PostsController extends ApplicationController
       $this->addFlash('error', $e->getMessage());
       header("Location: /posts");
     }
-  }
-
-  private function parseIdFromUri()
-  {
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    preg_match('/posts\/\d+/', $uri, $matches);
-    $id = explode('/', $matches[0])[1];
-    return $id;
-  }
-
-  private function findPostById()
-  {
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    preg_match('/posts\/\d+/', $uri, $matches);
-    $id = explode('/', $matches[0])[1];
-    return Post::find($id);
   }
 }
