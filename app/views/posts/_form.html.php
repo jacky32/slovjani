@@ -25,9 +25,9 @@
 
     <label for="status-select"><?= Post::humanAttributeName("status") ?></label>
     <select id="status-select" name="post[status]">
-      <option value="draft" <?= isset($post) && $post->status == 'draft' ? 'selected' : '' ?>><?= t("posts.status.draft") ?></option>
-      <option value="published" <?= isset($post) && $post->status == 'published' ? 'selected' : '' ?>><?= t("posts.status.published") ?></option>
-      <option value="archived" <?= isset($post) && $post->status == 'archived' ? 'selected' : '' ?>><?= t("posts.status.archived") ?></option>
+      <option value="DRAFT" <?= isset($post) && $post->status == 'DRAFT' ? 'selected' : '' ?>><?= t("posts.status.draft") ?></option>
+      <option value="PUBLISHED" <?= isset($post) && $post->status == 'PUBLISHED' ? 'selected' : '' ?>><?= t("posts.status.published") ?></option>
+      <option value="ARCHIVED" <?= isset($post) && $post->status == 'ARCHIVED' ? 'selected' : '' ?>><?= t("posts.status.archived") ?></option>
     </select>
     <br>
 
