@@ -130,6 +130,29 @@ class QueryBuilder
   }
 
   /**
+   * Find by primary key (id). Accepts integer or integer-string ("1").
+   * This method does not mutate the original QueryBuilder; it clones
+   * the builder, applies the id condition and returns the first match.
+   *
+   * @param int|string $id
+   * @return object|null
+   */
+  public function find($id): ?object
+  {
+    if (is_int($id)) {
+      $searchId = $id;
+    } elseif (is_string($id) && ctype_digit($id)) {
+      $searchId = (int) $id;
+    } else {
+      return null;
+    }
+
+    $clone = clone $this;
+    $clone->where('id', $searchId);
+    return $clone->first();
+  }
+
+  /**
    * Get count of matching records
    */
   public function count(): int

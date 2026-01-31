@@ -182,7 +182,13 @@ abstract class ActiveModel
 
   public static function find($id)
   {
-    if (empty($id) || !is_numeric($id)) {
+    // Accept integer values or integer strings (e.g. "1" -> 1).
+    // Reject non-integer strings such as "true", floats or empty values.
+    if (is_int($id)) {
+      // ok
+    } elseif (is_string($id) && ctype_digit($id)) {
+      $id = (int) $id;
+    } else {
       return null;
     }
 
