@@ -17,8 +17,37 @@ class AdminQuestionsController extends AdminController
   public function new($request)
   {
     $this->render("admin/questions/new", [
-      "voting" => Voting::find($this->voting_id)
+      "voting" => Voting::find($this->voting_id),
+      "votings" => Voting::all()
     ]);
+  }
+
+  public function create($request)
+  {
+    try {
+      // Verify CSRF token
+      $this->verifyCSRF('/admin/votings/' . $this->voting_id . '/questions');
+      // Create new voting
+      $question = new Question([
+        'name' => $request['question']['name'],
+        'description' => $request['question']['description'],
+        'voting_id' => $this->voting_id,
+        'creator_id' => $this->auth->getUserId()
+      ]);
+      $question->save();
+      $this->addFlash('success', "Otázka byla úspěšně vytvořena.");
+      header("Location: /admin/votings/" . $this->voting_id);
+    } catch (Exception $e) {
+      $errors[] = $e->getMessage();
+      // if ($e instanceof \ActiveModel\ValidationException) {
+      $this->addFlash('error', $e->getMessage());
+      // }
+      $this->render("admin/questions/new", [
+        "voting" => Voting::find($this->voting_id),
+        "votings" => Voting::all(),
+        "errors" => $errors,
+      ]);
+    }
   }
 
   public function edit($request)
@@ -27,7 +56,8 @@ class AdminQuestionsController extends AdminController
     if ($question) {
       $this->render("admin/questions/edit", [
         "question" => $question,
-        "voting" => Voting::find($this->voting_id)
+        "voting" => Voting::find($this->voting_id),
+        "votings" => Voting::all()
       ]);
     } else {
       $this->addFlash('error', t("questions.edit.question_not_found"));
@@ -41,6 +71,7 @@ class AdminQuestionsController extends AdminController
 
   public function update($request)
   {
+    Logger::debug("Updating question with ID: " . $this->question_id . " for voting ID: " . $this->voting_id);
     try {
       // Verify CSRF token
       $this->verifyCSRF('/admin/votings/' . $this->voting_id . '/questions/' . $this->question_id);
@@ -67,37 +98,11 @@ class AdminQuestionsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $this->addFlash('error', $e->getMessage());
       }
-      $this->render("admin/votings/edit", [
+      $voting = Voting::find($this->voting_id);
+      $this->render("admin/questions/edit", [
         "voting" => $voting,
         "votings" => Voting::all(),
-        "errors" => $errors,
-      ]);
-    }
-  }
-
-  public function create($request)
-  {
-    try {
-      // Verify CSRF token
-      $this->verifyCSRF('/admin/votings');
-      // Create new voting
-      $voting = new Voting([
-        'name' => $request['voting']['name'],
-        'description' => $request['voting']['description'],
-        'datetime_start' => $request['voting']['datetime_start'],
-        'datetime_end' => $request['voting']['datetime_end'],
-        'creator_id' => $this->auth->getUserId()
-      ]);
-      $voting->save();
-      $this->addFlash('success', "Hlasování bylo úspěšně vytvořeno.");
-      header("Location: /admin/votings");
-    } catch (Exception $e) {
-      $errors[] = $e->getMessage();
-      if ($e instanceof \ActiveModel\ValidationException) {
-        $this->addFlash('error', $e->getMessage());
-      }
-      $this->render("admin/votings/index", [
-        "votings" => Voting::all(),
+        "question" => $voting->questions->find($this->question_id),
         "errors" => $errors,
       ]);
     }
@@ -107,41 +112,26 @@ class AdminQuestionsController extends AdminController
   {
     try {
       // Verify CSRF token
-      $this->verifyCSRF('/admin/votings/destroy');
+      $this->verifyCSRF('/admin/votings/' . $this->voting_id . '/questions/' . $this->question_id . '/destroy');
 
       // Find voting and check ownership
-      $voting = $this->findVotingById();
-      if ($voting && $voting->creator_id == $this->auth->getUserId()) {
-        $voting->destroy();
-        $this->addFlash('success', "Hlasování bylo úspěšně smazáno.");
+      $voting = Voting::find($this->voting_id);
+      $question = $voting->questions->find($this->question_id);
+      if ($voting && $question && $question->creator_id == $this->auth->getUserId()) {
+        $question->destroy();
+        $this->addFlash('success', "Otázka byla úspěšně smazána.");
       } else {
         if (!$voting) {
           $this->addFlash('error', "Hlasování neexistuje.");
         } else if ($voting->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', "Nemáte oprávnění smazat toto hlasování.");
+          $this->addFlash('error', "Nemáte oprávnění smazat tuto otázku.");
         }
         $this->addFlash('error', "Nastala chyba");
       }
-      header("Location: /admin/votings");
+      header("Location: /admin/votings/" . $this->voting_id);
     } catch (Exception $e) {
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/votings");
     }
-  }
-
-  private function parseIdFromUri()
-  {
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    preg_match('/votings\/\d+/', $uri, $matches);
-    $id = explode('/', $matches[0])[1];
-    return $id;
-  }
-
-  private function findVotingById()
-  {
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    preg_match('/votings\/\d+/', $uri, $matches);
-    $id = explode('/', $matches[0])[1];
-    return Voting::find($id);
   }
 }

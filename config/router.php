@@ -39,7 +39,7 @@ class Router
    * @param string $regexp
    * @return bool
    */
-  public function regRoute($regexp)
+  private function regRoute($regexp)
   {
     return (bool) preg_match($regexp, $this->routeAction);
   }
@@ -65,7 +65,7 @@ class Router
    * @param array $actions Optional. List of actions to create routes for. Defaults to all CRUD actions.
    * @return bool True if a route is matched, false otherwise.
    */
-  public function resources($resource, $admin = false, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
+  private function resources($resource, $admin = false, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
   {
     $this->controllerName = ($admin ? 'Admin' : '') . ucfirst($resource) . 'Controller';
     $base = '/' . ($admin ? 'admin/' : '') . $resource;
@@ -126,7 +126,7 @@ class Router
    * @param array $actions List of actions to create routes for
    * @return bool True if a route is matched, false otherwise.
    */
-  public function nestedResources($parent, $child, $admin = false, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
+  private function nestedResources($parent, $child, $admin = false, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
   {
     $this->controllerName = ($admin ? 'Admin' : '') . ucfirst($child) . 'Controller';
     $prefix = $admin ? '\/admin\/' : '\/';
@@ -177,9 +177,20 @@ class Router
     return false;
   }
 
+  // Remove trailing slash (but keep root '/') so routes match consistently
+  private function normalizeTrailingSlash($path)
+  {
+    $normalized = rtrim($path, '/');
+    if ($normalized === '') {
+      $normalized = '/';
+    }
+    return $normalized;
+  }
+
   public function __construct()
   {
-    $this->routeAction = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $this->routeAction = $this->normalizeTrailingSlash($path);
 
     // /posts
     if ($this->resources('posts')) {

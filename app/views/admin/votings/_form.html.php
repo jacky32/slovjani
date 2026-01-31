@@ -3,7 +3,7 @@
   <?php $this->renderCSRFToken(isset($voting) ? "/admin/votings/" . $voting->id : "/admin/votings") ?>
 
   <fieldset class="">
-    <legend class=""><?= t("votings.new.title") ?></legend>
+    <legend class=""><?= isset($voting) ? t("votings.edit.title") : t("votings.new.title") ?></legend>
 
     <label class=''>
       <input
@@ -40,7 +40,10 @@
         placeholder='<?= Voting::humanAttributeName("datetime_end") ?>'
         value='<?= isset($voting) ? htmlspecialchars($voting->datetime_end) : '' ?>' />
     </label>
+    <br>
 
     <button class="button"><?= isset($voting) ? t("update") : t("create") ?></button>
+    <a href='/admin/votings/' class='button'><?= t("cancel") ?></a>
   </fieldset>
+  <br>
 </form>

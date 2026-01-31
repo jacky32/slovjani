@@ -8,6 +8,8 @@ class Question extends ApplicationRecord
   public $created_at;
   public $updated_at;
 
+  public $voting;
+
   protected static array $db_attributes = ['id', 'voting_id', 'name', 'description', 'created_at', 'updated_at'];
 
   protected static array $relations  = [

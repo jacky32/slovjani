@@ -2,9 +2,14 @@
 
 class AdminVotingsController extends AdminController
 {
+  private $id;
+
   public function __construct()
   {
     parent::__construct();
+
+    preg_match('/admin\/votings\/(\d+)/', $_SERVER['REQUEST_URI'], $matches);
+    $this->id = $matches[1] ?? null;
   }
 
 
@@ -17,7 +22,7 @@ class AdminVotingsController extends AdminController
 
   public function show($request)
   {
-    $voting = $this->findVotingById();
+    $voting = Voting::find($this->id);
     if ($voting) {
       $this->render("admin/votings/show", [
         "voting" => $voting,
@@ -38,7 +43,7 @@ class AdminVotingsController extends AdminController
 
   public function edit($request)
   {
-    $voting = $this->findVotingById();
+    $voting = Voting::find($this->id);
     if ($voting) {
       $this->render("admin/votings/edit", [
         "voting" => $voting,
@@ -54,15 +59,18 @@ class AdminVotingsController extends AdminController
   {
     try {
       // Verify CSRF token
-      $this->verifyCSRF('/admin/votings/' . $this->parseIdFromUri());
+      $this->verifyCSRF('/admin/votings/' . $this->id);
 
       // Find voting and check ownership
-      $voting = $this->findVotingById();
+      $voting = Voting::find($this->id);
       if ($voting && $voting->creator_id == $this->auth->getUserId()) {
-        $voting->name = $request['voting']['name'];
-        $voting->description = $request['voting']['description'];
-        $voting->datetime_start = $request['voting']['datetime_start'];
-        $voting->datetime_end = $request['voting']['datetime_end'];
+        foreach (Voting::getDbAttributes() as $attribute) {
+          Logger::debug("Updating attribute: " . $attribute . " from " . $voting->{$attribute});
+          if (isset($request['voting'][$attribute])) {
+            Logger::debug("Setting " . $attribute . " to " . $request['voting'][$attribute]);
+            $voting->{$attribute} = $request['voting'][$attribute];
+          }
+        }
         $voting->save();
         $this->addFlash('success', t("votings.update.success"));
         header("Location: /admin/votings/" . $voting->id);
@@ -122,7 +130,7 @@ class AdminVotingsController extends AdminController
       $this->verifyCSRF('/admin/votings/destroy');
 
       // Find voting and check ownership
-      $voting = $this->findVotingById();
+      $voting = Voting::find($this->id);
       if ($voting && $voting->creator_id == $this->auth->getUserId()) {
         $voting->destroy();
         $this->addFlash('success', "Hlasování bylo úspěšně smazáno.");
@@ -139,21 +147,5 @@ class AdminVotingsController extends AdminController
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/votings");
     }
-  }
-
-  private function parseIdFromUri()
-  {
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    preg_match('/votings\/\d+/', $uri, $matches);
-    $id = explode('/', $matches[0])[1];
-    return $id;
-  }
-
-  private function findVotingById()
-  {
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    preg_match('/votings\/\d+/', $uri, $matches);
-    $id = explode('/', $matches[0])[1];
-    return Voting::find($id);
   }
 }

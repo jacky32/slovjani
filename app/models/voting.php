@@ -5,6 +5,7 @@ class Voting extends ApplicationRecord
   public $datetime_start;
   public $datetime_end;
   public $name;
+  public $status;
   public $description;
   public $creator_id;
   public $created_at;
@@ -13,7 +14,7 @@ class Voting extends ApplicationRecord
   public $creator;
   public $questions;
 
-  protected static array $db_attributes = ['id', 'datetime_start', 'datetime_end', 'name', 'description', 'creator_id', 'created_at', 'updated_at'];
+  protected static array $db_attributes = ['id', 'datetime_start', 'datetime_end', 'name', 'status', 'description', 'creator_id', 'created_at', 'updated_at'];
 
   protected static array $relations  = [
     'belongs_to' => [
@@ -31,8 +32,9 @@ class Voting extends ApplicationRecord
   ];
 
   protected static array $validations = [
-    'presence' => ['datetime_start', 'datetime_end', 'name', 'description', 'creator_id'],
-    'length' => [["name" => ["min" => 8, "max" => 255], "description" => ["min" => 8, "max" => 1000]]]
+    'presence' => ['datetime_start', 'datetime_end', 'name', 'status', 'description', 'creator_id'],
+    'length' => [["name" => ["min" => 8, "max" => 255], "description" => ["min" => 8, "max" => 1000]]],
+    'inclusion' => [['status' => ['draft', 'in_progress', 'completed', 'cancelled']]]
   ];
 
   public function __construct($data = [])

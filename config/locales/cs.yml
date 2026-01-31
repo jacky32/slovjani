@@ -3,6 +3,9 @@ new: Nový
 update: Aktualizovat
 edit: Upravit
 delete: Smazat
+
+cancel: Zrušit
+
 created_at: Vytvořeno dne
 updated_at: Aktualizováno dne
 creator: Autor
@@ -50,9 +53,19 @@ votings:
     creator: Autor
     created_at: Vytvořeno dne
     voting_not_found: Hlasování nebylo nalezeno.
+    questions_title: Otázky v tomto hlasování
+    start_voting: Spustit hlasování
+    end_voting: Ukončit hlasování
+    cancel_voting: Zrušit hlasování
   update:
     unauthorized: Nemáte oprávnění upravit toto hlasování.
     success: Hlasování bylo úspěšně aktualizováno.
+
+questions:
+  new:
+    title: Nová otázka
+  edit:
+    title: Úprava otázky
 
 registrations:
   new:
@@ -80,3 +93,6 @@ attributes:
     description: Popis
     datetime_start: Datum a čas začátku
     datetime_end: Datum a čas konce
+  question:
+    name: Název
+    description: Popis
