@@ -4,6 +4,11 @@ function toSnakeCase($input)
   return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $input));
 }
 
+function toPascalCase($input)
+{
+  return str_replace(' ', '', ucwords(str_replace('_', ' ', $input)));
+}
+
 function t($key)
 {
   $translations = yaml_parse_file('config/locales/cs.yml');

@@ -41,4 +41,14 @@ class Voting extends ApplicationRecord
 
   // Methods
 
+  public function hasUserVoted($user_id)
+  {
+    $question_ids = $this->questions->pluck('id');
+    $users_question = UsersQuestion::where([
+      'question_id' => $question_ids,
+      'user_id' => $user_id
+    ])->first();
+
+    return $users_question !== null;
+  }
 }

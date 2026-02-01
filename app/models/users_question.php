@@ -1,14 +1,13 @@
 <?php
 class UsersQuestion extends ApplicationRecord
 {
-  public $id;
-  public $question_id;
-  public $user_id;
-  public $chosen_option;
-  public $created_at;
-  public $updated_at;
-
-  protected static array $db_attributes = ['id', 'question_id', 'user_id', 'chosen_option', 'created_at', 'updated_at'];
+  protected static array $db_attributes = [
+    'question_id',
+    'user_id',
+    'chosen_option',
+    'created_at',
+    'updated_at'
+  ];
 
   protected static array $relations  = [
     'belongs_to' => [
@@ -25,7 +24,7 @@ class UsersQuestion extends ApplicationRecord
 
   protected static array $validations = [
     'presence' => ['question_id', 'user_id', 'chosen_option'],
-    'inclusion' => ['chosen_option' => ['yes', 'no', 'abstain']],
+    'inclusion' => ['chosen_option' => ['YES', 'NO', 'ABSTAIN']],
     'uniqueness' => [['user_id', 'question_id']]
   ];
 

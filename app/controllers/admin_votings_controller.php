@@ -26,7 +26,8 @@ class AdminVotingsController extends AdminController
     if ($voting) {
       $this->render("admin/votings/show", [
         "voting" => $voting,
-        "votings" => Voting::all()
+        "votings" => Voting::all(),
+        "has_voted" => $voting->hasUserVoted($this->auth->getUserId())
       ]);
     } else {
       $this->addFlash('error', t("votings.show.voting_not_found"));

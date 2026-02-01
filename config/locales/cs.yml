@@ -57,6 +57,8 @@ votings:
     start_voting: Spustit hlasování
     end_voting: Ukončit hlasování
     cancel_voting: Zrušit hlasování
+    already_voted: Již jste hlasovali v tomto hlasování.
+    results: Výsledky hlasování
   update:
     unauthorized: Nemáte oprávnění upravit toto hlasování.
     success: Hlasování bylo úspěšně aktualizováno.
@@ -66,6 +68,13 @@ questions:
     title: Nová otázka
   edit:
     title: Úprava otázky
+
+users_questions:
+  new:
+    title: Hlasovat
+    submit: Odhlasovat
+  destroy:
+    title: Vymazat své odpovědi
 
 registrations:
   new:
@@ -96,3 +105,9 @@ attributes:
   question:
     name: Název
     description: Popis
+
+enums:
+  question_options:
+    "YES": Ano
+    "NO": Ne
+    "ABSTAIN": Zdržet se

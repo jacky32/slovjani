@@ -14,6 +14,7 @@ class QueryBuilder
   private string $modelClass;
   private array $conditions = [];
   private array $bindings = [];
+  private array $bindingsForLog = []; // Structured bindings for logging
   private ?string $orderByClause = null;
   private ?int $limitValue = null;
   private ?int $offsetValue = null;
@@ -43,11 +44,13 @@ class QueryBuilder
         $placeholders = array_fill(0, count($val), '?');
         $this->conditions[] = "`{$column}` IN (" . implode(', ', $placeholders) . ")";
         $this->bindings = array_merge($this->bindings, $val);
+        $this->bindingsForLog[] = $val; // Keep array structure for logging
       } elseif ($val === null) {
         $this->conditions[] = "`{$column}` IS NULL";
       } else {
         $this->conditions[] = "`{$column}` = ?";
         $this->bindings[] = $val;
+        $this->bindingsForLog[] = $val;
       }
     }
 
@@ -69,6 +72,7 @@ class QueryBuilder
       } else {
         $this->conditions[] = "`{$column}` != ?";
         $this->bindings[] = $val;
+        $this->bindingsForLog[] = $val;
       }
     }
 
@@ -158,7 +162,7 @@ class QueryBuilder
   public function count(): int
   {
     $sql = $this->buildCountSql();
-    Logger::sql($sql, $this->bindings);
+    Logger::sql($sql, $this->bindingsForLog);
 
     $database = new Database();
     $connection = $database->getConnection();
@@ -185,12 +189,75 @@ class QueryBuilder
   }
 
   /**
+   * Pluck one or more columns from the database
+   * Returns a flat array for single column, or array of associative arrays for multiple columns
+   *
+   * @param string|array $columns Single column name or array of column names
+   * @return array
+   */
+  public function pluck($columns): array
+  {
+    $isMultiple = is_array($columns);
+    $columnList = $isMultiple ? $columns : [$columns];
+
+    // Build SQL with only selected columns
+    $table = toSnakeCase($this->modelClass) . 's';
+    $escapedColumns = array_map(fn($col) => "`{$col}`", $columnList);
+    $sql = "SELECT " . implode(', ', $escapedColumns) . " FROM `{$table}`";
+
+    if (!empty($this->conditions)) {
+      $sql .= " WHERE " . implode(" AND ", $this->conditions);
+    }
+
+    if ($this->orderByClause) {
+      $sql .= " ORDER BY " . $this->orderByClause;
+    }
+
+    if ($this->limitValue !== null) {
+      $sql .= " LIMIT " . $this->limitValue;
+    }
+
+    if ($this->offsetValue !== null) {
+      $sql .= " OFFSET " . $this->offsetValue;
+    }
+
+    $sql .= ";";
+
+    Logger::sql($sql, $this->bindingsForLog);
+
+    $database = new Database();
+    $connection = $database->getConnection();
+    $stmt = $connection->prepare($sql);
+
+    if (!empty($this->bindings)) {
+      $types = $this->getBindingTypes();
+      $stmt->bind_param($types, ...$this->bindings);
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $results = [];
+    while ($row = $result->fetch_assoc()) {
+      if ($isMultiple) {
+        // Multiple columns: return associative arrays
+        $results[] = $row;
+      } else {
+        // Single column: return flat array of values
+        $results[] = $row[$columnList[0]];
+      }
+    }
+
+    return $results;
+  }
+
+  /**
    * Build and execute the SELECT query
    */
   private function executeQuery(): array
   {
     $sql = $this->buildSql();
-    Logger::sql($sql, $this->bindings);
+    Logger::sql($sql, $this->bindingsForLog);
 
     $database = new Database();
     $connection = $database->getConnection();

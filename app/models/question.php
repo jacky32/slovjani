@@ -16,6 +16,12 @@ class Question extends ApplicationRecord
         'class_name' => Voting::class,
         'foreign_key' => 'voting_id'
       ]
+    ],
+    'has_many' => [
+      'users_questions' => [
+        'class_name' => UsersQuestion::class,
+        'foreign_key' => 'question_id'
+      ]
     ]
   ];
 

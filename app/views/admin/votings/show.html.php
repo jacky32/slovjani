@@ -29,7 +29,9 @@
       $this->renderPartial("admin/votings/_question", ['voting' => $voting, 'question' => $question]);
     } ?>
   </ol>
-  <a href='/admin/votings/<?= $voting->id ?>/questions/new' class='button'><?= t("questions.new.title") ?></a>
+  <?php if ($voting->status == "DRAFT") : ?>
+    <a href='/admin/votings/<?= $voting->id ?>/questions/new' class='button'><?= t("questions.new.title") ?></a>
+  <?php endif; ?>
   <hr>
 
   <?php if ($voting->status == "DRAFT") : ?>
@@ -40,6 +42,19 @@
     </form>
   <?php endif; ?>
 
+  <?php if ($voting->status == "IN_PROGRESS") : ?>
+    <?php if (!$has_voted) : ?>
+      <a href='/admin/votings/<?= $voting->id ?>/users_questions/new' class='button'><?= t("users_questions.new.title") ?></a>
+    <?php else : ?>
+      <p><?= t("votings.show.already_voted") ?></p>
+    <?php endif; ?>
+  <?php endif; ?>
+
+  <!-- TODO: only admin -->
+  <?php $this->renderPartial("admin/votings/_results", ['voting' => $voting]); ?>
+
+
+  <!-- TODO: only admin -->
   <?php if ($voting->status == "IN_PROGRESS") : ?>
     <form action='/admin/votings/<?= $voting->id ?>' method='POST'>
       <?php $this->renderCSRFToken('/admin/votings/' . $voting->id); ?>
@@ -53,7 +68,7 @@
     </form>
   <?php endif; ?>
 
-  <?php if ($voting->creator_id == $this->auth->getUserId()) : ?>
+  <?php if ($voting->status == "DRAFT" && $voting->creator_id == $this->auth->getUserId()) : ?>
     <a href='/admin/votings/<?= $voting->id ?>/edit' class='button'><?= t("edit") ?></a>
     <form action='/admin/votings/<?= $voting->id ?>/destroy' method='POST'>
       <?php $this->renderCSRFToken('/admin/votings/destroy'); ?>

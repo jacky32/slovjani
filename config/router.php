@@ -67,7 +67,7 @@ class Router
    */
   private function resources($resource, $admin = false, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
   {
-    $this->controllerName = ($admin ? 'Admin' : '') . ucfirst($resource) . 'Controller';
+    $this->controllerName = ($admin ? 'Admin' : '') . toPascalCase($resource) . 'Controller';
     $base = '/' . ($admin ? 'admin/' : '') . $resource;
 
     // POST /resource/:id/destroy - destroy
@@ -128,7 +128,7 @@ class Router
    */
   private function nestedResources($parent, $child, $admin = false, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
   {
-    $this->controllerName = ($admin ? 'Admin' : '') . ucfirst($child) . 'Controller';
+    $this->controllerName = ($admin ? 'Admin' : '') . toPascalCase($child) . 'Controller';
     $prefix = $admin ? '\/admin\/' : '\/';
     $basePattern = '/^' . $prefix . $parent . '\/\d+\/' . $child;
 
@@ -209,6 +209,11 @@ class Router
 
     // /admin/votings/:id/questions
     if ($this->nestedResources('votings', 'questions', true, ["new", "create", "edit", "update", "destroy"])) {
+      return;
+    }
+
+    // /admin/votings/:id/questions
+    if ($this->nestedResources('votings', 'users_questions', true, ["new", "create", "destroy"])) {
       return;
     }
 
