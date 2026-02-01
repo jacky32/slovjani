@@ -35,7 +35,7 @@
   <?php if ($voting->status == "DRAFT") : ?>
     <form action='/admin/votings/<?= $voting->id ?>' method='POST'>
       <?php $this->renderCSRFToken('/admin/votings/' . $voting->id); ?>
-      <input type='hidden' name='status' value='IN_PROGRESS' />
+      <input type='hidden' name='voting[status]' value='IN_PROGRESS' />
       <button class='button' type='submit'><?= t("votings.show.start_voting") ?></button>
     </form>
   <?php endif; ?>
@@ -43,12 +43,12 @@
   <?php if ($voting->status == "IN_PROGRESS") : ?>
     <form action='/admin/votings/<?= $voting->id ?>' method='POST'>
       <?php $this->renderCSRFToken('/admin/votings/' . $voting->id); ?>
-      <input type='hidden' name='status' value='COMPLETED' />
+      <input type='hidden' name='voting[status]' value='COMPLETED' />
       <button class='button' type='submit'><?= t("votings.show.end_voting") ?></button>
     </form>
     <form action='/admin/votings/<?= $voting->id ?>' method='POST'>
       <?php $this->renderCSRFToken('/admin/votings/' . $voting->id); ?>
-      <input type='hidden' name='status' value='CANCELLED' />
+      <input type='hidden' name='voting[status]' value='CANCELLED' />
       <button class='button' type='submit'><?= t("votings.show.cancel_voting") ?></button>
     </form>
   <?php endif; ?>

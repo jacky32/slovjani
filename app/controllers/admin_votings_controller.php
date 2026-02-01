@@ -65,9 +65,9 @@ class AdminVotingsController extends AdminController
       $voting = Voting::find($this->id);
       if ($voting && $voting->creator_id == $this->auth->getUserId()) {
         foreach (Voting::getDbAttributes() as $attribute) {
-          Logger::debug("Updating attribute: " . $attribute . " from " . $voting->{$attribute});
+          // Logger::debug("Updating attribute: " . $attribute . " from " . $voting->{$attribute});
           if (isset($request['voting'][$attribute])) {
-            Logger::debug("Setting " . $attribute . " to " . $request['voting'][$attribute]);
+            // Logger::debug("Setting " . $attribute . " to " . $request['voting'][$attribute]);
             $voting->{$attribute} = $request['voting'][$attribute];
           }
         }
