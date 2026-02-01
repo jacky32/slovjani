@@ -88,6 +88,7 @@ class Logger
   public static function sql(string $query, array $params = []): void
   {
     self::log(LogLevel::SQL, $query, $params);
+    // Logger::debug((new \Exception())->getTraceAsString());
   }
   public static function warning(string $message, array $context = []): void
   {

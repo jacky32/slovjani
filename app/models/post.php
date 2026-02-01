@@ -1,17 +1,15 @@
 <?php
 class Post extends ApplicationRecord
 {
-  public $id;
-  public $name;
-  public $body;
-  public $creator_id;
-  public $status;
-  public $created_at;
-  public $updated_at;
-
-  public $creator;
-
-  protected static array $db_attributes = ['id', 'name', 'body', 'creator_id', 'status', 'created_at', 'updated_at'];
+  protected static array $db_attributes = [
+    'id',
+    'name',
+    'body',
+    'creator_id',
+    'status',
+    'created_at',
+    'updated_at'
+  ];
   protected static array $relations  = [
     'belongs_to' => [
       'creator' => [

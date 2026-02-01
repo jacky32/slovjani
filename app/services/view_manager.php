@@ -35,6 +35,7 @@ class ViewManager
     ob_start();
     include "app/views/$filename.html.php";
     echo ob_get_clean();
+    Logger::debug("Rendered partial: app/views/$filename.html.php");
     return;
   }
 

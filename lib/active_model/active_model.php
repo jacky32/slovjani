@@ -2,18 +2,19 @@
 require __DIR__ . '/validations/validations.php';
 require __DIR__ . '/relations/query_builder.php';
 require __DIR__ . '/relations/collection.php';
+require __DIR__ . '/relations/relations.php';
+require __DIR__ . '/attributes/attributes.php';
 
 use ActiveModel\Validations;
 
 abstract class ActiveModel
 {
   use Validations;
+  use Relations;
+  use Attributes;
 
   protected $db;
   protected $connection;
-
-  protected $id;
-  protected $attributes = [];
 
   protected static array $db_attributes = [];
   protected static array $validations = [];
@@ -31,11 +32,29 @@ abstract class ActiveModel
     $this->db = new Database();
     $this->connection = $this->db->getConnection();
 
-    foreach (static::$db_attributes as $attribute) {
-      if (isset($data[$attribute])) {
-        $this->$attribute = $data[$attribute];
-      }
+    $this->initializeAttributes($data);
+  }
+
+  public function __get($name)
+  {
+    // Try to get attribute first
+    $attributeValue = $this->getAttribute($name);
+    if ($attributeValue !== null || in_array($name, static::$db_attributes ?? [])) {
+      return $attributeValue;
     }
+
+    // Try to get relation
+    return $this->getRelation($name);
+  }
+
+  public function __set($name, $value)
+  {
+    $this->setAttribute($name, $value);
+  }
+
+  public function __isset($name)
+  {
+    return $this->hasAttribute($name) || $this->hasRelation($name);
   }
 
   public function __destruct()

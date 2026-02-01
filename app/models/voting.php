@@ -1,20 +1,17 @@
 <?php
 class Voting extends ApplicationRecord
 {
-  public $id;
-  public $datetime_start;
-  public $datetime_end;
-  public $name;
-  public $status;
-  public $description;
-  public $creator_id;
-  public $created_at;
-  public $updated_at;
-
-  public $creator;
-  public $questions;
-
-  protected static array $db_attributes = ['id', 'datetime_start', 'datetime_end', 'name', 'status', 'description', 'creator_id', 'created_at', 'updated_at'];
+  protected static array $db_attributes = [
+    'id',
+    'datetime_start',
+    'datetime_end',
+    'name',
+    'status',
+    'description',
+    'creator_id',
+    'created_at',
+    'updated_at'
+  ];
 
   protected static array $relations  = [
     'belongs_to' => [

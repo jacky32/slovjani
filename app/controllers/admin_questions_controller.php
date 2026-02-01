@@ -52,11 +52,12 @@ class AdminQuestionsController extends AdminController
 
   public function edit($request)
   {
-    $question = Question::find($this->question_id);
+    $voting = Voting::find($this->voting_id);
+    $question = $voting->questions->find($this->question_id);
     if ($question) {
       $this->render("admin/questions/edit", [
         "question" => $question,
-        "voting" => Voting::find($this->voting_id),
+        "voting" => $voting,
         "votings" => Voting::all()
       ]);
     } else {

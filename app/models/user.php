@@ -1,17 +1,12 @@
 <?php
 class User extends ApplicationRecord
 {
-  public $id;
-  public $username;
-  public $email;
-  public $password;
-
-
-  public $posts;
-  public $votings;
-  public $users_questions;
-
-  protected static array $db_attributes = ['id', 'username', 'email', 'password'];
+  protected static array $db_attributes = [
+    'id',
+    'username',
+    'email',
+    'password'
+  ];
 
   protected static array $relations  = [
     // 'belongs_to' => [
