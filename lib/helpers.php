@@ -18,3 +18,13 @@ function t($key)
   }
   return $value;
 }
+
+function asset_path($path)
+{
+  $filePath = __DIR__ . '/../public' . $path;
+  if (file_exists($filePath)) {
+    $mtime = filemtime($filePath);
+    return $path . '?v=' . $mtime;
+  }
+  return $path;
+}

@@ -41,6 +41,8 @@ if ($realPath && $publicDir && strpos($realPath, $publicDir) === 0 && is_file($r
 
     header('Content-Type: ' . $mimeType);
     header('X-Frame-Options: DENY');
+    header('Cache-Control: public, max-age=31536000, immutable');
+    header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 31536000) . ' GMT');
     readfile($realPath);
     exit;
   }
