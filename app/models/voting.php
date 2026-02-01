@@ -34,7 +34,7 @@ class Voting extends ApplicationRecord
   protected static array $validations = [
     'presence' => ['datetime_start', 'datetime_end', 'name', 'status', 'description', 'creator_id'],
     'length' => [["name" => ["min" => 8, "max" => 255], "description" => ["min" => 8, "max" => 1000]]],
-    'inclusion' => [['status' => ['draft', 'in_progress', 'completed', 'cancelled']]]
+    'inclusion' => ['status' => ['DRAFT', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED']]
   ];
 
   public function __construct($data = [])
