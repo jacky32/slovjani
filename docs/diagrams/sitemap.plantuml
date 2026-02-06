@@ -5,11 +5,11 @@ hide empty members
 ' Definice stylů pro přehlednost
 skinparam class {
     BackgroundColor<<Public>> LightBlue
-    BackgroundColor<<Secure>> Moccasin
+    BackgroundColor<<Admin>> Moccasin
     BorderColor Black
 }
 
-title Struktura webu - Class Diagram
+title Struktura webu
 
 ' Hlavní rozcestník
 class "Homepage" as Home <<Public>>
@@ -31,36 +31,35 @@ package "Veřejná sekce" {
 
 ' --- ADMINISTRAČNÍ SEKCE ---
 package "Administrační sekce (Login required)" {
-    class "Login / Auth" as Login <<Secure>> {
+    class "Login / Auth" as Login <<Admin>> {
         + přihlásit()
         + odhlásit()
     }
 
-    class "Administrativa" as AdminPage <<Secure>> {
+    class "Administrativa" as AdminPage <<Admin>> {
         + Nastavení systému
     }
 
-    class "Kontakty" as Kontakty <<Secure>> {
+    class "Kontakty" as Kontakty <<Admin>> {
         + Seznam všech členů
         + Detail člena
     }
 
-    class "Činnost (Interní)" as CinnostPriv <<Secure>> {
+    class "Činnost (Interní)" as CinnostPriv <<Admin>> {
         + Zápisy o schůzích
         + Kalendář (kompletní)
         + Veřejné akce
         + Soukromé akce
     }
 
-    class "Hlasování" as Hlasovani <<Secure>> {
+    class "Hlasování" as Hlasovani <<Admin>> {
         - Téma hlasování
         - Možnosti: Pro / Proti / Zdržel se
         - Stav: Aktivní / Uzavřeno
         --
-        + Admin: vyhlásit_hlasování()
-        + Admin: uzavřít_hlasování()
-        + User: hlasovat()
-        + System: zobrazit_součty_anonymně()
+        + Admin: vytváří hlasování
+        + Admin: uzavírá hlasování
+        + User: hlasuje
     }
 }
 
