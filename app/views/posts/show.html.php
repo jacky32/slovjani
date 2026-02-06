@@ -6,21 +6,21 @@
   <small>
     <?= t("creator") ?>: <?= $post->creator->username ?><br>
     <?php
-    if (isset($post->created_at)) {
+    if ($post->created_at) {
       $date = new DateTime($post->created_at);
       $formatted = $date->format('d.m.Y H:i');
       echo t("created_at") . ": " . $formatted;
     }
     ?><br>
     <?php
-    if (isset($post->updated_at)) {
+    if ($post->updated_at) {
       $date = new DateTime($post->updated_at);
       $formatted = $date->format('d.m.Y H:i');
       echo t("updated_at") . ": " . $formatted;
     }
     ?>
   </small>
-  <p><?= htmlspecialchars($post->body) ?></p>
+  <p><?= htmlspecialchars($post->body ?? '') ?></p>
   <a href='/posts/<?= $post->id ?>/edit' class='button'><?= t("edit") ?></a>
   <form action='/posts/<?= $post->id ?>/destroy' method='POST'>
     <?php $this->renderCSRFToken('/posts/destroy'); ?>

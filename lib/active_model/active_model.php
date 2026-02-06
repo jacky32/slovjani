@@ -92,21 +92,25 @@ abstract class ActiveModel
 
   function validate()
   {
+    $caught_exceptions = [];
     foreach (static::$validations as $validation_type => $attributes) {
       switch ($validation_type) {
         case "presence":
-          $this->validates_presence_of($attributes);
+          $caught_exceptions = array_merge($caught_exceptions, $this->validates_presence_of($attributes));
           break;
         case "inclusion":
-          $this->validates_inclusion_of($attributes);
+          $caught_exceptions = array_merge($caught_exceptions, $this->validates_inclusion_of($attributes));
           break;
         case "uniqueness":
-          $this->validates_uniqueness_of($attributes);
+          $caught_exceptions = array_merge($caught_exceptions, $this->validates_uniqueness_of($attributes));
           break;
         case "length":
-          $this->validates_length_of($attributes);
+          $caught_exceptions = array_merge($caught_exceptions, $this->validates_length_of($attributes));
           break;
       }
+    }
+    if (!empty($caught_exceptions)) {
+      throw new \ActiveModel\ValidationException(t("errors.validation_failed"), 0, null, $caught_exceptions);
     }
   }
 

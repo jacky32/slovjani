@@ -5,7 +5,7 @@
   <?php foreach ($questions as $index => $question) : ?>
     <fieldset>
       <legend><?= $question->name ?></legend>
-      <p><?= htmlspecialchars($question->description) ?></p>
+      <p><?= htmlspecialchars($question->description ?? '') ?></p>
       <?php foreach (["YES", "NO", "ABSTAIN"] as $option) : ?>
         <div>
           <input type='radio' id='option_<?= $option ?>_question_<?= $question->id ?>' name='users_question[<?= $index ?>][chosen_option]' value='<?= $option ?>' required />

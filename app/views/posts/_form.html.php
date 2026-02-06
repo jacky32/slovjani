@@ -1,10 +1,10 @@
-<form action=<?= isset($post) ? "/posts/" . $post->id : "/posts" ?> method="POST">
-  <?php $this->renderErrors(); ?>
-  <?php $this->renderCSRFToken(isset($post) ? "/posts/" . $post->id : "/posts") ?>
+<form action=<?= $post->id ? "/posts/" . $post->id : "/posts" ?> method="POST">
+  <?= $this->renderCSRFToken($post->id ? "/posts/" . $post->id : "/posts") ?>
 
   <fieldset class="">
     <legend class=""><?= t("posts.new.title") ?></legend>
 
+    <?= $this->renderErrors($errors) ?>
     <label class=''>
       <!-- <span><?= Post::humanAttributeName("name") ?></span> -->
       <input
@@ -12,7 +12,7 @@
         type='text'
         name='post[name]'
         placeholder='<?= Post::humanAttributeName("name") ?>'
-        value='<?= isset($post) ? htmlspecialchars($post->name) : '' ?>' />
+        value='<?= htmlspecialchars($post->name ?? '') ?>' />
     </label>
 
     <label class=''>
@@ -20,17 +20,17 @@
       <textarea
         required
         name='post[body]'
-        placeholder='<?= Post::humanAttributeName("body") ?>'><?= isset($post) ? htmlspecialchars($post->body) : '' ?></textarea>
+        placeholder='<?= Post::humanAttributeName("body") ?>'><?= htmlspecialchars($post->body ?? '') ?></textarea>
     </label>
 
     <label for="status-select"><?= Post::humanAttributeName("status") ?></label>
     <select id="status-select" name="post[status]">
-      <option value="DRAFT" <?= isset($post) && $post->status == 'DRAFT' ? 'selected' : '' ?>><?= t("posts.status.draft") ?></option>
-      <option value="PUBLISHED" <?= isset($post) && $post->status == 'PUBLISHED' ? 'selected' : '' ?>><?= t("posts.status.published") ?></option>
-      <option value="ARCHIVED" <?= isset($post) && $post->status == 'ARCHIVED' ? 'selected' : '' ?>><?= t("posts.status.archived") ?></option>
+      <option value="DRAFT" <?= $post->status == 'DRAFT' ? 'selected' : '' ?>><?= t("posts.status.draft") ?></option>
+      <option value="PUBLISHED" <?= $post->status == 'PUBLISHED' ? 'selected' : '' ?>><?= t("posts.status.published") ?></option>
+      <option value="ARCHIVED" <?= $post->status == 'ARCHIVED' ? 'selected' : '' ?>><?= t("posts.status.archived") ?></option>
     </select>
     <br>
 
-    <button class="button"><?= isset($post) ? t("update") : t("create") ?></button>
+    <button class="button"><?= $post->id ? t("update") : t("create") ?></button>
   </fieldset>
 </form>

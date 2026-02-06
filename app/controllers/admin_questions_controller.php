@@ -38,13 +38,18 @@ class AdminQuestionsController extends AdminController
       $this->addFlash('success', "Otázka byla úspěšně vytvořena.");
       header("Location: /admin/votings/" . $this->voting_id);
     } catch (Exception $e) {
-      $errors[] = $e->getMessage();
-      // if ($e instanceof \ActiveModel\ValidationException) {
+      $errors = [];
       $this->addFlash('error', $e->getMessage());
-      // }
+      if ($e instanceof \ActiveModel\ValidationException) {
+        $errors = array_merge($errors, $e->getValidationExceptions());
+      }
       $this->render("admin/questions/new", [
         "voting" => Voting::find($this->voting_id),
         "votings" => Voting::all(),
+        "question" => new Question([
+          'name' => $request['question']['name'],
+          'description' => $request['question']['description']
+        ]),
         "errors" => $errors,
       ]);
     }
@@ -95,9 +100,10 @@ class AdminQuestionsController extends AdminController
         header("Location: /admin/votings");
       }
     } catch (Exception $e) {
-      $errors[] = $e->getMessage();
+      $errors = [];
+      $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
-        $this->addFlash('error', $e->getMessage());
+        $errors = array_merge($errors, $e->getValidationExceptions());
       }
       $voting = Voting::find($this->voting_id);
       $this->render("admin/questions/edit", [

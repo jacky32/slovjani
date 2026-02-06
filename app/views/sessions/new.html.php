@@ -1,7 +1,7 @@
 <section class='hero'>
   <div class='hero-content'>
     <form action="/login" method="POST">
-      <?php $this->renderErrors(); ?>
+      <?= $this->renderErrors($errors) ?>
       <fieldset class="p-4 border fieldset bg-base-200 border-base-300 rounded-box w-xs">
         <legend class="fieldset-legend"><?= t("sessions.new.title") ?></legend>
 

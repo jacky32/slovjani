@@ -9,7 +9,7 @@ function toPascalCase($input)
   return str_replace(' ', '', ucwords(str_replace('_', ' ', $input)));
 }
 
-function t($key)
+function t($key, $params = [])
 {
   $translations = yaml_parse_file('config/locales/cs.yml');
   $keys = explode('.', $key);
@@ -20,6 +20,9 @@ function t($key)
     } else {
       return $key;
     }
+  }
+  foreach ($params as $param_key => $param_value) {
+    $value = str_replace('{' . $param_key . '}', $param_value, $value);
   }
   return $value;
 }

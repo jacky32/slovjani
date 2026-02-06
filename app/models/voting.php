@@ -44,6 +44,9 @@ class Voting extends ApplicationRecord
   public function hasUserVoted($user_id)
   {
     $question_ids = $this->questions->pluck('id');
+    if (empty($question_ids)) {
+      return false;
+    }
     $users_question = UsersQuestion::where([
       'question_id' => $question_ids,
       'user_id' => $user_id

@@ -53,10 +53,11 @@ class AdminUsersQuestionsController extends AdminController
       $errors[] = $e->getMessage();
       // if ($e instanceof \ActiveModel\ValidationException) {
       $this->addFlash('error', $e->getMessage());
-      // }
+      $voting = Voting::find($this->voting_id);
       $this->render("admin/users_questions/new", [
-        "voting" => Voting::find($this->voting_id),
+        "voting" => $voting,
         "votings" => Voting::all(),
+        "questions" => $voting->questions->get(),
         "errors" => $errors,
       ]);
     }

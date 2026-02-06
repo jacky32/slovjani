@@ -39,12 +39,24 @@ class ViewManager
     return;
   }
 
-  public function renderErrors()
+  public function renderErrors($errors)
   {
-    ob_start();
-    include 'app/views/layouts/forms/_errors.html.php';
-    echo ob_get_clean();
+    if (isset($errors) && !empty($errors)) {
+      $this->renderPartial("layouts/forms/_errors", ['errors' => $errors]);
+    }
     return;
+  }
+
+  public function isAttributeInvalid($errors, $attribute)
+  {
+    if (isset($errors) && !empty($errors)) {
+      foreach ($errors as $error) {
+        if ($error['attribute'] === $attribute) {
+          return "warning";
+        }
+      }
+    }
+    return "";
   }
 
   public function renderCSRFToken($formAction)

@@ -6,6 +6,13 @@
   }
 }
 
+input.warning,
+textarea.warning,
+select.warning {
+  border: 2px solid #ef4444;
+  box-shadow: 0 0 0 1px #ef4444;
+}
+
 .flash {
   display: grid;
   place-items: center;

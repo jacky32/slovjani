@@ -63,6 +63,11 @@ class PostsController extends ApplicationController
       }
       $this->render("posts/new", [
         "posts" => Post::all(),
+        "post" => new Post([
+          'name' => $request['post']['name'],
+          'body' => $request['post']['body'],
+          'status' => $request['post']['status']
+        ]),
         "errors" => $errors,
       ]);
     }

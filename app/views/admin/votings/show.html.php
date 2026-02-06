@@ -6,21 +6,21 @@
   <small>
     <?= t("creator") ?>: <?= $voting->creator->username ?><br>
     <?php
-    if (isset($voting->created_at)) {
+    if ($voting->created_at) {
       $date = new DateTime($voting->created_at);
       $formatted = $date->format('d.m.Y H:i');
       echo t("created_at") . ": " . $formatted;
     }
     ?><br>
     <?php
-    if (isset($voting->updated_at)) {
+    if ($voting->updated_at) {
       $date = new DateTime($voting->updated_at);
       $formatted = $date->format('d.m.Y H:i');
       echo t("updated_at") . ": " . $formatted;
     }
     ?>
   </small>
-  <p><?= htmlspecialchars($voting->description) ?></p>
+  <p><?= htmlspecialchars($voting->description ?? '') ?></p>
 
   <hr>
   <h2><?= t("votings.show.questions_title") ?></h2>

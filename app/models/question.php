@@ -26,8 +26,8 @@ class Question extends ApplicationRecord
   ];
 
   protected static array $validations = [
-    'presence' => ['voting_id', 'name', 'description']
-    //   // if (strlen($this->get_body()) > 255) throw new Exception("Body cannot be longer than 255 characters");
+    'presence' => ['voting_id', 'name', 'description'],
+    'length' => ["name" => ["min" => 4, "max" => 255], "description" => ["min" => 4, "max" => 1000]]
   ];
 
   public function __construct($data = [])

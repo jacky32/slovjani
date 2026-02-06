@@ -8,10 +8,16 @@ trait PresenceValidator
 {
   public function validates_presence_of(array $attributes)
   {
+    $caught_exceptions = [];
     foreach ($attributes as $attribute) {
       if ($this->{($attribute)} == null) {
-        throw new PresenceException("{$attribute} cannot be empty");
+        $caught_exceptions[] = [
+          'class' => static::class,
+          'attribute' => $attribute,
+          'message' => t("errors.cannot_be_blank")
+        ];
       }
     }
+    return $caught_exceptions;
   }
 }

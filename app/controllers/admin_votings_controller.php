@@ -107,7 +107,8 @@ class AdminVotingsController extends AdminController
         'description' => $request['voting']['description'],
         'datetime_start' => $request['voting']['datetime_start'],
         'datetime_end' => $request['voting']['datetime_end'],
-        'creator_id' => $this->auth->getUserId()
+        'creator_id' => $this->auth->getUserId(),
+        'status' => "DRAFT"
       ]);
       $voting->save();
       $this->addFlash('success', "Hlasování bylo úspěšně vytvořeno.");
@@ -117,7 +118,13 @@ class AdminVotingsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $this->addFlash('error', $e->getMessage());
       }
-      $this->render("admin/votings/index", [
+      $this->render("admin/votings/new", [
+        "voting" => new Voting([
+          'name' => $request['voting']['name'],
+          'description' => $request['voting']['description'],
+          'datetime_start' => $request['voting']['datetime_start'],
+          'datetime_end' => $request['voting']['datetime_end']
+        ]),
         "votings" => Voting::all(),
         "errors" => $errors,
       ]);

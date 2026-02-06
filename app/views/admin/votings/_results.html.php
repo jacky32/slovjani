@@ -3,7 +3,7 @@
   <ol>
     <?php foreach ($voting->questions->get() as $question) : ?>
       <li>
-        <strong><?= htmlspecialchars($question->name) ?></strong>
+        <strong><?= htmlspecialchars($question->name ?? '') ?></strong>
         <ul>
           <?php
           $options = ['YES' => 0, 'NO' => 0, 'ABSTAIN' => 0];

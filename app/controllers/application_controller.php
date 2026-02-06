@@ -23,12 +23,12 @@ class ApplicationController
   {
     // CSRF protection
     if (empty($_POST['token'])) {
-      throw new Exception("CSRF token is missing.");
+      throw new Exception(t("errors.csrf_token_missing"));
     }
     $calc = hash_hmac('sha256', $formAction, $_SESSION['token']);
     $_SESSION['token'] = bin2hex(random_bytes(32)); // Regenerate token after use
     if (!hash_equals($calc, $_POST['token'])) {
-      throw new Exception("Invalid CSRF token.");
+      throw new Exception(t("errors.csrf_token_invalid"));
     }
   }
 
