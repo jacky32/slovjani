@@ -15,7 +15,7 @@ class EventsController extends ApplicationController
   public function index()
   {
     $this->render("events/index", [
-      "events" => Event::all() // TODO: Pagination
+      "events" => Event::where(["is_publicly_visible" => true])->get() // TODO: Pagination
     ]);
   }
 
@@ -25,7 +25,7 @@ class EventsController extends ApplicationController
     if ($event) {
       $this->render("events/show", [
         "event" => $event,
-        "events" => Event::all()
+        "events" => Event::where(["is_publicly_visible" => true])->get()
       ]);
     } else {
       $this->addFlash('error', t("events.show.event_not_found"));

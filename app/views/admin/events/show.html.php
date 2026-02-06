@@ -1,0 +1,48 @@
+<?= $this->renderPartial("admin/events/_left_pane", ['events' => $events, "id" => $event->id, 'errors' => isset($errors) ? $errors : []]) ?>
+<section id="rightpane">
+  <h1>
+    <?= $event->name ?>
+  </h1>
+  <small>
+    <?= t("creator") ?>: <?= $event->creator->username ?><br>
+    <?php
+    if ($event->created_at) {
+      $date = new DateTime($event->created_at);
+      $formatted = $date->format('d.m.Y H:i');
+      echo t("created_at") . ": " . $formatted;
+    }
+    ?><br>
+    <?php
+    if ($event->updated_at) {
+      $date = new DateTime($event->updated_at);
+      $formatted = $date->format('d.m.Y H:i');
+      echo t("updated_at") . ": " . $formatted;
+    }
+    ?><br>
+    <?php
+    if ($event->datetime_start) {
+      $date = new DateTime($event->datetime_start);
+      $formatted = $date->format('d.m.Y H:i');
+      echo t("attributes.event.datetime_start") . ": " . $formatted;
+    }
+    ?><br>
+    <?php
+    if ($event->datetime_end) {
+      $date = new DateTime($event->datetime_end);
+      $formatted = $date->format('d.m.Y H:i');
+      echo t("attributes.event.datetime_end") . ": " . $formatted;
+    }
+    ?><br>
+    <?= t("attributes.event.is_publicly_visible") ?>: <?= $event->is_publicly_visible ? t("yes") : t("no") ?>
+  </small>
+  <p><?= htmlspecialchars($event->description ?? '') ?></p>
+
+  <?php if ($event->creator_id == $this->auth->getUserId()) : ?>
+    <a href='/admin/events/<?= $event->id ?>/edit' class='button'><?= t("edit") ?></a>
+    <form action='/admin/events/<?= $event->id ?>/destroy' method='POST'>
+      <?php $this->renderCSRFToken('/admin/events/destroy'); ?>
+      <input type='hidden' name='id' value='<?= $event->id ?>' />
+      <?= ($event->creator_id == $this->auth->getUserId() ? "<button class='button' type='submit'>" . t("delete") . "</button>" : "") ?>
+    </form>
+  <?php endif; ?>
+</section>

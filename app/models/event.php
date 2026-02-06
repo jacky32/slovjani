@@ -6,6 +6,9 @@ class Event extends ApplicationRecord
     'creator_id',
     'name',
     'description',
+    'datetime_start',
+    'datetime_end',
+    'is_publicly_visible',
     'created_at',
     'updated_at'
   ];
@@ -20,7 +23,7 @@ class Event extends ApplicationRecord
   ];
 
   protected static array $validations = [
-    'presence' => ['creator_id', 'name', 'description'],
+    'presence' => ['creator_id', 'name', 'description', 'datetime_start'],
     'length' => ["name" => ["min" => 4, "max" => 255], "description" => ["min" => 4, "max" => 5000]]
   ];
 

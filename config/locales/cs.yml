@@ -3,7 +3,8 @@ new: Nový
 update: Aktualizovat
 edit: Upravit
 delete: Smazat
-
+"yes": Ano
+"no": Ne
 cancel: Zrušit
 
 error: Nastala chyba
@@ -62,6 +63,10 @@ events:
     no_events_found: Žádné činnosti nebyly nalezeny.
   new:
     title: Nová činnost
+  create:
+    success: Činnost byla úspěšně vytvořena.
+  edit:
+    title: Úprava činnosti
   show:
     creator: Autor
     created_at: Vytvořeno dne
@@ -141,6 +146,12 @@ attributes:
   question:
     name: Název
     description: Popis
+  event:
+    name: Název
+    description: Popis
+    datetime_start: Datum a čas začátku
+    datetime_end: Datum a čas konce
+    is_publicly_visible: Viditelné veřejnosti
 
 enums:
   question_options:
