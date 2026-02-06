@@ -197,13 +197,13 @@ class Router
       return;
     }
 
-    // /admin/economics
-    if ($this->resources('economics', true)) {
+    // /events
+    if ($this->resources('events')) {
       return;
     }
 
-    // /admin/pursuits
-    if ($this->resources('pursuits', true)) {
+    // /admin/events
+    if ($this->resources('events', true)) {
       return;
     }
 

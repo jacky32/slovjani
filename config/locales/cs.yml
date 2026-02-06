@@ -30,7 +30,7 @@ menu:
   root: Medžuslovjanski jazyk
   posts: Příspěvky
   economics: Ekonomika
-  pursuits: Aktivita
+  events: Činnost
   votings: Hlasování
   login: Přihlásit se
   logout: Odhlásit se
@@ -55,6 +55,19 @@ posts:
     draft: Návrh
     published: Publikováno
     archived: Archivováno
+
+events:
+  index:
+    no_events_found: Žádné činnosti nebyly nalezeny.
+  new:
+    title: Nová činnost
+  show:
+    creator: Autor
+    created_at: Vytvořeno dne
+    event_not_found: Činnost nebyla nalezena.
+  update:
+    unauthorized: Nemáte oprávnění upravit tuto činnost.
+    success: Činnost byla úspěšně aktualizována.
 
 votings:
   index:

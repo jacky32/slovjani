@@ -4,9 +4,10 @@
   <ul id="header-text" class="menu">
     <li><a href="/"><?= t('menu.root') ?></a></li>
     <li><a href="/posts"><?= t('menu.posts') ?></a></li>
+    <li><a href="/events"><?= t('menu.events') ?></a></li>
     <?php if ($this->auth->isLoggedIn()): ?>
       <li><a href="/admin/economics"><?= t("menu.economics") ?></a></li>
-      <li><a href="/admin/pursuits"><?= t("menu.pursuits") ?></a></li>
+      <li><a href="/admin/events"><?= t("menu.events") ?></a></li>
       <li><a href="/admin/votings"><?= t("menu.votings") ?></a></li>
     <?php endif; ?>
     <li>
