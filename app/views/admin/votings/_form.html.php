@@ -1,45 +1,15 @@
 <form action=<?= $voting->id ? "/admin/votings/" . $voting->id : "/admin/votings" ?> method="POST">
-  <?= $this->renderErrors($errors) ?>
   <?= $this->renderCSRFToken($voting->id ? "/admin/votings/" . $voting->id : "/admin/votings") ?>
 
   <fieldset class="">
     <legend class=""><?= $voting->id ? t("votings.edit.title") : t("votings.new.title") ?></legend>
+    <?= $this->renderErrors() ?>
 
-    <label class=''>
-      <input
-        required
-        type='text'
-        name='voting[name]'
-        placeholder='<?= Voting::humanAttributeName("name") ?>'
-        value='<?= htmlspecialchars($voting->name ?? '') ?>' />
-    </label>
+    <?= $this->renderInput($voting, "name") ?>
+    <?= $this->renderTextarea($voting, "description") ?>
 
-
-    <label class=''>
-      <textarea
-        required
-        name='voting[description]'
-        placeholder='<?= Voting::humanAttributeName("description") ?>'><?= htmlspecialchars($voting->description ?? '') ?></textarea>
-    </label>
-
-
-    <label class=''>
-      <input
-        required
-        type='datetime-local'
-        name='voting[datetime_start]'
-        placeholder='<?= Voting::humanAttributeName("datetime_start") ?>'
-        value='<?= $voting->datetime_start ?>' />
-    </label>
-
-    <label class=''>
-      <input
-        required
-        type='datetime-local'
-        name='voting[datetime_end]'
-        placeholder='<?= Voting::humanAttributeName("datetime_end") ?>'
-        value='<?= $voting->datetime_end ?>' />
-    </label>
+    <?= $this->renderInput($voting, "datetime_start", "datetime-local") ?>
+    <?= $this->renderInput($voting, "datetime_end", "datetime-local") ?>
     <br>
 
     <button class="button"><?= $voting->id ? t("update") : t("create") ?></button>

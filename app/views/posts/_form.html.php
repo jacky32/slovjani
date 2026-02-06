@@ -4,24 +4,10 @@
   <fieldset class="">
     <legend class=""><?= t("posts.new.title") ?></legend>
 
-    <?= $this->renderErrors($errors) ?>
-    <label class=''>
-      <!-- <span><?= Post::humanAttributeName("name") ?></span> -->
-      <input
-        required
-        type='text'
-        name='post[name]'
-        placeholder='<?= Post::humanAttributeName("name") ?>'
-        value='<?= htmlspecialchars($post->name ?? '') ?>' />
-    </label>
+    <?= $this->renderErrors() ?>
 
-    <label class=''>
-      <!-- <span><?= Post::humanAttributeName("body") ?></span> -->
-      <textarea
-        required
-        name='post[body]'
-        placeholder='<?= Post::humanAttributeName("body") ?>'><?= htmlspecialchars($post->body ?? '') ?></textarea>
-    </label>
+    <?= $this->renderInput($post, "name") ?>
+    <?= $this->renderTextArea($post, "body") ?>
 
     <label for="status-select"><?= Post::humanAttributeName("status") ?></label>
     <select id="status-select" name="post[status]">

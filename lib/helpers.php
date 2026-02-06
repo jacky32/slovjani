@@ -1,15 +1,29 @@
 <?php
-function toSnakeCase($input)
+
+/**
+ * Converts a string to snake_case.
+ * Example: "UserProfile" => "user_profile"
+ */
+function toSnakeCase(string $input): string
 {
   return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $input));
 }
 
-function toPascalCase($input)
+/**
+ * Converts a string to PascalCase.
+ * Example: "user_profile" => "UserProfile"
+ */
+function toPascalCase(string $input): string
 {
   return str_replace(' ', '', ucwords(str_replace('_', ' ', $input)));
 }
 
-function t($key, $params = [])
+/**
+ * Simple translation function that loads translations from a YAML file.
+ * The key is in the format "namespace.key.subkey".
+ * Example: t("posts.new.title") would look for "posts" => ["new" => ["title" => "Název"]]
+ */
+function t(string $key, array $params = []): string
 {
   $translations = yaml_parse_file('config/locales/cs.yml');
   $keys = explode('.', $key);

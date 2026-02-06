@@ -7,6 +7,7 @@ class ViewManager
   private $title;
   private $controllerData;
   private $auth;
+  private $errors;
 
   public function __construct($auth)
   {
@@ -19,6 +20,7 @@ class ViewManager
   public function render($view, $data = [])
   {
     $this->controllerData = extract($data);
+    $this->errors = $data['errors'] ?? [];
     ob_start();
     $this->title = isset($title) ? $title : 'Slované';
     include "app/views/$view.html.php";
@@ -39,24 +41,59 @@ class ViewManager
     return;
   }
 
-  public function renderErrors($errors)
+  public function renderErrors()
   {
-    if (isset($errors) && !empty($errors)) {
-      $this->renderPartial("layouts/forms/_errors", ['errors' => $errors]);
+    if (isset($this->errors) && !empty($this->errors)) {
+      $this->renderPartial("layouts/forms/_errors", ['errors' => $this->errors]);
     }
     return;
   }
 
-  public function isAttributeInvalid($errors, $attribute)
+  public function isAttributeInvalid($attribute)
   {
-    if (isset($errors) && !empty($errors)) {
-      foreach ($errors as $error) {
+    if (isset($this->errors) && !empty($this->errors)) {
+      foreach ($this->errors as $error) {
         if ($error['attribute'] === $attribute) {
           return "warning";
         }
       }
     }
     return "";
+  }
+
+  public function renderTextarea($object, $attribute, $required = true)
+  {
+    $placeholder = t("attributes." . strtolower($object::class) . "." . $attribute);
+    $name = toSnakeCase($object::class) . "[" . $attribute . "]";
+    $class = "";
+
+    if (isset($this->errors) && !empty($this->errors)) {
+      foreach ($this->errors as $error) {
+        if ($error['attribute'] === $attribute) {
+          $class = "warning";
+          break;
+        }
+      }
+    }
+    return "<textarea class='" . $class . "' placeholder='" . $placeholder . "' name='" . $name . "' " . ($required ? "required" : "") . ">" . htmlspecialchars($object->{$attribute} ?? '') . "</textarea>";
+  }
+
+  public function renderInput($object, $attribute, $type = "text", $required = true)
+  {
+    $placeholder = t("attributes." . strtolower($object::class) . "." . $attribute);
+    $name = toSnakeCase($object::class) . "[" . $attribute . "]";
+    $value = htmlspecialchars($object->{$attribute} ?? '');
+    $class = "";
+
+    if (isset($this->errors) && !empty($this->errors)) {
+      foreach ($this->errors as $error) {
+        if ($error['attribute'] === $attribute) {
+          $class = "warning";
+          break;
+        }
+      }
+    }
+    return "<input type='" . $type . "' class='" . $class . "' placeholder='" . $placeholder . "' name='" . $name . "' value='" . $value . "' " . ($required ? "required" : "") . " />";
   }
 
   public function renderCSRFToken($formAction)

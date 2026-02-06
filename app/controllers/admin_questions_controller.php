@@ -14,7 +14,7 @@ class AdminQuestionsController extends AdminController
     $this->question_id = $matches[2] ?? null;
   }
 
-  public function new($request)
+  public function new()
   {
     $this->render("admin/questions/new", [
       "voting" => Voting::find($this->voting_id),
@@ -35,7 +35,7 @@ class AdminQuestionsController extends AdminController
         'creator_id' => $this->auth->getUserId()
       ]);
       $question->save();
-      $this->addFlash('success', "Otázka byla úspěšně vytvořena.");
+      $this->addFlash('success', t("questions.create.success"));
       header("Location: /admin/votings/" . $this->voting_id);
     } catch (Exception $e) {
       $errors = [];
@@ -55,7 +55,7 @@ class AdminQuestionsController extends AdminController
     }
   }
 
-  public function edit($request)
+  public function edit()
   {
     $voting = Voting::find($this->voting_id);
     $question = $voting->questions->find($this->question_id);
@@ -77,7 +77,6 @@ class AdminQuestionsController extends AdminController
 
   public function update($request)
   {
-    Logger::debug("Updating question with ID: " . $this->question_id . " for voting ID: " . $this->voting_id);
     try {
       // Verify CSRF token
       $this->verifyCSRF('/admin/votings/' . $this->voting_id . '/questions/' . $this->question_id);
@@ -124,16 +123,16 @@ class AdminQuestionsController extends AdminController
       // Find voting and check ownership
       $voting = Voting::find($this->voting_id);
       $question = $voting->questions->find($this->question_id);
-      if ($voting && $question && $question->creator_id == $this->auth->getUserId()) {
+      if ($voting && $question) {
         $question->destroy();
-        $this->addFlash('success', "Otázka byla úspěšně smazána.");
+        $this->addFlash('success', t("questions.destroy.success"));
       } else {
         if (!$voting) {
-          $this->addFlash('error', "Hlasování neexistuje.");
+          $this->addFlash('error', t("votings.show.voting_not_found"));
         } else if ($voting->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', "Nemáte oprávnění smazat tuto otázku.");
+          $this->addFlash('error', t("questions.destroy.unauthorized"));
         }
-        $this->addFlash('error', "Nastala chyba");
+        $this->addFlash('error', t("error"));
       }
       header("Location: /admin/votings/" . $this->voting_id);
     } catch (Exception $e) {

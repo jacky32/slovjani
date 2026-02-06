@@ -6,6 +6,8 @@ delete: Smazat
 
 cancel: Zrušit
 
+error: Nastala chyba
+
 created_at: Vytvořeno dne
 updated_at: Aktualizováno dne
 creator: Autor
@@ -59,6 +61,8 @@ votings:
     no_votings_found: Žádné hlasování nebylo nalezeno.
   new:
     title: Nové hlasování
+  edit:
+    title: Úprava hlasování
   show:
     creator: Autor
     created_at: Vytvořeno dne
@@ -76,8 +80,16 @@ votings:
 questions:
   new:
     title: Nová otázka
+  create:
+    success: Otázka byla úspěšně vytvořena.
   edit:
     title: Úprava otázky
+  update:
+    unauthorized: Nemáte oprávnění upravit tuto otázku.
+    success: Otázka byla úspěšně aktualizována.
+  destroy:
+    success: Otázka byla úspěšně smazána.
+    unauthorized: Nemáte oprávnění smazat tuto otázku.
 
 users_questions:
   new:
