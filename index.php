@@ -90,7 +90,10 @@ if ($db) {
 Logger::info("Started " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_URI'] . " for " . $_SERVER['REMOTE_ADDR'] . " at " . date('Y-m-d H:i:s'));
 Logger::info("Processing " . $controllerName . "#" . $action);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  Logger::info("POST params: ", $_POST);
+  $filtered = array_map(function ($key) {
+    return in_array($key, ['password']) ? '[FILTERED]' : $_POST[$key];
+  }, array_keys($_POST));
+  Logger::info("POST params: ", $filtered);
 }
 $controller = new $controllerName($dbConnection);
 $controller->{$action}($_REQUEST);
