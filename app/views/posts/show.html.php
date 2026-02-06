@@ -22,9 +22,6 @@
   </small>
   <p><?= htmlspecialchars($post->body ?? '') ?></p>
   <a href='/posts/<?= $post->id ?>/edit' class='button'><?= t("edit") ?></a>
-  <form action='/posts/<?= $post->id ?>/destroy' method='POST'>
-    <?php $this->renderCSRFToken('/posts/destroy'); ?>
-    <input type='hidden' name='id' value='<?= $post->id ?>' />
-    <?= ($post->creator_id == $this->auth->getUserId() ? "<button class='button' type='submit'>" . t("delete") . "</button>" : "") ?>
-  </form>
+
+  <?= $this->renderDestroyButton($post) ?>
 </section>

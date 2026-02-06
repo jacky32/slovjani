@@ -22,7 +22,7 @@ class Post extends ApplicationRecord
   protected static array $validations = [
     "presence" => ["name", "body", "creator_id", "status"],
     "length" => ["name" => ["min" => 5, "max" => 100], "body" => ["min" => 10, "max" => 5000]],
-    "inclusion" => ["status" => ["draft", "published", "archived"]]
+    "inclusion" => ["status" => ["DRAFT", "PUBLISHED", "ARCHIVED"]]
   ];
 
   public function __construct($data = [])

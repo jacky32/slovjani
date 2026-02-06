@@ -57,9 +57,10 @@ class PostsController extends ApplicationController
       $this->addFlash('success', "Příspěvek byl úspěšně vytvořen.");
       header("Location: /posts");
     } catch (Exception $e) {
-      $errors[] = $e->getMessage();
+      $errors = [];
+      $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
-        $this->addFlash('error', $e->getMessage());
+        $errors = array_merge($errors, $e->getValidationExceptions());
       }
       $this->render("posts/new", [
         "posts" => Post::all(),
@@ -111,9 +112,10 @@ class PostsController extends ApplicationController
         header("Location: /posts/" . $post->id . "/edit");
       }
     } catch (Exception $e) {
-      $errors[] = $e->getMessage();
+      $errors = [];
+      $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
-        $this->addFlash('error', $e->getMessage());
+        $errors = array_merge($errors, $e->getValidationExceptions());
       }
       $this->render("posts/edit", [
         "post" => $post,
@@ -145,7 +147,7 @@ class PostsController extends ApplicationController
       header("Location: /posts");
     } catch (Exception $e) {
       $this->addFlash('error', $e->getMessage());
-      header("Location: /posts");
+      header("Location: /posts/" . $this->id);
     }
   }
 }

@@ -84,9 +84,10 @@ class AdminVotingsController extends AdminController
         header("Location: /admin/votings");
       }
     } catch (Exception $e) {
-      $errors[] = $e->getMessage();
+      $errors = [];
+      $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
-        $this->addFlash('error', $e->getMessage());
+        $errors = array_merge($errors, $e->getValidationExceptions());
       }
       $this->render("admin/votings/edit", [
         "voting" => $voting,
@@ -114,9 +115,10 @@ class AdminVotingsController extends AdminController
       $this->addFlash('success', "Hlasování bylo úspěšně vytvořeno.");
       header("Location: /admin/votings");
     } catch (Exception $e) {
-      $errors[] = $e->getMessage();
+      $errors = [];
+      $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
-        $this->addFlash('error', $e->getMessage());
+        $errors = array_merge($errors, $e->getValidationExceptions());
       }
       $this->render("admin/votings/new", [
         "voting" => new Voting([

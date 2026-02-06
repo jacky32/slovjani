@@ -21,8 +21,8 @@ errors:
   must_be_unique: musí být unikátní
   combination_must_be_unique: kombinace {attributes} musí být unikátní
   cannot_be_blank: nemůže být prázdný
-  must_be_at_least_characters_long: musí být alespoň {count} znaků dlouhý
-  must_be_longer_than_characters: musí být delší než {count} znaků
+  must_be_longer_than: musí být alespoň {count} znaků dlouhý
+  must_not_be_longer_than: nesmí být delší než {count} znaků
   must_be_exactly_characters_long: musí být přesně {count} znaků dlouhý
   must_be_included_in: musí být zahrnut v možných možnostech ({options})
 

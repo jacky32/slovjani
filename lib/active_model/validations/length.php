@@ -12,23 +12,20 @@ trait LengthValidator
     $caught_exceptions = [];
     foreach ($attributes as $attribute => $constraints) {
       if (isset($constraints['min']) && strlen($this->{($attribute)}) < $constraints['min']) {
-        // throw new LengthException("{$attribute} must be at least {$constraints['min']} characters long");
         $caught_exceptions[] = [
           'class' => static::class,
           'attribute' => $attribute,
-          'message' => t("errors.must_be_at_least_characters_long", ['count' => $constraints['min']])
+          'message' => t("errors.must_be_longer_than", ['count' => $constraints['min']])
         ];
       }
       if (isset($constraints['max']) && strlen($this->{($attribute)}) > $constraints['max']) {
-        // throw new LengthException("{$attribute} cannot be longer than {$constraints['max']} characters");
         $caught_exceptions[] = [
           'class' => static::class,
           'attribute' => $attribute,
-          'message' => t("errors.must_be_longer_than_characters", ['count' => $constraints['max']])
+          'message' => t("errors.must_not_be_longer_than", ['count' => $constraints['max']])
         ];
       }
       if (isset($constraints['is']) && strlen($this->{($attribute)}) != $constraints['is']) {
-        // throw new LengthException("{$attribute} must be exactly {$constraints['is']} characters long");
         $caught_exceptions[] = [
           'class' => static::class,
           'attribute' => $attribute,
