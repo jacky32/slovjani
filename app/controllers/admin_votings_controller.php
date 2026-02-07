@@ -42,6 +42,42 @@ class AdminVotingsController extends AdminController
     ]);
   }
 
+  public function create($request)
+  {
+    try {
+      // Verify CSRF token
+      $this->verifyCSRF('/admin/votings');
+      // Create new voting
+      $voting = new Voting([
+        'name' => $request['voting']['name'],
+        'description' => $request['voting']['description'],
+        'datetime_start' => $request['voting']['datetime_start'],
+        'datetime_end' => $request['voting']['datetime_end'],
+        'creator_id' => $this->auth->getUserId(),
+        'status' => "DRAFT"
+      ]);
+      $voting->save();
+      $this->addFlash('success', "Hlasování bylo úspěšně vytvořeno.");
+      header("Location: /admin/votings");
+    } catch (Exception $e) {
+      $errors = [];
+      $this->addFlash('error', $e->getMessage());
+      if ($e instanceof \ActiveModel\ValidationException) {
+        $errors = array_merge($errors, $e->getValidationExceptions());
+      }
+      $this->render("admin/votings/new", [
+        "voting" => new Voting([
+          'name' => $request['voting']['name'],
+          'description' => $request['voting']['description'],
+          'datetime_start' => $request['voting']['datetime_start'],
+          'datetime_end' => $request['voting']['datetime_end']
+        ]),
+        "votings" => Voting::all(),
+        "errors" => $errors,
+      ]);
+    }
+  }
+
   public function edit($request)
   {
     $voting = Voting::find($this->id);
@@ -91,42 +127,6 @@ class AdminVotingsController extends AdminController
       }
       $this->render("admin/votings/edit", [
         "voting" => $voting,
-        "votings" => Voting::all(),
-        "errors" => $errors,
-      ]);
-    }
-  }
-
-  public function create($request)
-  {
-    try {
-      // Verify CSRF token
-      $this->verifyCSRF('/admin/votings');
-      // Create new voting
-      $voting = new Voting([
-        'name' => $request['voting']['name'],
-        'description' => $request['voting']['description'],
-        'datetime_start' => $request['voting']['datetime_start'],
-        'datetime_end' => $request['voting']['datetime_end'],
-        'creator_id' => $this->auth->getUserId(),
-        'status' => "DRAFT"
-      ]);
-      $voting->save();
-      $this->addFlash('success', "Hlasování bylo úspěšně vytvořeno.");
-      header("Location: /admin/votings");
-    } catch (Exception $e) {
-      $errors = [];
-      $this->addFlash('error', $e->getMessage());
-      if ($e instanceof \ActiveModel\ValidationException) {
-        $errors = array_merge($errors, $e->getValidationExceptions());
-      }
-      $this->render("admin/votings/new", [
-        "voting" => new Voting([
-          'name' => $request['voting']['name'],
-          'description' => $request['voting']['description'],
-          'datetime_start' => $request['voting']['datetime_start'],
-          'datetime_end' => $request['voting']['datetime_end']
-        ]),
         "votings" => Voting::all(),
         "errors" => $errors,
       ]);

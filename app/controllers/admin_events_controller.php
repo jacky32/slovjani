@@ -41,61 +41,6 @@ class AdminEventsController extends AdminController
     ]);
   }
 
-  public function edit($request)
-  {
-    $event = Event::find($this->id);
-    if ($event) {
-      $this->render("admin/events/edit", [
-        "event" => $event,
-        "events" => Event::all()
-      ]);
-    } else {
-      $this->addFlash('error', t("events.show.event_not_found"));
-      header("Location: /admin/events");
-    }
-  }
-
-  public function update($request)
-  {
-    try {
-      // Verify CSRF token
-      $this->verifyCSRF('/admin/events/' . $this->id);
-
-      // Find event and check ownership
-      $event = Event::find($this->id);
-      if ($event && $event->creator_id == $this->auth->getUserId()) {
-        foreach (Event::getDbAttributes() as $attribute) {
-          if (isset($request['event'][$attribute])) {
-            $event->{$attribute} = $request['event'][$attribute];
-          } else if ($attribute == "is_publicly_visible") {
-            $event->{$attribute} = $request['event'][$attribute] ? true : 0;
-          }
-        }
-        $event->save();
-        $this->addFlash('success', t("events.update.success"));
-        header("Location: /admin/events/" . $event->id);
-      } else {
-        if (!$event) {
-          $this->addFlash('error', t("events.show.event_not_found"));
-        } else if ($event->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
-          $this->addFlash('error', t("events.update.unauthorized"));
-        }
-        header("Location: /admin/events");
-      }
-    } catch (Exception $e) {
-      $errors = [];
-      $this->addFlash('error', $e->getMessage());
-      if ($e instanceof \ActiveModel\ValidationException) {
-        $errors = array_merge($errors, $e->getValidationExceptions());
-      }
-      $this->render("admin/events/edit", [
-        "event" => $event,
-        "events" => Event::all(),
-        "errors" => $errors,
-      ]);
-    }
-  }
-
   public function create($request)
   {
     try {
@@ -126,6 +71,61 @@ class AdminEventsController extends AdminController
           'datetime_start' => $request['event']['datetime_start'],
           'datetime_end' => $request['event']['datetime_end']
         ]),
+        "events" => Event::all(),
+        "errors" => $errors,
+      ]);
+    }
+  }
+
+  public function edit($request)
+  {
+    $event = Event::find($this->id);
+    if ($event) {
+      $this->render("admin/events/edit", [
+        "event" => $event,
+        "events" => Event::all()
+      ]);
+    } else {
+      $this->addFlash('error', t("events.show.event_not_found"));
+      header("Location: /admin/events");
+    }
+  }
+
+  public function update($request)
+  {
+    try {
+      // Verify CSRF token
+      $this->verifyCSRF('/admin/events/' . $this->id);
+
+      // Find event and check ownership
+      $event = Event::find($this->id);
+      if ($event && $event->creator_id == $this->auth->getUserId()) {
+        foreach (Event::getDbAttributes() as $attribute) {
+          if ($attribute == "is_publicly_visible") {
+            $event->{$attribute} = $request['event'][$attribute] ? true : 0;
+          } else if (isset($request['event'][$attribute])) {
+            $event->{$attribute} = $request['event'][$attribute];
+          }
+        }
+        $event->save();
+        $this->addFlash('success', t("events.update.success"));
+        header("Location: /admin/events/" . $event->id);
+      } else {
+        if (!$event) {
+          $this->addFlash('error', t("events.show.event_not_found"));
+        } else if ($event->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
+          $this->addFlash('error', t("events.update.unauthorized"));
+        }
+        header("Location: /admin/events");
+      }
+    } catch (Exception $e) {
+      $errors = [];
+      $this->addFlash('error', $e->getMessage());
+      if ($e instanceof \ActiveModel\ValidationException) {
+        $errors = array_merge($errors, $e->getValidationExceptions());
+      }
+      $this->render("admin/events/edit", [
+        "event" => $event,
         "events" => Event::all(),
         "errors" => $errors,
       ]);
