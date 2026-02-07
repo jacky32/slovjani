@@ -53,10 +53,6 @@ posts:
   update:
     unauthorized: Nemáte oprávnění upravit tento příspěvek.
     success: Příspěvek byl úspěšně aktualizován.
-  status:
-    draft: Návrh
-    published: Publikováno
-    archived: Archivováno
 
 events:
   index:
@@ -158,3 +154,7 @@ enums:
     "YES": Ano
     "NO": Ne
     "ABSTAIN": Zdržet se
+  post_statuses:
+    "DRAFT": Návrh
+    "PUBLISHED": Publikováno
+    "ARCHIVED": Archivováno

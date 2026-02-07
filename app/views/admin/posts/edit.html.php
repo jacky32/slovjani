@@ -1,0 +1,2 @@
+<?= $this->renderPartial("admin/posts/_left_pane", ['posts' => $posts, "id" => $post->id, 'errors' => isset($errors) ? $errors : []]) ?>
+<?= $this->renderPartial("admin/posts/_form", ['post' => $post, 'errors' => isset($errors) ? $errors : []]) ?>

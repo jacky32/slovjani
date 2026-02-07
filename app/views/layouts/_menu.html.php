@@ -7,6 +7,7 @@
     <li><a href="/events"><?= t('menu.events') ?></a></li>
     <?php if ($this->auth->isLoggedIn()): ?>
       <li><?= t("menu.eoffice") ?></li>
+      <li><a href="/admin/posts"><?= t("menu.posts") ?></a></li>
       <li><a href="/admin/economics"><?= t("menu.economics") ?></a></li>
       <li><a href="/admin/events"><?= t("menu.events") ?></a></li>
       <li><a href="/admin/votings"><?= t("menu.votings") ?></a></li>

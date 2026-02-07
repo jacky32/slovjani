@@ -25,6 +25,11 @@ class Post extends ApplicationRecord
     "inclusion" => ["status" => ["DRAFT", "PUBLISHED", "ARCHIVED"]]
   ];
 
+  public static function publiclyVisible()
+  {
+    return self::where(['status' => 'PUBLISHED']);
+  }
+
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);

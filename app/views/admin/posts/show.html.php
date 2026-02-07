@@ -1,4 +1,4 @@
-<?= $this->renderPartial("posts/_left_pane", ['posts' => $posts, "id" => $post->id, 'errors' => isset($errors) ? $errors : []]) ?>
+<?= $this->renderPartial("admin/posts/_left_pane", ['posts' => $posts, "id" => $post->id, 'errors' => isset($errors) ? $errors : []]) ?>
 <section id="rightpane">
   <h1>
     <?= $post->name ?>
@@ -18,10 +18,11 @@
       $formatted = $date->format('d.m.Y H:i');
       echo t("updated_at") . ": " . $formatted;
     }
-    ?>
+    ?><br>
+    <?= t("attributes.post.status") ?>: <?= t("enums.post_statuses." . $post->status) ?>
   </small>
   <p><?= htmlspecialchars($post->body ?? '') ?></p>
-  <!-- <a href='/posts/<?= $post->id ?>/edit' class='button'><?= t("edit") ?></a> -->
+  <a href='/admin/posts/<?= $post->id ?>/edit' class='button'><?= t("edit") ?></a>
 
-  <!-- <?= $this->renderDestroyButton($post) ?> -->
+  <?= $this->renderDestroyButton($post) ?>
 </section>

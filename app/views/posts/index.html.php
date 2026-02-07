@@ -2,5 +2,5 @@
 <section id="rightpane">
   index stránka příspěvků
   <br><br>
-  <a href='/posts/new' class='button'><?= t("posts.new.title") ?></a>
+  <!-- <a href='/posts/new' class='button'><?= t("posts.new.title") ?></a> -->
 </section>

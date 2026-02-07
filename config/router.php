@@ -202,6 +202,11 @@ class Router
       return;
     }
 
+    // /admin/posts
+    if ($this->resources('posts', true)) {
+      return;
+    }
+
     // /admin/events
     if ($this->resources('events', true)) {
       return;
