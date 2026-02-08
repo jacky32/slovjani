@@ -13,8 +13,10 @@ class ViewManager
   {
     $this->auth = $auth;
     $tmp = debug_backtrace();
-    $this->controller = str_replace("controller", "", strtolower($tmp[1]['class']));
-    $this->action = str_replace("action", "", strtolower($tmp[1]['function']));
+    $this->controller = $tmp[2]['class'];
+    if ($this->controller == "AdminController") {
+      $this->controller = $tmp[3]['class'];
+    }
   }
 
   public function render($view, $data = [])

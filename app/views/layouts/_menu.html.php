@@ -1,25 +1,49 @@
 <nav id="header">
   <span id="header-logo-lat"><?= t("menu.header.logo.lat") ?><br></span>
   <span id="header-logo-cyr"><?= t("menu.header.logo.cyr") ?><br></span>
-  <ul id="header-text" class="menu">
-    <li><a href="/"><?= t('menu.root') ?></a></li>
-    <li><a href="/posts"><?= t('menu.posts') ?></a></li>
-    <li><a href="/events"><?= t('menu.events') ?></a></li>
-    <?php if ($this->auth->isLoggedIn()): ?>
+  <div id="header-text">
+    <ul class="menu">
+      <li>
+        <a class="<?= $this->controller == "HomeController" ? "active" : "" ?>" href="/"><?= t('menu.root') ?></a>
+      </li>
+      <li>
+        <a class="<?= $this->controller == "PostsController" ? "active" : "" ?>" href="/posts"><?= t('menu.posts') ?></a>
+      </li>
+      <li>
+        <a class="<?= $this->controller == "EventsController" ? "active" : "" ?>" href="/events"><?= t('menu.events') ?></a>
+      </li>
+      <?php if ($this->auth->isLoggedIn()): ?>
+    </ul>
+    <ul class="menu">
       <li><?= t("menu.eoffice") ?></li>
-      <li><a href="/admin/posts"><?= t("menu.posts") ?></a></li>
-      <li><a href="/admin/economics"><?= t("menu.economics") ?></a></li>
-      <li><a href="/admin/events"><?= t("menu.events") ?></a></li>
-      <li><a href="/admin/votings"><?= t("menu.votings") ?></a></li>
+      <?php foreach (
+          [
+            ["AdminPostsController", "/admin/posts", t("menu.posts")],
+            ["AdminEconomicsController", "/admin/economics", t("menu.economics")],
+            ["AdminEventsController", "/admin/events", t("menu.events")],
+            ["AdminVotingsController", "/admin/votings", t("menu.votings")]
+          ] as $link_data
+        ): ?>
+        <li>
+          <a
+            class="<?= $this->controller == $link_data[0] ? "active" : "" ?>"
+            href="<?= $link_data[1] ?>">
+            <?= $link_data[2] ?>
+          </a>
+        </li>
+      <?php endforeach; ?>
     <?php endif; ?>
     <li>
       <?php if ($this->auth->isLoggedIn()): ?>
-        <form action="/logout" method="POST">
-          <button type="submit" class="button"><?= t("menu.logout") ?></button>
-        </form>
+        <a>
+          <form action="/logout" method="POST">
+            <button type="submit" class="button"><?= t("menu.logout") ?></button>
+          </form>
+        </a>
       <?php else: ?>
         <a href="/login" class="button"><?= t("menu.login") ?></a>
       <?php endif; ?>
     </li>
-  </ul>
+    </ul>
+  </div>
 </nav>
