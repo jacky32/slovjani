@@ -6,6 +6,10 @@
   }
 }
 
+#container {
+  padding: 180px 0px 0px 0px;
+}
+
 input.warning,
 textarea.warning,
 select.warning {

@@ -14,18 +14,22 @@ class AdminPostsController extends AdminController
 
   public function index($request)
   {
+    $pagination = Post::paginate($request['page']);
     $this->render("admin/posts/index", [
-      "posts" => Post::all() // TODO: Pagination
+      "posts" => $pagination->resources,
+      "pagination" => $pagination,
     ]);
   }
 
   public function show($request)
   {
     $post = Post::find($this->id);
+    $pagination = Post::paginate($request['page'], $this->id);
     if ($post) {
       $this->render("admin/posts/show", [
         "post" => $post,
-        "posts" => Post::all()
+        "posts" => $pagination->resources,
+        "pagination" => $pagination,
       ]);
     } else {
       $this->addFlash('error', t("posts.show.post_not_found"));

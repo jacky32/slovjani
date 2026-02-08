@@ -8,6 +8,7 @@ class ViewManager
   private $controllerData;
   private $auth;
   private $errors;
+  private $pagination;
 
   public function __construct($auth)
   {
@@ -22,6 +23,7 @@ class ViewManager
   public function render($view, $data = [])
   {
     $this->controllerData = extract($data);
+    $this->pagination = $data['pagination'] ?? null;
     $this->errors = $data['errors'] ?? [];
     ob_start();
     $this->title = isset($title) ? $title : 'Slované';

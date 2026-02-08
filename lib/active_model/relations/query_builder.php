@@ -251,6 +251,11 @@ class QueryBuilder
     return $results;
   }
 
+  public function paginate(int $current_page = 1, int|null $start_id = null): Pagination
+  {
+    return new Pagination($this, $current_page, $start_id);
+  }
+
   /**
    * Build and execute the SELECT query
    */

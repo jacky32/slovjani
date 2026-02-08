@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/validations/validations.php';
+require __DIR__ . '/relations/pagination.php';
 require __DIR__ . '/relations/query_builder.php';
 require __DIR__ . '/relations/collection.php';
 require __DIR__ . '/relations/relations.php';
@@ -249,6 +250,32 @@ abstract class ActiveModel
   {
     $builder = new QueryBuilder(static::class);
     return $builder->where($conditions, $value);
+  }
+
+  /**
+   * Chainable orderBy query - returns QueryBuilder
+   */
+  public static function orderBy(string $column, string $direction = 'ASC'): QueryBuilder
+  {
+    $builder = new QueryBuilder(static::class);
+    return $builder->orderBy($column, $direction);
+  }
+
+  /**
+   * Paginate results - returns Pagination object with metadata and current page resources
+   *
+   * Usage:
+   *   $pagination = Post::paginate(2, 10); // Get page 2 with 10 posts per page
+   *   $pagination->resources; // Array of Post objects for current page
+   *   $pagination->current_page; // Current page number
+   *   $pagination->total_pages; // Total number of pages
+   *   $pagination->previous_page; // Previous page number or null if on first page
+   *   $pagination->next_page; // Next page number or null if on last page
+   */
+  public static function paginate(int $current_page = 1, int|null $start_id = null): Pagination
+  {
+    $builder = new QueryBuilder(static::class);
+    return $builder->paginate($current_page, $start_id);
   }
 
   /**
