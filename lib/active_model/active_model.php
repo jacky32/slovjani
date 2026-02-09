@@ -272,7 +272,7 @@ abstract class ActiveModel
    *   $pagination->previous_page; // Previous page number or null if on first page
    *   $pagination->next_page; // Next page number or null if on last page
    */
-  public static function paginate(int $current_page = 1, int|null $start_id = null): Pagination
+  public static function paginate(int|null $current_page = 1, int|null $start_id = null): Pagination
   {
     $builder = new QueryBuilder(static::class);
     return $builder->paginate($current_page, $start_id);

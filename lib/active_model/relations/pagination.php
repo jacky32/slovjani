@@ -10,11 +10,11 @@ class Pagination
   public $previous_page = null;
   public $next_page = null;
 
-  public function __construct(QueryBuilder $query, int $current_page = 1, int|null $start_id = null)
+  public function __construct(QueryBuilder $query, int|null $current_page = 1, int|null $start_id = null)
   {
     $this->total_count = $query->count();
-    $this->total_pages = ceil($this->total_count / $this->per_page);
-    $this->current_page = max(1, min($current_page, $this->total_pages));
+    $this->total_pages = ceil($this->total_count / $this->per_page) ?: 1;
+    $this->current_page = $current_page ? max(1, min($current_page, $this->total_pages)) : 1;
     $this->previous_page = $this->current_page > 1 ? $this->current_page - 1 : null;
     $this->next_page = ($this->current_page * $this->per_page) < $this->total_count ? $this->current_page + 1 : null;
     $offset = ($this->current_page - 1) * $this->per_page;

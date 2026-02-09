@@ -17,7 +17,7 @@ select.warning {
   box-shadow: 0 0 0 1px #ef4444;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   width: 1.5rem;
@@ -37,6 +37,12 @@ input[type="checkbox"] {
       line-height: 1.75rem;
     }
   }
+}
+
+.voting-radio-label {
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
 
 .flash {

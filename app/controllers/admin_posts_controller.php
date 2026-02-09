@@ -39,8 +39,10 @@ class AdminPostsController extends AdminController
 
   public function new($request)
   {
+    $pagination = Post::paginate($request['page'], $this->id);
     $this->render("admin/posts/new", [
-      "posts" => Post::all()
+      "posts" => Post::all(),
+      "pagination" => $pagination,
     ]);
   }
 
@@ -66,14 +68,16 @@ class AdminPostsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
+      $pagination = Post::paginate($request['page']);
       $this->render("admin/posts/new", [
-        "posts" => Post::all(),
+        "posts" => $pagination->resources,
         "post" => new Post([
           'name' => $request['post']['name'],
           'body' => $request['post']['body'],
           'status' => $request['post']['status']
         ]),
         "errors" => $errors,
+        "pagination" => $pagination,
       ]);
     }
   }
@@ -81,10 +85,12 @@ class AdminPostsController extends AdminController
   public function edit($request)
   {
     $post = Post::find($this->id);
+    $pagination = Post::paginate($request['page'], $this->id);
     if ($post) {
       $this->render("admin/posts/edit", [
         "post" => $post,
-        "posts" => Post::all()
+        "posts" => $pagination->resources,
+        "pagination" => $pagination,
       ]);
     } else {
       $this->addFlash('error', t("posts.show.post_not_found"));
@@ -121,9 +127,11 @@ class AdminPostsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
+      $pagination = Post::paginate($request['page'], $this->id);
       $this->render("admin/posts/edit", [
         "post" => $post,
-        "posts" => Post::all(),
+        "posts" => $pagination->resources,
+        "pagination" => $pagination,
         "errors" => $errors,
       ]);
     }

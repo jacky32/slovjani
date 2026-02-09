@@ -8,8 +8,10 @@
       <p><?= htmlspecialchars($question->description ?? '') ?></p>
       <?php foreach (["YES", "NO", "ABSTAIN"] as $option) : ?>
         <div>
-          <input type='radio' id='option_<?= $option ?>_question_<?= $question->id ?>' name='users_question[<?= $index ?>][chosen_option]' value='<?= $option ?>' required />
-          <label for='option_<?= $option ?>_question_<?= $question->id ?>'><?= t("enums.question_options." . $option) ?></label>
+          <label for='option_<?= $option ?>_question_<?= $question->id ?>' class="voting-radio-label">
+            <input type='radio' id='option_<?= $option ?>_question_<?= $question->id ?>' name='users_question[<?= $index ?>][chosen_option]' value='<?= $option ?>' required />
+            <span><?= t("enums.question_options." . $option) ?></span>
+          </label>
         </div>
       <?php endforeach; ?>
       <input type='hidden' name='users_question[<?= $index ?>][question_id]' value='<?= $question->id ?>' />

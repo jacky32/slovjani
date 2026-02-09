@@ -96,4 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   Logger::info("POST params: ", $filtered);
 }
 $controller = new $controllerName($dbConnection);
-$controller->{$action}($_REQUEST);
+$request = $_REQUEST;
+$request['page'] ??= NULL;
+$controller->{$action}($request);

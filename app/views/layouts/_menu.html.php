@@ -19,7 +19,7 @@
       <?php foreach (
           [
             ["AdminPostsController", "/admin/posts", t("menu.posts")],
-            ["AdminEconomicsController", "/admin/economics", t("menu.economics")],
+            ["AdminUsersController", "/admin/users", t("menu.users")],
             ["AdminEventsController", "/admin/events", t("menu.events")],
             ["AdminVotingsController", "/admin/votings", t("menu.votings")]
           ] as $link_data
