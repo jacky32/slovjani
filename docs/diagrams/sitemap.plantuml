@@ -1,6 +1,7 @@
 @startuml "Sitemap Diagram"
 !theme plain
 hide empty members
+hide circles
 
 ' Definice stylů pro přehlednost
 skinparam class {
@@ -23,7 +24,11 @@ package "Veřejná sekce" {
         # Odkazy na další stránky
     }
 
-    class "Činnost (Veřejná)" as CinnostPub <<Public>> {
+    class "Příspěvky (Veřejné)" as PostsPub <<Public>> {
+        + Seznam zveřejněných příspěvků
+    }
+
+    class "Činnost (Veřejné)" as CinnostPub <<Public>> {
         + Kalendář akcí
         + Seznam veřejných akcí
     }
@@ -36,8 +41,8 @@ package "Administrační sekce (Login required)" {
         + odhlásit()
     }
 
-    class "Administrativa" as AdminPage <<Admin>> {
-        + Nastavení systému
+    class "Příspěvky (Interní)" as AdminPostsPage <<Admin>> {
+        + Správa příspěvků
     }
 
     class "Kontakty" as Kontakty <<Admin>> {
@@ -55,7 +60,6 @@ package "Administrační sekce (Login required)" {
     class "Hlasování" as Hlasovani <<Admin>> {
         - Téma hlasování
         - Možnosti: Pro / Proti / Zdržel se
-        - Stav: Aktivní / Uzavřeno
         --
         + Admin: vytváří hlasování
         + Admin: uzavírá hlasování
@@ -65,13 +69,14 @@ package "Administrační sekce (Login required)" {
 
 ' Vztahy a navigace
 Home --> Onas
+Home --> PostsPub
 Home --> CinnostPub
 Home --> Login
 
 Login ..> CinnostPriv : po přihlášení
 Login ..> Hlasovani
 Login ..> Kontakty
-Login ..> AdminPage
+Login ..> AdminPostsPage
 
 ' Poznámky pro vysvětlení logiky
 note right of Hlasovani

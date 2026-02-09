@@ -42,9 +42,9 @@ class UsersQuestion {
 }
 
 ' Vazby
-Voting "1" *-- "N" Question : obsahuje >
-User "1" -- "N" UsersQuestion : hlasuje >
-Question "1" -- "N" UsersQuestion : má hlasy >
-User "1" - "N" Voting : vytváří >
+Voting "1" -- "N" Question
+User "1" -- "N" UsersQuestion
+Question "1" -- "N" UsersQuestion
+User "1" - "N" Voting
 
 @enduml
