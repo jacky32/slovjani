@@ -15,8 +15,10 @@ class AdminVotingsController extends AdminController
 
   public function index($request)
   {
+    $pagination = Voting::paginate($request['page']);
     $this->render("admin/votings/index", [
-      "votings" => Voting::all() // TODO: Pagination
+      "votings" => $pagination->resources,
+      "pagination" => $pagination
     ]);
   }
 
@@ -24,9 +26,11 @@ class AdminVotingsController extends AdminController
   {
     $voting = Voting::find($this->id);
     if ($voting) {
+      $pagination = Voting::paginate($request['page'], $this->id);
       $this->render("admin/votings/show", [
         "voting" => $voting,
-        "votings" => Voting::all(),
+        "votings" => $pagination->resources,
+        "pagination" => $pagination,
         "has_voted" => $voting->hasUserVoted($this->auth->getUserId())
       ]);
     } else {
@@ -37,8 +41,10 @@ class AdminVotingsController extends AdminController
 
   public function new($request)
   {
+    $pagination = Voting::paginate($request['page']);
     $this->render("admin/votings/new", [
-      "votings" => Voting::all()
+      "votings" => $pagination->resources,
+      "pagination" => $pagination
     ]);
   }
 
@@ -65,6 +71,7 @@ class AdminVotingsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
+      $pagination = Voting::paginate($request['page']);
       $this->render("admin/votings/new", [
         "voting" => new Voting([
           'name' => $request['voting']['name'],
@@ -72,7 +79,8 @@ class AdminVotingsController extends AdminController
           'datetime_start' => $request['voting']['datetime_start'],
           'datetime_end' => $request['voting']['datetime_end']
         ]),
-        "votings" => Voting::all(),
+        "votings" => $pagination->resources,
+        "pagination" => $pagination,
         "errors" => $errors,
       ]);
     }
@@ -82,9 +90,11 @@ class AdminVotingsController extends AdminController
   {
     $voting = Voting::find($this->id);
     if ($voting) {
+      $pagination = Voting::paginate($request['page'], $this->id);
       $this->render("admin/votings/edit", [
         "voting" => $voting,
-        "votings" => Voting::all()
+        "votings" => $pagination->resources,
+        "pagination" => $pagination,
       ]);
     } else {
       $this->addFlash('error', t("votings.show.voting_not_found"));
@@ -102,9 +112,7 @@ class AdminVotingsController extends AdminController
       $voting = Voting::find($this->id);
       if ($voting && $voting->creator_id == $this->auth->getUserId()) {
         foreach (Voting::getDbAttributes() as $attribute) {
-          // Logger::debug("Updating attribute: " . $attribute . " from " . $voting->{$attribute});
           if (isset($request['voting'][$attribute])) {
-            // Logger::debug("Setting " . $attribute . " to " . $request['voting'][$attribute]);
             $voting->{$attribute} = $request['voting'][$attribute];
           }
         }
@@ -125,9 +133,11 @@ class AdminVotingsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
+      $pagination = Voting::paginate($request['page'], $this->id);
       $this->render("admin/votings/edit", [
         "voting" => $voting,
-        "votings" => Voting::all(),
+        "votings" => $pagination->resources,
+        "pagination" => $pagination,
         "errors" => $errors,
       ]);
     }

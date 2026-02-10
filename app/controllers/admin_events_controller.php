@@ -15,8 +15,10 @@ class AdminEventsController extends AdminController
 
   public function index($request)
   {
+    $pagination = Event::paginate($request['page']);
     $this->render("admin/events/index", [
-      "events" => Event::all() // TODO: Pagination
+      "events" => $pagination->resources,
+      "pagination" => $pagination
     ]);
   }
 
@@ -24,9 +26,11 @@ class AdminEventsController extends AdminController
   {
     $event = Event::find($this->id);
     if ($event) {
+      $pagination = Event::paginate($request['page'], $this->id);
       $this->render("admin/events/show", [
         "event" => $event,
-        "events" => Event::all()
+        "events" => $pagination->resources,
+        "pagination" => $pagination
       ]);
     } else {
       $this->addFlash('error', t("events.show.event_not_found"));
@@ -36,8 +40,10 @@ class AdminEventsController extends AdminController
 
   public function new($request)
   {
+    $pagination = Event::paginate($request['page']);
     $this->render("admin/events/new", [
-      "events" => Event::all()
+      "events" => $pagination->resources,
+      "pagination" => $pagination
     ]);
   }
 
@@ -64,6 +70,7 @@ class AdminEventsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
+      $pagination = Event::paginate($request['page']);
       $this->render("admin/events/new", [
         "event" => new Event([
           'name' => $request['event']['name'],
@@ -71,7 +78,8 @@ class AdminEventsController extends AdminController
           'datetime_start' => $request['event']['datetime_start'],
           'datetime_end' => $request['event']['datetime_end']
         ]),
-        "events" => Event::all(),
+        "events" => $pagination->resources,
+        "pagination" => $pagination,
         "errors" => $errors,
       ]);
     }
@@ -81,9 +89,11 @@ class AdminEventsController extends AdminController
   {
     $event = Event::find($this->id);
     if ($event) {
+      $pagination = Event::paginate($request['page'], $this->id);
       $this->render("admin/events/edit", [
         "event" => $event,
-        "events" => Event::all()
+        "events" => $pagination->resources,
+        "pagination" => $pagination,
       ]);
     } else {
       $this->addFlash('error', t("events.show.event_not_found"));
@@ -124,9 +134,11 @@ class AdminEventsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
+      $pagination = Event::paginate($request['page'], $this->id);
       $this->render("admin/events/edit", [
         "event" => $event,
-        "events" => Event::all(),
+        "events" => $pagination->resources,
+        "pagination" => $pagination,
         "errors" => $errors,
       ]);
     }

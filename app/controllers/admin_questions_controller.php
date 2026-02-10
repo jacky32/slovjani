@@ -14,11 +14,13 @@ class AdminQuestionsController extends AdminController
     $this->question_id = $matches[2] ?? null;
   }
 
-  public function new()
+  public function new($request)
   {
+    $pagination = Voting::paginate($request['page'], $this->voting_id);
     $this->render("admin/questions/new", [
       "voting" => Voting::find($this->voting_id),
-      "votings" => Voting::all()
+      "votings" => $pagination->resources,
+      "pagination" => $pagination,
     ]);
   }
 
@@ -43,9 +45,11 @@ class AdminQuestionsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
+      $pagination = Voting::paginate($request['page'], $this->voting_id);
       $this->render("admin/questions/new", [
         "voting" => Voting::find($this->voting_id),
-        "votings" => Voting::all(),
+        "votings" => $pagination->resources,
+        "pagination" => $pagination,
         "question" => new Question([
           'name' => $request['question']['name'],
           'description' => $request['question']['description']
@@ -55,15 +59,17 @@ class AdminQuestionsController extends AdminController
     }
   }
 
-  public function edit()
+  public function edit($request)
   {
     $voting = Voting::find($this->voting_id);
     $question = $voting->questions->find($this->question_id);
     if ($question) {
+      $pagination = Voting::paginate($request['page'], $this->voting_id);
       $this->render("admin/questions/edit", [
         "question" => $question,
         "voting" => $voting,
-        "votings" => Voting::all()
+        "votings" => $pagination->resources,
+        "pagination" => $pagination
       ]);
     } else {
       $this->addFlash('error', t("questions.edit.question_not_found"));
@@ -105,9 +111,11 @@ class AdminQuestionsController extends AdminController
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
       $voting = Voting::find($this->voting_id);
+      $pagination = Voting::paginate($request['page'], $this->voting_id);
       $this->render("admin/questions/edit", [
         "voting" => $voting,
-        "votings" => Voting::all(),
+        "votings" => $pagination->resources,
+        "pagination" => $pagination,
         "question" => $voting->questions->find($this->question_id),
         "errors" => $errors,
       ]);

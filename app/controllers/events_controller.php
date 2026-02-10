@@ -12,20 +12,24 @@ class EventsController extends ApplicationController
   }
 
 
-  public function index()
+  public function index($request)
   {
+    $pagination = Event::where(["is_publicly_visible" => true])->paginate($request['page']);
     $this->render("events/index", [
-      "events" => Event::where(["is_publicly_visible" => true])->get() // TODO: Pagination
+      "events" => $pagination->resources,
+      "pagination" => $pagination
     ]);
   }
 
-  public function show()
+  public function show($request)
   {
-    $event = Event::find($this->id);
+    $event = Event::where(["is_publicly_visible" => true])->find($this->id);
     if ($event) {
+      $pagination = Event::where(["is_publicly_visible" => true])->paginate($request['page'], $this->id);
       $this->render("events/show", [
         "event" => $event,
-        "events" => Event::where(["is_publicly_visible" => true])->get()
+        "events" => $pagination->resources,
+        "pagination" => $pagination
       ]);
     } else {
       $this->addFlash('error', t("events.show.event_not_found"));
