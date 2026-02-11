@@ -1,13 +1,14 @@
 #header-text.menu {
   display: flex;
+}
 
-  form {
-    margin-bottom: 0;
-  }
+.menu-form {
+  display: inline-block;
+  margin-bottom: 0;
 }
 
 #container {
-  padding: 180px 0px 0px 0px;
+  padding: 157px 0px 0px 0px;
 }
 
 input.warning,

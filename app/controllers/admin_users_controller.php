@@ -41,6 +41,7 @@ class AdminUsersController extends AdminController
   {
     $user = User::find($this->id);
     $pagination = User::paginate($request['page'], $this->id);
+    Logger::debug($user->roles_mask);
     if ($user) {
       $this->render("admin/users/edit", [
         "user" => $user,
@@ -61,23 +62,24 @@ class AdminUsersController extends AdminController
 
       // Find user and check ownership
       $user = User::find($this->id);
-      if ($user && $user->creator_id == $this->auth->getUserId()) {
-        foreach (User::getDbAttributes() as $attribute) {
-          if (isset($request['user'][$attribute])) {
-            $user->{$attribute} = $request['user'][$attribute];
-          }
-        }
+      // if ($user && $this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
+      if ($user) {
+        $user->email = $request['user']['email'];
+        $user->username = $request['user']['username'];
+        Logger::debug("Selected role: " . $request['user']['role']);
+        $user->roles_mask = intval(User::AVAILABLE_ROLES[$request['user']['role']]) ?? 0;
         $user->save();
         $this->addFlash('success', t("users.update.success"));
         header("Location: /admin/users/" . $user->id);
-      } else {
-        if (!$user) {
-          $this->addFlash('error', t("users.show.user_not_found"));
-        } else if ($user->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
-          $this->addFlash('error', t("users.update.unauthorized"));
-        }
-        header("Location: /admin/users/" . $user->id . "/edit");
       }
+      // } else {
+      //   if (!$user) {
+      //     $this->addFlash('error', t("users.show.user_not_found"));
+      //   } else if (!$this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
+      //     $this->addFlash('error', t("users.update.unauthorized"));
+      //   }
+      //   header("Location: /admin/users/" . $user->id . "/edit");
+      // }
     } catch (Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());

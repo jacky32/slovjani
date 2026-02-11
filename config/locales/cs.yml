@@ -130,6 +130,20 @@ sessions:
     submit: Přihlásit se
     to_register: K registraci
 
+users:
+  index:
+    no_users_found: Žádní uživatelé nebyli nalezeni.
+  new:
+    title: Nový uživatel
+  edit:
+    title: Úprava uživatele
+  show:
+    created_at: Registrován dne
+    user_not_found: Uživatel nebyl nalezen.
+  update:
+    unauthorized: Nemáte oprávnění upravit tohoto uživatele.
+    success: Uživatel byl úspěšně aktualizován.
+
 attributes:
   post:
     name: Název
@@ -139,6 +153,7 @@ attributes:
     username: Jméno
     email: Email
     password: Heslo
+    role: Role
   voting:
     name: Název
     description: Popis
@@ -163,3 +178,7 @@ enums:
     "DRAFT": Návrh
     "PUBLISHED": Publikováno
     "ARCHIVED": Archivováno
+  user_roles:
+    "ADMIN": Administrátor
+    "COLLABORATOR": Běžný uživatel
+    "NONE": Žádná role

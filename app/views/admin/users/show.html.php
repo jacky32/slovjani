@@ -1,7 +1,7 @@
 <?= $this->renderPartial("admin/users/_left_pane", ['users' => $users, "id" => $user->id, 'errors' => isset($errors) ? $errors : []]) ?>
 <section id="rightpane">
   <h1>
-    <?= $user->name ?>
+    <?= htmlspecialchars($user->username ?? '') ?>
   </h1>
   <small>
     <?php
@@ -18,8 +18,9 @@
       echo t("updated_at") . ": " . $formatted;
     }
     ?><br>
+    <?= t("attributes.user.email") ?>: <?= htmlspecialchars($user->email ?? '') ?><br>
+    <?= t("attributes.user.role") ?>: <?= $user->roles_mask == \Delight\Auth\Role::ADMIN ? t("enums.user_roles.ADMIN") : ($user->roles_mask == \Delight\Auth\Role::COLLABORATOR ? t("enums.user_roles.COLLABORATOR") : t("enums.user_roles.NONE")) ?><br>
   </small>
-  <p><?= htmlspecialchars($user->body ?? '') ?></p>
   <a href='/admin/users/<?= $user->id ?>/edit' class='button'><?= t("edit") ?></a>
 
   <?= $this->renderDestroyButton($user) ?>

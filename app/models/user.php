@@ -1,11 +1,18 @@
 <?php
 class User extends ApplicationRecord
 {
+  const AVAILABLE_ROLES = [
+    'admin' => \Delight\Auth\Role::ADMIN,
+    'collaborator' => \Delight\Auth\Role::COLLABORATOR,
+    'none' => 0
+  ];
+
   protected static array $db_attributes = [
     'id',
     'username',
     'email',
-    'password'
+    'password',
+    'roles_mask'
   ];
 
   protected static array $relations  = [
@@ -35,9 +42,12 @@ class User extends ApplicationRecord
     "presence" => ["username", "email", "password"],
     "length" => [
       "username" => ["min" => 3, "max" => 16],
-      "password" => ["min" => 8, "max" => 64]
+      // "password" => ["min" => 8, "max" => 64]
     ],
     "uniqueness" => ["username", "email"],
+    "inclusion" => [
+      "role" => [1, 4, 0]
+    ]
   ];
 
   public function __construct($data = [])

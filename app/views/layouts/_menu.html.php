@@ -35,11 +35,9 @@
     <?php endif; ?>
     <li>
       <?php if ($this->auth->isLoggedIn()): ?>
-        <a>
-          <form action="/logout" method="POST">
-            <button type="submit" class="button"><?= t("menu.logout") ?></button>
-          </form>
-        </a>
+        <form class="menu-form" action="/logout" method="POST">
+          <button type="submit" class="button"><?= t("menu.logout") ?></button>
+        </form>
       <?php else: ?>
         <a href="/login" class="button"><?= t("menu.login") ?></a>
       <?php endif; ?>

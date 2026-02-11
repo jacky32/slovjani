@@ -23,7 +23,7 @@ trait UniquenessValidator
         $condition_str = "{$attribute} = '" . $this->{$attribute} . "'";
       }
       $table = toSnakeCase((new \ReflectionClass($this))->getShortName()) . "s";
-      $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$condition_str}";
+      $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$condition_str} AND id != " . ($this->id ?? "NULL");
       \Logger::sql($query);
       $database = new \Database();
       $connection = $database->getConnection();

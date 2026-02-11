@@ -1,4 +1,4 @@
-<form action=<?= $user->id ? "/admin/users/" . $user->id : "/admin/users" ?> method="user">
+<form action=<?= $user->id ? "/admin/users/" . $user->id : "/admin/users" ?> method="POST">
   <?= $this->renderCSRFToken($user->id ? "/admin/users/" . $user->id : "/admin/users") ?>
 
   <fieldset class="">
@@ -8,6 +8,15 @@
 
     <?= $this->renderInput($user, "email") ?><br>
     <?= $this->renderInput($user, "username") ?><br>
+
+
+    <label for="status-select"><?= User::humanAttributeName("role") ?></label>
+    <select id="status-select" name="user[role]">
+      <option value="admin" <?= $user->roles_mask == \Delight\Auth\Role::ADMIN ? 'selected' : '' ?>><?= t("enums.user_roles.ADMIN") ?></option>
+      <option value="collaborator" <?= $user->roles_mask == \Delight\Auth\Role::COLLABORATOR ? 'selected' : '' ?>><?= t("enums.user_roles.COLLABORATOR") ?></option>
+      <option value="none" <?= $user->roles_mask == 0 ? 'selected' : '' ?>><?= t("enums.user_roles.NONE") ?></option>
+    </select>
+    <br>
 
 
     <button class="button"><?= $user->id ? t("update") : t("create") ?></button>
