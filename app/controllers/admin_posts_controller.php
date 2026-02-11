@@ -41,7 +41,7 @@ class AdminPostsController extends AdminController
   {
     $pagination = Post::paginate($request['page'], $this->id);
     $this->render("admin/posts/new", [
-      "posts" => Post::all(),
+      "posts" => $pagination->resources,
       "pagination" => $pagination,
     ]);
   }

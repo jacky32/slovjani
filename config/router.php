@@ -10,6 +10,85 @@ class Router
   public $action;
   private $routeAction;
 
+  public function __construct()
+  {
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $this->routeAction = $this->normalizeTrailingSlash($path);
+
+    // /posts
+    if ($this->resources('posts')) {
+      return;
+    }
+
+    // /events
+    if ($this->resources('events')) {
+      return;
+    }
+
+    // /admin/posts
+    if ($this->resources('posts', true)) {
+      return;
+    }
+
+    // /admin/events
+    if ($this->resources('events', true)) {
+      return;
+    }
+
+    // /admin/users
+    if ($this->resources('users', true, ["index", "show", "edit", "update", "destroy"])) {
+      return;
+    }
+
+    // /admin/votings/:id/questions
+    if ($this->nestedResources('votings', 'questions', true, ["new", "create", "edit", "update", "destroy"])) {
+      return;
+    }
+
+    // /admin/votings/:id/questions
+    if ($this->nestedResources('votings', 'users_questions', true, ["new", "create", "destroy"])) {
+      return;
+    }
+
+    // /admin/votings
+    if ($this->resources('votings', true)) {
+      return;
+    }
+
+    // OPTIMIZE: pattern matching in php ???
+    switch ($this->routeAction) {
+      case '/login':
+        $this->controllerName = 'SessionsController';
+        $this->action = $this->isGet() ? 'new' : 'create';
+        break;
+      case '/logout':
+        $this->controllerName = 'SessionsController';
+        if ($this->isPost()) {
+          $this->action = 'destroy';
+          break;
+        }
+      case '/registration':
+        $this->controllerName = 'UsersController';
+        if ($this->isGet()) {
+          $this->action = 'new';
+          break;
+        }
+        if ($this->isPost()) {
+          $this->action = 'create';
+          break;
+        }
+      case '/':
+        $this->controllerName = 'HomeController';
+        $this->action = 'index';
+        break;
+      default:
+        $this->controllerName = 'ErrorsController';
+        $this->action = 'notFound';
+        break;
+    }
+    // echo "Routing to " . $this->controllerName . "->" . $this->action . "<br>";
+  }
+
   /**
    * isGet
    * Checks if the request method is GET
@@ -185,79 +264,5 @@ class Router
       $normalized = '/';
     }
     return $normalized;
-  }
-
-  public function __construct()
-  {
-    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $this->routeAction = $this->normalizeTrailingSlash($path);
-
-    // /posts
-    if ($this->resources('posts')) {
-      return;
-    }
-
-    // /events
-    if ($this->resources('events')) {
-      return;
-    }
-
-    // /admin/posts
-    if ($this->resources('posts', true)) {
-      return;
-    }
-
-    // /admin/events
-    if ($this->resources('events', true)) {
-      return;
-    }
-
-    // /admin/votings/:id/questions
-    if ($this->nestedResources('votings', 'questions', true, ["new", "create", "edit", "update", "destroy"])) {
-      return;
-    }
-
-    // /admin/votings/:id/questions
-    if ($this->nestedResources('votings', 'users_questions', true, ["new", "create", "destroy"])) {
-      return;
-    }
-
-    // /admin/votings
-    if ($this->resources('votings', true)) {
-      return;
-    }
-
-    // OPTIMIZE: pattern matching in php ???
-    switch ($this->routeAction) {
-      case '/login':
-        $this->controllerName = 'SessionsController';
-        $this->action = $this->isGet() ? 'new' : 'create';
-        break;
-      case '/logout':
-        $this->controllerName = 'SessionsController';
-        if ($this->isPost()) {
-          $this->action = 'destroy';
-          break;
-        }
-      case '/registration':
-        $this->controllerName = 'UsersController';
-        if ($this->isGet()) {
-          $this->action = 'new';
-          break;
-        }
-        if ($this->isPost()) {
-          $this->action = 'create';
-          break;
-        }
-      case '/':
-        $this->controllerName = 'HomeController';
-        $this->action = 'index';
-        break;
-      default:
-        $this->controllerName = 'ErrorsController';
-        $this->action = 'notFound';
-        break;
-    }
-    // echo "Routing to " . $this->controllerName . "->" . $this->action . "<br>";
   }
 }
