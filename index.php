@@ -95,6 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }, array_keys($_POST));
   Logger::info("POST params: ", $filtered);
 }
+if ($_FILES) {
+  Logger::info("Uploaded files: ", $_FILES);
+}
 $controller = new $controllerName($dbConnection);
 $request = $_REQUEST;
 $request['page'] ??= NULL;

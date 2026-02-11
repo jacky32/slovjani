@@ -144,6 +144,18 @@ users:
     unauthorized: Nemáte oprávnění upravit tohoto uživatele.
     success: Uživatel byl úspěšně aktualizován.
 
+attachments:
+  index:
+    title: Přílohy
+    no_attachments_found: Žádné přílohy nebyly nalezeny.
+  new:
+    title: Nová příloha
+  show:
+    attachment_not_found: Příloha nebyla nalezena.
+  destroy:
+    success: Příloha byla úspěšně smazána.
+    unauthorized: Nemáte oprávnění smazat tuto přílohu.
+
 attributes:
   post:
     name: Název

@@ -23,3 +23,6 @@ COPY . /var/www/html
 
 RUN composer self-update
 RUN composer install
+
+RUN mkdir -p /var/www/html/uploads
+RUN chmod -R 777 /var/www/html/uploads

@@ -30,6 +30,10 @@ class Router
       return;
     }
 
+    if ($this->nestedResources('posts', 'attachments', true, ["show", "new", "create", "edit", "update", "destroy"])) {
+      return;
+    }
+
     // /admin/events
     if ($this->resources('events', true)) {
       return;
