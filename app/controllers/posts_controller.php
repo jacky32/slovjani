@@ -14,8 +14,10 @@ class PostsController extends ApplicationController
 
   public function index($request)
   {
+    $pagination = Post::publiclyVisible()->paginate($request['page']);
     $this->render("posts/index", [
-      "posts" => Post::publiclyVisible()->orderBy('created_at', 'desc')->get() // TODO: Pagination
+      "posts" => $pagination->resources,
+      "pagination" => $pagination
     ]);
   }
 
@@ -23,9 +25,11 @@ class PostsController extends ApplicationController
   {
     $post = Post::publiclyVisible()->find($this->id);
     if ($post) {
+      $pagination = Post::publiclyVisible()->paginate($request['page'], $this->id);
       $this->render("posts/show", [
         "post" => $post,
-        "posts" => Post::publiclyVisible()->orderBy('created_at', 'desc')->get() // TODO: Pagination
+        "posts" => $pagination->resources,
+        "pagination" => $pagination
       ]);
     } else {
       $this->addFlash('error', t("posts.show.post_not_found"));
