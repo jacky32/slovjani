@@ -1,4 +1,4 @@
-<?= $this->renderPartial("admin/votings/_left_pane", ['votings' => $votings, 'errors' => isset($errors) ? $errors : []]) ?>
+<?= $this->renderPartial("admin/votings/_left_pane", ['votings' => $votings, 'id' => $voting->id, 'errors' => isset($errors) ? $errors : []]) ?>
 
 <form action='/admin/votings/<?= $voting->id ?>/users_questions' method='POST'>
   <?php $this->renderCSRFToken('/admin/votings/' . $voting->id . '/users_questions'); ?>

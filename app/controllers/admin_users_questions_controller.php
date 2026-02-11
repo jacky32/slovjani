@@ -17,9 +17,11 @@ class AdminUsersQuestionsController extends AdminController
   public function new($request)
   {
     $voting = Voting::find($this->voting_id);
+    $pagination = Voting::paginate($request['page'], $this->voting_id);
     $this->render("admin/users_questions/new", [
       "voting" => $voting,
-      "votings" => Voting::all(),
+      "votings" => $pagination->resources,
+      "pagination" => $pagination,
       "questions" => $voting->questions->get()
     ]);
   }
@@ -54,9 +56,11 @@ class AdminUsersQuestionsController extends AdminController
       // if ($e instanceof \ActiveModel\ValidationException) {
       $this->addFlash('error', $e->getMessage());
       $voting = Voting::find($this->voting_id);
+      $pagination = Voting::paginate($request['page'], $this->voting_id);
       $this->render("admin/users_questions/new", [
         "voting" => $voting,
-        "votings" => Voting::all(),
+        "votings" => $pagination->resources,
+        "pagination" => $pagination,
         "questions" => $voting->questions->get(),
         "errors" => $errors,
       ]);
