@@ -81,7 +81,7 @@
   <h3><?= t("attachments.index.title") ?></h3>
   <?php foreach ($voting->attachments->get() as $attachment): ?>
     <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
-      <a href='/admin/votings/<?= $voting->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->file_name ?></a><br>
+      <a href='/admin/votings/<?= $voting->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a><br>
       <?php if ($voting->status == "DRAFT" && $voting->creator_id == $this->auth->getUserId()) : ?>
         <form action='/admin/votings/<?= $voting->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST' style="margin:0;">
           <?= $this->renderCSRFToken("/admin/votings/{$voting->id}/attachments/{$attachment->id}/destroy") ?>

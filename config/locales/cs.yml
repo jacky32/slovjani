@@ -184,6 +184,9 @@ attributes:
     datetime_start: Datum a čas začátku
     datetime_end: Datum a čas konce
     is_publicly_visible: Viditelné veřejnosti
+  attachment:
+    visible_name: Název
+    is_publicly_visible: Viditelné veřejnosti
 
 enums:
   question_options:

@@ -8,8 +8,10 @@ class Attachment extends ApplicationRecord
     'file_name',
     'file_size',
     'file_type',
+    'visible_name',
     'token',
     'creator_id',
+    'is_publicly_visible',
     'created_at',
     'updated_at'
   ];
@@ -31,7 +33,7 @@ class Attachment extends ApplicationRecord
   ];
 
   protected static array $validations = [
-    'presence' => ['creator_id', 'file_name', 'file_size', 'file_type', 'token', 'resource_id', 'resource_type'],
+    'presence' => ['creator_id', 'file_name', 'file_size', 'file_type', 'token', 'resource_id', 'resource_type', 'visible_name'],
   ];
 
   public function __construct($data = [])

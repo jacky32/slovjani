@@ -59,6 +59,8 @@ class AdminAttachmentsController extends AdminController
           'file_name' => $fileName,
           'file_size' => $fileSize,
           'file_type' => $fileType,
+          'visible_name' => $request['attachment']['visible_name'] ?? $fileName,
+          'is_publicly_visible' => isset($request['attachment']['is_publicly_visible']) ? true : 0,
           'creator_id' => $this->auth->getUserId()
         ]);
         $attachment->save();

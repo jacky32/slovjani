@@ -20,8 +20,18 @@ class Router
       return;
     }
 
+    // /posts/:id/attachments
+    if ($this->nestedResources('posts', 'attachments', false, ["show"])) {
+      return;
+    }
+
     // /events
     if ($this->resources('events')) {
+      return;
+    }
+
+    // /events/:id/attachments
+    if ($this->nestedResources('events', 'attachments', false, ["show"])) {
       return;
     }
 

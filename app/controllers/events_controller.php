@@ -26,10 +26,12 @@ class EventsController extends ApplicationController
     $event = Event::where(["is_publicly_visible" => true])->find($this->id);
     if ($event) {
       $pagination = Event::where(["is_publicly_visible" => true])->paginate($request['page'], $this->id);
+      $attachments = $event->attachments->where(['is_publicly_visible' => true])->get();
       $this->render("events/show", [
         "event" => $event,
         "events" => $pagination->resources,
-        "pagination" => $pagination
+        "pagination" => $pagination,
+        "attachments" => $attachments
       ]);
     } else {
       $this->addFlash('error', t("events.show.event_not_found"));

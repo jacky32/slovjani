@@ -31,7 +31,7 @@
   <h3><?= t("attachments.index.title") ?></h3>
   <?php foreach ($user->attachments->get() as $attachment): ?>
     <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
-      <a href='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->file_name ?></a><br>
+      <a href='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a><br>
       <form action='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST' style="margin:0;">
         <?= $this->renderCSRFToken("/admin/users/{$user->id}/attachments/{$attachment->id}/destroy") ?>
         <button class='button' type='submit'><?= t("delete") ?></button>

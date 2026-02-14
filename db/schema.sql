@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS DB_NAME.users (
   `registered` int unsigned NOT NULL,
   `last_login` int unsigned DEFAULT NULL,
   `force_logout` mediumint unsigned NOT NULL DEFAULT '0',
+  'created_at' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'updated_at' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -180,10 +182,12 @@ CREATE TABLE IF NOT EXISTS DB_NAME.attachments (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   resource_id INT UNSIGNED NOT NULL,
   resource_type TINYTEXT NOT NULL,
+  visible_name TINYTEXT NOT NULL,
   file_name TINYTEXT NOT NULL,
   file_size INT UNSIGNED NOT NULL,
   file_type TINYTEXT NOT NULL,
   token TINYTEXT NOT NULL,
+  is_publicly_visible BOOLEAN NOT NULL DEFAULT FALSE,
   creator_id INT UNSIGNED,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

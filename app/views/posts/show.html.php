@@ -21,7 +21,13 @@
     ?>
   </small>
   <p><?= htmlspecialchars($post->body ?? '') ?></p>
-  <!-- <a href='/posts/<?= $post->id ?>/edit' class='button'><?= t("edit") ?></a> -->
 
-  <!-- <?= $this->renderDestroyButton($post) ?> -->
+  <hr>
+  <h3><?= t("attachments.index.title") ?></h3>
+  <?php foreach ($attachments as $attachment): ?>
+    <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
+      <a href='/posts/<?= $post->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a><br>
+    </div>
+  <?php endforeach; ?>
+  <br>
 </section>

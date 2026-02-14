@@ -12,16 +12,12 @@ class User extends ApplicationRecord
     'username',
     'email',
     'password',
-    'roles_mask'
+    'roles_mask',
+    'created_at',
+    'updated_at'
   ];
 
   protected static array $relations  = [
-    // 'belongs_to' => [
-    //   'creator' => [
-    //     'class_name' => User::class,
-    //     'foreign_key' => 'creator_id'
-    //   ]
-    // ],
     'has_many' => [
       'posts' => [
         'class_name' => Post::class,

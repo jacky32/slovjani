@@ -26,10 +26,12 @@ class PostsController extends ApplicationController
     $post = Post::publiclyVisible()->find($this->id);
     if ($post) {
       $pagination = Post::publiclyVisible()->paginate($request['page'], $this->id);
+      $attachments = $post->attachments->where(['is_publicly_visible' => true])->get();
       $this->render("posts/show", [
         "post" => $post,
         "posts" => $pagination->resources,
-        "pagination" => $pagination
+        "pagination" => $pagination,
+        "attachments" => $attachments
       ]);
     } else {
       $this->addFlash('error', t("posts.show.post_not_found"));
