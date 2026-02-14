@@ -45,4 +45,19 @@
       <?= ($event->creator_id == $this->auth->getUserId() ? "<button class='button' type='submit'>" . t("delete") . "</button>" : "") ?>
     </form>
   <?php endif; ?>
+
+
+  <h3><?= t("attachments.index.title") ?></h3>
+  <?php foreach ($event->attachments->get() as $attachment): ?>
+    <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
+      <a href='/admin/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->file_name ?></a><br>
+      <form action='/admin/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST' style="margin:0;">
+        <?= $this->renderCSRFToken("/admin/events/{$event->id}/attachments/{$attachment->id}/destroy") ?>
+        <button class='button' type='submit'><?= t("delete") ?></button>
+      </form>
+    </div>
+  <?php endforeach; ?>
+  <br>
+  <a href='/admin/events/<?= $event->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a><br>
+
 </section>

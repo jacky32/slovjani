@@ -30,6 +30,7 @@ class Router
       return;
     }
 
+    // /admin/posts/:id/attachments
     if ($this->nestedResources('posts', 'attachments', true, ["show", "new", "create", "edit", "update", "destroy"])) {
       return;
     }
@@ -39,8 +40,18 @@ class Router
       return;
     }
 
+    // /admin/events/:id/attachments
+    if ($this->nestedResources('events', 'attachments', true, ["show", "new", "create", "edit", "update", "destroy"])) {
+      return;
+    }
+
     // /admin/users
     if ($this->resources('users', true, ["index", "show", "edit", "update", "destroy"])) {
+      return;
+    }
+
+    // /admin/users/:id/attachments
+    if ($this->nestedResources('users', 'attachments', true, ["show", "new", "create", "edit", "update", "destroy"])) {
       return;
     }
 

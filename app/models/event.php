@@ -20,6 +20,14 @@ class Event extends ApplicationRecord
         'foreign_key' => 'creator_id'
       ]
     ],
+    'has_many' => [
+      'attachments' => [
+        'class_name' => Attachment::class,
+        'foreign_key' => 'resource_id',
+        'foreign_type' => 'resource_type',
+        'polymorphic' => true
+      ]
+    ]
   ];
 
   protected static array $validations = [

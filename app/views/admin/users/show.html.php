@@ -21,7 +21,24 @@
     <?= t("attributes.user.email") ?>: <?= htmlspecialchars($user->email ?? '') ?><br>
     <?= t("attributes.user.role") ?>: <?= $user->roles_mask == \Delight\Auth\Role::ADMIN ? t("enums.user_roles.ADMIN") : ($user->roles_mask == \Delight\Auth\Role::COLLABORATOR ? t("enums.user_roles.COLLABORATOR") : t("enums.user_roles.NONE")) ?><br>
   </small>
+
+  <br>
   <a href='/admin/users/<?= $user->id ?>/edit' class='button'><?= t("edit") ?></a>
 
   <?= $this->renderDestroyButton($user) ?>
+
+
+  <h3><?= t("attachments.index.title") ?></h3>
+  <?php foreach ($user->attachments->get() as $attachment): ?>
+    <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
+      <a href='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->file_name ?></a><br>
+      <form action='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST' style="margin:0;">
+        <?= $this->renderCSRFToken("/admin/users/{$user->id}/attachments/{$attachment->id}/destroy") ?>
+        <button class='button' type='submit'><?= t("delete") ?></button>
+      </form>
+    </div>
+  <?php endforeach; ?>
+  <br>
+  <a href='/admin/users/<?= $user->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a><br>
+
 </section>

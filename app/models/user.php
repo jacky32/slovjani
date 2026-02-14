@@ -34,6 +34,12 @@ class User extends ApplicationRecord
       'users_questions' => [
         'class_name' => UsersQuestion::class,
         'foreign_key' => 'user_id'
+      ],
+      'attachments' => [
+        'class_name' => Attachment::class,
+        'foreign_key' => 'resource_id',
+        'foreign_type' => 'resource_type',
+        'polymorphic' => true
       ]
     ]
   ];
