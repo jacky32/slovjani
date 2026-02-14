@@ -55,22 +55,27 @@ class Router
       return;
     }
 
-    // /admin/votings/:id/questions
-    if ($this->nestedResources('votings', 'questions', true, ["new", "create", "edit", "update", "destroy"])) {
-      return;
-    }
-
-    // /admin/votings/:id/questions
-    if ($this->nestedResources('votings', 'users_questions', true, ["new", "create", "destroy"])) {
-      return;
-    }
-
     // /admin/votings
     if ($this->resources('votings', true)) {
       return;
     }
 
-    // OPTIMIZE: pattern matching in php ???
+    // /admin/votings/:id/questions
+    if ($this->nestedResources('votings', 'questions', true, ["new", "create", "edit", "update", "destroy"])) {
+      return;
+    }
+
+    // /admin/votings/:id/users_questions
+    if ($this->nestedResources('votings', 'users_questions', true, ["new", "create", "destroy"])) {
+      return;
+    }
+
+    // /admin/votings/:id/attachments
+    if ($this->nestedResources('votings', 'attachments', true, ["show", "new", "create", "edit", "update", "destroy"])) {
+      return;
+    }
+
+
     switch ($this->routeAction) {
       case '/login':
         $this->controllerName = 'SessionsController';

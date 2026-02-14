@@ -24,6 +24,12 @@ class Voting extends ApplicationRecord
       'questions' => [
         'class_name' => Question::class,
         'foreign_key' => 'voting_id'
+      ],
+      'attachments' => [
+        'class_name' => Attachment::class,
+        'foreign_key' => 'resource_id',
+        'foreign_type' => 'resource_type',
+        'polymorphic' => true
       ]
     ]
   ];

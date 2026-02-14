@@ -150,11 +150,15 @@ attachments:
     no_attachments_found: Žádné přílohy nebyly nalezeny.
   new:
     title: Nová příloha
+  create:
+    success: Příloha byla úspěšně přidána.
+    file_move_error: Nastala chyba při ukládání souboru.
   show:
     attachment_not_found: Příloha nebyla nalezena.
   destroy:
     success: Příloha byla úspěšně smazána.
     unauthorized: Nemáte oprávnění smazat tuto přílohu.
+    error: Nastala chyba při mazání přílohy.
 
 attributes:
   post:

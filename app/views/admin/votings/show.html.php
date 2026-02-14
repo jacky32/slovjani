@@ -76,4 +76,22 @@
       <?= ($voting->creator_id == $this->auth->getUserId() ? "<button class='button' type='submit'>" . t("delete") . "</button>" : "") ?>
     </form>
   <?php endif; ?>
+
+
+  <h3><?= t("attachments.index.title") ?></h3>
+  <?php foreach ($voting->attachments->get() as $attachment): ?>
+    <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
+      <a href='/admin/votings/<?= $voting->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->file_name ?></a><br>
+      <?php if ($voting->status == "DRAFT" && $voting->creator_id == $this->auth->getUserId()) : ?>
+        <form action='/admin/votings/<?= $voting->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST' style="margin:0;">
+          <?= $this->renderCSRFToken("/admin/votings/{$voting->id}/attachments/{$attachment->id}/destroy") ?>
+          <button class='button' type='submit'><?= t("delete") ?></button>
+        </form>
+      <?php endif; ?>
+    </div>
+  <?php endforeach; ?>
+  <br>
+  <?php if ($voting->status == "DRAFT" && $voting->creator_id == $this->auth->getUserId()) : ?>
+    <a href='/admin/votings/<?= $voting->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a><br>
+  <?php endif; ?>
 </section>
