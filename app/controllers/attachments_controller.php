@@ -1,5 +1,5 @@
 <?php
-class AttachmentsController extends AdminController
+class AttachmentsController extends ApplicationController
 {
   private $resource_type;
   private $resource_id;
