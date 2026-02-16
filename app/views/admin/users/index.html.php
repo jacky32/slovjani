@@ -2,5 +2,5 @@
 <section id="rightpane">
   index stránka kontaktů
   <br><br>
-  <a href='/admin/users/new' class='button'><?= t("users.new.title") ?></a>
+  <!-- <a href='/admin/users/new' class='button'><?= t("users.new.title") ?></a> -->
 </section>
