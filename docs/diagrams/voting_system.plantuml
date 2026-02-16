@@ -42,9 +42,9 @@ class UsersQuestion {
 }
 
 ' Vazby
-Voting "1" -- "N" Question
-User "1" -- "N" UsersQuestion
-Question "1" -- "N" UsersQuestion
-User "1" - "N" Voting
+Voting "1" -- "0..*" Question
+User "1" -- "0..*" UsersQuestion
+Question "1" -- "0..*" UsersQuestion
+User "1" - "0..*" Voting
 
 @enduml

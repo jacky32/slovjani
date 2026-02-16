@@ -24,8 +24,8 @@ package "Veřejná sekce" {
         # Odkazy na další stránky
     }
 
-    class "Příspěvky (Veřejné)" as PostsPub <<Public>> {
-        + Seznam zveřejněných příspěvků
+    class "Zprávy (Veřejné)" as PostsPub <<Public>> {
+        + Seznam zveřejněných zpráv
     }
 
     class "Činnost (Veřejné)" as CinnostPub <<Public>> {
@@ -41,8 +41,8 @@ package "Administrační sekce (Login required)" {
         + odhlásit()
     }
 
-    class "Příspěvky (Interní)" as AdminPostsPage <<Admin>> {
-        + Správa příspěvků
+    class "Zprávy (Interní)" as AdminPostsPage <<Admin>> {
+        + Správa zpráv
     }
 
     class "Kontakty" as Kontakty <<Admin>> {

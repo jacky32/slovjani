@@ -36,7 +36,7 @@ errors:
 
 menu:
   root: Medžuslovjanski jazyk
-  posts: Příspěvky
+  posts: Zprávy
   eoffice: E-kancelář
   users: Kontakty
   events: Činnost
@@ -50,7 +50,7 @@ menu:
 
 posts:
   index:
-    no_posts_found: Žádné příspěvky nebyly nalezeny.
+    no_posts_found: Žádné zprávy nebyly nalezeny.
   new:
     title: Nový příspěvek
   show:
