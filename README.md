@@ -17,6 +17,10 @@
 - for user authentication
 - https://github.com/delight-im/PHP-Auth?tab=readme-ov-file#usage
 
+## PHP Unit
+
+- tests
+
 # Lokalizace
 
 - Pro možnost využití YAMLu se musí nainstalovat libyaml a extension skrz PECL

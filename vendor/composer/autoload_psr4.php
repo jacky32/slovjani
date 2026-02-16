@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'ParagonIE\\ConstantTime\\' => array($vendorDir . '/paragonie/constant_time_encoding/src'),
     'Delight\\Otp\\' => array($vendorDir . '/delight-im/otp/src'),
     'Delight\\Http\\' => array($vendorDir . '/delight-im/http/src'),
@@ -13,4 +14,5 @@ return array(
     'Delight\\Cookie\\' => array($vendorDir . '/delight-im/cookie/src'),
     'Delight\\Base64\\' => array($vendorDir . '/delight-im/base64/src'),
     'Delight\\Auth\\' => array($vendorDir . '/delight-im/auth/src'),
+    'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );

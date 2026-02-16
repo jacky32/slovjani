@@ -1,5 +1,8 @@
 {
     "require": {
         "delight-im/auth": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^13"
     }
 }
