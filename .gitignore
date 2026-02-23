@@ -1,2 +1,4 @@
 vendor/
 uploads/*/
+build/cache/*
+docs/app/.build/

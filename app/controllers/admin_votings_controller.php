@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Controllers
+ */
 
 class AdminVotingsController extends AdminController
 {

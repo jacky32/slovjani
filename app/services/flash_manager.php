@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Services
+ */
 class FlashManager
 {
   public static function addFlash($type, $message)

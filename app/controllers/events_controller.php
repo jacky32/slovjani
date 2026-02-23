@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Controllers
+ */
 class EventsController extends ApplicationController
 {
   private $id;

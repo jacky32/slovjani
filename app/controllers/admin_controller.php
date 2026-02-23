@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Controllers
+ */
 class AdminController extends ApplicationController
 {
   public function __construct()

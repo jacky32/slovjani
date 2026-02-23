@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Models
+ */
 class User extends ApplicationRecord
 {
   const AVAILABLE_ROLES = [

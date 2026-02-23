@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Services
+ */
 class Database
 {
   private $connectionParams;

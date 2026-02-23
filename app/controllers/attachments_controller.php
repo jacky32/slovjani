@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Controllers
+ */
 class AttachmentsController extends ApplicationController
 {
   private $resource_type;

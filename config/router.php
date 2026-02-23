@@ -1,13 +1,32 @@
 <?php
 
 /**
+ * @package Config
+ *
+ */
+/**
  * Simple Router class to map URLs to controller actions.
  * Supports RESTful resource routing for basic CRUD operations.
  */
 class Router
 {
+  /**
+   * @var string
+   * The name of the controller to route to (e.g., 'PostsController')
+   * This will be set based on the matched route and used to instantiate the controller later.
+   */
   public $controllerName;
+
+  /**
+   * @var string
+   * The action method to call on the controller (e.g., 'index', 'show', 'create')
+   */
   public $action;
+
+  /**
+   * @var string
+   * The normalized path of the incoming request (e.g., '/posts/5/edit')
+   */
   private $routeAction;
 
   public function __construct()

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Models
+ */
 class UsersQuestion extends ApplicationRecord
 {
   protected static array $db_attributes = [

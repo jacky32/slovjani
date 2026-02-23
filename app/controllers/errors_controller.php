@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Controllers
+ */
 class ErrorsController extends ApplicationController
 {
 

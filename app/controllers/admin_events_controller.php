@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Controllers
+ */
 
 class AdminEventsController extends AdminController
 {

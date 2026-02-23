@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Controllers
+ */
 class UsersController extends ApplicationController
 {
   private $user;

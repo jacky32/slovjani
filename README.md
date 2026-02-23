@@ -59,3 +59,14 @@ Pro přegenerování všech diagramů lze využít wildcard:
 ```bash
   plantuml docs/diagrams/*.plantuml
 ```
+
+# Dokumentace
+
+Vygeneruje dokumentaci do `/docs/app/` z `app/`, `config/`, `db/`, `lib/` a `public/` složek.
+Na základě komentářů v PHPDoc v kódu aplikace.
+
+```bash
+  docker run --rm -v "$(pwd):/data" "phpdoc/phpdoc:3"
+```
+
+Nastavení exportu dokumentace lze upravit v `./phpdoc.dist.xml`

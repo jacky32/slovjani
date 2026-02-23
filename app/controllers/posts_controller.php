@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Controllers
+ */
 class PostsController extends ApplicationController
 {
   private $id;

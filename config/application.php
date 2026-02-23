@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @package Config
+ */
+
 return [
   'connection' => [
     'database_type' => 'mysqli',

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Controllers
+ */
 class AdminUsersController extends AdminController
 {
   private $id;
