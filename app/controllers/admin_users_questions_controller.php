@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package Controllers
  */
@@ -36,15 +37,18 @@ class AdminUsersQuestionsController extends AdminController
       $this->verifyCSRF('/admin/votings/' . $this->voting_id . '/users_questions');
       $voting = Voting::find($this->voting_id);
       // TODO: Move validation to model?
+      Logger::debug("1");
       if ($voting->status != "IN_PROGRESS") {
         throw new Exception("Hlasování není aktivní.");
       }
       $valid_question_ids = $voting->questions->pluck('id');
+      Logger::debug("2");
       // Create new voting
       foreach ($request['users_question'] as $questionData) {
         if (!in_array($questionData['question_id'], $valid_question_ids)) {
           throw new Exception("Neplatná otázka pro toto hlasování.");
         }
+        Logger::debug("Question ID: " . $questionData['question_id'] . ", Chosen Option: " . $questionData['chosen_option'] . " user id " . $this->auth->getUserId());
         $users_question = new UsersQuestion([
           'chosen_option' => $questionData['chosen_option'],
           'question_id' => $questionData['question_id'],
@@ -52,6 +56,7 @@ class AdminUsersQuestionsController extends AdminController
         ]);
         $users_question->save();
       }
+      Logger::debug("3");
       $this->addFlash('success', "Úspěšně odhlasováno.");
       header("Location: /admin/votings/" . $this->voting_id);
     } catch (Exception $e) {

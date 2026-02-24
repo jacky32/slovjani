@@ -25,6 +25,12 @@
   ./vendor/bin/phpunit ./tests/lib/helpers_test.php
 ```
 
+- případně lze všechny testy spustit bez specifikování konkrétního souboru
+
+```bash
+  ./vendor/bin/phpunit
+```
+
 # Lokalizace
 
 - Pro možnost využití YAMLu se musí nainstalovat libyaml a extension skrz PECL

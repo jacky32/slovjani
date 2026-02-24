@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package Models
  */
@@ -11,6 +12,8 @@ class UsersQuestion extends ApplicationRecord
     'created_at',
     'updated_at'
   ];
+
+  protected static array $composite_primary_key = ['user_id', 'question_id'];
 
   protected static array $relations  = [
     'belongs_to' => [
