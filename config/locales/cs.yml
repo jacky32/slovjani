@@ -35,7 +35,7 @@ errors:
   unauthorized: Nemáte oprávnění provést tuto akci.
 
 menu:
-  root: Medžuslovjanski jazyk
+  root: Medžuslovjansky jezyk
   posts: Zprávy
   eoffice: E-kancelář
   users: Kontakty
@@ -45,8 +45,8 @@ menu:
   logout: Odhlásit se
   header:
     logo:
-      lat: Slované
-      cyr: Словѣне
+      lat: Slovjani
+      cyr: Словјани
 
 posts:
   index:
