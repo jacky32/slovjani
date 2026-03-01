@@ -22,19 +22,19 @@
     <?= t("attributes.user.role") ?>: <?= $user->roles_mask == \Delight\Auth\Role::ADMIN ? t("enums.user_roles.ADMIN") : ($user->roles_mask == \Delight\Auth\Role::COLLABORATOR ? t("enums.user_roles.COLLABORATOR") : t("enums.user_roles.NONE")) ?><br>
   </small>
 
-  <br>
-  <a href='/admin/users/<?= $user->id ?>/edit' class='button'><?= t("edit") ?></a>
-
-  <?= $this->renderDestroyButton($user) ?>
+  <div class="action-buttons">
+    <a href='/admin/users/<?= $user->id ?>/edit' class='button'><?= t("edit") ?></a>
+    <?= $this->renderDestroyButton($user) ?>
+  </div>
 
 
   <h3><?= t("attachments.index.title") ?></h3>
   <?php foreach ($user->attachments->get() as $attachment): ?>
-    <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
-      <a href='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a><br>
-      <form action='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST' style="margin:0;">
+    <div class="attachment-row">
+      <a href='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a>
+      <form action='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST'>
         <?= $this->renderCSRFToken("/admin/users/{$user->id}/attachments/{$attachment->id}/destroy") ?>
-        <button class='button' type='submit'><?= t("delete") ?></button>
+        <button class='button button--danger' type='submit'><?= t("delete") ?></button>
       </form>
     </div>
   <?php endforeach; ?>

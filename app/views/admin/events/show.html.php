@@ -38,22 +38,24 @@
   <p><?= htmlspecialchars($event->description ?? '') ?></p>
 
   <?php if ($event->creator_id == $this->auth->getUserId()) : ?>
-    <a href='/admin/events/<?= $event->id ?>/edit' class='button'><?= t("edit") ?></a>
-    <form action='/admin/events/<?= $event->id ?>/destroy' method='POST'>
-      <?php $this->renderCSRFToken('/admin/events/destroy'); ?>
-      <input type='hidden' name='id' value='<?= $event->id ?>' />
-      <?= ($event->creator_id == $this->auth->getUserId() ? "<button class='button' type='submit'>" . t("delete") . "</button>" : "") ?>
-    </form>
+    <div class="action-buttons">
+      <a href='/admin/events/<?= $event->id ?>/edit' class='button'><?= t("edit") ?></a>
+      <form action='/admin/events/<?= $event->id ?>/destroy' method='POST'>
+        <?php $this->renderCSRFToken('/admin/events/destroy'); ?>
+        <input type='hidden' name='id' value='<?= $event->id ?>' />
+        <?= ($event->creator_id == $this->auth->getUserId() ? "<button class='button button--danger' type='submit'>" . t("delete") . "</button>" : "") ?>
+      </form>
+    </div>
   <?php endif; ?>
 
-
+  <hr>
   <h3><?= t("attachments.index.title") ?></h3>
   <?php foreach ($event->attachments->get() as $attachment): ?>
-    <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
-      <a href='/admin/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a><br>
-      <form action='/admin/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST' style="margin:0;">
+    <div class="attachment-row">
+      <a href='/admin/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a>
+      <form action='/admin/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST'>
         <?= $this->renderCSRFToken("/admin/events/{$event->id}/attachments/{$attachment->id}/destroy") ?>
-        <button class='button' type='submit'><?= t("delete") ?></button>
+        <button class='button button--danger' type='submit'><?= t("delete") ?></button>
       </form>
     </div>
   <?php endforeach; ?>

@@ -56,42 +56,46 @@
 
   <!-- TODO: only admin -->
   <?php if ($voting->status == "IN_PROGRESS") : ?>
-    <form action='/admin/votings/<?= $voting->id ?>' method='POST'>
-      <?php $this->renderCSRFToken('/admin/votings/' . $voting->id); ?>
-      <input type='hidden' name='voting[status]' value='COMPLETED' />
-      <button class='button' type='submit'><?= t("votings.show.end_voting") ?></button>
-    </form>
-    <form action='/admin/votings/<?= $voting->id ?>' method='POST'>
-      <?php $this->renderCSRFToken('/admin/votings/' . $voting->id); ?>
-      <input type='hidden' name='voting[status]' value='CANCELLED' />
-      <button class='button' type='submit'><?= t("votings.show.cancel_voting") ?></button>
-    </form>
+    <div class="action-buttons">
+      <form action='/admin/votings/<?= $voting->id ?>' method='POST'>
+        <?php $this->renderCSRFToken('/admin/votings/' . $voting->id); ?>
+        <input type='hidden' name='voting[status]' value='COMPLETED' />
+        <button class='button' type='submit'><?= t("votings.show.end_voting") ?></button>
+      </form>
+      <form action='/admin/votings/<?= $voting->id ?>' method='POST'>
+        <?php $this->renderCSRFToken('/admin/votings/' . $voting->id); ?>
+        <input type='hidden' name='voting[status]' value='CANCELLED' />
+        <button class='button button--danger' type='submit'><?= t("votings.show.cancel_voting") ?></button>
+      </form>
+    </div>
   <?php endif; ?>
 
-  <?php if ($voting->status == "DRAFT" && $voting->creator_id == $this->auth->getUserId()) : ?>
-    <a href='/admin/votings/<?= $voting->id ?>/edit' class='button'><?= t("edit") ?></a>
-    <form action='/admin/votings/<?= $voting->id ?>/destroy' method='POST'>
-      <?php $this->renderCSRFToken('/admin/votings/destroy'); ?>
-      <input type='hidden' name='id' value='<?= $voting->id ?>' />
-      <?= ($voting->creator_id == $this->auth->getUserId() ? "<button class='button' type='submit'>" . t("delete") . "</button>" : "") ?>
-    </form>
+  <?php if ($voting->status == "DRAFT" && $this->auth->hasRole(\Delight\Auth\Role::ADMIN)) : ?>
+    <div class="action-buttons">
+      <a href='/admin/votings/<?= $voting->id ?>/edit' class='button'><?= t("edit") ?></a>
+      <form action='/admin/votings/<?= $voting->id ?>/destroy' method='POST'>
+        <?php $this->renderCSRFToken('/admin/votings/destroy'); ?>
+        <input type='hidden' name='id' value='<?= $voting->id ?>' />
+        <?= ($this->auth->hasRole(\Delight\Auth\Role::ADMIN) ? "<button class='button button--danger' type='submit'>" . t("delete") . "</button>" : "") ?>
+      </form>
+    </div>
   <?php endif; ?>
 
 
   <h3><?= t("attachments.index.title") ?></h3>
   <?php foreach ($voting->attachments->get() as $attachment): ?>
-    <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
-      <a href='/admin/votings/<?= $voting->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a><br>
-      <?php if ($voting->status == "DRAFT" && $voting->creator_id == $this->auth->getUserId()) : ?>
-        <form action='/admin/votings/<?= $voting->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST' style="margin:0;">
+    <div class="attachment-row">
+      <a href='/admin/votings/<?= $voting->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a>
+      <?php if ($voting->status == "DRAFT" && $this->auth->hasRole(\Delight\Auth\Role::ADMIN)) : ?>
+        <form action='/admin/votings/<?= $voting->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST'>
           <?= $this->renderCSRFToken("/admin/votings/{$voting->id}/attachments/{$attachment->id}/destroy") ?>
-          <button class='button' type='submit'><?= t("delete") ?></button>
+          <button class='button button--danger' type='submit'><?= t("delete") ?></button>
         </form>
       <?php endif; ?>
     </div>
   <?php endforeach; ?>
   <br>
-  <?php if ($voting->status == "DRAFT" && $voting->creator_id == $this->auth->getUserId()) : ?>
+  <?php if ($voting->status == "DRAFT" && $this->auth->hasRole(\Delight\Auth\Role::ADMIN)) : ?>
     <a href='/admin/votings/<?= $voting->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a><br>
   <?php endif; ?>
 

@@ -148,7 +148,7 @@ class ViewManager
       return "<form action='" . $path . "' method='POST'>" .
         "<input type='hidden' name='token' value='" . hash_hmac('sha256', $path, $_SESSION['token']) . "' />" .
         "<input type='hidden' name='id' value='" . $object->id . "' />" .
-        "<button class='button' type='submit'>" . t("delete") . "</button>" .
+        "<button class='button button--danger' type='submit'>" . t("delete") . "</button>" .
         "</form>";
     }
     return "";

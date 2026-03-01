@@ -25,18 +25,19 @@
 
   <p><?= htmlspecialchars($post->body ?? '') ?></p>
 
-  <a href='/admin/posts/<?= $post->id ?>/edit' class='button'><?= t("edit") ?></a>
-
-  <?= $this->renderDestroyButton($post) ?>
+  <div class="action-buttons">
+    <a href='/admin/posts/<?= $post->id ?>/edit' class='button'><?= t("edit") ?></a>
+    <?= $this->renderDestroyButton($post) ?>
+  </div>
 
   <hr>
   <h3><?= t("attachments.index.title") ?></h3>
   <?php foreach ($post->attachments->get() as $attachment): ?>
-    <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
-      <a href='/admin/posts/<?= $post->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a><br>
-      <form action='/admin/posts/<?= $post->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST' style="margin:0;">
+    <div class="attachment-row">
+      <a href='/admin/posts/<?= $post->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a>
+      <form action='/admin/posts/<?= $post->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST'>
         <?= $this->renderCSRFToken("/admin/posts/{$post->id}/attachments/{$attachment->id}/destroy") ?>
-        <button class='button' type='submit'><?= t("delete") ?></button>
+        <button class='button button--danger' type='submit'><?= t("delete") ?></button>
       </form>
     </div>
   <?php endforeach; ?>
