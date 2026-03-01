@@ -35,9 +35,9 @@
             class='input input-md' />
         </label>
 
-        <button class="mt-4 btn btn-primary"><?= t("registrations.new.submit") ?></button>
+        <button class="mt-4 btn btn-primary"><?= $this->renderIcon('user-plus') ?> <?= t("registrations.new.submit") ?></button>
 
-        <a href="/login" class="mt-2 btn btn-neutral"><?= t("registrations.new.back_to_login") ?></a>
+        <a href="/login" class="mt-2 btn btn-neutral"><?= $this->renderIcon('arrow-right-on-rectangle') ?> <?= t("registrations.new.back_to_login") ?></a>
       </fieldset>
     </form>
   </div>

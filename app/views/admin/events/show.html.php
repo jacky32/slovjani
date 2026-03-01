@@ -39,11 +39,11 @@
 
   <?php if ($event->creator_id == $this->auth->getUserId()) : ?>
     <div class="action-buttons">
-      <a href='/admin/events/<?= $event->id ?>/edit' class='button'><?= t("edit") ?></a>
+      <a href='/admin/events/<?= $event->id ?>/edit' class='button'><?= $this->renderIcon('pencil-square') ?> <?= t("edit") ?></a>
       <form action='/admin/events/<?= $event->id ?>/destroy' method='POST'>
         <?php $this->renderCSRFToken('/admin/events/destroy'); ?>
         <input type='hidden' name='id' value='<?= $event->id ?>' />
-        <?= ($event->creator_id == $this->auth->getUserId() ? "<button class='button button--danger' type='submit'>" . t("delete") . "</button>" : "") ?>
+        <?= ($event->creator_id == $this->auth->getUserId() ? "<button class='button button--danger' type='submit'>" . $this->renderIcon('trash') . " " . t("delete") . "</button>" : "") ?>
       </form>
     </div>
   <?php endif; ?>
@@ -52,15 +52,15 @@
   <h3><?= t("attachments.index.title") ?></h3>
   <?php foreach ($event->attachments->get() as $attachment): ?>
     <div class="attachment-row">
-      <a href='/admin/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a>
+      <a href='/admin/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $this->renderIcon('paper-clip') ?> <?= $attachment->visible_name ?></a>
       <form action='/admin/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST'>
         <?= $this->renderCSRFToken("/admin/events/{$event->id}/attachments/{$attachment->id}/destroy") ?>
-        <button class='button button--danger' type='submit'><?= t("delete") ?></button>
+        <button class='button button--danger' type='submit'><?= $this->renderIcon('trash') ?> <?= t("delete") ?></button>
       </form>
     </div>
   <?php endforeach; ?>
   <br>
-  <a href='/admin/events/<?= $event->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a>
+  <a href='/admin/events/<?= $event->id ?>/attachments/new' class='button'><?= $this->renderIcon('paper-clip') ?> <?= t("attachments.new.title") ?></a>
 
   <?= $this->renderPartial("admin/comments/_index", [
     'comments_collection' => $event->comments,

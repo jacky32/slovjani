@@ -36,10 +36,10 @@
     <li>
       <?php if ($this->auth->isLoggedIn()): ?>
         <form class="menu-form" action="/logout" method="POST">
-          <button type="submit" class="button"><?= t("menu.logout") ?></button>
+          <button type="submit" class="button"><?= $this->renderIcon('arrow-left-on-rectangle') ?> <?= t("menu.logout") ?></button>
         </form>
       <?php else: ?>
-        <a href="/login" class="button"><?= t("menu.login") ?></a>
+        <a href="/login" class="button"><?= $this->renderIcon('arrow-right-on-rectangle') ?> <?= t("menu.login") ?></a>
       <?php endif; ?>
     </li>
     </ul>

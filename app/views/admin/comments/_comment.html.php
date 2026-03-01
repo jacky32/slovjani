@@ -8,7 +8,7 @@
   <p class="comment-body"><?= nl2br(htmlspecialchars($comment->body ?? '')) ?></p>
   <div class="comment-actions">
     <details class="comment-form-toggle">
-      <summary class="button"><?= t("edit") ?></summary>
+      <summary class="button"><?= $this->renderIcon('pencil-square') ?> <?= t("edit") ?></summary>
       <?= $this->renderPartial("admin/comments/_form", [
         'comment'       => $comment,
         'resource_type' => $resource_type,
@@ -24,7 +24,7 @@
     ]) ?>
     <?php if (($depth ?? 0) < 1): ?>
       <details class="comment-form-toggle">
-        <summary class="button"><?= t("reply") ?></summary>
+        <summary class="button"><?= $this->renderIcon('chat-bubble-left-ellipsis') ?> <?= t("reply") ?></summary>
         <?= $this->renderPartial("admin/comments/_form", [
           'comment'           => new Comment(),
           'resource_type'     => $resource_type,

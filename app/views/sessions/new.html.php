@@ -25,8 +25,8 @@
             class='input input-md' />
         </label>
 
-        <button class="mt-4 btn btn-primary"><?= t("sessions.new.submit") ?></button>
-        <a href="/registration" class="mt-2 btn btn-neutral"><?= t("sessions.new.to_register") ?></a>
+        <button class="mt-4 btn btn-primary"><?= $this->renderIcon('arrow-right-on-rectangle') ?> <?= t("sessions.new.submit") ?></button>
+        <a href="/registration" class="mt-2 btn btn-neutral"><?= $this->renderIcon('user-plus') ?> <?= t("sessions.new.to_register") ?></a>
       </fieldset>
     </form>
   </div>

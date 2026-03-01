@@ -11,7 +11,7 @@ $action  = $destroy
 
   <form action="<?= $action ?>" method="POST">
     <?= $this->renderCSRFToken($action) ?>
-    <button class="button" type="submit"><?= t("delete") ?></button>
+    <button class="button" type="submit"><?= $this->renderIcon('trash') ?> <?= t("delete") ?></button>
   </form>
 
 <?php elseif ($inline): ?>
@@ -24,8 +24,8 @@ $action  = $destroy
     <textarea name="comment[body]" class="input" rows="3" required
       <?= !$comment->id ? 'placeholder="' . t("comments.new.title") . '"' : '' ?>><?= $comment->id ? htmlspecialchars($comment->body ?? '') : '' ?></textarea>
     <div class="comment-inline-form__actions">
-      <button class="button" type="submit"><?= $comment->id ? t("update") : t("create") ?></button>
-      <button class="button" type="button" onclick="this.closest('details').removeAttribute('open')"><?= t("close") ?></button>
+      <button class="button" type="submit"><?= $this->renderIcon($comment->id ? 'pencil-square' : 'plus-circle') ?> <?= $comment->id ? t("update") : t("create") ?></button>
+      <button class="button" type="button" onclick="this.closest('details').removeAttribute('open')"><?= $this->renderIcon('x-mark') ?> <?= t("close") ?></button>
     </div>
   </form>
 
@@ -43,8 +43,8 @@ $action  = $destroy
 
       <?= $this->renderTextarea($comment, "body") ?>
 
-      <button class="button"><?= $comment->id ? t("update") : t("create") ?></button>
-      <a href="/admin/<?= $resource_type ?>/<?= $resource_id ?>" class="button"><?= t("cancel") ?></a>
+      <button class="button"><?= $this->renderIcon($comment->id ? 'pencil-square' : 'plus-circle') ?> <?= $comment->id ? t("update") : t("create") ?></button>
+      <a href="/admin/<?= $resource_type ?>/<?= $resource_id ?>" class="button"><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
     </fieldset>
   </form>
 

@@ -26,7 +26,7 @@
   <h3><?= t("attachments.index.title") ?></h3>
   <?php foreach ($attachments as $attachment): ?>
     <div style="display:flex; align-items:center; justify-items: center; gap:10px;">
-      <a href='/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a><br>
+      <a href='/events/<?= $event->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $this->renderIcon('paper-clip') ?> <?= $attachment->visible_name ?></a><br>
     </div>
   <?php endforeach; ?>
   <br>

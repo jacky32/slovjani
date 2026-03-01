@@ -17,8 +17,8 @@
     </label>
     <br>
 
-    <button class="button"><?= $event->id ? t("update") : t("create") ?></button>
-    <a href='/admin/events/' class='button'><?= t("cancel") ?></a>
+    <button class="button"><?= $this->renderIcon($event->id ? 'pencil-square' : 'plus-circle') ?> <?= $event->id ? t("update") : t("create") ?></button>
+    <a href='/admin/events/' class='button'><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
   </fieldset>
   <br>
 </form>

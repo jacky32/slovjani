@@ -8,7 +8,7 @@
     <?= $this->renderInput($question, "name") ?>
     <?= $this->renderTextarea($question, "description") ?>
 
-    <button class="button"><?= $question->id ? t("update") : t("create") ?></button>
-    <a href='/admin/votings/<?= $voting->id ?>' class='button'><?= t("cancel") ?></a>
+    <button class="button"><?= $this->renderIcon($question->id ? 'pencil-square' : 'plus-circle') ?> <?= $question->id ? t("update") : t("create") ?></button>
+    <a href='/admin/votings/<?= $voting->id ?>' class='button'><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
   </fieldset>
 </form>

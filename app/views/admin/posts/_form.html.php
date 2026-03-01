@@ -17,6 +17,6 @@
     </select>
     <br>
 
-    <button class="button"><?= $post->id ? t("update") : t("create") ?></button>
+    <button class="button"><?= $this->renderIcon($post->id ? 'pencil-square' : 'plus-circle') ?> <?= $post->id ? t("update") : t("create") ?></button>
   </fieldset>
 </form>

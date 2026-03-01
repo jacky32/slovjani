@@ -23,7 +23,7 @@
   </small>
 
   <div class="action-buttons">
-    <a href='/admin/users/<?= $user->id ?>/edit' class='button'><?= t("edit") ?></a>
+    <a href='/admin/users/<?= $user->id ?>/edit' class='button'><?= $this->renderIcon('pencil-square') ?> <?= t("edit") ?></a>
     <?= $this->renderDestroyButton($user) ?>
   </div>
 
@@ -31,15 +31,15 @@
   <h3><?= t("attachments.index.title") ?></h3>
   <?php foreach ($user->attachments->get() as $attachment): ?>
     <div class="attachment-row">
-      <a href='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $attachment->visible_name ?></a>
+      <a href='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>' target="_blank" class='button'><?= $this->renderIcon('paper-clip') ?> <?= $attachment->visible_name ?></a>
       <form action='/admin/users/<?= $user->id ?>/attachments/<?= $attachment->id ?>/destroy' method='POST'>
         <?= $this->renderCSRFToken("/admin/users/{$user->id}/attachments/{$attachment->id}/destroy") ?>
-        <button class='button button--danger' type='submit'><?= t("delete") ?></button>
+        <button class='button button--danger' type='submit'><?= $this->renderIcon('trash') ?> <?= t("delete") ?></button>
       </form>
     </div>
   <?php endforeach; ?>
   <br>
-  <a href='/admin/users/<?= $user->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a><br>
+  <a href='/admin/users/<?= $user->id ?>/attachments/new' class='button'><?= $this->renderIcon('paper-clip') ?> <?= t("attachments.new.title") ?></a><br>
 
   <?= $this->renderPartial("admin/comments/_index", [
     'comments_collection' => $user->comments,

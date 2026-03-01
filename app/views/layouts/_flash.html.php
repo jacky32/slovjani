@@ -5,7 +5,7 @@
       <?php foreach ($messages as $message) : ?>
         <div class="flash alert-<?= htmlspecialchars($type) ?>" role="alert">
           <p><?= htmlspecialchars($message) ?></p>
-          <button type="button" class="close" aria-label="Zavřít"><span></span></button>
+          <button type="button" class="close" aria-label="Zavřít"><?= $this->renderIcon('x-mark') ?></button>
         </div>
       <?php endforeach; ?>
     <?php endforeach; ?>

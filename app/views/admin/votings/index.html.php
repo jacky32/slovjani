@@ -2,5 +2,5 @@
 <section id="rightpane">
   <?= t("votings.index.placeholder") ?>
   <br><br>
-  <a href='/admin/votings/new' class='button'><?= t("votings.new.title") ?></a>
+  <a href='/admin/votings/new' class='button'><?= $this->renderIcon('plus-circle') ?> <?= t("votings.new.title") ?></a>
 </section>

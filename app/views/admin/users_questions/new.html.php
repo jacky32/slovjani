@@ -17,6 +17,6 @@
       <input type='hidden' name='users_question[<?= $index ?>][question_id]' value='<?= $question->id ?>' />
     </fieldset>
   <?php endforeach; ?>
-  <button class='button' type='submit'><?= t("users_questions.new.submit") ?></button>
+  <button class='button' type='submit'><?= $this->renderIcon('check') ?> <?= t("users_questions.new.submit") ?></button>
 </form>
 <hr>

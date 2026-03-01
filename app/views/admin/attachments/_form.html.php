@@ -16,7 +16,7 @@
     <input type="file" name="attachment[]" class="input" <?= $attachment->id ? "" : "required" ?>>
 
     <br>
-    <button class="button"><?= $attachment->id ? t("update") : t("create") ?></button>
-    <a href='/admin/<?= $resource_type ?>/<?= $resource_id ?>' class='button'><?= t("cancel") ?></a>
+    <button class="button"><?= $this->renderIcon($attachment->id ? 'pencil-square' : 'plus-circle') ?> <?= $attachment->id ? t("update") : t("create") ?></button>
+    <a href='/admin/<?= $resource_type ?>/<?= $resource_id ?>' class='button'><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
   </fieldset>
 </form>

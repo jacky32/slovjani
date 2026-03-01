@@ -19,6 +19,6 @@
     <br>
 
 
-    <button class="button"><?= $user->id ? t("update") : t("create") ?></button>
+    <button class="button"><?= $this->renderIcon($user->id ? 'pencil-square' : 'plus-circle') ?> <?= $user->id ? t("update") : t("create") ?></button>
   </fieldset>
 </form>

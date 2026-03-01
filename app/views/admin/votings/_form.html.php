@@ -12,8 +12,8 @@
     <?= $this->renderInput($voting, "datetime_end", "datetime-local") ?>
     <br>
 
-    <button class="button"><?= $voting->id ? t("update") : t("create") ?></button>
-    <a href='/admin/votings/' class='button'><?= t("cancel") ?></a>
+    <button class="button"><?= $this->renderIcon($voting->id ? 'pencil-square' : 'plus-circle') ?> <?= $voting->id ? t("update") : t("create") ?></button>
+    <a href='/admin/votings/' class='button'><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
   </fieldset>
   <br>
 </form>
