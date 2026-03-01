@@ -3,6 +3,8 @@ new: Nový
 update: Aktualizovat
 edit: Upravit
 delete: Smazat
+reply: Odpovědět
+close: Zavřít
 "yes": Ano
 "no": Ne
 cancel: Zrušit
@@ -207,6 +209,26 @@ attachments:
     unauthorized: Nemáte oprávnění smazat tuto přílohu.
     error: Nastala chyba při mazání přílohy.
 
+comments:
+  index:
+    title: Komentáře
+    no_comments: Zatím žádné komentáře.
+  new:
+    title: Nový komentář
+  edit:
+    title: Úprava komentáře
+  create:
+    success: Komentář byl úspěšně přidán.
+  update:
+    success: Komentář byl úspěšně aktualizován.
+    unauthorized: Nemáte oprávnění upravit tento komentář.
+  show:
+    comment_not_found: Komentář nebyl nalezen.
+  destroy:
+    success: Komentář byl úspěšně smazán.
+    unauthorized: Nemáte oprávnění smazat tento komentář.
+    error: Nastala chyba při mazání komentáře.
+
 attributes:
   post:
     name: Název
@@ -234,6 +256,8 @@ attributes:
   attachment:
     visible_name: Název
     is_publicly_visible: Viditelné veřejnosti
+  comment:
+    body: Text komentáře
 
 app:
   default_title: Slované

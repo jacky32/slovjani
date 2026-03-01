@@ -94,4 +94,11 @@
   <?php if ($voting->status == "DRAFT" && $voting->creator_id == $this->auth->getUserId()) : ?>
     <a href='/admin/votings/<?= $voting->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a><br>
   <?php endif; ?>
+
+  <?= $this->renderPartial("admin/comments/_index", [
+    'comments_collection' => $voting->comments,
+    'resource_type'       => 'votings',
+    'resource_id'         => $voting->id,
+  ]) ?>
+
 </section>

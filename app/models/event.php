@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package Models
  */
@@ -26,6 +27,12 @@ class Event extends ApplicationRecord
     'has_many' => [
       'attachments' => [
         'class_name' => Attachment::class,
+        'foreign_key' => 'resource_id',
+        'foreign_type' => 'resource_type',
+        'polymorphic' => true
+      ],
+      'comments' => [
+        'class_name' => Comment::class,
         'foreign_key' => 'resource_id',
         'foreign_type' => 'resource_type',
         'polymorphic' => true

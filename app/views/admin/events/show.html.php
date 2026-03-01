@@ -58,6 +58,12 @@
     </div>
   <?php endforeach; ?>
   <br>
-  <a href='/admin/events/<?= $event->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a><br>
+  <a href='/admin/events/<?= $event->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a>
+
+  <?= $this->renderPartial("admin/comments/_index", [
+    'comments_collection' => $event->comments,
+    'resource_type'       => 'events',
+    'resource_id'         => $event->id,
+  ]) ?>
 
 </section>

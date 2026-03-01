@@ -41,4 +41,10 @@
   <br>
   <a href='/admin/users/<?= $user->id ?>/attachments/new' class='button'><?= t("attachments.new.title") ?></a><br>
 
+  <?= $this->renderPartial("admin/comments/_index", [
+    'comments_collection' => $user->comments,
+    'resource_type'       => 'users',
+    'resource_id'         => $user->id,
+  ]) ?>
+
 </section>

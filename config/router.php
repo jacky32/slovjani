@@ -64,6 +64,11 @@ class Router
       return;
     }
 
+    // /admin/posts/:id/comments
+    if ($this->nestedResources('posts', 'comments', true, ["create", "update", "destroy"])) {
+      return;
+    }
+
     // /admin/events
     if ($this->resources('events', true)) {
       return;
@@ -74,6 +79,11 @@ class Router
       return;
     }
 
+    // /admin/events/:id/comments
+    if ($this->nestedResources('events', 'comments', true, ["create", "update", "destroy"])) {
+      return;
+    }
+
     // /admin/users
     if ($this->resources('users', true, ["index", "show", "edit", "update", "destroy"])) {
       return;
@@ -81,6 +91,11 @@ class Router
 
     // /admin/users/:id/attachments
     if ($this->nestedResources('users', 'attachments', true, ["show", "new", "create", "edit", "update", "destroy"])) {
+      return;
+    }
+
+    // /admin/users/:id/comments
+    if ($this->nestedResources('users', 'comments', true, ["create", "update", "destroy"])) {
       return;
     }
 
@@ -104,6 +119,10 @@ class Router
       return;
     }
 
+    // /admin/votings/:id/comments
+    if ($this->nestedResources('votings', 'comments', true, ["create", "update", "destroy"])) {
+      return;
+    }
 
     switch ($this->routeAction) {
       case '/login':

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package Models
  */
@@ -30,6 +31,12 @@ class Voting extends ApplicationRecord
       ],
       'attachments' => [
         'class_name' => Attachment::class,
+        'foreign_key' => 'resource_id',
+        'foreign_type' => 'resource_type',
+        'polymorphic' => true
+      ],
+      'comments' => [
+        'class_name' => Comment::class,
         'foreign_key' => 'resource_id',
         'foreign_type' => 'resource_type',
         'polymorphic' => true

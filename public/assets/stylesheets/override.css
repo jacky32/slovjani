@@ -1,3 +1,18 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 14pt;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
 #header-text.menu {
   display: flex;
 }
@@ -103,5 +118,72 @@ input[type="checkbox"], input[type="radio"] {
         font-weight: 700;
       }
     }
+  }
+}
+
+.comment-item {
+  border-left: 2px solid #ccc;
+  padding-left: 10px;
+  margin-bottom: 8px;
+
+  &.comment-item--child {
+    margin-left: 20px;
+  }
+
+  .comment-body {
+    margin: 4px 0;
+  }
+
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    form {
+      margin: 0;
+    }
+
+    &:has(.comment-form-toggle[open]) .comment-form-toggle:not([open]) {
+      display: none;
+    }
+  }
+}
+
+.comment-form-toggle {
+  summary {
+    cursor: pointer;
+    list-style: none;
+    max-width: fit-content;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  &[open] {
+    flex-basis: 100%;
+
+    & > summary {
+      display: none;
+    }
+  }
+}
+
+.comment-inline-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+  .comment-inline-form__actions {
+    display: flex;
+    gap: 6px;
   }
 }
