@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package Services
  */
@@ -13,7 +14,13 @@ class ViewManager
   private $errors;
   private $pagination;
 
-  public function __construct($auth)
+
+  /**
+   * The constructor method for the ViewManager class.
+   * It initializes the object with the given authentication service and determines the current controller based on the debug backtrace.
+   * @param \Delight\Auth\Auth $auth The authentication service to be used for rendering views.
+   */
+  public function __construct(\Delight\Auth\Auth $auth)
   {
     $this->auth = $auth;
     $tmp = debug_backtrace();
@@ -23,7 +30,16 @@ class ViewManager
     }
   }
 
-  public function render($view, $data = [])
+  /**
+   * Renders a view with the given data. It extracts the data into variables,
+   * captures the output of including the view file, and stores it in the $content property.
+   * The view file is expected to be located in the app/views directory and have a .html.php extension.
+   * The method also sets the page title and makes any errors or pagination data available to the view.
+   * @param string $view The name of the view to render, relative to the app/views directory, without the .html.php extension. For example, "posts/index" would include the file app/views/posts/index.html.php.
+   * @param array $data An associative array of data to be extracted into variables and made available to the view. For example, ['posts' => $posts] would make a $posts variable available in the view.
+   * @return string The rendered content of the view, which is stored in the $content property and can be included in the layout.
+   */
+  public function render(string $view, array $data = []): string
   {
     $this->controllerData = extract($data);
     $this->pagination = $data['pagination'] ?? null;
@@ -156,6 +172,14 @@ class ViewManager
     return;
   }
 
+  /**
+   * The destructor method for the ViewManager class. This method is called when the object is destroyed,
+   * which typically happens at the end of the request lifecycle.
+   * It includes the main application layout file (app/views/layouts/application.html.php),
+   * which will render the final HTML response to be sent to the client.
+   * The layout file can access the $content property of the ViewManager to include the rendered view content
+   * within the overall page layout.
+   */
   public function __destruct()
   {
     include 'app/views/layouts/application.html.php';

@@ -48,6 +48,15 @@ menu:
       lat: Slovjani
       cyr: Словјани
 
+sessions:
+  already_logged_in: Již jste přihlášeni.
+  invalid_email: Špatný email.
+  invalid_password: Špatné heslo.
+  email_not_verified: Email nebyl ověřen.
+  too_many_requests: Příliš mnoho pokusů.
+  successfully_logged_in: Úspěšně přihlášen.
+  successfully_logged_out: Úspěšně odhlášen.
+
 posts:
   index:
     no_posts_found: Žádné zprávy nebyly nalezeny.

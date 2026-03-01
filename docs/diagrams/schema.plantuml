@@ -1,0 +1,190 @@
+@startuml "Database schema"
+
+package "Enums" {
+  enum VoteOption {
+    YES
+    NO
+    ABSTAIN
+  }
+
+  enum PostStatus {
+    DRAFT
+    PUBLISHED
+    ARCHIVED
+  }
+
+  enum VotingStatus {
+    DRAFT
+    IN_PROGRESS
+    COMPLETED
+    CANCELLED
+  }
+}
+
+package "Auth" {
+  class User {
+    id : Integer <<PK>>
+    email : String
+    password : String
+    username : String
+    status : Integer
+    verified : Integer
+    resettable : Integer
+    roles_mask : Integer
+    registered : Integer
+    last_login : Integer
+    force_logout : Integer
+    created_at : Datetime
+    updated_at : Datetime
+  }
+
+  class Users2fa {
+    id : Integer <<PK>>
+    user_id : Integer
+    mechanism : Integer
+    seed : String
+    created_at : Integer
+    expires_at : Integer
+  }
+
+  class UsersAuditLog {
+    id : Integer <<PK>>
+    user_id : Integer
+    event_at : Integer
+    event_type : String
+    admin_id : Integer
+    ip_address : String
+    user_agent : Text
+    details_json : Text
+  }
+
+  class UsersConfirmation {
+    id : Integer <<PK>>
+    user_id : Integer
+    email : String
+    selector : String
+    token : String
+    expires : Integer
+  }
+
+  class UsersOtp {
+    id : Integer <<PK>>
+    user_id : Integer
+    mechanism : Integer
+    single_factor : Integer
+    selector : String
+    token : String
+    expires_at : Integer
+  }
+
+  class UsersRemembered {
+    id : Integer <<PK>>
+    user : Integer
+    selector : String
+    token : String
+    expires : Integer
+  }
+
+  class UsersReset {
+    id : Integer <<PK>>
+    user : Integer
+    selector : String
+    token : String
+    expires : Integer
+  }
+
+  class UsersThrottling {
+    bucket : String <<PK>>
+    tokens : Float
+    replenished_at : Integer
+    expires_at : Integer
+  }
+}
+
+package "App" {
+  class Post {
+    id : Integer <<PK>>
+    name : String
+    body : Text
+    status : PostStatus
+    creator_id : Integer
+    created_at : Datetime
+    updated_at : Datetime
+  }
+
+  class Voting {
+    id : Integer <<PK>>
+    datetime_start : Datetime
+    datetime_end : Datetime
+    name : String
+    description : Text
+    creator_id : Integer
+    status : VotingStatus
+    created_at : Datetime
+    updated_at : Datetime
+  }
+
+  class Question {
+    id : Integer <<PK>>
+    voting_id : Integer
+    name : String
+    description : Text
+    created_at : Datetime
+    updated_at : Datetime
+  }
+
+  class UsersQuestion {
+    user_id : Integer <<PK>>
+    question_id : Integer <<PK>>
+    chosen_option : VoteOption
+    created_at : Datetime
+    updated_at : Datetime
+  }
+
+  class Event {
+    id : Integer <<PK>>
+    name : String
+    description : Text
+    datetime_start : Datetime
+    datetime_end : Datetime
+    creator_id : Integer
+    is_publicly_visible : Boolean
+    created_at : Datetime
+    updated_at : Datetime
+  }
+
+  class Attachment {
+    id : Integer <<PK>>
+    resource_id : Integer
+    resource_type : String
+    visible_name : String
+    file_name : String
+    file_size : Integer
+    file_type : String
+    token : String
+    is_publicly_visible : Boolean
+    creator_id : Integer
+    created_at : Datetime
+    updated_at : Datetime
+  }
+}
+
+' Relationships
+
+User "1" -- "0..*" Post : creates
+User "1" -- "0..*" Voting : creates
+User "1" -- "0..*" Event : creates
+User "1" -- "0..*" Attachment : uploads
+User "1" -- "0..*" UsersQuestion : votes
+
+User "1" -- "0..*" Users2fa
+User "1" -- "0..*" UsersAuditLog
+User "1" -- "0..*" UsersConfirmation
+User "1" -- "0..*" UsersOtp
+User "1" -- "0..*" UsersRemembered
+User "1" -- "0..*" UsersReset
+
+Voting "1" -- "0..*" Question : contains
+Question "1" -- "0..*" UsersQuestion : receives
+
+@enduml
