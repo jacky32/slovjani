@@ -29,23 +29,23 @@ class UsersController extends ApplicationController
       //   echo '  For SMS, consider using a third-party service and a compatible SDK';
       // });
     } catch (\Delight\Auth\InvalidEmailException $e) {
-      $this->addFlash('error', "Neplatný email");
+      $this->addFlash('error', t("registrations.create.invalid_email"));
       header("Location: /registration");
       die();
     } catch (\Delight\Auth\InvalidPasswordException $e) {
-      $this->addFlash('error', "Neplatné heslo");
+      $this->addFlash('error', t("registrations.create.invalid_password"));
       header("Location: /registration");
       die();
     } catch (\Delight\Auth\UserAlreadyExistsException $e) {
-      $this->addFlash('error', "Uživatel již existuje");
+      $this->addFlash('error', t("registrations.create.user_already_exists"));
       header("Location: /registration");
       die();
     } catch (\Delight\Auth\TooManyRequestsException $e) {
-      $this->addFlash('error', "Příliš mnoho pokusů");
+      $this->addFlash('error', t("registrations.create.too_many_requests"));
       header("Location: /registration");
       die();
     }
-    $this->addFlash('success', "Úspěšně zaregistrován");
+    $this->addFlash('success', t("registrations.create.success"));
     header("Location: /login");
   }
 }

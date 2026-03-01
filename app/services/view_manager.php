@@ -45,7 +45,7 @@ class ViewManager
     $this->pagination = $data['pagination'] ?? null;
     $this->errors = $data['errors'] ?? [];
     ob_start();
-    $this->title = isset($title) ? $title : 'Slované';
+    $this->title = isset($title) ? $title : t("app.default_title");
     include "app/views/$view.html.php";
     $this->content = ob_get_clean();
     return $this->content;

@@ -27,7 +27,7 @@
   ./vendor/bin/phpunit ./tests/lib/helpers_test.php
 ```
 
-- případně lze všechny testy spustit bez specifikování konkrétního souboru
+- alternatively, all tests can be run without specifying a particular file
 
 ```bash
   ./vendor/bin/phpunit
@@ -35,36 +35,36 @@
 
 ### PHP Doc
 
-Vygeneruje dokumentaci do `/docs/app/` z `app/`, `config/`, `db/`, `lib/` a `public/` složek.
-Na základě komentářů v PHPDoc v kódu aplikace.
+Generates documentation into `/docs/app/` from the `app/`, `config/`, `db/`, `lib/` and `public/` folders.
+Based on PHPDoc comments in the application code.
 
 ```bash
   docker run --rm -v "$(pwd):/data" "phpdoc/phpdoc:3"
 ```
 
-Nastavení exportu dokumentace lze upravit v `./phpdoc.dist.xml`
+Documentation export settings can be modified in `./phpdoc.dist.xml`
 
 ## Javascript
 
 # Flatpickr
 
 - used for datetime input stylings
-- can be added to view by including the layouts/\_flatpickr.html.php partial at the end of the file like this:
+- can be added to view by including the `layouts/_flatpickr.html.php` partial at the end of the file like this:
 
 ```php
   <?= $this->renderPartial("layouts/_flatpickr") ?>
 ```
 
-# Lokalizace
+# Localization
 
-- Pro možnost využití YAMLu se musí nainstalovat libyaml a extension skrz PECL
+- To use YAML, libyaml and the extension must be installed via PECL
 
 ```bash
   apt-get install -y libyaml-dev
   pecl install yaml
 ```
 
-- pak se musí v php.ini aktivovat skrz
+- then it must be activated in php.ini via
 
 ```
   extension=yaml.so
@@ -72,19 +72,19 @@ Nastavení exportu dokumentace lze upravit v `./phpdoc.dist.xml`
 
 # PlantUML
 
-Je potřeba nainstalovat plantuml, např. přes Homebrew (macOS):
+PlantUML needs to be installed, e.g. via Homebrew (macOS):
 
 ```bash
   brew install plantuml
 ```
 
-Následně lze konkrétní diagramy exportovat takto:
+Specific diagrams can then be exported like this:
 
 ```bash
   plantuml docs/diagrams/sitemap.plantuml
 ```
 
-Pro přegenerování všech diagramů lze využít wildcard:
+To regenerate all diagrams, a wildcard can be used:
 
 ```bash
   plantuml docs/diagrams/*.plantuml

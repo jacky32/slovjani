@@ -66,7 +66,7 @@ class AdminVotingsController extends AdminController
         'status' => "DRAFT"
       ]);
       $voting->save();
-      $this->addFlash('success', "Hlasování bylo úspěšně vytvořeno.");
+      $this->addFlash('success', t("votings.create.success"));
       header("Location: /admin/votings");
     } catch (Exception $e) {
       $errors = [];
@@ -156,14 +156,14 @@ class AdminVotingsController extends AdminController
       $voting = Voting::find($this->id);
       if ($voting && $voting->creator_id == $this->auth->getUserId()) {
         $voting->destroy();
-        $this->addFlash('success', "Hlasování bylo úspěšně smazáno.");
+        $this->addFlash('success', t("votings.destroy.success"));
       } else {
         if (!$voting) {
-          $this->addFlash('error', "Hlasování neexistuje.");
+          $this->addFlash('error', t("votings.destroy.not_found"));
         } else if ($voting->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', "Nemáte oprávnění smazat toto hlasování.");
+          $this->addFlash('error', t("votings.destroy.unauthorized"));
         }
-        $this->addFlash('error', "Nastala chyba");
+        $this->addFlash('error', t("error"));
       }
       header("Location: /admin/votings");
     } catch (Exception $e) {

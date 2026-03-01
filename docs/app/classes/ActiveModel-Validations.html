@@ -174,8 +174,31 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/ActiveModel-Validations-UniquenessValidator.html#method_validates_uniqueness_of">validates_uniqueness_of()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
+<dd>Validates that the specified attribute(s) are unique in the database. For each attribute or combination of attributes,
+it constructs a SQL query to count how many records exist with the same value(s).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ActiveModel-Validations-UniquenessValidator.html#method_addViolationToExceptions">addViolationToExceptions()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Adds validation violation to the list of caught exceptions if the count from the uniqueness query is greater than 0.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ActiveModel-Validations-UniquenessValidator.html#method_getConditionStringFromAttributes">getConditionStringFromAttributes()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Generates SQL condition string based on the provided attributes for uniqueness validation.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ActiveModel-Validations-UniquenessValidator.html#method_getIdCondition">getIdCondition()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Generates SQL condition to exclude current record based on primary key(s) when checking for uniqueness.</dd>
 
     </dl>
 
@@ -338,19 +361,26 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/validations/uniqueness.php"><a href="files/lib-active-model-validations-uniqueness.html"><abbr title="lib/active_model/validations/uniqueness.php">uniqueness.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">9</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Validates that the specified attribute(s) are unique in the database. For each attribute or combination of attributes,
+it constructs a SQL query to count how many records exist with the same value(s).</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">validates_uniqueness_of</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$attributes</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">validates_uniqueness_of</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$attributes</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
-    
+        <section class="phpdocumentor-description"><p>If the count is greater than 0, it means there is a violation of uniqueness, and an appropriate error message is added to the list of caught exceptions.
+The method handles both single attribute uniqueness and composite key uniqueness. For composite keys,
+it generates a condition that checks for the combination of attributes. It also ensures that when updating an existing record
+it does not count the record itself as a violation by adding a condition to exclude the current record based on its primary key(s).</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -358,7 +388,91 @@
                 : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>An array of attribute names or an array of arrays for composite keys that should be validated for uniqueness.
+Each element can be a string (for single attribute uniqueness) or an array of strings (for composite key uniqueness).
+For example:</p>
+<ul>
+<li>['email'] to validate that the email attribute is unique.</li>
+<li>[['user_id', 'question_id']] to validate that the combination of user_id and question_id is unique.</li>
+<li>['email', 'username'] to validate that both email and username are unique individually.</li>
+</ul>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>An array of caught exceptions, where each exception is an associative array containing the class name, attribute name(s), and error message for each uniqueness violation found during validation.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addViolationToExceptions">
+        addViolationToExceptions()
+        <a href="classes/ActiveModel-Validations-UniquenessValidator.html#method_addViolationToExceptions" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/validations/uniqueness.php"><a href="files/lib-active-model-validations-uniqueness.html"><abbr title="lib/active_model/validations/uniqueness.php">uniqueness.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">47</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Adds validation violation to the list of caught exceptions if the count from the uniqueness query is greater than 0.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">addViolationToExceptions</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$caught_exceptions</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$attribute</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$row</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>If the attribute is an array, it assumes a composite unique key and adds a message indicating that the combination of attributes must be unique. If it's a single attribute, it adds a message indicating that the attribute must be unique.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$caught_exceptions</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Reference to the array where caught exceptions are stored. This array will be modified if a uniqueness violation is found.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$attribute</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;|string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The attribute(s) that were validated for uniqueness. Can be a single attribute name or an array of attribute names for composite keys.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$row</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The result row from the uniqueness query, which contains the count of records that match the uniqueness condition. If the count is greater than 0, it indicates a violation of uniqueness.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -367,6 +481,111 @@
         
     
     
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getConditionStringFromAttributes">
+        getConditionStringFromAttributes()
+        <a href="classes/ActiveModel-Validations-UniquenessValidator.html#method_getConditionStringFromAttributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/validations/uniqueness.php"><a href="files/lib-active-model-validations-uniqueness.html"><abbr title="lib/active_model/validations/uniqueness.php">uniqueness.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">76</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Generates SQL condition string based on the provided attributes for uniqueness validation.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getConditionStringFromAttributes</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$attribute</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>If the attributes are an array, it assumes a composite unique key and generates conditions for each attribute.
+If it's a single attribute, it generates a simple condition.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$attribute</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;|string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The attribute(s) to generate the condition for. Can be a single attribute name or an array of attribute names for composite keys.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>SQL condition string to be used in the uniqueness validation query.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getIdCondition">
+        getIdCondition()
+        <a href="classes/ActiveModel-Validations-UniquenessValidator.html#method_getIdCondition" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/validations/uniqueness.php"><a href="files/lib-active-model-validations-uniqueness.html"><abbr title="lib/active_model/validations/uniqueness.php">uniqueness.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">100</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Generates SQL condition to exclude current record based on primary key(s) when checking for uniqueness.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getIdCondition</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>If the record has an 'id' attribute, it will exclude that id. If the model defines a composite primary key,
+it will exclude the combination of those keys.
+This ensures that when updating an existing record, it won't fail the uniqueness validation against itself.</p>
+</section>
+
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>SQL condition to exclude current record from uniqueness check.</p>
+</section>
+
+            </section>
+
 </article>
             </section>
 
@@ -485,6 +704,9 @@
                                             <li class=""><a href="classes/ActiveModel-Validations-LengthValidator.html#method_validates_length_of">validates_length_of()</a></li>
                                             <li class=""><a href="classes/ActiveModel-Validations-PresenceValidator.html#method_validates_presence_of">validates_presence_of()</a></li>
                                             <li class=""><a href="classes/ActiveModel-Validations-UniquenessValidator.html#method_validates_uniqueness_of">validates_uniqueness_of()</a></li>
+                                            <li class=""><a href="classes/ActiveModel-Validations-UniquenessValidator.html#method_addViolationToExceptions">addViolationToExceptions()</a></li>
+                                            <li class=""><a href="classes/ActiveModel-Validations-UniquenessValidator.html#method_getConditionStringFromAttributes">getConditionStringFromAttributes()</a></li>
+                                            <li class=""><a href="classes/ActiveModel-Validations-UniquenessValidator.html#method_getIdCondition">getIdCondition()</a></li>
                                     </ul>
             </li>
                     </ul>

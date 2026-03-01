@@ -63,7 +63,7 @@ class AdminPostsController extends AdminController
         'creator_id' => $this->auth->getUserId()
       ]);
       $post->save();
-      $this->addFlash('success', "Příspěvek byl úspěšně vytvořen.");
+      $this->addFlash('success', t("posts.create.success"));
       header("Location: /admin/posts");
     } catch (Exception $e) {
       $errors = [];
@@ -150,14 +150,14 @@ class AdminPostsController extends AdminController
       $post = Post::find($this->id);
       if ($post && $post->creator_id == $this->auth->getUserId()) {
         $post->destroy();
-        $this->addFlash('success', "Příspěvek byl úspěšně smazán.");
+        $this->addFlash('success', t("posts.destroy.success"));
       } else {
         if (!$post) {
-          $this->addFlash('error', "Příspěvek neexistuje.");
+          $this->addFlash('error', t("posts.destroy.not_found"));
         } else if ($post->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', "Nemáte oprávnění smazat tento příspěvek.");
+          $this->addFlash('error', t("posts.destroy.unauthorized"));
         }
-        $this->addFlash('error', "Nastala chyba");
+        $this->addFlash('error', t("error"));
       }
       header("Location: /admin/posts");
     } catch (Exception $e) {

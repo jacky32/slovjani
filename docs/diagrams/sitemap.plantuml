@@ -3,67 +3,67 @@
 hide empty members
 hide circles
 
-' Definice stylů pro přehlednost
+' Style definitions for clarity
 skinparam class {
     BackgroundColor<<Public>> LightBlue
     BackgroundColor<<Admin>> Moccasin
     BorderColor Black
 }
 
-title Struktura webu
+title Website Structure
 
-' Hlavní rozcestník
+' Main navigation hub
 class "Homepage" as Home <<Public>>
 
-' --- VEŘEJNÁ SEKCE ---
-package "Veřejná sekce" {
-    class "O nás" as Onas <<Public>> {
-        + Popis spolku
-        + Fotogalerie
+' --- PUBLIC SECTION ---
+package "Public section" {
+    class "About us" as Onas <<Public>> {
+        + Association description
+        + Photo gallery
         --
-        # Odkazy na další stránky
+        # Links to other pages
     }
 
-    class "Zprávy (Veřejné)" as PostsPub <<Public>> {
-        + Seznam zveřejněných zpráv
+    class "Posts (Public)" as PostsPub <<Public>> {
+        + List of published posts
     }
 
-    class "Činnost (Veřejné)" as CinnostPub <<Public>> {
-        + Kalendář akcí
-        + Seznam veřejných akcí
+    class "Activities (Public)" as CinnostPub <<Public>> {
+        + Event calendar
+        + List of public events
     }
 }
 
-' --- ADMINISTRAČNÍ SEKCE ---
-package "Administrační sekce (Login required)" {
+' --- ADMIN SECTION ---
+package "Admin section (Login required)" {
     class "Login / Auth" as Login <<Admin>> {
-        + přihlásit()
-        + odhlásit()
+        + login()
+        + logout()
     }
 
-    class "Zprávy (Interní)" as AdminPostsPage <<Admin>> {
-        + Správa zpráv
+    class "Posts (Internal)" as AdminPostsPage <<Admin>> {
+        + Post management
     }
 
     class "Kontakty" as Kontakty <<Admin>> {
-        + Seznam všech členů
-        + Detail člena
+        + List of all members
+        + Member detail
     }
 
-    class "Činnost (Interní)" as CinnostPriv <<Admin>> {
-        + Zápisy o schůzích
-        + Kalendář (kompletní)
-        + Veřejné akce
-        + Soukromé akce
+    class "Activities (Internal)" as CinnostPriv <<Admin>> {
+        + Meeting minutes
+        + Calendar (complete)
+        + Public events
+        + Private events
     }
 
-    class "Hlasování" as Hlasovani <<Admin>> {
-        - Téma hlasování
-        - Možnosti: Pro / Proti / Zdržel se
+    class "Voting" as Hlasovani <<Admin>> {
+        - Voting topic
+        - Options: For / Against / Abstain
         --
-        + Admin: vytváří hlasování
-        + Admin: uzavírá hlasování
-        + User: hlasuje
+        + Admin: creates voting
+        + Admin: closes voting
+        + User: votes
     }
 }
 
@@ -73,17 +73,17 @@ Home --> PostsPub
 Home --> CinnostPub
 Home --> Login
 
-Login ..> CinnostPriv : po přihlášení
+Login ..> CinnostPriv : after login
 Login ..> Hlasovani
 Login ..> Kontakty
 Login ..> AdminPostsPage
 
-' Poznámky pro vysvětlení logiky
+' Notes for logic explanation
 note right of Hlasovani
-  LOGIKA HLASOVÁNÍ:
-  - Admin startuje/uzavírá
-  - Uživatelé nevidí, KDO jak hlasoval
-  - Všichni vidí pouze součty
+  VOTING LOGIC:
+  - Admin starts/closes
+  - Users cannot see WHO voted how
+  - Everyone only sees the totals
 end note
 
 @enduml

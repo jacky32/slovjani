@@ -1,5 +1,5 @@
 <?= $this->renderPartial("events/_left_pane", ['events' => $events, 'errors' => isset($errors) ? $errors : []]) ?>
 <section id="rightpane">
-  index stránka činnosti
+  <?= t("events.index.placeholder") ?>
   <br><br>
 </section>

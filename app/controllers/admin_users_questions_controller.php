@@ -39,14 +39,14 @@ class AdminUsersQuestionsController extends AdminController
       // TODO: Move validation to model?
       Logger::debug("1");
       if ($voting->status != "IN_PROGRESS") {
-        throw new Exception("Hlasování není aktivní.");
+        throw new Exception(t("users_questions.create.voting_not_active"));
       }
       $valid_question_ids = $voting->questions->pluck('id');
       Logger::debug("2");
       // Create new voting
       foreach ($request['users_question'] as $questionData) {
         if (!in_array($questionData['question_id'], $valid_question_ids)) {
-          throw new Exception("Neplatná otázka pro toto hlasování.");
+          throw new Exception(t("users_questions.create.invalid_question"));
         }
         Logger::debug("Question ID: " . $questionData['question_id'] . ", Chosen Option: " . $questionData['chosen_option'] . " user id " . $this->auth->getUserId());
         $users_question = new UsersQuestion([
@@ -57,7 +57,7 @@ class AdminUsersQuestionsController extends AdminController
         $users_question->save();
       }
       Logger::debug("3");
-      $this->addFlash('success', "Úspěšně odhlasováno.");
+      $this->addFlash('success', t("users_questions.create.success"));
       header("Location: /admin/votings/" . $this->voting_id);
     } catch (Exception $e) {
       $errors[] = $e->getMessage();
@@ -84,21 +84,21 @@ class AdminUsersQuestionsController extends AdminController
       // Find voting and check ownership
       $voting = Voting::find($this->voting_id);
       if ($voting->status != "IN_PROGRESS") {
-        throw new Exception("Hlasování není aktivní.");
+        throw new Exception(t("users_questions.destroy.voting_not_active"));
       }
       $user = User::find($this->auth->getUserId());
       $users_question = $user->users_questions->find($this->users_question_id);
       $allowed_voting_question_ids = $voting->questions->pluck('id');
       if ($voting && $users_question && in_array($users_question->question_id, $allowed_voting_question_ids) && $users_question->user_id == $this->auth->getUserId()) {
         $users_question->destroy();
-        $this->addFlash('success', "Vaše hlasování bylo úspěšně smazáno.");
+        $this->addFlash('success', t("users_questions.destroy.success"));
       } else {
         if (!$voting) {
-          $this->addFlash('error', "Hlasování neexistuje.");
+          $this->addFlash('error', t("users_questions.destroy.not_found"));
         } else if ($voting->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', "Nemáte oprávnění smazat toto hlasování.");
+          $this->addFlash('error', t("users_questions.destroy.unauthorized"));
         }
-        $this->addFlash('error', "Nastala chyba");
+        $this->addFlash('error', t("error"));
       }
       header("Location: /admin/votings/" . $this->voting_id);
     } catch (Exception $e) {

@@ -41,7 +41,7 @@ class UsersQuestion {
   updated_at : Datetime
 }
 
-' Vazby
+' Relations
 Voting "1" -- "0..*" Question
 User "1" -- "0..*" UsersQuestion
 Question "1" -- "0..*" UsersQuestion

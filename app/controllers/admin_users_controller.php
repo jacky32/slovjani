@@ -109,14 +109,14 @@ class AdminUsersController extends AdminController
       $user = User::find($this->id);
       if ($user && $user->creator_id == $this->auth->getUserId()) {
         $user->destroy();
-        $this->addFlash('success', "Uživatel byl úspěšně smazán.");
+        $this->addFlash('success', t("users.destroy.success"));
       } else {
         if (!$user) {
-          $this->addFlash('error', "Uživatel neexistuje.");
+          $this->addFlash('error', t("users.destroy.not_found"));
         } else if ($user->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', "Nemáte oprávnění smazat tohoto uživatele.");
+          $this->addFlash('error', t("users.destroy.unauthorized"));
         }
-        $this->addFlash('error', "Nastala chyba");
+        $this->addFlash('error', t("error"));
       }
       header("Location: /admin/users");
     } catch (Exception $e) {

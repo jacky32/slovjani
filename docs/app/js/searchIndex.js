@@ -521,11 +521,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/SessionsController.html#method_destroy"
         },                {
-            "fqsen": "\\SessionsController\u003A\u003A\u0024user",
-            "name": "user",
-            "summary": "",
-            "url": "classes/SessionsController.html#property_user"
-        },                {
             "fqsen": "\\UsersController",
             "name": "UsersController",
             "summary": "",
@@ -711,6 +706,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/UsersQuestion.html#property_db_attributes"
         },                {
+            "fqsen": "\\UsersQuestion\u003A\u003A\u0024composite_primary_key",
+            "name": "composite_primary_key",
+            "summary": "",
+            "url": "classes/UsersQuestion.html#property_composite_primary_key"
+        },                {
             "fqsen": "\\UsersQuestion\u003A\u003A\u0024relations",
             "name": "relations",
             "summary": "",
@@ -808,12 +808,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ViewManager\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "The\u0020constructor\u0020method\u0020for\u0020the\u0020ViewManager\u0020class.",
             "url": "classes/ViewManager.html#method___construct"
         },                {
             "fqsen": "\\ViewManager\u003A\u003Arender\u0028\u0029",
             "name": "render",
-            "summary": "",
+            "summary": "Renders\u0020a\u0020view\u0020with\u0020the\u0020given\u0020data.\u0020It\u0020extracts\u0020the\u0020data\u0020into\u0020variables,\ncaptures\u0020the\u0020output\u0020of\u0020including\u0020the\u0020view\u0020file,\u0020and\u0020stores\u0020it\u0020in\u0020the\u0020\u0024content\u0020property.",
             "url": "classes/ViewManager.html#method_render"
         },                {
             "fqsen": "\\ViewManager\u003A\u003ArenderPartial\u0028\u0029",
@@ -848,7 +848,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ViewManager\u003A\u003A__destruct\u0028\u0029",
             "name": "__destruct",
-            "summary": "",
+            "summary": "The\u0020destructor\u0020method\u0020for\u0020the\u0020ViewManager\u0020class.\u0020This\u0020method\u0020is\u0020called\u0020when\u0020the\u0020object\u0020is\u0020destroyed,\nwhich\u0020typically\u0020happens\u0020at\u0020the\u0020end\u0020of\u0020the\u0020request\u0020lifecycle.",
             "url": "classes/ViewManager.html#method___destruct"
         },                {
             "fqsen": "\\ViewManager\u003A\u003A\u0024content",
@@ -1473,8 +1473,23 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ActiveModel\\Validations\\UniquenessValidator\u003A\u003Avalidates_uniqueness_of\u0028\u0029",
             "name": "validates_uniqueness_of",
-            "summary": "",
+            "summary": "Validates\u0020that\u0020the\u0020specified\u0020attribute\u0028s\u0029\u0020are\u0020unique\u0020in\u0020the\u0020database.\u0020For\u0020each\u0020attribute\u0020or\u0020combination\u0020of\u0020attributes,\nit\u0020constructs\u0020a\u0020SQL\u0020query\u0020to\u0020count\u0020how\u0020many\u0020records\u0020exist\u0020with\u0020the\u0020same\u0020value\u0028s\u0029.",
             "url": "classes/ActiveModel-Validations-UniquenessValidator.html#method_validates_uniqueness_of"
+        },                {
+            "fqsen": "\\ActiveModel\\Validations\\UniquenessValidator\u003A\u003AaddViolationToExceptions\u0028\u0029",
+            "name": "addViolationToExceptions",
+            "summary": "Adds\u0020validation\u0020violation\u0020to\u0020the\u0020list\u0020of\u0020caught\u0020exceptions\u0020if\u0020the\u0020count\u0020from\u0020the\u0020uniqueness\u0020query\u0020is\u0020greater\u0020than\u00200.",
+            "url": "classes/ActiveModel-Validations-UniquenessValidator.html#method_addViolationToExceptions"
+        },                {
+            "fqsen": "\\ActiveModel\\Validations\\UniquenessValidator\u003A\u003AgetConditionStringFromAttributes\u0028\u0029",
+            "name": "getConditionStringFromAttributes",
+            "summary": "Generates\u0020SQL\u0020condition\u0020string\u0020based\u0020on\u0020the\u0020provided\u0020attributes\u0020for\u0020uniqueness\u0020validation.",
+            "url": "classes/ActiveModel-Validations-UniquenessValidator.html#method_getConditionStringFromAttributes"
+        },                {
+            "fqsen": "\\ActiveModel\\Validations\\UniquenessValidator\u003A\u003AgetIdCondition\u0028\u0029",
+            "name": "getIdCondition",
+            "summary": "Generates\u0020SQL\u0020condition\u0020to\u0020exclude\u0020current\u0020record\u0020based\u0020on\u0020primary\u0020key\u0028s\u0029\u0020when\u0020checking\u0020for\u0020uniqueness.",
+            "url": "classes/ActiveModel-Validations-UniquenessValidator.html#method_getIdCondition"
         },                {
             "fqsen": "\\ActiveModel\\ValidationException",
             "name": "ValidationException",

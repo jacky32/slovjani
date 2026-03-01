@@ -21,7 +21,7 @@ function toPascalCase(string $input): string
 /**
  * Simple translation function that loads translations from a YAML file.
  * The key is in the format "namespace.key.subkey".
- * Example: t("posts.new.title") would look for "posts" => ["new" => ["title" => "Název"]]
+ * Example: t("posts.new.title") would look for "posts" => ["new" => ["title" => "Title"]]
  */
 function t(string $key, array $params = []): string
 {

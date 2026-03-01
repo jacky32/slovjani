@@ -33,6 +33,9 @@ errors:
   must_be_included_in: musí být zahrnut v možných možnostech ({options})
   unauthenticated: Pro přístup k této akci musíte být přihlášeni.
   unauthorized: Nemáte oprávnění provést tuto akci.
+  page_not_found: Stránka nenalezena
+  page_not_found_back: "Taková stránka tady není. Zkuste se vrátit na"
+  home_page: úvodní stránku
 
 menu:
   root: Medžuslovjansky jezyk
@@ -48,31 +51,31 @@ menu:
       lat: Slovjani
       cyr: Словјани
 
-sessions:
-  already_logged_in: Již jste přihlášeni.
-  invalid_email: Špatný email.
-  invalid_password: Špatné heslo.
-  email_not_verified: Email nebyl ověřen.
-  too_many_requests: Příliš mnoho pokusů.
-  successfully_logged_in: Úspěšně přihlášen.
-  successfully_logged_out: Úspěšně odhlášen.
-
 posts:
   index:
     no_posts_found: Žádné zprávy nebyly nalezeny.
+    placeholder: index stránka zpráv
   new:
     title: Nový příspěvek
   show:
     creator: Autor
     created_at: Vytvořeno dne
     post_not_found: Příspěvek nebyl nalezen.
+  create:
+    success: Příspěvek byl úspěšně vytvořen.
   update:
     unauthorized: Nemáte oprávnění upravit tento příspěvek.
     success: Příspěvek byl úspěšně aktualizován.
+  destroy:
+    success: Příspěvek byl úspěšně smazán.
+    not_found: Příspěvek neexistuje.
+    unauthorized: Nemáte oprávnění smazat tento příspěvek.
 
 events:
   index:
     no_events_found: Žádné činnosti nebyly nalezeny.
+    placeholder: index stránka činnosti
+    admin_placeholder: index stránka admin činnosti
   new:
     title: Nová činnost
   create:
@@ -90,6 +93,7 @@ events:
 votings:
   index:
     no_votings_found: Žádné hlasování nebylo nalezeno.
+    placeholder: index stránka hlasování
   new:
     title: Nové hlasování
   edit:
@@ -104,9 +108,15 @@ votings:
     cancel_voting: Zrušit hlasování
     already_voted: Již jste hlasovali v tomto hlasování.
     results: Výsledky hlasování
+  create:
+    success: Hlasování bylo úspěšně vytvořeno.
   update:
     unauthorized: Nemáte oprávnění upravit toto hlasování.
     success: Hlasování bylo úspěšně aktualizováno.
+  destroy:
+    success: Hlasování bylo úspěšně smazáno.
+    not_found: Hlasování neexistuje.
+    unauthorized: Nemáte oprávnění smazat toto hlasování.
 
 questions:
   new:
@@ -126,16 +136,37 @@ users_questions:
   new:
     title: Hlasovat
     submit: Odhlasovat
+  create:
+    voting_not_active: Hlasování není aktivní.
+    invalid_question: Neplatná otázka pro toto hlasování.
+    success: Úspěšně odhlasováno.
   destroy:
     title: Vymazat své odpovědi
+    voting_not_active: Hlasování není aktivní.
+    success: Vaše hlasování bylo úspěšně smazáno.
+    not_found: Hlasování neexistuje.
+    unauthorized: Nemáte oprávnění smazat toto hlasování.
 
 registrations:
   new:
     title: Registrace
     submit: Registrovat
     back_to_login: Zpět na přihlášení
+  create:
+    invalid_email: Neplatný email.
+    invalid_password: Neplatné heslo.
+    user_already_exists: Uživatel již existuje.
+    too_many_requests: Příliš mnoho pokusů.
+    success: Úspěšně zaregistrován.
 
 sessions:
+  already_logged_in: Již jste přihlášeni.
+  invalid_email: Špatný email.
+  invalid_password: Špatné heslo.
+  email_not_verified: Email nebyl ověřen.
+  too_many_requests: Příliš mnoho pokusů.
+  successfully_logged_in: Úspěšně přihlášen.
+  successfully_logged_out: Úspěšně odhlášen.
   new:
     title: Přihlášení
     submit: Přihlásit se
@@ -144,6 +175,7 @@ sessions:
 users:
   index:
     no_users_found: Žádní uživatelé nebyli nalezeni.
+    placeholder: index stránka kontaktů
   new:
     title: Nový uživatel
   edit:
@@ -154,6 +186,10 @@ users:
   update:
     unauthorized: Nemáte oprávnění upravit tohoto uživatele.
     success: Uživatel byl úspěšně aktualizován.
+  destroy:
+    success: Uživatel byl úspěšně smazán.
+    not_found: Uživatel neexistuje.
+    unauthorized: Nemáte oprávnění smazat tohoto uživatele.
 
 attachments:
   index:
@@ -198,6 +234,9 @@ attributes:
   attachment:
     visible_name: Název
     is_publicly_visible: Viditelné veřejnosti
+
+app:
+  default_title: Slované
 
 enums:
   question_options:
