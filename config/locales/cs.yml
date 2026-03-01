@@ -271,6 +271,11 @@ enums:
     "DRAFT": Návrh
     "PUBLISHED": Publikováno
     "ARCHIVED": Archivováno
+  voting_statuses:
+    "DRAFT": Návrh
+    "IN_PROGRESS": Probíhá
+    "COMPLETED": Ukončeno
+    "CANCELLED": Zrušeno
   user_roles:
     "ADMIN": Administrátor
     "COLLABORATOR": Běžný uživatel

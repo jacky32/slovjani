@@ -1,5 +1,5 @@
 <div class="comment-item <?= ($depth ?? 0) > 0 ? 'comment-item--child' : '' ?>">
-  <small>
+  <small class="record-meta">
     <?= htmlspecialchars($comment->creator->username ?? '—') ?>
     <?php if ($comment->created_at): ?>
       &middot; <?= (new DateTime($comment->created_at))->format('d.m.Y H:i') ?>
