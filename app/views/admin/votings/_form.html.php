@@ -17,3 +17,5 @@
   </fieldset>
   <br>
 </form>
+
+<?= $this->renderPartial("layouts/_flatpickr") ?>

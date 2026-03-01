@@ -1,6 +1,8 @@
+<!doctype html>
 <html>
 
 <head>
+  <meta charset="UTF-8" />
   <title><?= $this->title ?></title>
   <link href="<?= asset_path('/assets/stylesheets/styles.css'); ?>" rel="stylesheet" type="text/css" />
   <link href="<?= asset_path('/assets/stylesheets/override.css'); ?>" rel="stylesheet" type="text/css" />
