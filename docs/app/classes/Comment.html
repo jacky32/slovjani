@@ -111,7 +111,7 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    Post
+    Comment
 
         <span class="phpdocumentor-element__extends">
         extends <a href="classes/ApplicationRecord.html"><abbr title="\ApplicationRecord">ApplicationRecord</abbr></a>
@@ -133,7 +133,7 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/models/post.php"><a href="files/app-models-post.html"><abbr title="app/models/post.php">post.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/comment.php"><a href="files/app-models-comment.html"><abbr title="app/models/comment.php">comment.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">6</span>
 
@@ -148,7 +148,7 @@
     
 <h3 id="toc">
     Table of Contents
-    <a href="classes/Post.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Comment.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -162,7 +162,7 @@
 
 <h4 id="toc-properties">
     Properties
-    <a href="classes/Post.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Comment.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
@@ -185,19 +185,19 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a class="" href="classes/Post.html#property_db_attributes">$db_attributes</a>
+    <a class="" href="classes/Comment.html#property_db_attributes">$db_attributes</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a class="" href="classes/Post.html#property_relations">$relations</a>
+    <a class="" href="classes/Comment.html#property_relations">$relations</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a class="" href="classes/Post.html#property_validations">$validations</a>
+    <a class="" href="classes/Comment.html#property_validations">$validations</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
@@ -212,12 +212,12 @@
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/Post.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/Comment.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/Post.html#method___construct">__construct()</a>
+    <a class="" href="classes/Comment.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -311,12 +311,6 @@
 <dd>Paginate results - returns Pagination object with metadata and current page resources</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/Post.html#method_publiclyVisible">publiclyVisible()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/ActiveModel.html#method_save">save()</a>
     <span>
                                 &nbsp;: mixed    </span>
@@ -399,7 +393,7 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/Post.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Comment.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -522,13 +516,13 @@
 >
     <h4 class="phpdocumentor-element__name" id="property_db_attributes">
         $db_attributes
-        <a href="classes/Post.html#property_db_attributes" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Comment.html#property_db_attributes" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                             </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/models/post.php"><a href="files/app-models-post.html"><abbr title="app/models/post.php">post.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/comment.php"><a href="files/app-models-comment.html"><abbr title="app/models/comment.php">comment.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">8</span>
 
@@ -540,7 +534,7 @@
         <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$db_attributes</span>
-     = <span class="phpdocumentor-signature__default-value">[&#039;id&#039;, &#039;name&#039;, &#039;body&#039;, &#039;creator_id&#039;, &#039;status&#039;, &#039;created_at&#039;, &#039;updated_at&#039;]</span></code>
+     = <span class="phpdocumentor-signature__default-value">[&#039;id&#039;, &#039;resource_id&#039;, &#039;resource_type&#039;, &#039;body&#039;, &#039;parent_comment_id&#039;, &#039;creator_id&#039;, &#039;created_at&#039;, &#039;updated_at&#039;]</span></code>
 
     
     
@@ -559,15 +553,15 @@
 >
     <h4 class="phpdocumentor-element__name" id="property_relations">
         $relations
-        <a href="classes/Post.html#property_relations" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Comment.html#property_relations" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                             </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/models/post.php"><a href="files/app-models-post.html"><abbr title="app/models/post.php">post.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/comment.php"><a href="files/app-models-comment.html"><abbr title="app/models/comment.php">comment.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">19</span>
 
     </aside>
 
@@ -577,7 +571,7 @@
         <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$relations</span>
-     = <span class="phpdocumentor-signature__default-value">[&#039;belongs_to&#039; =&gt; [&#039;creator&#039; =&gt; [&#039;class_name&#039; =&gt; \User::class, &#039;foreign_key&#039; =&gt; &#039;creator_id&#039;]], &#039;has_many&#039; =&gt; [&#039;attachments&#039; =&gt; [&#039;class_name&#039; =&gt; \Attachment::class, &#039;foreign_key&#039; =&gt; &#039;resource_id&#039;, &#039;foreign_type&#039; =&gt; &#039;resource_type&#039;, &#039;polymorphic&#039; =&gt; \true], &#039;comments&#039; =&gt; [&#039;class_name&#039; =&gt; \Comment::class, &#039;foreign_key&#039; =&gt; &#039;resource_id&#039;, &#039;foreign_type&#039; =&gt; &#039;resource_type&#039;, &#039;polymorphic&#039; =&gt; \true]]]</span></code>
+     = <span class="phpdocumentor-signature__default-value">[&#039;belongs_to&#039; =&gt; [&#039;creator&#039; =&gt; [&#039;class_name&#039; =&gt; \User::class, &#039;foreign_key&#039; =&gt; &#039;creator_id&#039;], &#039;commentable&#039; =&gt; [&#039;polymorphic&#039; =&gt; \true, &#039;foreign_key&#039; =&gt; &#039;resource_id&#039;, &#039;foreign_type&#039; =&gt; &#039;resource_type&#039;], &#039;parent_comment&#039; =&gt; [&#039;class_name&#039; =&gt; self::class, &#039;foreign_key&#039; =&gt; &#039;parent_comment_id&#039;]]]</span></code>
 
     
     
@@ -596,15 +590,15 @@
 >
     <h4 class="phpdocumentor-element__name" id="property_validations">
         $validations
-        <a href="classes/Post.html#property_validations" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Comment.html#property_validations" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                             </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/models/post.php"><a href="files/app-models-post.html"><abbr title="app/models/post.php">post.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/comment.php"><a href="files/app-models-comment.html"><abbr title="app/models/comment.php">comment.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -614,7 +608,7 @@
         <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$validations</span>
-     = <span class="phpdocumentor-signature__default-value">[&quot;presence&quot; =&gt; [&quot;name&quot;, &quot;body&quot;, &quot;creator_id&quot;, &quot;status&quot;], &quot;length&quot; =&gt; [&quot;name&quot; =&gt; [&quot;min&quot; =&gt; 5, &quot;max&quot; =&gt; 100], &quot;body&quot; =&gt; [&quot;min&quot; =&gt; 10, &quot;max&quot; =&gt; 5000]], &quot;inclusion&quot; =&gt; [&quot;status&quot; =&gt; [&quot;DRAFT&quot;, &quot;PUBLISHED&quot;, &quot;ARCHIVED&quot;]]]</span></code>
+     = <span class="phpdocumentor-signature__default-value">[&#039;presence&#039; =&gt; [&#039;creator_id&#039;, &#039;body&#039;, &#039;resource_id&#039;, &#039;resource_type&#039;]]</span></code>
 
     
     
@@ -666,7 +660,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Post.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Comment.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -677,13 +671,13 @@
 >
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
-        <a href="classes/Post.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Comment.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/models/post.php"><a href="files/app-models-post.html"><abbr title="app/models/post.php">post.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/comment.php"><a href="files/app-models-comment.html"><abbr title="app/models/comment.php">comment.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">41</span>
 
     </aside>
 
@@ -1312,40 +1306,6 @@ $pagination-&gt;next_page; // Next page number or null if on last page</p>
         class="phpdocumentor-element
             -method
             -public
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_publiclyVisible">
-        publiclyVisible()
-        <a href="classes/Post.html#method_publiclyVisible" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/models/post.php"><a href="files/app-models-post.html"><abbr title="app/models/post.php">post.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">46</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">publiclyVisible</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-        
-    
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="method_save">
@@ -1832,7 +1792,7 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/app/models/post.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/app/models/comment.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -1933,8 +1893,8 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                            <li><a href="classes/Post.html#toc-properties">Properties</a></li>
-                                                            <li><a href="classes/Post.html#toc-methods">Methods</a></li>
+                                                            <li><a href="classes/Comment.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/Comment.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
             
@@ -1944,9 +1904,9 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
                                                     <li class=""><a href="classes/Attributes.html#property__attributes">$_attributes</a></li>
                                                     <li class=""><a href="classes/ActiveModel.html#property_connection">$connection</a></li>
                                                     <li class=""><a href="classes/ActiveModel.html#property_db">$db</a></li>
-                                                    <li class=""><a href="classes/Post.html#property_db_attributes">$db_attributes</a></li>
-                                                    <li class=""><a href="classes/Post.html#property_relations">$relations</a></li>
-                                                    <li class=""><a href="classes/Post.html#property_validations">$validations</a></li>
+                                                    <li class=""><a href="classes/Comment.html#property_db_attributes">$db_attributes</a></li>
+                                                    <li class=""><a href="classes/Comment.html#property_relations">$relations</a></li>
+                                                    <li class=""><a href="classes/Comment.html#property_validations">$validations</a></li>
                                                     <li class=""><a href="classes/Relations.html#property__loaded_relations">$_loaded_relations</a></li>
                                             </ul>
                 </li>
@@ -1954,7 +1914,7 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li class=""><a href="classes/Post.html#method___construct">__construct()</a></li>
+                                            <li class=""><a href="classes/Comment.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method___destruct">__destruct()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method___get">__get()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method___isset">__isset()</a></li>
@@ -1969,7 +1929,6 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
                                             <li class=""><a href="classes/ActiveModel.html#method_humanAttributeName">humanAttributeName()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_orderBy">orderBy()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_paginate">paginate()</a></li>
-                                            <li class=""><a href="classes/Post.html#method_publiclyVisible">publiclyVisible()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_save">save()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_update">update()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_validate">validate()</a></li>
@@ -2000,7 +1959,7 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
     </section>
 </section>
         </div>
-        <a href="classes/Post.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Comment.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

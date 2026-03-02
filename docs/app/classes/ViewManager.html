@@ -268,6 +268,13 @@ e.g. /posts/:id/destroy, /votings/:id/destroy, etc.</dd>
 it renders the &quot;layouts/forms/_errors&quot; partial view and passes the errors to it.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/ViewManager.html#method_renderIcon">renderIcon()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Renders an inline SVG icon from the Heroicons library (https://heroicons.com).</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/ViewManager.html#method_renderInput">renderInput()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -668,7 +675,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">183</span>
+    <span class="phpdocumentor-element-found-in__line">228</span>
 
     </aside>
 
@@ -924,6 +931,65 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
         <span class="phpdocumentor-signature__response_type">void</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>Echoes the rendered errors partial view if there are errors, otherwise does nothing.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_renderIcon">
+        renderIcon()
+        <a href="classes/ViewManager.html#method_renderIcon" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">183</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Renders an inline SVG icon from the Heroicons library (https://heroicons.com).</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">renderIcon</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$icon_name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Icon names match Heroicons originals, e.g.: arrow-right-on-rectangle, arrow-left-on-rectangle,
+plus-circle, pencil-square, trash, x-mark, paper-clip, play, check-circle,
+chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$icon_name</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The original Heroicons name of the icon to render.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The inline SVG HTML string for the icon, or an empty string if the icon is not found.</p>
 </section>
 
             </section>
@@ -1283,6 +1349,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
                                             <li class=""><a href="classes/ViewManager.html#method_renderCSRFToken">renderCSRFToken()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderDestroyButton">renderDestroyButton()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderErrors">renderErrors()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_renderIcon">renderIcon()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderInput">renderInput()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderPartial">renderPartial()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderTextarea">renderTextarea()</a></li>

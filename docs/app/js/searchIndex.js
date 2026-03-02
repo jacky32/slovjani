@@ -56,6 +56,61 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/AdminAttachmentsController.html#property_resource"
         },                {
+            "fqsen": "\\AdminCommentsController",
+            "name": "AdminCommentsController",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#method___construct"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#method_create"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003Aupdate\u0028\u0029",
+            "name": "update",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#method_update"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003Adestroy\u0028\u0029",
+            "name": "destroy",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#method_destroy"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003AfindComment\u0028\u0029",
+            "name": "findComment",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#method_findComment"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003AfindResource\u0028\u0029",
+            "name": "findResource",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#method_findResource"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003A\u0024resource_type",
+            "name": "resource_type",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#property_resource_type"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003A\u0024resource_id",
+            "name": "resource_id",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#property_resource_id"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003A\u0024comment_id",
+            "name": "comment_id",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#property_comment_id"
+        },                {
+            "fqsen": "\\AdminCommentsController\u003A\u003A\u0024resource",
+            "name": "resource",
+            "summary": "",
+            "url": "classes/AdminCommentsController.html#property_resource"
+        },                {
             "fqsen": "\\AdminController",
             "name": "AdminController",
             "summary": "",
@@ -581,6 +636,31 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Attachment.html#property_validations"
         },                {
+            "fqsen": "\\Comment",
+            "name": "Comment",
+            "summary": "",
+            "url": "classes/Comment.html"
+        },                {
+            "fqsen": "\\Comment\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Comment.html#method___construct"
+        },                {
+            "fqsen": "\\Comment\u003A\u003A\u0024db_attributes",
+            "name": "db_attributes",
+            "summary": "",
+            "url": "classes/Comment.html#property_db_attributes"
+        },                {
+            "fqsen": "\\Comment\u003A\u003A\u0024relations",
+            "name": "relations",
+            "summary": "",
+            "url": "classes/Comment.html#property_relations"
+        },                {
+            "fqsen": "\\Comment\u003A\u003A\u0024validations",
+            "name": "validations",
+            "summary": "",
+            "url": "classes/Comment.html#property_validations"
+        },                {
             "fqsen": "\\Event",
             "name": "Event",
             "summary": "",
@@ -845,6 +925,11 @@ Search.appendIndex(
             "name": "renderCSRFToken",
             "summary": "Render\u0020a\u0020CSRF\u0020token\u0020input\u0020for\u0020a\u0020form\nUsage\u003A\u0020call\u0020\u0024this\u002D\u003ErenderCSRFToken\u0028\u0027\/posts\u0027\u0029\u0020inside\u0020a\u0020form\u0020that\u0020submits\u0020to\u0020\/posts,\nor\u0020\u0024this\u002D\u003ErenderCSRFToken\u0028\u0027\/posts\/\u0027\u0020.\u0020\u0024post\u002D\u003Eid\u0029\u0020for\u0020a\u0020form\u0020that\u0020submits\u0020to\u0020\/posts\/\u003Aid,\u0020etc.",
             "url": "classes/ViewManager.html#method_renderCSRFToken"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003ArenderIcon\u0028\u0029",
+            "name": "renderIcon",
+            "summary": "Renders\u0020an\u0020inline\u0020SVG\u0020icon\u0020from\u0020the\u0020Heroicons\u0020library\u0020\u0028https\u003A\/\/heroicons.com\u0029.",
+            "url": "classes/ViewManager.html#method_renderIcon"
         },                {
             "fqsen": "\\ViewManager\u003A\u003A__destruct\u0028\u0029",
             "name": "__destruct",
