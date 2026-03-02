@@ -53,6 +53,29 @@ $appConfig = require './config/application.php';
 require 'lib/helpers.php';
 require 'lib/active_model/active_model.php';
 require __DIR__ . '/vendor/autoload.php';
+require 'app/services/static_page_router.php';
+
+// Start the session early so we can check login state before the pregen shortcut.
+session_start();
+
+// Serve pregenerated static HTML for public pages (GET requests only, guests only)
+// Covers /posts, /posts?page=N, /posts/:id, /events, /events?page=N, /events/:id
+// Logged-in users are always routed through PHP so they see live, session-aware content.
+$userIsLoggedIn  = isset($_SESSION['auth_logged_in']) && $_SESSION['auth_logged_in'] === true;
+$pregeneratedFile = (new StaticPageRouter(__DIR__ . '/pregenerated'))->resolve(
+  $_SERVER['REQUEST_METHOD'],
+  $userIsLoggedIn,
+  parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH),
+  (int) ($_GET['page'] ?? 1)
+);
+
+if ($pregeneratedFile !== null) {
+  header('Content-Type: text/html; charset=UTF-8');
+  header('X-Pregenerated: true');
+  readfile($pregeneratedFile);
+  exit;
+}
+// Continue with normal PHP routing for all other requests (including logged-in users and non-GET requests).
 
 // Autoloader
 spl_autoload_register(function ($class) {
@@ -75,7 +98,6 @@ $controllerName = $router->controllerName;
 $action = $router->action;
 
 // CSRF token
-session_start();
 if (empty($_SESSION['token'])) {
   $_SESSION['token'] = bin2hex(random_bytes(32));
 }

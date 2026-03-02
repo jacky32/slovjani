@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package Controllers
  */
@@ -63,6 +64,7 @@ class AdminPostsController extends AdminController
         'creator_id' => $this->auth->getUserId()
       ]);
       $post->save();
+      (new StaticPageGenerator())->regenerateAll();
       $this->addFlash('success', t("posts.create.success"));
       header("Location: /admin/posts");
     } catch (Exception $e) {
@@ -110,10 +112,14 @@ class AdminPostsController extends AdminController
       // Find post and check ownership
       $post = Post::find($this->id);
       if ($post && $post->creator_id == $this->auth->getUserId()) {
+        $oldStatus = $post->status;
         $post->name = $request['post']['name'];
         $post->body = $request['post']['body'];
         $post->status = $request['post']['status'];
         $post->save();
+        if ($oldStatus === 'PUBLISHED' || $post->status === 'PUBLISHED') {
+          (new StaticPageGenerator())->regenerateAll();
+        }
         $this->addFlash('success', t("posts.update.success"));
         header("Location: /admin/posts/" . $post->id);
       } else {
@@ -149,7 +155,11 @@ class AdminPostsController extends AdminController
       // Find post and check ownership
       $post = Post::find($this->id);
       if ($post && $post->creator_id == $this->auth->getUserId()) {
+        $wasPublished = $post->status === 'PUBLISHED';
         $post->destroy();
+        if ($wasPublished) {
+          (new StaticPageGenerator())->regenerateAll();
+        }
         $this->addFlash('success', t("posts.destroy.success"));
       } else {
         if (!$post) {

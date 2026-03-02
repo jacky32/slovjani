@@ -626,7 +626,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
@@ -634,7 +634,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><abbr title="\Delight\Auth\Auth">Auth</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$auth</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><abbr title="\Delight\Auth\Auth">Auth</abbr>|<a href="classes/GuestAuth.html"><abbr title="\GuestAuth">GuestAuth</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$auth</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$controllerOverride</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -646,10 +646,19 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$auth</span>
-                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\Delight\Auth\Auth">Auth</abbr></span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\Delight\Auth\Auth">Auth</abbr>|<a href="classes/GuestAuth.html"><abbr title="\GuestAuth">GuestAuth</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The authentication service to be used for rendering views.</p>
+                    <section class="phpdocumentor-description"><p>The authentication service (or a GuestAuth stub) to be used for rendering views.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$controllerOverride</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>When provided, skips the backtrace and uses this value as the active controller name. Used by StaticPageGenerator.</p>
 </section>
 
             </dd>
@@ -675,7 +684,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">228</span>
+    <span class="phpdocumentor-element-found-in__line">233</span>
 
     </aside>
 
@@ -716,7 +725,7 @@ within the overall page layout.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
@@ -784,7 +793,7 @@ The method also sets the page title and makes any errors or pagination data avai
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">167</span>
+    <span class="phpdocumentor-element-found-in__line">172</span>
 
     </aside>
 
@@ -845,7 +854,7 @@ and comparing it to the submitted token.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">144</span>
+    <span class="phpdocumentor-element-found-in__line">149</span>
 
     </aside>
 
@@ -904,7 +913,7 @@ Uses CSRF token for protection</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">78</span>
+    <span class="phpdocumentor-element-found-in__line">83</span>
 
     </aside>
 
@@ -950,7 +959,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">183</span>
+    <span class="phpdocumentor-element-found-in__line">188</span>
 
     </aside>
 
@@ -1009,7 +1018,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">123</span>
 
     </aside>
 
@@ -1091,7 +1100,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 
     </aside>
 
@@ -1155,7 +1164,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">93</span>
+    <span class="phpdocumentor-element-found-in__line">98</span>
 
     </aside>
 

@@ -18,15 +18,20 @@ class ViewManager
   /**
    * The constructor method for the ViewManager class.
    * It initializes the object with the given authentication service and determines the current controller based on the debug backtrace.
-   * @param \Delight\Auth\Auth $auth The authentication service to be used for rendering views.
+   * @param \Delight\Auth\Auth|\GuestAuth $auth The authentication service (or a GuestAuth stub) to be used for rendering views.
+   * @param string|null $controllerOverride When provided, skips the backtrace and uses this value as the active controller name. Used by StaticPageGenerator.
    */
-  public function __construct(\Delight\Auth\Auth $auth)
+  public function __construct(\Delight\Auth\Auth|\GuestAuth $auth, ?string $controllerOverride = null)
   {
     $this->auth = $auth;
-    $tmp = debug_backtrace();
-    $this->controller = $tmp[2]['class'];
-    if ($this->controller == "AdminController") {
-      $this->controller = $tmp[3]['class'];
+    if ($controllerOverride !== null) {
+      $this->controller = $controllerOverride;
+    } else {
+      $tmp = debug_backtrace();
+      $this->controller = $tmp[2]['class'];
+      if ($this->controller == "AdminController") {
+        $this->controller = $tmp[3]['class'];
+      }
     }
   }
 

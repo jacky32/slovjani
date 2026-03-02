@@ -3,3 +3,4 @@ uploads/*/
 build/cache/*
 docs/app/.build/
 *.cache
+pregenerated/*

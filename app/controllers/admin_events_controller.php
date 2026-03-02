@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package Controllers
  */
@@ -65,6 +66,7 @@ class AdminEventsController extends AdminController
         'creator_id' => $this->auth->getUserId()
       ]);
       $event->save();
+      (new StaticPageGenerator())->regenerateAll();
       $this->addFlash('success', t("events.create.success"));
       header("Location: /admin/events");
     } catch (Exception $e) {
@@ -121,6 +123,7 @@ class AdminEventsController extends AdminController
           }
         }
         $event->save();
+        (new StaticPageGenerator())->regenerateAll();
         $this->addFlash('success', t("events.update.success"));
         header("Location: /admin/events/" . $event->id);
       } else {
@@ -156,7 +159,11 @@ class AdminEventsController extends AdminController
       // Find event and check ownership
       $event = Event::find($this->id);
       if ($event && $event->creator_id == $this->auth->getUserId()) {
+        $wasPubliclyVisible = (bool) $event->is_publicly_visible;
         $event->destroy();
+        if ($wasPubliclyVisible) {
+          (new StaticPageGenerator())->regenerateAll();
+        }
         $this->addFlash('success', t("events.destroy.success"));
       } else {
         if (!$event) {

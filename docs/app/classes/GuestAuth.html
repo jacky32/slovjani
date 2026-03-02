@@ -82,7 +82,7 @@
 </h4>
 
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="packages/Services.html" class="-active">Services</a>
+    <a href="packages/Services.html" class="">Services</a>
 </h4>
 
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -109,44 +109,234 @@
                                         <ul class="phpdocumentor-breadcrumbs">
     </ul>
 
-    <article class="phpdocumentor-element -package">
-        <h2 class="phpdocumentor-content__title">Services</h2>
+    <article class="phpdocumentor-element -class">
+        <h2 class="phpdocumentor-content__title">
+    GuestAuth
 
-        
+    
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Services.html">Services</a></li>
+                            </ul>
+        </div>
+    
+    
+    </h2>
+
+<div class="phpdocumentor-label-line">
+
+
+</div>
+
+        <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/guest_auth.php"><a href="files/app-services-guest-auth.html"><abbr title="app/services/guest_auth.php">guest_auth.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">10</span>
+
+    </aside>
+
+            <p class="phpdocumentor-summary">A minimal auth stub that represents an unauthenticated (guest) user.</p>
+
+
+    <section class="phpdocumentor-description"><p>Used by StaticPageGenerator so that rendered HTML never contains
+session-specific or user-specific content.</p>
+</section>
+
+
+
+    
+    
 <h3 id="toc">
     Table of Contents
-    <a href="packages/Services.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/GuestAuth.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
 
 
 
-    <h4 id="toc-classes">
-        Classes
-        <a href="packages/Services.html#toc-classes" class="headerlink"><i class="fas fa-link"></i></a>
+
+
+
+
+
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/GuestAuth.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/GuestAuth.html#method_getUserId">getUserId()</a>
+    <span>
+                                &nbsp;: int|null    </span>
+</dt>
+<dd>Always returns null – no user ID for a guest.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/GuestAuth.html#method_hasRole">hasRole()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Always returns false – a guest has no roles.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/GuestAuth.html#method_isLoggedIn">isLoggedIn()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Always returns false – the guest is never logged in.</dd>
+
+    </dl>
+
+
+
+        
+
+        
+
+            <section class="phpdocumentor-methods">
+        <h3 class="phpdocumentor-elements__header" id="methods">
+            Methods
+            <a href="classes/GuestAuth.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getUserId">
+        getUserId()
+        <a href="classes/GuestAuth.html#method_getUserId" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
-    <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Database.html"><abbr title="\Database">Database</abbr></a></dt>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/FlashManager.html"><abbr title="\FlashManager">FlashManager</abbr></a></dt>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/GuestAuth.html"><abbr title="\GuestAuth">GuestAuth</abbr></a></dt><dd>A minimal auth stub that represents an unauthenticated (guest) user.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/StaticPageGenerator.html"><abbr title="\StaticPageGenerator">StaticPageGenerator</abbr></a></dt><dd>Generates static HTML snapshots of public pages (posts/ and events/) and
-saves them under /pregenerated so that index.php can serve them directly
-without going through PHP routing for each anonymous request.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ViewManager.html"><abbr title="\ViewManager">ViewManager</abbr></a></dt>    </dl>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/guest_auth.php"><a href="files/app-services-guest-auth.html"><abbr title="app/services/guest_auth.php">guest_auth.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
+    </aside>
 
+        <p class="phpdocumentor-summary">Always returns null – no user ID for a guest.</p>
 
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getUserId</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int|null</span></code>
 
-
-
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
 
         
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int|null</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_hasRole">
+        hasRole()
+        <a href="classes/GuestAuth.html#method_hasRole" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/guest_auth.php"><a href="files/app-services-guest-auth.html"><abbr title="app/services/guest_auth.php">guest_auth.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">31</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Always returns false – a guest has no roles.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">hasRole</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$role</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$role</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
 
         
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isLoggedIn">
+        isLoggedIn()
+        <a href="classes/GuestAuth.html#method_isLoggedIn" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/guest_auth.php"><a href="files/app-services-guest-auth.html"><abbr title="app/services/guest_auth.php">guest_auth.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">15</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Always returns false – the guest is never logged in.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">isLoggedIn</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+            </section>
+
         <div class="phpdocumentor-modal" id="source-view">
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/app/services/guest_auth.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -239,7 +429,7 @@ without going through PHP routing for each anonymous request.</dd>            <d
     </article>
                                 </section>
                 <section class="phpdocumentor-on-this-page__sidebar">
-                            
+                                
     <section class="phpdocumentor-on-this-page__content">
         <strong class="phpdocumentor-on-this-page__title">On this page</strong>
 
@@ -247,11 +437,19 @@ without going through PHP routing for each anonymous request.</dd>            <d
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                        <li><a href="packages/Services.html#toc-classes">Classes</a></li>
-                                                                                                                    </ul>
+                                                                                <li><a href="classes/GuestAuth.html#toc-methods">Methods</a></li>
+                                    </ul>
             </li>
-
             
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li class=""><a href="classes/GuestAuth.html#method_getUserId">getUserId()</a></li>
+                                            <li class=""><a href="classes/GuestAuth.html#method_hasRole">hasRole()</a></li>
+                                            <li class=""><a href="classes/GuestAuth.html#method_isLoggedIn">isLoggedIn()</a></li>
+                                    </ul>
+            </li>
                     </ul>
     </section>
 
@@ -269,7 +467,7 @@ without going through PHP routing for each anonymous request.</dd>            <d
     </section>
 </section>
         </div>
-        <a href="packages/Services.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/GuestAuth.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
