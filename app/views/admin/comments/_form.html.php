@@ -31,21 +31,27 @@ $action  = $destroy
 
 <?php else: ?>
 
-  <form action="<?= $action ?>" method="POST">
-    <?= $this->renderCSRFToken($action) ?>
-    <fieldset>
-      <legend><?= $comment->id ? t("comments.edit.title") : t("comments.new.title") ?></legend>
-      <?= $this->renderErrors() ?>
+  <section id="rightpane">
+    <h1><?= $comment->id ? t("comments.edit.title") : t("comments.new.title") ?></h1>
 
-      <?php if (!$comment->id && isset($parent_comment_id) && $parent_comment_id): ?>
-        <input type="hidden" name="comment[parent_comment_id]" value="<?= htmlspecialchars($parent_comment_id) ?>">
-      <?php endif; ?>
+    <div class="show-section">
+      <form action="<?= $action ?>" method="POST">
+        <?= $this->renderCSRFToken($action) ?>
 
-      <?= $this->renderTextarea($comment, "body") ?>
+        <?= $this->renderErrors() ?>
 
-      <button class="button"><?= $this->renderIcon($comment->id ? 'pencil-square' : 'plus-circle') ?> <?= $comment->id ? t("update") : t("create") ?></button>
-      <a href="/admin/<?= $resource_type ?>/<?= $resource_id ?>" class="button"><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
-    </fieldset>
-  </form>
+        <?php if (!$comment->id && isset($parent_comment_id) && $parent_comment_id): ?>
+          <input type="hidden" name="comment[parent_comment_id]" value="<?= htmlspecialchars($parent_comment_id) ?>">
+        <?php endif; ?>
+
+        <?= $this->renderTextarea($comment, "body") ?>
+
+        <div class="action-buttons show-section__actions">
+          <button class="button"><?= $this->renderIcon($comment->id ? 'pencil-square' : 'plus-circle') ?> <?= $comment->id ? t("update") : t("create") ?></button>
+          <a href="/admin/<?= $resource_type ?>/<?= $resource_id ?>" class="button"><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
+        </div>
+      </form>
+    </div>
+  </section>
 
 <?php endif; ?>

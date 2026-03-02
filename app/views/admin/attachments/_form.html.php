@@ -1,22 +1,24 @@
-<form action=<?= "/admin/{$resource_type}/{$resource_id}/attachments" . ($attachment->id ? "/" . $attachment->id : "") ?> method="POST" enctype="multipart/form-data">
-  <?= $this->renderCSRFToken("/admin/{$resource_type}/{$resource_id}/attachments" . ($attachment->id ? "/" . $attachment->id : "")) ?>
+<section id="rightpane">
+  <h1><?= t("attachments.new.title") ?></h1>
 
-  <fieldset class="">
-    <legend class=""><?= t("attachments.new.title") ?></legend>
-    <?= $this->renderErrors() ?>
+  <div class="show-section">
+    <form action="<?= "/admin/{$resource_type}/{$resource_id}/attachments" . ($attachment->id ? "/" . $attachment->id : "") ?>" method="POST" enctype="multipart/form-data">
+      <?= $this->renderCSRFToken("/admin/{$resource_type}/{$resource_id}/attachments" . ($attachment->id ? "/" . $attachment->id : "")) ?>
 
-    <?= $this->renderInput($attachment, "visible_name", t("attachments.form.visible_name")) ?>
-    <br>
-    <label for="is_publicly_visible" style="display:flex; align-items:center; gap:0.5rem;">
-      <input type="checkbox" name="attachment[is_publicly_visible]" id="is_publicly_visible" <?= $attachment->is_publicly_visible ? "checked" : "" ?>>
-      <span><?= t("attributes.attachment.is_publicly_visible") ?></span>
-    </label>
-    <br>
+      <?= $this->renderErrors() ?>
 
-    <input type="file" name="attachment[]" class="input" <?= $attachment->id ? "" : "required" ?>>
+      <?= $this->renderInput($attachment, "visible_name", t("attachments.form.visible_name")) ?>
+      <label for="is_publicly_visible" style="display:flex; align-items:center; gap:0.5rem;">
+        <input type="checkbox" name="attachment[is_publicly_visible]" id="is_publicly_visible" <?= $attachment->is_publicly_visible ? "checked" : "" ?>>
+        <span><?= t("attributes.attachment.is_publicly_visible") ?></span>
+      </label>
 
-    <br>
-    <button class="button"><?= $this->renderIcon($attachment->id ? 'pencil-square' : 'plus-circle') ?> <?= $attachment->id ? t("update") : t("create") ?></button>
-    <a href='/admin/<?= $resource_type ?>/<?= $resource_id ?>' class='button'><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
-  </fieldset>
-</form>
+      <input type="file" name="attachment[]" class="input" <?= $attachment->id ? "" : "required" ?>>
+
+      <div class="action-buttons show-section__actions">
+        <button class="button"><?= $this->renderIcon($attachment->id ? 'pencil-square' : 'plus-circle') ?> <?= $attachment->id ? t("update") : t("create") ?></button>
+        <a href='/admin/<?= $resource_type ?>/<?= $resource_id ?>' class='button'><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
+      </div>
+    </form>
+  </div>
+</section>
