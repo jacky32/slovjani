@@ -2,11 +2,23 @@
 
 namespace ActiveModel\Validations;
 
+/**
+ * Validation exception raised for inclusion constraint violations.
+ */
 class InclusionException extends \ActiveModel\ValidationException {};
 
+/**
+ * Trait providing inclusion validation for model attributes.
+ */
 trait InclusionValidator
 {
-  // 'inclusion' => ['chosen_option' => ['yes', 'no', 'abstain']]
+  /**
+   * Validates that each attribute's value is within its list of allowed values.
+   * Usage in model: 'inclusion' => ["status" => ["active", "archived", "pending"]]
+   *
+   * @param array $attributes Associative array of attribute names to arrays of allowed values.
+   * @return array Array of violation records, each with 'class', 'attribute', and 'message' keys.
+   */
   public function validates_inclusion_of(array $attributes)
   {
     $caught_exceptions = [];

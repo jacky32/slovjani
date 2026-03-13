@@ -1,7 +1,7 @@
 <?php
 
 /**
- * QueryBuilder - Chainable query builder similar to Rails ActiveRecord::Relation
+ * Chainable SQL query builder for ActiveModel records and relation scopes.
  *
  * Usage:
  *   Post::where(['author_id' => 1])->where(['status' => 'published'])->get();
@@ -252,6 +252,13 @@ class QueryBuilder
     return $results;
   }
 
+  /**
+   * Creates a Pagination object from the current QueryBuilder state.
+   *
+   * @param int|null $current_page The page number to display. Pass null together with $start_id to auto-detect.
+   * @param int|null $start_id     When provided and $current_page is null, the page containing this record ID is used.
+   * @return Pagination
+   */
   public function paginate(int|null $current_page = 1, int|null $start_id = null): Pagination
   {
     return new Pagination($this, $current_page, $start_id);

@@ -1,5 +1,8 @@
 <?php
+
 /**
+ * Question model belonging to a voting with user responses.
+ *
  * @package Models
  */
 class Question extends ApplicationRecord
@@ -33,6 +36,11 @@ class Question extends ApplicationRecord
     'length' => ["name" => ["min" => 4, "max" => 255], "description" => ["min" => 4, "max" => 1000]]
   ];
 
+  /**
+   * Initialises the Question with the provided attribute data.
+   *
+   * @param array $data Associative array of attribute values to pre-populate.
+   */
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);

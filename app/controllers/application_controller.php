@@ -1,5 +1,8 @@
 <?php
+
 /**
+ * Base controller that provides shared auth, rendering, CSRF, and flash helpers.
+ *
  * @package Controllers
  */
 class ApplicationController
@@ -8,8 +11,13 @@ class ApplicationController
   protected $viewManager;
   protected $auth;
 
+  /**
+   * Initialises the controller: opens a PDO connection, creates the Auth
+   * service and the ViewManager.
+   */
   public function __construct()
   {
+    // TODO: close the PDO connection?
     $conn = new PDO("mysql:host=" . getenv("MYSQL_HOST") . ";dbname=" . getenv("MYSQL_DATABASE"), getenv("MYSQL_USER"), getenv("MYSQL_PASSWORD"));
     $this->auth = new \Delight\Auth\Auth($conn);
     $this->viewManager = new ViewManager($this->auth);
@@ -22,6 +30,13 @@ class ApplicationController
     // });
   }
 
+  /**
+   * Verifies the CSRF token submitted with a form.
+   * Regenerates the session token after each successful check.
+   *
+   * @param string $formAction The form action path used to generate and verify the HMAC token.
+   * @throws Exception If the token is missing or does not match.
+   */
   protected function verifyCSRF($formAction)
   {
     // CSRF protection
@@ -35,11 +50,25 @@ class ApplicationController
     }
   }
 
+  /**
+   * Adds a flash message to the session via FlashManager.
+   *
+   * @param string $type    Flash type: 'success', 'error', 'info', or 'warning'.
+   * @param string $message The message text.
+   * @return void
+   */
   protected function addFlash($type, $message)
   {
     FlashManager::addFlash($type, $message);
   }
 
+  /**
+   * Renders a view template through the ViewManager.
+   *
+   * @param string $view The view name relative to app/views (without .html.php extension).
+   * @param array  $data Associative array of variables to pass to the view.
+   * @return void
+   */
   protected function render($view, $data = [])
   {
     $this->viewManager->render($view, $data);

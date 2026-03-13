@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Admin controller for managing comments on posts, users, events, and votings.
+ *
  * @package Controllers
  */
 class AdminCommentsController extends AdminController
@@ -10,6 +12,10 @@ class AdminCommentsController extends AdminController
   private $comment_id;
   private $resource;
 
+  /**
+   * Parses the resource type, resource ID, and optional comment ID from the
+   * request URI and locates the parent resource.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -21,6 +27,12 @@ class AdminCommentsController extends AdminController
     $this->resource = $this->findResource();
   }
 
+  /**
+   * Persists a new comment on the parent resource.
+   *
+   * @param array $request Parsed request data including comment body and optional parent ID.
+   * @return void
+   */
   public function create($request)
   {
     try {
@@ -56,6 +68,12 @@ class AdminCommentsController extends AdminController
     }
   }
 
+  /**
+   * Updates the body of an existing comment owned by the current user.
+   *
+   * @param array $request Parsed request data including updated comment body.
+   * @return void
+   */
   public function update($request)
   {
     try {
@@ -92,6 +110,12 @@ class AdminCommentsController extends AdminController
     }
   }
 
+  /**
+   * Deletes a comment owned by the current user.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function destroy($request)
   {
     try {
@@ -117,6 +141,11 @@ class AdminCommentsController extends AdminController
     }
   }
 
+  /**
+   * Finds the comment by ID and verifies it belongs to the current resource.
+   *
+   * @return Comment|null The matching Comment, or null if not found / mismatched resource.
+   */
   private function findComment()
   {
     $comment = Comment::find($this->comment_id);
@@ -130,6 +159,11 @@ class AdminCommentsController extends AdminController
     return null;
   }
 
+  /**
+   * Resolves the parent resource instance from the parsed resource type and ID.
+   *
+   * @return Post|User|Event|Voting|null The found resource, or null for unknown types.
+   */
   private function findResource()
   {
     switch ($this->resource_type) {

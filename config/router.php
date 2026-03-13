@@ -1,12 +1,10 @@
 <?php
 
 /**
- * @package Config
+ * Application router that maps request paths and methods to controller actions.
+ * Supports RESTful resources and nested resources for admin and public routes.
  *
- */
-/**
- * Simple Router class to map URLs to controller actions.
- * Supports RESTful resource routing for basic CRUD operations.
+ * @package Config
  */
 class Router
 {
@@ -29,6 +27,10 @@ class Router
    */
   private $routeAction;
 
+  /**
+   * Parses the incoming request URI, normalises the path, and matches it
+   * against all registered routes to set $controllerName and $action.
+   */
   public function __construct()
   {
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -205,12 +207,12 @@ class Router
   }
 
   /**
-   * resources
-   * Defines RESTful routes for a given resource and specified actions.
+   * Defines RESTful CRUD routes for a given resource and a set of actions.
    *
-   * @param string $resource Resource name (e.g., 'posts'). Must be plural.
-   * @param array $actions Optional. List of actions to create routes for. Defaults to all CRUD actions.
-   * @return bool True if a route is matched, false otherwise.
+   * @param string $resource Resource name in plural snake_case (e.g. 'posts').
+   * @param bool   $admin    When true, routes are prefixed with /admin.
+   * @param array  $actions  List of actions to register. Defaults to all CRUD actions.
+   * @return bool True if a route was matched, false otherwise.
    */
   private function resources($resource, $admin = false, $actions = ["index", "show", "new", "create", "edit", "update", "destroy"])
   {
@@ -324,7 +326,12 @@ class Router
     return false;
   }
 
-  // Remove trailing slash (but keep root '/') so routes match consistently
+  /**
+   * Removes a trailing slash from the path while preserving the root '/'.
+   *
+   * @param string $path The raw URL path.
+   * @return string Normalised path without a trailing slash.
+   */
   private function normalizeTrailingSlash($path)
   {
     $normalized = rtrim($path, '/');

@@ -2,6 +2,9 @@
 
 namespace ActiveModel\Validations;
 
+/**
+ * Trait providing uniqueness validation against persisted records.
+ */
 trait UniquenessValidator
 {
   /**

@@ -115,16 +115,13 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    AdminController
+    StaticPageRouter
 
-        <span class="phpdocumentor-element__extends">
-        extends <a href="classes/ApplicationController.html"><abbr title="\ApplicationController">ApplicationController</abbr></a>
-    </span>
     
             <div class="phpdocumentor-element__package">
             in package
             <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Controllers.html">Controllers</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Services.html">Services</a></li>
                             </ul>
         </div>
     
@@ -137,15 +134,24 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/controllers/admin_controller.php"><a href="files/app-controllers-admin-controller.html"><abbr title="app/controllers/admin_controller.php">admin_controller.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_router.php"><a href="files/app-services-static-page-router.html"><abbr title="app/services/static_page_router.php">static_page_router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Base controller for all admin controllers that handles basic authentication and authorisation.</p>
+            <p class="phpdocumentor-summary">Resolves incoming HTTP requests to pregenerated static HTML files.</p>
 
 
+    <section class="phpdocumentor-description"><p>Responsibilities:</p>
+<ul>
+<li>Map a request path (and optional page number) to the expected file path
+inside the pregenerated/ directory.</li>
+<li>Apply the login gate: logged-in users are never sent a static file.</li>
+<li>Return the absolute path of the file to serve, or null when PHP routing
+should handle the request normally.</li>
+</ul>
+</section>
 
 
 
@@ -153,7 +159,7 @@
     
 <h3 id="toc">
     Table of Contents
-    <a href="classes/AdminController.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/StaticPageRouter.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -167,63 +173,47 @@
 
 <h4 id="toc-properties">
     Properties
-    <a href="classes/AdminController.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/StaticPageRouter.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a class="" href="classes/ApplicationController.html#property_auth">$auth</a>
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a class="" href="classes/StaticPageRouter.html#property_baseDir">$baseDir</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a class="" href="classes/ApplicationController.html#property_errors">$errors</a>
-    <span>
-                        &nbsp;: mixed            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a class="" href="classes/ApplicationController.html#property_viewManager">$viewManager</a>
-    <span>
-                        &nbsp;: mixed            </span>
-</dt>
+<dd>Absolute path to the pregenerated/ directory.</dd>
 
     </dl>
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/AdminController.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/StaticPageRouter.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/AdminController.html#method___construct">__construct()</a>
+    <a class="" href="classes/StaticPageRouter.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Enforces authentication and admin/collaborator role before any action.</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a class="" href="classes/ApplicationController.html#method_addFlash">addFlash()</a>
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/StaticPageRouter.html#method_candidatePath">candidatePath()</a>
     <span>
-                                &nbsp;: void    </span>
+                                &nbsp;: string|null    </span>
 </dt>
-<dd>Adds a flash message to the session via FlashManager.</dd>
+<dd>Map a request path to the expected file path without checking whether
+the file actually exists on disk. Useful for testing the path logic
+in isolation.</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a class="" href="classes/ApplicationController.html#method_render">render()</a>
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/StaticPageRouter.html#method_resolve">resolve()</a>
     <span>
-                                &nbsp;: void    </span>
+                                &nbsp;: string|null    </span>
 </dt>
-<dd>Renders a view template through the ViewManager.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a class="" href="classes/ApplicationController.html#method_verifyCSRF">verifyCSRF()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Verifies the CSRF token submitted with a form.</dd>
+<dd>Determine which pregenerated file should be served for a given request,
+taking the HTTP method and login state into account.</dd>
 
     </dl>
 
@@ -235,110 +225,37 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/AdminController.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/StaticPageRouter.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
         class="
             phpdocumentor-element
             -property
-            -protected
+            -private
                                                                     "
 >
-    <h4 class="phpdocumentor-element__name" id="property_auth">
-        $auth
-        <a href="classes/ApplicationController.html#property_auth" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_baseDir">
+        $baseDir
+        <a href="classes/StaticPageRouter.html#property_baseDir" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                             </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/controllers/application_controller.php"><a href="files/app-controllers-application-controller.html"><abbr title="app/controllers/application_controller.php">application_controller.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_router.php"><a href="files/app-services-static-page-router.html"><abbr title="app/services/static_page_router.php">static_page_router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Absolute path to the pregenerated/ directory.</p>
+
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-        <span class="phpdocumentor-signature__visibility">protected</span>
-            <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$auth</span>
-    </code>
-
-    
-    
-    
-
-        
-        
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                                    "
->
-    <h4 class="phpdocumentor-element__name" id="property_errors">
-        $errors
-        <a href="classes/ApplicationController.html#property_errors" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                            </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/controllers/application_controller.php"><a href="files/app-controllers-application-controller.html"><abbr title="app/controllers/application_controller.php">application_controller.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">10</span>
-
-    </aside>
-
-    
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-        <span class="phpdocumentor-signature__visibility">protected</span>
-            <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$errors</span>
-     = <span class="phpdocumentor-signature__default-value">[]</span></code>
-
-    
-    
-    
-
-        
-        
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                                    "
->
-    <h4 class="phpdocumentor-element__name" id="property_viewManager">
-        $viewManager
-        <a href="classes/ApplicationController.html#property_viewManager" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                            </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/controllers/application_controller.php"><a href="files/app-controllers-application-controller.html"><abbr title="app/controllers/application_controller.php">application_controller.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">11</span>
-
-    </aside>
-
-    
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-        <span class="phpdocumentor-signature__visibility">protected</span>
-            <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$viewManager</span>
+        <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$baseDir</span>
     </code>
 
     
@@ -354,7 +271,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/AdminController.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/StaticPageRouter.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -365,58 +282,69 @@
 >
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
-        <a href="classes/AdminController.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/StaticPageRouter.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/controllers/admin_controller.php"><a href="files/app-controllers-admin-controller.html"><abbr title="app/controllers/admin_controller.php">admin_controller.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_router.php"><a href="files/app-services-static-page-router.html"><abbr title="app/services/static_page_router.php">static_page_router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Enforces authentication and admin/collaborator role before any action.</p>
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$baseDir</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$baseDir</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Absolute path to the pregenerated/ directory.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_candidatePath">
+        candidatePath()
+        <a href="classes/StaticPageRouter.html#method_candidatePath" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_router.php"><a href="files/app-services-static-page-router.html"><abbr title="app/services/static_page_router.php">static_page_router.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">71</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Map a request path to the expected file path without checking whether
+the file actually exists on disk. Useful for testing the path logic
+in isolation.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <section class="phpdocumentor-description"><p>Redirects to /login if unauthenticated, or to / if unauthorised.</p>
-</section>
-
-    
-    
-
-        
-    
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_addFlash">
-        addFlash()
-        <a href="classes/ApplicationController.html#method_addFlash" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/controllers/application_controller.php"><a href="files/app-controllers-application-controller.html"><abbr title="app/controllers/application_controller.php">application_controller.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">60</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Adds a flash message to the session via FlashManager.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">addFlash</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$message</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">candidatePath</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$requestPath</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$page</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">1</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -425,20 +353,20 @@
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$type</span>
+                <span class="phpdocumentor-argument-list__argument__name">$requestPath</span>
                 : <span class="phpdocumentor-argument-list__argument__type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Flash type: 'success', 'error', 'info', or 'warning'.</p>
+                    <section class="phpdocumentor-description"><p>URL path component</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$message</span>
-                : <span class="phpdocumentor-argument-list__argument__type">string</span>
-                            </dt>
+                <span class="phpdocumentor-argument-list__argument__name">$page</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">1</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The message text.</p>
+                    <section class="phpdocumentor-description"><p>Current page number (≥ 1)</p>
 </section>
 
             </dd>
@@ -448,53 +376,91 @@
 
         
     
-    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Candidate absolute path, or null if the path
+does not match any pregenerated route.</p>
+</section>
+
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
             -method
-            -protected
+            -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_render">
-        render()
-        <a href="classes/ApplicationController.html#method_render" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_resolve">
+        resolve()
+        <a href="classes/StaticPageRouter.html#method_resolve" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/controllers/application_controller.php"><a href="files/app-controllers-application-controller.html"><abbr title="app/controllers/application_controller.php">application_controller.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_router.php"><a href="files/app-services-static-page-router.html"><abbr title="app/services/static_page_router.php">static_page_router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Renders a view template through the ViewManager.</p>
+        <p class="phpdocumentor-summary">Determine which pregenerated file should be served for a given request,
+taking the HTTP method and login state into account.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">render</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$view</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">resolve</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$method</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isLoggedIn</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$requestPath</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$page</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">1</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
-    
+        <section class="phpdocumentor-description"><p>Returns the absolute path of the pregenerated file when ALL of the
+following are true:</p>
+<ul>
+<li>The HTTP method is GET.</li>
+<li>The user is not logged in.</li>
+<li>The request path matches a public resource route (posts or events).</li>
+<li>The corresponding file exists on disk.</li>
+</ul>
+<p>Returns null in every other case so that normal PHP routing takes over.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$view</span>
+                <span class="phpdocumentor-argument-list__argument__name">$method</span>
                 : <span class="phpdocumentor-argument-list__argument__type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The view name relative to app/views (without .html.php extension).</p>
+                    <section class="phpdocumentor-description"><p>HTTP method (e.g., 'GET', 'POST')</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$data</span>
-                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
-                 = <span class="phpdocumentor-argument-list__argument__default-value">[]</span>            </dt>
+                <span class="phpdocumentor-argument-list__argument__name">$isLoggedIn</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Associative array of variables to pass to the view.</p>
+                    <section class="phpdocumentor-description"><p>Whether the current user is authenticated</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$requestPath</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>URL path component (e.g., '/posts', '/posts/5')</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$page</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">1</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Current page number (≥ 1, from the query string)</p>
 </section>
 
             </dd>
@@ -504,73 +470,15 @@
 
         
     
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_verifyCSRF">
-        verifyCSRF()
-        <a href="classes/ApplicationController.html#method_verifyCSRF" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/controllers/application_controller.php"><a href="files/app-controllers-application-controller.html"><abbr title="app/controllers/application_controller.php">application_controller.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">40</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Verifies the CSRF token submitted with a form.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">verifyCSRF</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$formAction</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <section class="phpdocumentor-description"><p>Regenerates the session token after each successful check.</p>
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Absolute path to serve, or null to fall through</p>
 </section>
 
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$formAction</span>
-                : <span class="phpdocumentor-argument-list__argument__type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The form action path used to generate and verify the HMAC token.</p>
-</section>
+            </section>
 
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/ApplicationController.html#method_verifyCSRF#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
-                                                            
-                                                 <section class="phpdocumentor-description"><p>If the token is missing or does not match.</p>
-</section>
-
-                                    </dd>
-                                            </dl>
-
-        
-    
-    
 </article>
             </section>
 
@@ -578,7 +486,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/app/controllers/admin_controller.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/app/services/static_page_router.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -679,27 +587,24 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                            <li><a href="classes/AdminController.html#toc-properties">Properties</a></li>
-                                                            <li><a href="classes/AdminController.html#toc-methods">Methods</a></li>
+                                                            <li><a href="classes/StaticPageRouter.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/StaticPageRouter.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
             
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="classes/ApplicationController.html#property_auth">$auth</a></li>
-                                                    <li class=""><a href="classes/ApplicationController.html#property_errors">$errors</a></li>
-                                                    <li class=""><a href="classes/ApplicationController.html#property_viewManager">$viewManager</a></li>
+                                                    <li class=""><a href="classes/StaticPageRouter.html#property_baseDir">$baseDir</a></li>
                                             </ul>
                 </li>
             
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li class=""><a href="classes/AdminController.html#method___construct">__construct()</a></li>
-                                            <li class=""><a href="classes/ApplicationController.html#method_addFlash">addFlash()</a></li>
-                                            <li class=""><a href="classes/ApplicationController.html#method_render">render()</a></li>
-                                            <li class=""><a href="classes/ApplicationController.html#method_verifyCSRF">verifyCSRF()</a></li>
+                                            <li class=""><a href="classes/StaticPageRouter.html#method___construct">__construct()</a></li>
+                                            <li class=""><a href="classes/StaticPageRouter.html#method_candidatePath">candidatePath()</a></li>
+                                            <li class=""><a href="classes/StaticPageRouter.html#method_resolve">resolve()</a></li>
                                     </ul>
             </li>
                     </ul>
@@ -719,7 +624,7 @@
     </section>
 </section>
         </div>
-        <a href="classes/AdminController.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/StaticPageRouter.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

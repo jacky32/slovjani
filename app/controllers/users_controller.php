@@ -1,17 +1,29 @@
 <?php
+
 /**
+ * Public controller for user registration actions.
+ *
  * @package Controllers
  */
 class UsersController extends ApplicationController
 {
   private $user;
 
+  /**
+   * @param mixed $userModel Injected user model (reserved for future use).
+   */
   public function __construct($userModel)
   {
     parent::__construct();
     $this->user = $userModel;
   }
 
+  /**
+   * Renders the registration form.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function new($request)
   {
     $this->render("registrations/new", [
@@ -19,6 +31,12 @@ class UsersController extends ApplicationController
     ]);
   }
 
+  /**
+   * Registers a new user account with the provided email, password, and username.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function create($request)
   {
     try {

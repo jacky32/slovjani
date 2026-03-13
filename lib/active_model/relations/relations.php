@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Trait that resolves and caches belongs_to and has_many associations.
+ */
 trait Relations
 {
   private array $_loaded_relations = [];
@@ -51,6 +54,13 @@ trait Relations
     return isset($belongs_to[$name]) || isset($has_many[$name]);
   }
 
+  /**
+   * Builds a QueryBuilder for a has_many association, applying the correct
+   * foreign key condition and, for polymorphic associations, the type constraint.
+   *
+   * @param array $options The has_many options defined in the model's $relations array.
+   * @return QueryBuilder
+   */
   private function setHasManyRelation($options)
   {
     $foreign_key = $options['foreign_key'];

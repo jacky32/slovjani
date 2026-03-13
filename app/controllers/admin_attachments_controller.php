@@ -1,5 +1,8 @@
 <?php
+
 /**
+ * Admin controller for creating, serving, and deleting resource attachments.
+ *
  * @package Controllers
  */
 class AdminAttachmentsController extends AdminController
@@ -9,6 +12,10 @@ class AdminAttachmentsController extends AdminController
   private $attachment_id;
   private $resource;
 
+  /**
+   * Parses the resource type, resource ID, and optional attachment ID from the
+   * request URI and locates the parent resource.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -20,6 +27,12 @@ class AdminAttachmentsController extends AdminController
     $this->resource = $this->findResource();
   }
 
+  /**
+   * Streams the raw attachment file to the browser.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function show($request)
   {
     $attachment = $this->resource->attachments->find($this->attachment_id);
@@ -32,6 +45,12 @@ class AdminAttachmentsController extends AdminController
     }
   }
 
+  /**
+   * Renders the upload form for a new attachment on the parent resource.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function new($request)
   {
     $pagination = $this->resource::class::paginate($request['page'], $this->resource_id);
@@ -44,6 +63,13 @@ class AdminAttachmentsController extends AdminController
     ]);
   }
 
+  /**
+   * Handles the multipart file upload, persists the Attachment record and
+   * moves the file to the uploads directory.
+   *
+   * @param array $request Parsed request data including $_FILES.
+   * @return void
+   */
   public function create($request)
   {
     try {
@@ -158,6 +184,12 @@ class AdminAttachmentsController extends AdminController
   //   }
   // }
 
+  /**
+   * Deletes an attachment record and its corresponding file on disk.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function destroy($request)
   {
     try {
@@ -184,6 +216,11 @@ class AdminAttachmentsController extends AdminController
     }
   }
 
+  /**
+   * Resolves the parent resource instance from the parsed resource type and ID.
+   *
+   * @return Post|User|Event|Voting|null The found resource, or null for unknown types.
+   */
   private function findResource()
   {
     switch ($this->resource_type) {

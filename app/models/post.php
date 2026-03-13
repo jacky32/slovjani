@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Post domain model with publish-state workflow.
+ *
  * @package Models
  */
 class Post extends ApplicationRecord
@@ -43,11 +45,21 @@ class Post extends ApplicationRecord
     "inclusion" => ["status" => ["DRAFT", "PUBLISHED", "ARCHIVED"]]
   ];
 
+  /**
+   * Returns a QueryBuilder scoped to published posts only.
+   *
+   * @return \QueryBuilder
+   */
   public static function publiclyVisible()
   {
     return self::where(['status' => 'PUBLISHED']);
   }
 
+  /**
+   * Initialises the Post with the provided attribute data.
+   *
+   * @param array $data Associative array of attribute values to pre-populate.
+   */
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);

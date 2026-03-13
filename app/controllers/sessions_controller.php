@@ -1,17 +1,28 @@
 <?php
 
 /**
+ * Authentication controller for login and logout session actions.
+ *
  * @package Controllers
  */
 class SessionsController extends ApplicationController
 {
 
+  /**
+   * Initialises the sessions controller.
+   */
   public function __construct()
   {
     parent::__construct();
   }
 
 
+  /**
+   * Renders the login form, or redirects already-authenticated users.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function new($request)
   {
     if ($this->auth->isLoggedIn()) {
@@ -24,6 +35,12 @@ class SessionsController extends ApplicationController
     }
   }
 
+  /**
+   * Attempts to log the user in with the submitted email and password.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function create($request)
   {
     try {
@@ -49,6 +66,12 @@ class SessionsController extends ApplicationController
     header("Location: /");
   }
 
+  /**
+   * Logs the current user out and redirects to the home page.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function destroy($request)
   {
     $this->auth->logout();

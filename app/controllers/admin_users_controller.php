@@ -1,11 +1,17 @@
 <?php
+
 /**
+ * Admin controller for listing, editing, and removing user accounts.
+ *
  * @package Controllers
  */
 class AdminUsersController extends AdminController
 {
   private $id;
 
+  /**
+   * Parses the user ID from the request URI.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -15,6 +21,12 @@ class AdminUsersController extends AdminController
   }
 
 
+  /**
+   * Lists all users with pagination.
+   *
+   * @param array $request Parsed request data (expects 'page' key).
+   * @return void
+   */
   public function index($request)
   {
     $pagination = User::paginate($request['page']);
@@ -24,6 +36,12 @@ class AdminUsersController extends AdminController
     ]);
   }
 
+  /**
+   * Shows details for a single user.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function show($request)
   {
     $user = User::find($this->id);
@@ -40,6 +58,12 @@ class AdminUsersController extends AdminController
     }
   }
 
+  /**
+   * Renders the edit form for an existing user.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function edit($request)
   {
     $user = User::find($this->id);
@@ -57,6 +81,12 @@ class AdminUsersController extends AdminController
     }
   }
 
+  /**
+   * Updates an existing user's email, username, and role.
+   *
+   * @param array $request Parsed request data including updated user attributes.
+   * @return void
+   */
   public function update($request)
   {
     try {
@@ -99,6 +129,12 @@ class AdminUsersController extends AdminController
     }
   }
 
+  /**
+   * Deletes a user account.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function destroy($request)
   {
     try {

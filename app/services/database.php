@@ -1,5 +1,8 @@
 <?php
+
 /**
+ * Database connection bootstrapper with first-run schema initialisation.
+ *
  * @package Services
  */
 class Database
@@ -12,6 +15,12 @@ class Database
   private $db;
 
 
+  /**
+   * Loads application config, opens a mysqli connection, and attempts to
+   * bootstrap the schema automatically on first run if the database is missing.
+   *
+   * @throws Exception If a connection cannot be established after schema load.
+   */
   public function __construct()
   {
     $appConfig = require 'config/application.php';
@@ -33,12 +42,22 @@ class Database
   }
 
 
+  /**
+   * Opens (or re-opens) the mysqli connection using the stored connection params.
+   *
+   * @return \mysqli The active database connection.
+   */
   private function connect()
   {
     $this->db = ScriptManager::connectToDatabase($this->connectionParams);
     return $this->db;
   }
 
+  /**
+   * Returns the active mysqli connection.
+   *
+   * @return \mysqli
+   */
   public function getConnection()
   {
     return $this->db;

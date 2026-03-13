@@ -1,5 +1,8 @@
 <?php
+
 /**
+ * Admin controller for creating and maintaining voting questions.
+ *
  * @package Controllers
  */
 
@@ -8,6 +11,9 @@ class AdminQuestionsController extends AdminController
   private $voting_id;
   private $question_id;
 
+  /**
+   * Parses the voting ID and optional question ID from the request URI.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -17,6 +23,12 @@ class AdminQuestionsController extends AdminController
     $this->question_id = $matches[2] ?? null;
   }
 
+  /**
+   * Renders the new-question form under the parent voting.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function new($request)
   {
     $pagination = Voting::paginate($request['page'], $this->voting_id);
@@ -27,6 +39,12 @@ class AdminQuestionsController extends AdminController
     ]);
   }
 
+  /**
+   * Persists a new question for the parent voting.
+   *
+   * @param array $request Parsed request data including question attributes.
+   * @return void
+   */
   public function create($request)
   {
     try {
@@ -62,6 +80,12 @@ class AdminQuestionsController extends AdminController
     }
   }
 
+  /**
+   * Renders the edit form for an existing question.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function edit($request)
   {
     $voting = Voting::find($this->voting_id);
@@ -84,6 +108,12 @@ class AdminQuestionsController extends AdminController
     }
   }
 
+  /**
+   * Updates an existing question belonging to the current user's voting.
+   *
+   * @param array $request Parsed request data including updated question attributes.
+   * @return void
+   */
   public function update($request)
   {
     try {
@@ -125,6 +155,12 @@ class AdminQuestionsController extends AdminController
     }
   }
 
+  /**
+   * Deletes a question from the parent voting.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function destroy($request)
   {
     try {

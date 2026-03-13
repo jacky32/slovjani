@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Pagination value object containing page metadata and page resources.
+ */
 class Pagination
 {
   public $resources = [];
@@ -10,6 +13,14 @@ class Pagination
   public $previous_page = null;
   public $next_page = null;
 
+  /**
+   * Calculates pagination metadata and fetches the records for the requested page.
+   *
+   * @param QueryBuilder $query        A QueryBuilder instance with any pre-applied conditions.
+   * @param int|null     $current_page The requested page number (1-based). Clamped to valid range.
+   * @param int|null     $start_id     When provided and $current_page is null, the page containing
+   *                                   this record ID is resolved automatically.
+   */
   public function __construct(QueryBuilder $query, int|null $current_page = 1, int|null $start_id = null)
   {
     $this->total_count = $query->count();
@@ -26,16 +37,5 @@ class Pagination
     $this->next_page = ($this->current_page * $this->per_page) < $this->total_count ? $this->current_page + 1 : null;
     $offset = ($this->current_page - 1) * $this->per_page;
     $this->resources = $query->limit($this->per_page)->offset($offset)->get();
-
-
-    // $total_pages = ceil($total_posts / $per_page);
-    // if ($current_page < 1) {
-    //   $current_page = 1;
-    // } else if ($current_page > $total_pages) {
-    //   $current_page = $total_pages;
-    // }
-    // $previous_page = $current_page > 1 ? $current_page - 1 : null;
-    // $next_page = ($current_page * $per_page) < $total_posts ? $current_page + 1 : null;
-    // $posts = Post::where()->orderBy('created_at', 'DESC')->limit($per_page)->offset(($current_page - 1) * $per_page)->get();
   }
 }

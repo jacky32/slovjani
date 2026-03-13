@@ -89,6 +89,10 @@
     <a href="packages/Config.html" class="">Config</a>
 </h4>
 
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Database.html" class="">Database</a>
+</h4>
+
                         </section>
             
     <section class="phpdocumentor-sidebar__category -reports">
@@ -136,7 +140,7 @@
 
     </aside>
 
-            <p class="phpdocumentor-summary">QueryBuilder - Chainable query builder similar to Rails ActiveRecord::Relation</p>
+            <p class="phpdocumentor-summary">Chainable SQL query builder for ActiveModel records and relation scopes.</p>
 
 
     <section class="phpdocumentor-description"><p>Usage:
@@ -245,7 +249,8 @@ Post::where('author_id', 1)-&gt;orderBy('created_at', 'DESC')-&gt;limit(10)-&gt;
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>Check if any records exist</dd>
+<dd>Check if any records exist
+TODO: Předělat na efektivnější SQL dotaz SELECT 1 ... LIMIT 1 místo COUNT(*), aby se zbytečně nepočítaly všechny řádky.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/QueryBuilder.html#method_find">find()</a>
@@ -294,6 +299,7 @@ Post::where('author_id', 1)-&gt;orderBy('created_at', 'DESC')-&gt;limit(10)-&gt;
     <span>
                                 &nbsp;: <a href="classes/Pagination.html"><abbr title="\Pagination">Pagination</abbr></a>    </span>
 </dt>
+<dd>Creates a Pagination object from the current QueryBuilder state.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/QueryBuilder.html#method_pluck">pluck()</a>
@@ -761,11 +767,12 @@ Returns a flat array for single column, or array of associative arrays for multi
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/relations/query_builder.php"><a href="files/lib-active-model-relations-query-builder.html"><abbr title="lib/active_model/relations/query_builder.php">query_builder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">186</span>
+    <span class="phpdocumentor-element-found-in__line">187</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Check if any records exist</p>
+        <p class="phpdocumentor-summary">Check if any records exist
+TODO: Předělat na efektivnější SQL dotaz SELECT 1 ... LIMIT 1 místo COUNT(*), aby se zbytečně nepočítaly všechny řádky.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -1084,11 +1091,12 @@ the builder, applies the id condition and returns the first match.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/relations/query_builder.php"><a href="files/lib-active-model-relations-query-builder.html"><abbr title="lib/active_model/relations/query_builder.php">query_builder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">254</span>
+    <span class="phpdocumentor-element-found-in__line">262</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Creates a Pagination object from the current QueryBuilder state.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">paginate</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$current_page</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">1</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$start_id</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Pagination.html"><abbr title="\Pagination">Pagination</abbr></a></span></code>
@@ -1104,14 +1112,18 @@ the builder, applies the id condition and returns the first match.</p>
                 : <span class="phpdocumentor-argument-list__argument__type">int|null</span>
                  = <span class="phpdocumentor-argument-list__argument__default-value">1</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The page number to display. Pass null together with $start_id to auto-detect.</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$start_id</span>
                 : <span class="phpdocumentor-argument-list__argument__type">int|null</span>
                  = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>When provided and $current_page is null, the page containing this record ID is used.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -1139,7 +1151,7 @@ the builder, applies the id condition and returns the first match.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/relations/query_builder.php"><a href="files/lib-active-model-relations-query-builder.html"><abbr title="lib/active_model/relations/query_builder.php">query_builder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">198</span>
+    <span class="phpdocumentor-element-found-in__line">199</span>
 
     </aside>
 
@@ -1307,7 +1319,7 @@ Returns a flat array for single column, or array of associative arrays for multi
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/relations/query_builder.php"><a href="files/lib-active-model-relations-query-builder.html"><abbr title="lib/active_model/relations/query_builder.php">query_builder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">324</span>
+    <span class="phpdocumentor-element-found-in__line">332</span>
 
     </aside>
 
@@ -1346,7 +1358,7 @@ Returns a flat array for single column, or array of associative arrays for multi
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/relations/query_builder.php"><a href="files/lib-active-model-relations-query-builder.html"><abbr title="lib/active_model/relations/query_builder.php">query_builder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">297</span>
+    <span class="phpdocumentor-element-found-in__line">305</span>
 
     </aside>
 
@@ -1385,7 +1397,7 @@ Returns a flat array for single column, or array of associative arrays for multi
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/relations/query_builder.php"><a href="files/lib-active-model-relations-query-builder.html"><abbr title="lib/active_model/relations/query_builder.php">query_builder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">262</span>
+    <span class="phpdocumentor-element-found-in__line">270</span>
 
     </aside>
 
@@ -1424,7 +1436,7 @@ Returns a flat array for single column, or array of associative arrays for multi
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/relations/query_builder.php"><a href="files/lib-active-model-relations-query-builder.html"><abbr title="lib/active_model/relations/query_builder.php">query_builder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">339</span>
+    <span class="phpdocumentor-element-found-in__line">347</span>
 
     </aside>
 

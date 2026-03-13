@@ -1,7 +1,18 @@
 <?php
+
+/**
+ * Database script utility for opening raw connections and loading schema SQL.
+ *
+ * @package Database
+ */
 class ScriptManager
 {
-  // Connect to MySQL server with specifying a database
+  /**
+   * Creates a mysqli connection to the specified database.
+   *
+   * @param array $connectionParams Connection settings: host, user, password, dbname.
+   * @return \mysqli The open database connection.
+   */
   public static function connectToDatabase($connectionParams)
   {
     $db = new mysqli(
@@ -17,7 +28,15 @@ class ScriptManager
 
     return $db;
   }
-  // Load db schema from file db/schema.sql
+  /**
+   * Executes the schema SQL file against the server, optionally dropping and
+   * recreating the database first.
+   *
+   * @param array $connectionParams Connection settings: host, user, password, dbname.
+   * @param bool  $reset            When true, drops the existing database before loading.
+   * @return void
+   * @throws \Exception If the multi-query execution fails.
+   */
   public static function loadSchema($connectionParams, $reset = false)
   {
     $output = [];

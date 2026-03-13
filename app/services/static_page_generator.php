@@ -19,6 +19,9 @@ class StaticPageGenerator
   /** Absolute path to the pregenerated/ directory. */
   private string $outputDir;
 
+  /**
+   * Resolves the absolute path to the pregenerated/ output directory.
+   */
   public function __construct()
   {
     // Resolve relative to the project root (two levels up from app/services/)
@@ -38,6 +41,11 @@ class StaticPageGenerator
     Logger::info("StaticPageGenerator: regeneration complete");
   }
 
+  /**
+   * Regenerates all static index and show pages for posts.
+   *
+   * @return void
+   */
   private function regeneratePosts(): void
   {
     // --- index pages ---
@@ -71,6 +79,12 @@ class StaticPageGenerator
     });
   }
 
+  /**
+   * Generates (or overwrites) the static index page for a given posts page number.
+   *
+   * @param int $page Page number to generate.
+   * @return void
+   */
   private function generatePostsIndex(int $page): void
   {
     $pagination = Post::publiclyVisible()->paginate($page);
@@ -82,6 +96,12 @@ class StaticPageGenerator
     $this->save("posts/index_{$page}.html", $html);
   }
 
+  /**
+   * Generates (or overwrites) the static show page for a single Post.
+   *
+   * @param Post $post The post whose page should be regenerated.
+   * @return void
+   */
   private function generatePostShow(Post $post): void
   {
     $pagination  = Post::publiclyVisible()->paginate(null, $post->id);
@@ -97,6 +117,11 @@ class StaticPageGenerator
     $this->save("posts/{$post->id}.html", $html);
   }
 
+  /**
+   * Regenerates all static index and show pages for events.
+   *
+   * @return void
+   */
   private function regenerateEvents(): void
   {
     // --- index pages ---
@@ -128,6 +153,12 @@ class StaticPageGenerator
     });
   }
 
+  /**
+   * Generates (or overwrites) the static index page for a given events page number.
+   *
+   * @param int $page Page number to generate.
+   * @return void
+   */
   private function generateEventsIndex(int $page): void
   {
     $pagination = Event::where(['is_publicly_visible' => true])->paginate($page);
@@ -139,6 +170,12 @@ class StaticPageGenerator
     $this->save("events/index_{$page}.html", $html);
   }
 
+  /**
+   * Generates (or overwrites) the static show page for a single Event.
+   *
+   * @param Event $event The event whose page should be regenerated.
+   * @return void
+   */
   private function generateEventShow(Event $event): void
   {
     $pagination  = Event::where(['is_publicly_visible' => true])->paginate(null, $event->id);
@@ -188,6 +225,13 @@ class StaticPageGenerator
     return $html;
   }
 
+  /**
+   * Restores previously stashed session flash state.
+   *
+   * @param array|null $flashes  The saved FLASHES value, or null if it was not set.
+   * @param int|null   $count    The saved FLASHES_DISPLAY_COUNT value, or null.
+   * @return void
+   */
   private function restoreFlashes($flashes, $count): void
   {
     if ($flashes !== null) {

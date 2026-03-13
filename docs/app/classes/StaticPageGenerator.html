@@ -89,6 +89,10 @@
     <a href="packages/Config.html" class="">Config</a>
 </h4>
 
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Database.html" class="">Database</a>
+</h4>
+
                         </section>
             
     <section class="phpdocumentor-sidebar__category -reports">
@@ -193,6 +197,7 @@ events/5.html       →  /events/5</p>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
+<dd>Resolves the absolute path to the pregenerated/ output directory.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/StaticPageGenerator.html#method_regenerateAll">regenerateAll()</a>
@@ -214,24 +219,28 @@ HTML string (including the application layout).</dd>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Generates (or overwrites) the static show page for a single Event.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/StaticPageGenerator.html#method_generateEventsIndex">generateEventsIndex()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Generates (or overwrites) the static index page for a given events page number.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/StaticPageGenerator.html#method_generatePostShow">generatePostShow()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Generates (or overwrites) the static show page for a single Post.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/StaticPageGenerator.html#method_generatePostsIndex">generatePostsIndex()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Generates (or overwrites) the static index page for a given posts page number.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/StaticPageGenerator.html#method_pruneIndexPages">pruneIndexPages()</a>
@@ -253,18 +262,21 @@ publicly visible.</dd>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Regenerates all static index and show pages for events.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/StaticPageGenerator.html#method_regeneratePosts">regeneratePosts()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Regenerates all static index and show pages for posts.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/StaticPageGenerator.html#method_restoreFlashes">restoreFlashes()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Restores previously stashed session flash state.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/StaticPageGenerator.html#method_save">save()</a>
@@ -346,11 +358,12 @@ publicly visible.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Resolves the absolute path to the pregenerated/ output directory.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
@@ -380,7 +393,7 @@ publicly visible.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 
     </aside>
 
@@ -418,7 +431,7 @@ publicly visible content.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">164</span>
+    <span class="phpdocumentor-element-found-in__line">201</span>
 
     </aside>
 
@@ -485,11 +498,12 @@ generated file, flash state is saved and restored around the render.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">142</span>
+    <span class="phpdocumentor-element-found-in__line">179</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Generates (or overwrites) the static show page for a single Event.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">generateEventShow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><a href="classes/Event.html"><abbr title="\Event">Event</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$event</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -505,7 +519,9 @@ generated file, flash state is saved and restored around the render.</p>
                 : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Event.html"><abbr title="\Event">Event</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The event whose page should be regenerated.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -529,11 +545,12 @@ generated file, flash state is saved and restored around the render.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">131</span>
+    <span class="phpdocumentor-element-found-in__line">162</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Generates (or overwrites) the static index page for a given events page number.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">generateEventsIndex</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$page</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -549,7 +566,9 @@ generated file, flash state is saved and restored around the render.</p>
                 : <span class="phpdocumentor-argument-list__argument__type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Page number to generate.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -573,11 +592,12 @@ generated file, flash state is saved and restored around the render.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">85</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Generates (or overwrites) the static show page for a single Post.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">generatePostShow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><a href="classes/Post.html"><abbr title="\Post">Post</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$post</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -593,7 +613,9 @@ generated file, flash state is saved and restored around the render.</p>
                 : <span class="phpdocumentor-argument-list__argument__type"><a href="classes/Post.html"><abbr title="\Post">Post</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The post whose page should be regenerated.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -617,11 +639,12 @@ generated file, flash state is saved and restored around the render.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">88</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Generates (or overwrites) the static index page for a given posts page number.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">generatePostsIndex</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$page</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -637,7 +660,9 @@ generated file, flash state is saved and restored around the render.</p>
                 : <span class="phpdocumentor-argument-list__argument__type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Page number to generate.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -661,7 +686,7 @@ generated file, flash state is saved and restored around the render.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">227</span>
+    <span class="phpdocumentor-element-found-in__line">271</span>
 
     </aside>
 
@@ -715,7 +740,7 @@ generated file, flash state is saved and restored around the render.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">249</span>
+    <span class="phpdocumentor-element-found-in__line">293</span>
 
     </aside>
 
@@ -772,11 +797,12 @@ publicly visible.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">100</span>
+    <span class="phpdocumentor-element-found-in__line">125</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Regenerates all static index and show pages for events.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">regenerateEvents</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -806,11 +832,12 @@ publicly visible.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Regenerates all static index and show pages for posts.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">regeneratePosts</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -840,14 +867,15 @@ publicly visible.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">191</span>
+    <span class="phpdocumentor-element-found-in__line">235</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Restores previously stashed session flash state.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">restoreFlashes</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flashes</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$count</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">restoreFlashes</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$flashes</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$count</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -857,17 +885,21 @@ publicly visible.</p>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$flashes</span>
-                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The saved FLASHES value, or null if it was not set.</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$count</span>
-                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The saved FLASHES_DISPLAY_COUNT value, or null.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -891,7 +923,7 @@ publicly visible.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/static_page_generator.php"><a href="files/app-services-static-page-generator.html"><abbr title="app/services/static_page_generator.php">static_page_generator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">210</span>
+    <span class="phpdocumentor-element-found-in__line">254</span>
 
     </aside>
 

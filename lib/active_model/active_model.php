@@ -8,6 +8,9 @@ require __DIR__ . '/attributes/attributes.php';
 
 use ActiveModel\Validations;
 
+/**
+ * Lightweight Active Record base class with attributes, validations, and relations.
+ */
 abstract class ActiveModel
 {
   use Validations;
@@ -21,13 +24,20 @@ abstract class ActiveModel
   protected static array $validations = [];
 
   /**
-   * Get db_attributes for QueryBuilder
+   * Returns the list of database column names defined for this model class.
+   *
+   * @return array<string> Array of column name strings.
    */
   public static function getDbAttributes(): array
   {
     return static::$db_attributes;
   }
 
+  /**
+   * Opens a database connection and initializes attribute storage.
+   *
+   * @param array $data Associative array of attribute values to pre-populate.
+   */
   public function __construct($data = [])
   {
     $this->db = new Database();
@@ -36,6 +46,12 @@ abstract class ActiveModel
     $this->initializeAttributes($data);
   }
 
+  /**
+   * Magic getter: resolves a named attribute first, then a named relation.
+   *
+   * @param string $name Property name.
+   * @return mixed The attribute value or related object/QueryBuilder, or null.
+   */
   public function __get($name)
   {
     // Try to get attribute first
@@ -48,27 +64,53 @@ abstract class ActiveModel
     return $this->getRelation($name);
   }
 
+  /**
+   * Magic setter: stores a value in the attribute store.
+   *
+   * @param string $name  Attribute name.
+   * @param mixed  $value The value to store.
+   * @return void
+   */
   public function __set($name, $value)
   {
     $this->setAttribute($name, $value);
   }
 
+  /**
+   * Magic isset check: returns true if $name is a known attribute or relation.
+   *
+   * @param string $name Property name.
+   * @return bool
+   */
   public function __isset($name)
   {
     return $this->hasAttribute($name) || $this->hasRelation($name);
   }
 
+  /**
+   * Closes the database connection when the object is garbage-collected.
+   */
   public function __destruct()
   {
     $this->closeConnection();
   }
 
 
+  /**
+   * Returns the raw mysqli connection held by this instance.
+   *
+   * @return \mysqli
+   */
   public function getConnection()
   {
     return $this->connection;
   }
 
+  /**
+   * Closes the active mysqli connection if it is open.
+   *
+   * @return void
+   */
   public function closeConnection()
   {
     if ($this->connection) {
@@ -76,11 +118,23 @@ abstract class ActiveModel
     }
   }
 
+  /**
+   * Returns the human-readable translation of an attribute name.
+   *
+   * @param string $attribute The attribute name to translate.
+   * @return string The translated label from the locale file.
+   */
   public static function humanAttributeName($attribute)
   {
     return t("attributes." . toSnakeCase(static::class) . "." . $attribute);
   }
 
+  /**
+   * Validates the record and either creates a new row or updates the existing one.
+   *
+   * @return void
+   * @throws \ActiveModel\ValidationException If validation fails.
+   */
   function save()
   {
     $this->validate();
@@ -91,6 +145,12 @@ abstract class ActiveModel
     }
   }
 
+  /**
+   * Runs all configured validations and collects any violations.
+   *
+   * @return void
+   * @throws \ActiveModel\ValidationException If one or more validations fail.
+   */
   function validate()
   {
     $caught_exceptions = [];
@@ -116,6 +176,11 @@ abstract class ActiveModel
   }
 
 
+  /**
+   * Inserts a new row into the corresponding database table and populates $this->id.
+   *
+   * @return void
+   */
   function create()
   {
     $columns = [];
@@ -147,6 +212,11 @@ abstract class ActiveModel
     $this->id = $this->connection->insert_id;
   }
 
+  /**
+   * Updates the existing database row for this record.
+   *
+   * @return void
+   */
   function update()
   {
     $setParts = [];
@@ -177,6 +247,11 @@ abstract class ActiveModel
     $stmt->execute();
   }
 
+  /**
+   * Deletes the database row corresponding to this record.
+   *
+   * @return void
+   */
   function destroy()
   {
     $table = toSnakeCase(static::class) . 's';
@@ -189,7 +264,10 @@ abstract class ActiveModel
   }
 
   /**
-   * Get mysqli binding type for a value
+   * Returns the mysqli binding type character for a given value.
+   *
+   * @param mixed $value The value to inspect.
+   * @return string 'i' for integer, 'd' for float, 's' for string/null.
    */
   private function getBindingType($value): string
   {

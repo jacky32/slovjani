@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Collection - Array wrapper with Rails-like collection methods
+ * Typed collection wrapper offering Rails-like helper methods and array semantics.
  */
 class Collection implements \IteratorAggregate, \Countable, \ArrayAccess
 {
@@ -109,12 +109,23 @@ class Collection implements \IteratorAggregate, \Countable, \ArrayAccess
     return $this;
   }
 
+  /**
+   * Returns an ArrayIterator so the collection can be used in foreach loops.
+   *
+   * @return \ArrayIterator<int, object>
+   */
   // IteratorAggregate
   public function getIterator(): \Traversable
   {
     return new \ArrayIterator($this->items);
   }
 
+  /**
+   * Returns whether the given offset exists in the items array.
+   *
+   * @param mixed $offset Array key to check.
+   * @return bool
+   */
   // TODO: Remove unused methods
   // ArrayAccess
   public function offsetExists(mixed $offset): bool
@@ -122,11 +133,24 @@ class Collection implements \IteratorAggregate, \Countable, \ArrayAccess
     return isset($this->items[$offset]);
   }
 
+  /**
+   * Returns the item at the given offset, or null if it does not exist.
+   *
+   * @param mixed $offset Array key.
+   * @return mixed
+   */
   public function offsetGet(mixed $offset): mixed
   {
     return $this->items[$offset] ?? null;
   }
 
+  /**
+   * Sets an item at the given offset (or appends when $offset is null).
+   *
+   * @param mixed $offset Array key, or null to append.
+   * @param mixed $value  Value to store.
+   * @return void
+   */
   public function offsetSet(mixed $offset, mixed $value): void
   {
     if ($offset === null) {
@@ -136,6 +160,12 @@ class Collection implements \IteratorAggregate, \Countable, \ArrayAccess
     }
   }
 
+  /**
+   * Unsets the item at the given offset.
+   *
+   * @param mixed $offset Array key to remove.
+   * @return void
+   */
   public function offsetUnset(mixed $offset): void
   {
     unset($this->items[$offset]);

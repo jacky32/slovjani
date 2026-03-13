@@ -3,37 +3,37 @@ Search.appendIndex(
                 {
             "fqsen": "\\AdminAttachmentsController",
             "name": "AdminAttachmentsController",
-            "summary": "",
+            "summary": "Admin\u0020controller\u0020for\u0020creating,\u0020serving,\u0020and\u0020deleting\u0020resource\u0020attachments.",
             "url": "classes/AdminAttachmentsController.html"
         },                {
             "fqsen": "\\AdminAttachmentsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020resource\u0020type,\u0020resource\u0020ID,\u0020and\u0020optional\u0020attachment\u0020ID\u0020from\u0020the\nrequest\u0020URI\u0020and\u0020locates\u0020the\u0020parent\u0020resource.",
             "url": "classes/AdminAttachmentsController.html#method___construct"
         },                {
             "fqsen": "\\AdminAttachmentsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Streams\u0020the\u0020raw\u0020attachment\u0020file\u0020to\u0020the\u0020browser.",
             "url": "classes/AdminAttachmentsController.html#method_show"
         },                {
             "fqsen": "\\AdminAttachmentsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020upload\u0020form\u0020for\u0020a\u0020new\u0020attachment\u0020on\u0020the\u0020parent\u0020resource.",
             "url": "classes/AdminAttachmentsController.html#method_new"
         },                {
             "fqsen": "\\AdminAttachmentsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Handles\u0020the\u0020multipart\u0020file\u0020upload,\u0020persists\u0020the\u0020Attachment\u0020record\u0020and\nmoves\u0020the\u0020file\u0020to\u0020the\u0020uploads\u0020directory.",
             "url": "classes/AdminAttachmentsController.html#method_create"
         },                {
             "fqsen": "\\AdminAttachmentsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Deletes\u0020an\u0020attachment\u0020record\u0020and\u0020its\u0020corresponding\u0020file\u0020on\u0020disk.",
             "url": "classes/AdminAttachmentsController.html#method_destroy"
         },                {
             "fqsen": "\\AdminAttachmentsController\u003A\u003AfindResource\u0028\u0029",
             "name": "findResource",
-            "summary": "",
+            "summary": "Resolves\u0020the\u0020parent\u0020resource\u0020instance\u0020from\u0020the\u0020parsed\u0020resource\u0020type\u0020and\u0020ID.",
             "url": "classes/AdminAttachmentsController.html#method_findResource"
         },                {
             "fqsen": "\\AdminAttachmentsController\u003A\u003A\u0024resource_type",
@@ -58,37 +58,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\AdminCommentsController",
             "name": "AdminCommentsController",
-            "summary": "",
+            "summary": "Admin\u0020controller\u0020for\u0020managing\u0020comments\u0020on\u0020posts,\u0020users,\u0020events,\u0020and\u0020votings.",
             "url": "classes/AdminCommentsController.html"
         },                {
             "fqsen": "\\AdminCommentsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020resource\u0020type,\u0020resource\u0020ID,\u0020and\u0020optional\u0020comment\u0020ID\u0020from\u0020the\nrequest\u0020URI\u0020and\u0020locates\u0020the\u0020parent\u0020resource.",
             "url": "classes/AdminCommentsController.html#method___construct"
         },                {
             "fqsen": "\\AdminCommentsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Persists\u0020a\u0020new\u0020comment\u0020on\u0020the\u0020parent\u0020resource.",
             "url": "classes/AdminCommentsController.html#method_create"
         },                {
             "fqsen": "\\AdminCommentsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Updates\u0020the\u0020body\u0020of\u0020an\u0020existing\u0020comment\u0020owned\u0020by\u0020the\u0020current\u0020user.",
             "url": "classes/AdminCommentsController.html#method_update"
         },                {
             "fqsen": "\\AdminCommentsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Deletes\u0020a\u0020comment\u0020owned\u0020by\u0020the\u0020current\u0020user.",
             "url": "classes/AdminCommentsController.html#method_destroy"
         },                {
             "fqsen": "\\AdminCommentsController\u003A\u003AfindComment\u0028\u0029",
             "name": "findComment",
-            "summary": "",
+            "summary": "Finds\u0020the\u0020comment\u0020by\u0020ID\u0020and\u0020verifies\u0020it\u0020belongs\u0020to\u0020the\u0020current\u0020resource.",
             "url": "classes/AdminCommentsController.html#method_findComment"
         },                {
             "fqsen": "\\AdminCommentsController\u003A\u003AfindResource\u0028\u0029",
             "name": "findResource",
-            "summary": "",
+            "summary": "Resolves\u0020the\u0020parent\u0020resource\u0020instance\u0020from\u0020the\u0020parsed\u0020resource\u0020type\u0020and\u0020ID.",
             "url": "classes/AdminCommentsController.html#method_findResource"
         },                {
             "fqsen": "\\AdminCommentsController\u003A\u003A\u0024resource_type",
@@ -113,57 +113,57 @@ Search.appendIndex(
         },                {
             "fqsen": "\\AdminController",
             "name": "AdminController",
-            "summary": "",
+            "summary": "Base\u0020controller\u0020for\u0020all\u0020admin\u0020controllers\u0020that\u0020handles\u0020basic\u0020authentication\u0020and\u0020authorisation.",
             "url": "classes/AdminController.html"
         },                {
             "fqsen": "\\AdminController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Enforces\u0020authentication\u0020and\u0020admin\/collaborator\u0020role\u0020before\u0020any\u0020action.",
             "url": "classes/AdminController.html#method___construct"
         },                {
             "fqsen": "\\AdminEventsController",
             "name": "AdminEventsController",
-            "summary": "",
+            "summary": "Admin\u0020CRUD\u0020controller\u0020for\u0020events\u0020and\u0020related\u0020publishing\u0020actions.",
             "url": "classes/AdminEventsController.html"
         },                {
             "fqsen": "\\AdminEventsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020event\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
             "url": "classes/AdminEventsController.html#method___construct"
         },                {
             "fqsen": "\\AdminEventsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Lists\u0020all\u0020events\u0020with\u0020pagination.",
             "url": "classes/AdminEventsController.html#method_index"
         },                {
             "fqsen": "\\AdminEventsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Shows\u0020details\u0020for\u0020a\u0020single\u0020event.",
             "url": "classes/AdminEventsController.html#method_show"
         },                {
             "fqsen": "\\AdminEventsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020new\u002Devent\u0020creation\u0020form.",
             "url": "classes/AdminEventsController.html#method_new"
         },                {
             "fqsen": "\\AdminEventsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Persists\u0020a\u0020new\u0020event\u0020and\u0020regenerates\u0020static\u0020pages.",
             "url": "classes/AdminEventsController.html#method_create"
         },                {
             "fqsen": "\\AdminEventsController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020event.",
             "url": "classes/AdminEventsController.html#method_edit"
         },                {
             "fqsen": "\\AdminEventsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Updates\u0020an\u0020existing\u0020event\u0020and\u0020regenerates\u0020static\u0020pages.",
             "url": "classes/AdminEventsController.html#method_update"
         },                {
             "fqsen": "\\AdminEventsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Deletes\u0020an\u0020event\u0020and\u0020triggers\u0020static\u0020page\u0020regeneration\u0020if\u0020the\u0020event\u0020was\u0020public.",
             "url": "classes/AdminEventsController.html#method_destroy"
         },                {
             "fqsen": "\\AdminEventsController\u003A\u003A\u0024id",
@@ -173,47 +173,47 @@ Search.appendIndex(
         },                {
             "fqsen": "\\AdminPostsController",
             "name": "AdminPostsController",
-            "summary": "",
+            "summary": "Admin\u0020CRUD\u0020controller\u0020for\u0020posts\u0020and\u0020static\u002Dpage\u0020regeneration\u0020triggers.",
             "url": "classes/AdminPostsController.html"
         },                {
             "fqsen": "\\AdminPostsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020post\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
             "url": "classes/AdminPostsController.html#method___construct"
         },                {
             "fqsen": "\\AdminPostsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Lists\u0020all\u0020posts\u0020with\u0020pagination.",
             "url": "classes/AdminPostsController.html#method_index"
         },                {
             "fqsen": "\\AdminPostsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Shows\u0020details\u0020for\u0020a\u0020single\u0020post.",
             "url": "classes/AdminPostsController.html#method_show"
         },                {
             "fqsen": "\\AdminPostsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020new\u002Dpost\u0020creation\u0020form.",
             "url": "classes/AdminPostsController.html#method_new"
         },                {
             "fqsen": "\\AdminPostsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Persists\u0020a\u0020new\u0020post\u0020and\u0020regenerates\u0020static\u0020pages.",
             "url": "classes/AdminPostsController.html#method_create"
         },                {
             "fqsen": "\\AdminPostsController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020post.",
             "url": "classes/AdminPostsController.html#method_edit"
         },                {
             "fqsen": "\\AdminPostsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Updates\u0020an\u0020existing\u0020post\u0020and\u0020conditionally\u0020regenerates\u0020static\u0020pages.",
             "url": "classes/AdminPostsController.html#method_update"
         },                {
             "fqsen": "\\AdminPostsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Deletes\u0020a\u0020post\u0020and\u0020triggers\u0020static\u0020page\u0020regeneration\u0020if\u0020it\u0020was\u0020published.",
             "url": "classes/AdminPostsController.html#method_destroy"
         },                {
             "fqsen": "\\AdminPostsController\u003A\u003A\u0024id",
@@ -223,37 +223,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\AdminQuestionsController",
             "name": "AdminQuestionsController",
-            "summary": "",
+            "summary": "Admin\u0020controller\u0020for\u0020creating\u0020and\u0020maintaining\u0020voting\u0020questions.",
             "url": "classes/AdminQuestionsController.html"
         },                {
             "fqsen": "\\AdminQuestionsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020voting\u0020ID\u0020and\u0020optional\u0020question\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
             "url": "classes/AdminQuestionsController.html#method___construct"
         },                {
             "fqsen": "\\AdminQuestionsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020new\u002Dquestion\u0020form\u0020under\u0020the\u0020parent\u0020voting.",
             "url": "classes/AdminQuestionsController.html#method_new"
         },                {
             "fqsen": "\\AdminQuestionsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Persists\u0020a\u0020new\u0020question\u0020for\u0020the\u0020parent\u0020voting.",
             "url": "classes/AdminQuestionsController.html#method_create"
         },                {
             "fqsen": "\\AdminQuestionsController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020question.",
             "url": "classes/AdminQuestionsController.html#method_edit"
         },                {
             "fqsen": "\\AdminQuestionsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Updates\u0020an\u0020existing\u0020question\u0020belonging\u0020to\u0020the\u0020current\u0020user\u0027s\u0020voting.",
             "url": "classes/AdminQuestionsController.html#method_update"
         },                {
             "fqsen": "\\AdminQuestionsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Deletes\u0020a\u0020question\u0020from\u0020the\u0020parent\u0020voting.",
             "url": "classes/AdminQuestionsController.html#method_destroy"
         },                {
             "fqsen": "\\AdminQuestionsController\u003A\u003A\u0024voting_id",
@@ -268,37 +268,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\AdminUsersController",
             "name": "AdminUsersController",
-            "summary": "",
+            "summary": "Admin\u0020controller\u0020for\u0020listing,\u0020editing,\u0020and\u0020removing\u0020user\u0020accounts.",
             "url": "classes/AdminUsersController.html"
         },                {
             "fqsen": "\\AdminUsersController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020user\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
             "url": "classes/AdminUsersController.html#method___construct"
         },                {
             "fqsen": "\\AdminUsersController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Lists\u0020all\u0020users\u0020with\u0020pagination.",
             "url": "classes/AdminUsersController.html#method_index"
         },                {
             "fqsen": "\\AdminUsersController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Shows\u0020details\u0020for\u0020a\u0020single\u0020user.",
             "url": "classes/AdminUsersController.html#method_show"
         },                {
             "fqsen": "\\AdminUsersController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020user.",
             "url": "classes/AdminUsersController.html#method_edit"
         },                {
             "fqsen": "\\AdminUsersController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Updates\u0020an\u0020existing\u0020user\u0027s\u0020email,\u0020username,\u0020and\u0020role.",
             "url": "classes/AdminUsersController.html#method_update"
         },                {
             "fqsen": "\\AdminUsersController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Deletes\u0020a\u0020user\u0020account.",
             "url": "classes/AdminUsersController.html#method_destroy"
         },                {
             "fqsen": "\\AdminUsersController\u003A\u003A\u0024id",
@@ -308,27 +308,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\AdminUsersQuestionsController",
             "name": "AdminUsersQuestionsController",
-            "summary": "",
+            "summary": "Admin\u0020controller\u0020handling\u0020user\u0020responses\u0020for\u0020voting\u0020questions.",
             "url": "classes/AdminUsersQuestionsController.html"
         },                {
             "fqsen": "\\AdminUsersQuestionsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020voting\u0020ID\u0020and\u0020optional\u0020users\u002Dquestion\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
             "url": "classes/AdminUsersQuestionsController.html#method___construct"
         },                {
             "fqsen": "\\AdminUsersQuestionsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020ballot\u0020submission\u0020form\u0020for\u0020the\u0020current\u0020voting.",
             "url": "classes/AdminUsersQuestionsController.html#method_new"
         },                {
             "fqsen": "\\AdminUsersQuestionsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Persists\u0020the\u0020user\u0027s\u0020answers\u0020for\u0020all\u0020questions\u0020in\u0020the\u0020voting.",
             "url": "classes/AdminUsersQuestionsController.html#method_create"
         },                {
             "fqsen": "\\AdminUsersQuestionsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Retracts\u0020the\u0020user\u0027s\u0020vote\u0020for\u0020a\u0020specific\u0020answer\u0020in\u0020the\u0020voting.",
             "url": "classes/AdminUsersQuestionsController.html#method_destroy"
         },                {
             "fqsen": "\\AdminUsersQuestionsController\u003A\u003A\u0024voting_id",
@@ -343,47 +343,47 @@ Search.appendIndex(
         },                {
             "fqsen": "\\AdminVotingsController",
             "name": "AdminVotingsController",
-            "summary": "",
+            "summary": "Admin\u0020CRUD\u0020controller\u0020for\u0020votings\u0020and\u0020lifecycle\u0020management.",
             "url": "classes/AdminVotingsController.html"
         },                {
             "fqsen": "\\AdminVotingsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020voting\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
             "url": "classes/AdminVotingsController.html#method___construct"
         },                {
             "fqsen": "\\AdminVotingsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Lists\u0020all\u0020votings\u0020with\u0020pagination.",
             "url": "classes/AdminVotingsController.html#method_index"
         },                {
             "fqsen": "\\AdminVotingsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Shows\u0020details\u0020for\u0020a\u0020single\u0020voting\u0020including\u0020whether\u0020the\u0020current\u0020user\u0020has\u0020voted.",
             "url": "classes/AdminVotingsController.html#method_show"
         },                {
             "fqsen": "\\AdminVotingsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020new\u002Dvoting\u0020creation\u0020form.",
             "url": "classes/AdminVotingsController.html#method_new"
         },                {
             "fqsen": "\\AdminVotingsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Persists\u0020a\u0020new\u0020voting.",
             "url": "classes/AdminVotingsController.html#method_create"
         },                {
             "fqsen": "\\AdminVotingsController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020voting.",
             "url": "classes/AdminVotingsController.html#method_edit"
         },                {
             "fqsen": "\\AdminVotingsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Updates\u0020an\u0020existing\u0020voting\u0020owned\u0020by\u0020the\u0020current\u0020user.",
             "url": "classes/AdminVotingsController.html#method_update"
         },                {
             "fqsen": "\\AdminVotingsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Deletes\u0020a\u0020voting\u0020owned\u0020by\u0020the\u0020current\u0020user.",
             "url": "classes/AdminVotingsController.html#method_destroy"
         },                {
             "fqsen": "\\AdminVotingsController\u003A\u003A\u0024id",
@@ -393,27 +393,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ApplicationController",
             "name": "ApplicationController",
-            "summary": "",
+            "summary": "Base\u0020controller\u0020that\u0020provides\u0020shared\u0020auth,\u0020rendering,\u0020CSRF,\u0020and\u0020flash\u0020helpers.",
             "url": "classes/ApplicationController.html"
         },                {
             "fqsen": "\\ApplicationController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020controller\u003A\u0020opens\u0020a\u0020PDO\u0020connection,\u0020creates\u0020the\u0020Auth\nservice\u0020and\u0020the\u0020ViewManager.",
             "url": "classes/ApplicationController.html#method___construct"
         },                {
             "fqsen": "\\ApplicationController\u003A\u003AverifyCSRF\u0028\u0029",
             "name": "verifyCSRF",
-            "summary": "",
+            "summary": "Verifies\u0020the\u0020CSRF\u0020token\u0020submitted\u0020with\u0020a\u0020form.",
             "url": "classes/ApplicationController.html#method_verifyCSRF"
         },                {
             "fqsen": "\\ApplicationController\u003A\u003AaddFlash\u0028\u0029",
             "name": "addFlash",
-            "summary": "",
+            "summary": "Adds\u0020a\u0020flash\u0020message\u0020to\u0020the\u0020session\u0020via\u0020FlashManager.",
             "url": "classes/ApplicationController.html#method_addFlash"
         },                {
             "fqsen": "\\ApplicationController\u003A\u003Arender\u0028\u0029",
             "name": "render",
-            "summary": "",
+            "summary": "Renders\u0020a\u0020view\u0020template\u0020through\u0020the\u0020ViewManager.",
             "url": "classes/ApplicationController.html#method_render"
         },                {
             "fqsen": "\\ApplicationController\u003A\u003A\u0024errors",
@@ -433,22 +433,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\AttachmentsController",
             "name": "AttachmentsController",
-            "summary": "",
+            "summary": "Public\u0020controller\u0020for\u0020serving\u0020attachments\u0020attached\u0020to\u0020visible\u0020resources.",
             "url": "classes/AttachmentsController.html"
         },                {
             "fqsen": "\\AttachmentsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020resource\u0020type,\u0020resource\u0020ID,\u0020and\u0020optional\u0020attachment\u0020ID\u0020from\u0020the\nrequest\u0020URI\u0020and\u0020locates\u0020the\u0020parent\u0020resource.",
             "url": "classes/AttachmentsController.html#method___construct"
         },                {
             "fqsen": "\\AttachmentsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Streams\u0020a\u0020publicly\u0020visible\u0020attachment\u0020file\u0020to\u0020the\u0020browser.",
             "url": "classes/AttachmentsController.html#method_show"
         },                {
             "fqsen": "\\AttachmentsController\u003A\u003AfindResource\u0028\u0029",
             "name": "findResource",
-            "summary": "",
+            "summary": "Resolves\u0020the\u0020parent\u0020public\u0020resource\u0020\u0028Post\u0020or\u0020Event\u0029\u0020from\u0020the\u0020parsed\u0020type\u0020and\u0020ID.",
             "url": "classes/AttachmentsController.html#method_findResource"
         },                {
             "fqsen": "\\AttachmentsController\u003A\u003A\u0024resource_type",
@@ -473,37 +473,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ErrorsController",
             "name": "ErrorsController",
-            "summary": "",
+            "summary": "Controller\u0020for\u0020fallback\u0020error\u0020pages\u0020such\u0020as\u0020404\u0020responses.",
             "url": "classes/ErrorsController.html"
         },                {
             "fqsen": "\\ErrorsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020errors\u0020controller.",
             "url": "classes/ErrorsController.html#method___construct"
         },                {
             "fqsen": "\\ErrorsController\u003A\u003AnotFound\u0028\u0029",
             "name": "notFound",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020404\u0020Not\u0020Found\u0020page\u0020with\u0020a\u0020404\u0020HTTP\u0020response\u0020code.",
             "url": "classes/ErrorsController.html#method_notFound"
         },                {
             "fqsen": "\\EventsController",
             "name": "EventsController",
-            "summary": "",
+            "summary": "Public\u0020read\u002Donly\u0020controller\u0020for\u0020listing\u0020and\u0020viewing\u0020visible\u0020events.",
             "url": "classes/EventsController.html"
         },                {
             "fqsen": "\\EventsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020event\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
             "url": "classes/EventsController.html#method___construct"
         },                {
             "fqsen": "\\EventsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Lists\u0020publicly\u0020visible\u0020events\u0020with\u0020pagination.",
             "url": "classes/EventsController.html#method_index"
         },                {
             "fqsen": "\\EventsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Shows\u0020a\u0020single\u0020publicly\u0020visible\u0020event\u0020with\u0020its\u0020public\u0020attachments.",
             "url": "classes/EventsController.html#method_show"
         },                {
             "fqsen": "\\EventsController\u003A\u003A\u0024id",
@@ -513,37 +513,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\HomeController",
             "name": "HomeController",
-            "summary": "",
+            "summary": "Controller\u0020for\u0020the\u0020application\u0020landing\u0020page.",
             "url": "classes/HomeController.html"
         },                {
             "fqsen": "\\HomeController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020home\u0020controller.",
             "url": "classes/HomeController.html#method___construct"
         },                {
             "fqsen": "\\HomeController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020home\/index\u0020view.",
             "url": "classes/HomeController.html#method_index"
         },                {
             "fqsen": "\\PostsController",
             "name": "PostsController",
-            "summary": "",
+            "summary": "Public\u0020read\u002Donly\u0020controller\u0020for\u0020published\u0020posts\u0020and\u0020detail\u0020pages.",
             "url": "classes/PostsController.html"
         },                {
             "fqsen": "\\PostsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020post\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
             "url": "classes/PostsController.html#method___construct"
         },                {
             "fqsen": "\\PostsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Lists\u0020publicly\u0020visible\u0020\u0028published\u0029\u0020posts\u0020with\u0020pagination.",
             "url": "classes/PostsController.html#method_index"
         },                {
             "fqsen": "\\PostsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Shows\u0020a\u0020single\u0020published\u0020post\u0020with\u0020its\u0020public\u0020attachments.",
             "url": "classes/PostsController.html#method_show"
         },                {
             "fqsen": "\\PostsController\u003A\u003A\u0024id",
@@ -553,47 +553,47 @@ Search.appendIndex(
         },                {
             "fqsen": "\\SessionsController",
             "name": "SessionsController",
-            "summary": "",
+            "summary": "Authentication\u0020controller\u0020for\u0020login\u0020and\u0020logout\u0020session\u0020actions.",
             "url": "classes/SessionsController.html"
         },                {
             "fqsen": "\\SessionsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020sessions\u0020controller.",
             "url": "classes/SessionsController.html#method___construct"
         },                {
             "fqsen": "\\SessionsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020login\u0020form,\u0020or\u0020redirects\u0020already\u002Dauthenticated\u0020users.",
             "url": "classes/SessionsController.html#method_new"
         },                {
             "fqsen": "\\SessionsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Attempts\u0020to\u0020log\u0020the\u0020user\u0020in\u0020with\u0020the\u0020submitted\u0020email\u0020and\u0020password.",
             "url": "classes/SessionsController.html#method_create"
         },                {
             "fqsen": "\\SessionsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Logs\u0020the\u0020current\u0020user\u0020out\u0020and\u0020redirects\u0020to\u0020the\u0020home\u0020page.",
             "url": "classes/SessionsController.html#method_destroy"
         },                {
             "fqsen": "\\UsersController",
             "name": "UsersController",
-            "summary": "",
+            "summary": "Public\u0020controller\u0020for\u0020user\u0020registration\u0020actions.",
             "url": "classes/UsersController.html"
         },                {
             "fqsen": "\\UsersController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020controller\u003A\u0020opens\u0020a\u0020PDO\u0020connection,\u0020creates\u0020the\u0020Auth\nservice\u0020and\u0020the\u0020ViewManager.",
             "url": "classes/UsersController.html#method___construct"
         },                {
             "fqsen": "\\UsersController\u003A\u003Anew\u0028\u0029",
             "name": "new",
-            "summary": "",
+            "summary": "Renders\u0020the\u0020registration\u0020form.",
             "url": "classes/UsersController.html#method_new"
         },                {
             "fqsen": "\\UsersController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Registers\u0020a\u0020new\u0020user\u0020account\u0020with\u0020the\u0020provided\u0020email,\u0020password,\u0020and\u0020username.",
             "url": "classes/UsersController.html#method_create"
         },                {
             "fqsen": "\\UsersController\u003A\u003A\u0024user",
@@ -603,22 +603,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ApplicationRecord",
             "name": "ApplicationRecord",
-            "summary": "",
+            "summary": "Base\u0020model\u0020class\u0020shared\u0020by\u0020all\u0020application\u0020domain\u0020models.",
             "url": "classes/ApplicationRecord.html"
         },                {
             "fqsen": "\\ApplicationRecord\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Passes\u0020initialisation\u0020data\u0020up\u0020to\u0020ActiveModel.",
             "url": "classes/ApplicationRecord.html#method___construct"
         },                {
             "fqsen": "\\Attachment",
             "name": "Attachment",
-            "summary": "",
+            "summary": "File\u0020attachment\u0020model\u0020supporting\u0020polymorphic\u0020parent\u0020resources.",
             "url": "classes/Attachment.html"
         },                {
             "fqsen": "\\Attachment\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020Attachment,\u0020auto\u002Dgenerating\u0020a\u0020random\u0020hex\u0020token\u0020when\u0020none\nis\u0020supplied\u0020in\u0020\u0024data.",
             "url": "classes/Attachment.html#method___construct"
         },                {
             "fqsen": "\\Attachment\u003A\u003A\u0024db_attributes",
@@ -638,12 +638,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Comment",
             "name": "Comment",
-            "summary": "",
+            "summary": "Comment\u0020model\u0020for\u0020polymorphic\u0020threaded\u0020comments\u0020across\u0020resources.",
             "url": "classes/Comment.html"
         },                {
             "fqsen": "\\Comment\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020Comment\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
             "url": "classes/Comment.html#method___construct"
         },                {
             "fqsen": "\\Comment\u003A\u003A\u0024db_attributes",
@@ -663,12 +663,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Event",
             "name": "Event",
-            "summary": "",
+            "summary": "Event\u0020domain\u0020model\u0020with\u0020visibility\u0020and\u0020scheduling\u0020attributes.",
             "url": "classes/Event.html"
         },                {
             "fqsen": "\\Event\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020Event\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
             "url": "classes/Event.html#method___construct"
         },                {
             "fqsen": "\\Event\u003A\u003A\u0024db_attributes",
@@ -688,17 +688,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Post",
             "name": "Post",
-            "summary": "",
+            "summary": "Post\u0020domain\u0020model\u0020with\u0020publish\u002Dstate\u0020workflow.",
             "url": "classes/Post.html"
         },                {
             "fqsen": "\\Post\u003A\u003ApubliclyVisible\u0028\u0029",
             "name": "publiclyVisible",
-            "summary": "",
+            "summary": "Returns\u0020a\u0020QueryBuilder\u0020scoped\u0020to\u0020published\u0020posts\u0020only.",
             "url": "classes/Post.html#method_publiclyVisible"
         },                {
             "fqsen": "\\Post\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020Post\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
             "url": "classes/Post.html#method___construct"
         },                {
             "fqsen": "\\Post\u003A\u003A\u0024db_attributes",
@@ -718,12 +718,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Question",
             "name": "Question",
-            "summary": "",
+            "summary": "Question\u0020model\u0020belonging\u0020to\u0020a\u0020voting\u0020with\u0020user\u0020responses.",
             "url": "classes/Question.html"
         },                {
             "fqsen": "\\Question\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020Question\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
             "url": "classes/Question.html#method___construct"
         },                {
             "fqsen": "\\Question\u003A\u003A\u0024db_attributes",
@@ -743,12 +743,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\User",
             "name": "User",
-            "summary": "",
+            "summary": "User\u0020account\u0020model\u0020with\u0020role\u0020masks\u0020and\u0020owned\u0020resources.",
             "url": "classes/User.html"
         },                {
             "fqsen": "\\User\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020User\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
             "url": "classes/User.html#method___construct"
         },                {
             "fqsen": "\\User\u003A\u003AAVAILABLE_ROLES",
@@ -773,12 +773,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\UsersQuestion",
             "name": "UsersQuestion",
-            "summary": "",
+            "summary": "Join\u0020model\u0020storing\u0020a\u0020user\u0027s\u0020selected\u0020answer\u0020for\u0020a\u0020voting\u0020question.",
             "url": "classes/UsersQuestion.html"
         },                {
             "fqsen": "\\UsersQuestion\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020UsersQuestion\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
             "url": "classes/UsersQuestion.html#method___construct"
         },                {
             "fqsen": "\\UsersQuestion\u003A\u003A\u0024db_attributes",
@@ -803,17 +803,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Voting",
             "name": "Voting",
-            "summary": "",
+            "summary": "Voting\u0020model\u0020with\u0020questions,\u0020status\u0020lifecycle,\u0020and\u0020participation\u0020helpers.",
             "url": "classes/Voting.html"
         },                {
             "fqsen": "\\Voting\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Initialises\u0020the\u0020Voting\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
             "url": "classes/Voting.html#method___construct"
         },                {
             "fqsen": "\\Voting\u003A\u003AhasUserVoted\u0028\u0029",
             "name": "hasUserVoted",
-            "summary": "",
+            "summary": "Checks\u0020whether\u0020a\u0020user\u0020has\u0020already\u0020submitted\u0020at\u0020least\u0020one\u0020answer\u0020in\u0020this\u0020voting.",
             "url": "classes/Voting.html#method_hasUserVoted"
         },                {
             "fqsen": "\\Voting\u003A\u003A\u0024db_attributes",
@@ -833,22 +833,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Database",
             "name": "Database",
-            "summary": "",
+            "summary": "Database\u0020connection\u0020bootstrapper\u0020with\u0020first\u002Drun\u0020schema\u0020initialisation.",
             "url": "classes/Database.html"
         },                {
             "fqsen": "\\Database\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Loads\u0020application\u0020config,\u0020opens\u0020a\u0020mysqli\u0020connection,\u0020and\u0020attempts\u0020to\nbootstrap\u0020the\u0020schema\u0020automatically\u0020on\u0020first\u0020run\u0020if\u0020the\u0020database\u0020is\u0020missing.",
             "url": "classes/Database.html#method___construct"
         },                {
             "fqsen": "\\Database\u003A\u003Aconnect\u0028\u0029",
             "name": "connect",
-            "summary": "",
+            "summary": "Opens\u0020\u0028or\u0020re\u002Dopens\u0029\u0020the\u0020mysqli\u0020connection\u0020using\u0020the\u0020stored\u0020connection\u0020params.",
             "url": "classes/Database.html#method_connect"
         },                {
             "fqsen": "\\Database\u003A\u003AgetConnection\u0028\u0029",
             "name": "getConnection",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020active\u0020mysqli\u0020connection.",
             "url": "classes/Database.html#method_getConnection"
         },                {
             "fqsen": "\\Database\u003A\u003A\u0024connectionParams",
@@ -863,22 +863,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\FlashManager",
             "name": "FlashManager",
-            "summary": "",
+            "summary": "Session\u002Dbacked\u0020flash\u0020message\u0020manager\u0020for\u0020user\u002Dfacing\u0020notifications.",
             "url": "classes/FlashManager.html"
         },                {
             "fqsen": "\\FlashManager\u003A\u003AaddFlash\u0028\u0029",
             "name": "addFlash",
-            "summary": "",
+            "summary": "Appends\u0020a\u0020flash\u0020message\u0020to\u0020the\u0020session\u0020store.",
             "url": "classes/FlashManager.html#method_addFlash"
         },                {
             "fqsen": "\\FlashManager\u003A\u003AgetFlashes\u0028\u0029",
             "name": "getFlashes",
-            "summary": "",
+            "summary": "Retrieves\u0020all\u0020queued\u0020flash\u0020messages\u0020and\u0020increments\u0020the\u0020display\u0020counter.",
             "url": "classes/FlashManager.html#method_getFlashes"
         },                {
             "fqsen": "\\FlashManager\u003A\u003AhasFlashes\u0028\u0029",
             "name": "hasFlashes",
-            "summary": "",
+            "summary": "Returns\u0020whether\u0020there\u0020are\u0020any\u0020pending\u0020flash\u0020messages\u0020in\u0020the\u0020session.",
             "url": "classes/FlashManager.html#method_hasFlashes"
         },                {
             "fqsen": "\\GuestAuth",
@@ -908,7 +908,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Resolves\u0020the\u0020absolute\u0020path\u0020to\u0020the\u0020pregenerated\/\u0020output\u0020directory.",
             "url": "classes/StaticPageGenerator.html#method___construct"
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003AregenerateAll\u0028\u0029",
@@ -918,32 +918,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003AregeneratePosts\u0028\u0029",
             "name": "regeneratePosts",
-            "summary": "",
+            "summary": "Regenerates\u0020all\u0020static\u0020index\u0020and\u0020show\u0020pages\u0020for\u0020posts.",
             "url": "classes/StaticPageGenerator.html#method_regeneratePosts"
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003AgeneratePostsIndex\u0028\u0029",
             "name": "generatePostsIndex",
-            "summary": "",
+            "summary": "Generates\u0020\u0028or\u0020overwrites\u0029\u0020the\u0020static\u0020index\u0020page\u0020for\u0020a\u0020given\u0020posts\u0020page\u0020number.",
             "url": "classes/StaticPageGenerator.html#method_generatePostsIndex"
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003AgeneratePostShow\u0028\u0029",
             "name": "generatePostShow",
-            "summary": "",
+            "summary": "Generates\u0020\u0028or\u0020overwrites\u0029\u0020the\u0020static\u0020show\u0020page\u0020for\u0020a\u0020single\u0020Post.",
             "url": "classes/StaticPageGenerator.html#method_generatePostShow"
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003AregenerateEvents\u0028\u0029",
             "name": "regenerateEvents",
-            "summary": "",
+            "summary": "Regenerates\u0020all\u0020static\u0020index\u0020and\u0020show\u0020pages\u0020for\u0020events.",
             "url": "classes/StaticPageGenerator.html#method_regenerateEvents"
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003AgenerateEventsIndex\u0028\u0029",
             "name": "generateEventsIndex",
-            "summary": "",
+            "summary": "Generates\u0020\u0028or\u0020overwrites\u0029\u0020the\u0020static\u0020index\u0020page\u0020for\u0020a\u0020given\u0020events\u0020page\u0020number.",
             "url": "classes/StaticPageGenerator.html#method_generateEventsIndex"
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003AgenerateEventShow\u0028\u0029",
             "name": "generateEventShow",
-            "summary": "",
+            "summary": "Generates\u0020\u0028or\u0020overwrites\u0029\u0020the\u0020static\u0020show\u0020page\u0020for\u0020a\u0020single\u0020Event.",
             "url": "classes/StaticPageGenerator.html#method_generateEventShow"
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003AcaptureRender\u0028\u0029",
@@ -953,7 +953,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003ArestoreFlashes\u0028\u0029",
             "name": "restoreFlashes",
-            "summary": "",
+            "summary": "Restores\u0020previously\u0020stashed\u0020session\u0020flash\u0020state.",
             "url": "classes/StaticPageGenerator.html#method_restoreFlashes"
         },                {
             "fqsen": "\\StaticPageGenerator\u003A\u003Asave\u0028\u0029",
@@ -976,9 +976,34 @@ Search.appendIndex(
             "summary": "Absolute\u0020path\u0020to\u0020the\u0020pregenerated\/\u0020directory.",
             "url": "classes/StaticPageGenerator.html#property_outputDir"
         },                {
+            "fqsen": "\\StaticPageRouter",
+            "name": "StaticPageRouter",
+            "summary": "Resolves\u0020incoming\u0020HTTP\u0020requests\u0020to\u0020pregenerated\u0020static\u0020HTML\u0020files.",
+            "url": "classes/StaticPageRouter.html"
+        },                {
+            "fqsen": "\\StaticPageRouter\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/StaticPageRouter.html#method___construct"
+        },                {
+            "fqsen": "\\StaticPageRouter\u003A\u003Aresolve\u0028\u0029",
+            "name": "resolve",
+            "summary": "Determine\u0020which\u0020pregenerated\u0020file\u0020should\u0020be\u0020served\u0020for\u0020a\u0020given\u0020request,\ntaking\u0020the\u0020HTTP\u0020method\u0020and\u0020login\u0020state\u0020into\u0020account.",
+            "url": "classes/StaticPageRouter.html#method_resolve"
+        },                {
+            "fqsen": "\\StaticPageRouter\u003A\u003AcandidatePath\u0028\u0029",
+            "name": "candidatePath",
+            "summary": "Map\u0020a\u0020request\u0020path\u0020to\u0020the\u0020expected\u0020file\u0020path\u0020without\u0020checking\u0020whether\nthe\u0020file\u0020actually\u0020exists\u0020on\u0020disk.\u0020Useful\u0020for\u0020testing\u0020the\u0020path\u0020logic\nin\u0020isolation.",
+            "url": "classes/StaticPageRouter.html#method_candidatePath"
+        },                {
+            "fqsen": "\\StaticPageRouter\u003A\u003A\u0024baseDir",
+            "name": "baseDir",
+            "summary": "Absolute\u0020path\u0020to\u0020the\u0020pregenerated\/\u0020directory.",
+            "url": "classes/StaticPageRouter.html#property_baseDir"
+        },                {
             "fqsen": "\\ViewManager",
             "name": "ViewManager",
-            "summary": "",
+            "summary": "View\u0020rendering\u0020coordinator\u0020for\u0020templates,\u0020partials,\u0020form\u0020helpers,\u0020and\u0020layout\u0020output.",
             "url": "classes/ViewManager.html"
         },                {
             "fqsen": "\\ViewManager\u003A\u003A__construct\u0028\u0029",
@@ -1073,12 +1098,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Router",
             "name": "Router",
-            "summary": "Simple\u0020Router\u0020class\u0020to\u0020map\u0020URLs\u0020to\u0020controller\u0020actions.",
+            "summary": "Application\u0020router\u0020that\u0020maps\u0020request\u0020paths\u0020and\u0020methods\u0020to\u0020controller\u0020actions.",
             "url": "classes/Router.html"
         },                {
             "fqsen": "\\Router\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Parses\u0020the\u0020incoming\u0020request\u0020URI,\u0020normalises\u0020the\u0020path,\u0020and\u0020matches\u0020it\nagainst\u0020all\u0020registered\u0020routes\u0020to\u0020set\u0020\u0024controllerName\u0020and\u0020\u0024action.",
             "url": "classes/Router.html#method___construct"
         },                {
             "fqsen": "\\Router\u003A\u003AisGet\u0028\u0029",
@@ -1103,7 +1128,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Router\u003A\u003Aresources\u0028\u0029",
             "name": "resources",
-            "summary": "resources\nDefines\u0020RESTful\u0020routes\u0020for\u0020a\u0020given\u0020resource\u0020and\u0020specified\u0020actions.",
+            "summary": "Defines\u0020RESTful\u0020CRUD\u0020routes\u0020for\u0020a\u0020given\u0020resource\u0020and\u0020a\u0020set\u0020of\u0020actions.",
             "url": "classes/Router.html#method_resources"
         },                {
             "fqsen": "\\Router\u003A\u003AnestedResources\u0028\u0029",
@@ -1113,7 +1138,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Router\u003A\u003AnormalizeTrailingSlash\u0028\u0029",
             "name": "normalizeTrailingSlash",
-            "summary": "",
+            "summary": "Removes\u0020a\u0020trailing\u0020slash\u0020from\u0020the\u0020path\u0020while\u0020preserving\u0020the\u0020root\u0020\u0027\/\u0027.",
             "url": "classes/Router.html#method_normalizeTrailingSlash"
         },                {
             "fqsen": "\\Router\u003A\u003A\u0024controllerName",
@@ -1133,97 +1158,97 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ScriptManager",
             "name": "ScriptManager",
-            "summary": "",
+            "summary": "Database\u0020script\u0020utility\u0020for\u0020opening\u0020raw\u0020connections\u0020and\u0020loading\u0020schema\u0020SQL.",
             "url": "classes/ScriptManager.html"
         },                {
             "fqsen": "\\ScriptManager\u003A\u003AconnectToDatabase\u0028\u0029",
             "name": "connectToDatabase",
-            "summary": "",
+            "summary": "Creates\u0020a\u0020mysqli\u0020connection\u0020to\u0020the\u0020specified\u0020database.",
             "url": "classes/ScriptManager.html#method_connectToDatabase"
         },                {
             "fqsen": "\\ScriptManager\u003A\u003AloadSchema\u0028\u0029",
             "name": "loadSchema",
-            "summary": "",
+            "summary": "Executes\u0020the\u0020schema\u0020SQL\u0020file\u0020against\u0020the\u0020server,\u0020optionally\u0020dropping\u0020and\nrecreating\u0020the\u0020database\u0020first.",
             "url": "classes/ScriptManager.html#method_loadSchema"
         },                {
             "fqsen": "\\ActiveModel",
             "name": "ActiveModel",
-            "summary": "",
+            "summary": "Lightweight\u0020Active\u0020Record\u0020base\u0020class\u0020with\u0020attributes,\u0020validations,\u0020and\u0020relations.",
             "url": "classes/ActiveModel.html"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003AgetDbAttributes\u0028\u0029",
             "name": "getDbAttributes",
-            "summary": "Get\u0020db_attributes\u0020for\u0020QueryBuilder",
+            "summary": "Returns\u0020the\u0020list\u0020of\u0020database\u0020column\u0020names\u0020defined\u0020for\u0020this\u0020model\u0020class.",
             "url": "classes/ActiveModel.html#method_getDbAttributes"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Opens\u0020a\u0020database\u0020connection\u0020and\u0020initializes\u0020attribute\u0020storage.",
             "url": "classes/ActiveModel.html#method___construct"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003A__get\u0028\u0029",
             "name": "__get",
-            "summary": "",
+            "summary": "Magic\u0020getter\u003A\u0020resolves\u0020a\u0020named\u0020attribute\u0020first,\u0020then\u0020a\u0020named\u0020relation.",
             "url": "classes/ActiveModel.html#method___get"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003A__set\u0028\u0029",
             "name": "__set",
-            "summary": "",
+            "summary": "Magic\u0020setter\u003A\u0020stores\u0020a\u0020value\u0020in\u0020the\u0020attribute\u0020store.",
             "url": "classes/ActiveModel.html#method___set"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003A__isset\u0028\u0029",
             "name": "__isset",
-            "summary": "",
+            "summary": "Magic\u0020isset\u0020check\u003A\u0020returns\u0020true\u0020if\u0020\u0024name\u0020is\u0020a\u0020known\u0020attribute\u0020or\u0020relation.",
             "url": "classes/ActiveModel.html#method___isset"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003A__destruct\u0028\u0029",
             "name": "__destruct",
-            "summary": "",
+            "summary": "Closes\u0020the\u0020database\u0020connection\u0020when\u0020the\u0020object\u0020is\u0020garbage\u002Dcollected.",
             "url": "classes/ActiveModel.html#method___destruct"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003AgetConnection\u0028\u0029",
             "name": "getConnection",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020raw\u0020mysqli\u0020connection\u0020held\u0020by\u0020this\u0020instance.",
             "url": "classes/ActiveModel.html#method_getConnection"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003AcloseConnection\u0028\u0029",
             "name": "closeConnection",
-            "summary": "",
+            "summary": "Closes\u0020the\u0020active\u0020mysqli\u0020connection\u0020if\u0020it\u0020is\u0020open.",
             "url": "classes/ActiveModel.html#method_closeConnection"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003AhumanAttributeName\u0028\u0029",
             "name": "humanAttributeName",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020human\u002Dreadable\u0020translation\u0020of\u0020an\u0020attribute\u0020name.",
             "url": "classes/ActiveModel.html#method_humanAttributeName"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003Asave\u0028\u0029",
             "name": "save",
-            "summary": "",
+            "summary": "Validates\u0020the\u0020record\u0020and\u0020either\u0020creates\u0020a\u0020new\u0020row\u0020or\u0020updates\u0020the\u0020existing\u0020one.",
             "url": "classes/ActiveModel.html#method_save"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003Avalidate\u0028\u0029",
             "name": "validate",
-            "summary": "",
+            "summary": "Runs\u0020all\u0020configured\u0020validations\u0020and\u0020collects\u0020any\u0020violations.",
             "url": "classes/ActiveModel.html#method_validate"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003Acreate\u0028\u0029",
             "name": "create",
-            "summary": "",
+            "summary": "Inserts\u0020a\u0020new\u0020row\u0020into\u0020the\u0020corresponding\u0020database\u0020table\u0020and\u0020populates\u0020\u0024this\u002D\u003Eid.",
             "url": "classes/ActiveModel.html#method_create"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Updates\u0020the\u0020existing\u0020database\u0020row\u0020for\u0020this\u0020record.",
             "url": "classes/ActiveModel.html#method_update"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
-            "summary": "",
+            "summary": "Deletes\u0020the\u0020database\u0020row\u0020corresponding\u0020to\u0020this\u0020record.",
             "url": "classes/ActiveModel.html#method_destroy"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003AgetBindingType\u0028\u0029",
             "name": "getBindingType",
-            "summary": "Get\u0020mysqli\u0020binding\u0020type\u0020for\u0020a\u0020value",
+            "summary": "Returns\u0020the\u0020mysqli\u0020binding\u0020type\u0020character\u0020for\u0020a\u0020given\u0020value.",
             "url": "classes/ActiveModel.html#method_getBindingType"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003Afind\u0028\u0029",
@@ -1273,7 +1298,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Attributes",
             "name": "Attributes",
-            "summary": "",
+            "summary": "Trait\u0020that\u0020manages\u0020dynamic\u0020model\u0020attribute\u0020storage\u0020and\u0020access\u0020helpers.",
             "url": "classes/Attributes.html"
         },                {
             "fqsen": "\\Attributes\u003A\u003AinitializeAttributes\u0028\u0029",
@@ -1308,7 +1333,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Collection",
             "name": "Collection",
-            "summary": "Collection\u0020\u002D\u0020Array\u0020wrapper\u0020with\u0020Rails\u002Dlike\u0020collection\u0020methods",
+            "summary": "Typed\u0020collection\u0020wrapper\u0020offering\u0020Rails\u002Dlike\u0020helper\u0020methods\u0020and\u0020array\u0020semantics.",
             "url": "classes/Collection.html"
         },                {
             "fqsen": "\\Collection\u003A\u003A__construct\u0028\u0029",
@@ -1368,32 +1393,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Collection\u003A\u003Aeach\u0028\u0029",
             "name": "each",
-            "summary": "Each\u0020iterator",
+            "summary": "Each\u0020iterator\nTODO\u003A\u0020Nahradit\u0020foreach\u0020v\u0020Controllers\u0020a\u0020dal\u0161\u00EDch\u0020m\u00EDstech,\u0020kde\u0020se\u0020iteruje\u0020p\u0159es\u0020kolekce,\u0020t\u00EDmto\u0020each\u0028\u0029\u0020pro\u0020konzistentn\u011Bj\u0161\u00ED\u0020styl\u0020a\u0020mo\u017Enost\u0020p\u0159idat\u0020dal\u0161\u00ED\u0020funkce\u0020do\u0020\u0159et\u011Bzce.",
             "url": "classes/Collection.html#method_each"
         },                {
             "fqsen": "\\Collection\u003A\u003AgetIterator\u0028\u0029",
             "name": "getIterator",
-            "summary": "",
+            "summary": "Returns\u0020an\u0020ArrayIterator\u0020so\u0020the\u0020collection\u0020can\u0020be\u0020used\u0020in\u0020foreach\u0020loops.",
             "url": "classes/Collection.html#method_getIterator"
         },                {
             "fqsen": "\\Collection\u003A\u003AoffsetExists\u0028\u0029",
             "name": "offsetExists",
-            "summary": "",
+            "summary": "Returns\u0020whether\u0020the\u0020given\u0020offset\u0020exists\u0020in\u0020the\u0020items\u0020array.",
             "url": "classes/Collection.html#method_offsetExists"
         },                {
             "fqsen": "\\Collection\u003A\u003AoffsetGet\u0028\u0029",
             "name": "offsetGet",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020item\u0020at\u0020the\u0020given\u0020offset,\u0020or\u0020null\u0020if\u0020it\u0020does\u0020not\u0020exist.",
             "url": "classes/Collection.html#method_offsetGet"
         },                {
             "fqsen": "\\Collection\u003A\u003AoffsetSet\u0028\u0029",
             "name": "offsetSet",
-            "summary": "",
+            "summary": "Sets\u0020an\u0020item\u0020at\u0020the\u0020given\u0020offset\u0020\u0028or\u0020appends\u0020when\u0020\u0024offset\u0020is\u0020null\u0029.",
             "url": "classes/Collection.html#method_offsetSet"
         },                {
             "fqsen": "\\Collection\u003A\u003AoffsetUnset\u0028\u0029",
             "name": "offsetUnset",
-            "summary": "",
+            "summary": "Unsets\u0020the\u0020item\u0020at\u0020the\u0020given\u0020offset.",
             "url": "classes/Collection.html#method_offsetUnset"
         },                {
             "fqsen": "\\Collection\u003A\u003A\u0024items",
@@ -1403,12 +1428,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Pagination",
             "name": "Pagination",
-            "summary": "",
+            "summary": "Pagination\u0020value\u0020object\u0020containing\u0020page\u0020metadata\u0020and\u0020page\u0020resources.",
             "url": "classes/Pagination.html"
         },                {
             "fqsen": "\\Pagination\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Calculates\u0020pagination\u0020metadata\u0020and\u0020fetches\u0020the\u0020records\u0020for\u0020the\u0020requested\u0020page.",
             "url": "classes/Pagination.html#method___construct"
         },                {
             "fqsen": "\\Pagination\u003A\u003A\u0024resources",
@@ -1448,7 +1473,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\QueryBuilder",
             "name": "QueryBuilder",
-            "summary": "QueryBuilder\u0020\u002D\u0020Chainable\u0020query\u0020builder\u0020similar\u0020to\u0020Rails\u0020ActiveRecord\u003A\u003ARelation",
+            "summary": "Chainable\u0020SQL\u0020query\u0020builder\u0020for\u0020ActiveModel\u0020records\u0020and\u0020relation\u0020scopes.",
             "url": "classes/QueryBuilder.html"
         },                {
             "fqsen": "\\QueryBuilder\u003A\u003A__construct\u0028\u0029",
@@ -1508,7 +1533,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\QueryBuilder\u003A\u003Aexists\u0028\u0029",
             "name": "exists",
-            "summary": "Check\u0020if\u0020any\u0020records\u0020exist",
+            "summary": "Check\u0020if\u0020any\u0020records\u0020exist\nTODO\u003A\u0020P\u0159ed\u011Blat\u0020na\u0020efektivn\u011Bj\u0161\u00ED\u0020SQL\u0020dotaz\u0020SELECT\u00201\u0020...\u0020LIMIT\u00201\u0020m\u00EDsto\u0020COUNT\u0028\u002A\u0029,\u0020aby\u0020se\u0020zbyte\u010Dn\u011B\u0020nepo\u010D\u00EDtaly\u0020v\u0161echny\u0020\u0159\u00E1dky.",
             "url": "classes/QueryBuilder.html#method_exists"
         },                {
             "fqsen": "\\QueryBuilder\u003A\u003Apluck\u0028\u0029",
@@ -1518,7 +1543,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\QueryBuilder\u003A\u003Apaginate\u0028\u0029",
             "name": "paginate",
-            "summary": "",
+            "summary": "Creates\u0020a\u0020Pagination\u0020object\u0020from\u0020the\u0020current\u0020QueryBuilder\u0020state.",
             "url": "classes/QueryBuilder.html#method_paginate"
         },                {
             "fqsen": "\\QueryBuilder\u003A\u003AexecuteQuery\u0028\u0029",
@@ -1578,7 +1603,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Relations",
             "name": "Relations",
-            "summary": "",
+            "summary": "Trait\u0020that\u0020resolves\u0020and\u0020caches\u0020belongs_to\u0020and\u0020has_many\u0020associations.",
             "url": "classes/Relations.html"
         },                {
             "fqsen": "\\Relations\u003A\u003AgetRelation\u0028\u0029",
@@ -1593,7 +1618,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Relations\u003A\u003AsetHasManyRelation\u0028\u0029",
             "name": "setHasManyRelation",
-            "summary": "",
+            "summary": "Builds\u0020a\u0020QueryBuilder\u0020for\u0020a\u0020has_many\u0020association,\u0020applying\u0020the\u0020correct\nforeign\u0020key\u0020condition\u0020and,\u0020for\u0020polymorphic\u0020associations,\u0020the\u0020type\u0020constraint.",
             "url": "classes/Relations.html#method_setHasManyRelation"
         },                {
             "fqsen": "\\Relations\u003A\u003A\u0024_loaded_relations",
@@ -1603,52 +1628,52 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ActiveModel\\Validations\\InclusionException",
             "name": "InclusionException",
-            "summary": "",
+            "summary": "Validation\u0020exception\u0020raised\u0020for\u0020inclusion\u0020constraint\u0020violations.",
             "url": "classes/ActiveModel-Validations-InclusionException.html"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\InclusionValidator",
             "name": "InclusionValidator",
-            "summary": "",
+            "summary": "Trait\u0020providing\u0020inclusion\u0020validation\u0020for\u0020model\u0020attributes.",
             "url": "classes/ActiveModel-Validations-InclusionValidator.html"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\InclusionValidator\u003A\u003Avalidates_inclusion_of\u0028\u0029",
             "name": "validates_inclusion_of",
-            "summary": "",
+            "summary": "Validates\u0020that\u0020each\u0020attribute\u0027s\u0020value\u0020is\u0020within\u0020its\u0020list\u0020of\u0020allowed\u0020values.",
             "url": "classes/ActiveModel-Validations-InclusionValidator.html#method_validates_inclusion_of"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\LengthException",
             "name": "LengthException",
-            "summary": "",
+            "summary": "Validation\u0020exception\u0020raised\u0020for\u0020attribute\u0020length\u0020violations.",
             "url": "classes/ActiveModel-Validations-LengthException.html"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\LengthValidator",
             "name": "LengthValidator",
-            "summary": "",
+            "summary": "Trait\u0020providing\u0020min\/max\/exact\u002Dlength\u0020validation\u0020for\u0020attributes.",
             "url": "classes/ActiveModel-Validations-LengthValidator.html"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\LengthValidator\u003A\u003Avalidates_length_of\u0028\u0029",
             "name": "validates_length_of",
-            "summary": "",
+            "summary": "Validates\u0020min,\u0020max,\u0020and\u0020exact\u0020length\u0020constraints\u0020for\u0020each\u0020specified\u0020attribute.",
             "url": "classes/ActiveModel-Validations-LengthValidator.html#method_validates_length_of"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\PresenceException",
             "name": "PresenceException",
-            "summary": "",
+            "summary": "Validation\u0020exception\u0020raised\u0020when\u0020required\u0020attributes\u0020are\u0020missing.",
             "url": "classes/ActiveModel-Validations-PresenceException.html"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\PresenceValidator",
             "name": "PresenceValidator",
-            "summary": "",
+            "summary": "Trait\u0020providing\u0020presence\u0020validation\u0020for\u0020required\u0020model\u0020attributes.",
             "url": "classes/ActiveModel-Validations-PresenceValidator.html"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\PresenceValidator\u003A\u003Avalidates_presence_of\u0028\u0029",
             "name": "validates_presence_of",
-            "summary": "",
+            "summary": "Validates\u0020that\u0020each\u0020listed\u0020attribute\u0020has\u0020a\u0020non\u002Dnull\u0020value.",
             "url": "classes/ActiveModel-Validations-PresenceValidator.html#method_validates_presence_of"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\UniquenessValidator",
             "name": "UniquenessValidator",
-            "summary": "",
+            "summary": "Trait\u0020providing\u0020uniqueness\u0020validation\u0020against\u0020persisted\u0020records.",
             "url": "classes/ActiveModel-Validations-UniquenessValidator.html"
         },                {
             "fqsen": "\\ActiveModel\\Validations\\UniquenessValidator\u003A\u003Avalidates_uniqueness_of\u0028\u0029",
@@ -1673,7 +1698,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ActiveModel\\ValidationException",
             "name": "ValidationException",
-            "summary": "",
+            "summary": "Aggregate\u0020validation\u0020exception\u0020carrying\u0020a\u0020list\u0020of\u0020field\u002Dlevel\u0020errors.",
             "url": "classes/ActiveModel-ValidationException.html"
         },                {
             "fqsen": "\\ActiveModel\\ValidationException\u003A\u003A__construct\u0028\u0029",
@@ -1683,7 +1708,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ActiveModel\\ValidationException\u003A\u003AgetValidationExceptions\u0028\u0029",
             "name": "getValidationExceptions",
-            "summary": "",
+            "summary": "Returns\u0020all\u0020individual\u0020field\u0020validation\u0020errors\u0020collected\u0020in\u0020this\u0020exception.",
             "url": "classes/ActiveModel-ValidationException.html#method_getValidationExceptions"
         },                {
             "fqsen": "\\ActiveModel\\ValidationException\u003A\u003A\u0024validation_exceptions",
@@ -1693,7 +1718,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ActiveModel\\Validations",
             "name": "Validations",
-            "summary": "",
+            "summary": "Trait\u0020composing\u0020all\u0020built\u002Din\u0020validators\u0020used\u0020by\u0020ActiveModel.",
             "url": "classes/ActiveModel-Validations.html"
         },                {
             "fqsen": "\\toSnakeCase\u0028\u0029",
@@ -1713,47 +1738,47 @@ Search.appendIndex(
         },                {
             "fqsen": "\\asset_path\u0028\u0029",
             "name": "asset_path",
-            "summary": "",
+            "summary": "Returns\u0020a\u0020cache\u002Dbusted\u0020public\u0020asset\u0020path\u0020by\u0020appending\u0020the\u0020file\u0027s\u0020mtime\u0020as\u0020a\nquery\u002Dstring\u0020version\u0020parameter.",
             "url": "namespaces/default.html#function_asset_path"
         },                {
             "fqsen": "\\Logger",
             "name": "Logger",
-            "summary": "Simple\u0020Logger\u0020with\u0020log\u0020levels",
+            "summary": "Structured\u0020stderr\u0020logger\u0020with\u0020ANSI\u0020colours\u0020and\u0020configurable\u0020minimum\u0020level.",
             "url": "classes/Logger.html"
         },                {
             "fqsen": "\\Logger\u003A\u003AsetLevel\u0028\u0029",
             "name": "setLevel",
-            "summary": "",
+            "summary": "Sets\u0020the\u0020minimum\u0020log\u0020level\u003B\u0020messages\u0020below\u0020this\u0020level\u0020are\u0020suppressed.",
             "url": "classes/Logger.html#method_setLevel"
         },                {
             "fqsen": "\\Logger\u003A\u003Alog\u0028\u0029",
             "name": "log",
-            "summary": "",
+            "summary": "Formats\u0020and\u0020writes\u0020a\u0020log\u0020entry\u0020to\u0020stderr\u0020if\u0020the\u0020level\u0020meets\u0020the\u0020minimum\u0020threshold.",
             "url": "classes/Logger.html#method_log"
         },                {
             "fqsen": "\\Logger\u003A\u003Adebug\u0028\u0029",
             "name": "debug",
-            "summary": "",
+            "summary": "Logs\u0020a\u0020debug\u002Dlevel\u0020message.",
             "url": "classes/Logger.html#method_debug"
         },                {
             "fqsen": "\\Logger\u003A\u003Ainfo\u0028\u0029",
             "name": "info",
-            "summary": "",
+            "summary": "Logs\u0020an\u0020info\u002Dlevel\u0020message.",
             "url": "classes/Logger.html#method_info"
         },                {
             "fqsen": "\\Logger\u003A\u003Asql\u0028\u0029",
             "name": "sql",
-            "summary": "",
+            "summary": "Logs\u0020a\u0020SQL\u0020query\u0020at\u0020SQL\u002Dlevel\u0020severity.",
             "url": "classes/Logger.html#method_sql"
         },                {
             "fqsen": "\\Logger\u003A\u003Awarning\u0028\u0029",
             "name": "warning",
-            "summary": "",
+            "summary": "Logs\u0020a\u0020warning\u002Dlevel\u0020message.",
             "url": "classes/Logger.html#method_warning"
         },                {
             "fqsen": "\\Logger\u003A\u003Aerror\u0028\u0029",
             "name": "error",
-            "summary": "",
+            "summary": "Logs\u0020an\u0020error\u002Dlevel\u0020message.",
             "url": "classes/Logger.html#method_error"
         },                {
             "fqsen": "\\Logger\u003A\u003A\u0024minLevel",
@@ -1773,17 +1798,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\LogLevel",
             "name": "LogLevel",
-            "summary": "",
+            "summary": "Enumerates\u0020supported\u0020logger\u0020severities\u0020and\u0020related\u0020output\u0020metadata.",
             "url": "classes/LogLevel.html"
         },                {
             "fqsen": "\\LogLevel\u003A\u003Alabel\u0028\u0029",
             "name": "label",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020human\u002Dreadable\u0020label\u0020for\u0020this\u0020log\u0020level.",
             "url": "classes/LogLevel.html#method_label"
         },                {
             "fqsen": "\\LogLevel\u003A\u003Acolor\u0028\u0029",
             "name": "color",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020ANSI\u0020escape\u002Dcode\u0020colour\u0020string\u0020for\u0020this\u0020log\u0020level.",
             "url": "classes/LogLevel.html#method_color"
         },                {
             "fqsen": "\\LogLevel\u003A\u003ADEBUG",

@@ -1,11 +1,17 @@
 <?php
+
 /**
+ * Public read-only controller for listing and viewing visible events.
+ *
  * @package Controllers
  */
 class EventsController extends ApplicationController
 {
   private $id;
 
+  /**
+   * Parses the event ID from the request URI.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -15,6 +21,12 @@ class EventsController extends ApplicationController
   }
 
 
+  /**
+   * Lists publicly visible events with pagination.
+   *
+   * @param array $request Parsed request data (expects 'page' key).
+   * @return void
+   */
   public function index($request)
   {
     $pagination = Event::where(["is_publicly_visible" => true])->paginate($request['page']);
@@ -24,6 +36,12 @@ class EventsController extends ApplicationController
     ]);
   }
 
+  /**
+   * Shows a single publicly visible event with its public attachments.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function show($request)
   {
     $event = Event::where(["is_publicly_visible" => true])->find($this->id);

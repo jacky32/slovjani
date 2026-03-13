@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Trait that manages dynamic model attribute storage and access helpers.
+ */
 trait Attributes
 {
   protected array $_attributes = [];

@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Voting model with questions, status lifecycle, and participation helpers.
+ *
  * @package Models
  */
 class Voting extends ApplicationRecord
@@ -50,6 +52,11 @@ class Voting extends ApplicationRecord
     'inclusion' => ['status' => ['DRAFT', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED']]
   ];
 
+  /**
+   * Initialises the Voting with the provided attribute data.
+   *
+   * @param array $data Associative array of attribute values to pre-populate.
+   */
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);
@@ -57,6 +64,12 @@ class Voting extends ApplicationRecord
 
   // Methods
 
+  /**
+   * Checks whether a user has already submitted at least one answer in this voting.
+   *
+   * @param int $user_id The ID of the user to check.
+   * @return bool True if the user has voted, false otherwise.
+   */
   public function hasUserVoted($user_id)
   {
     $question_ids = $this->questions->pluck('id');

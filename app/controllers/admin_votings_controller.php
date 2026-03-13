@@ -1,5 +1,8 @@
 <?php
+
 /**
+ * Admin CRUD controller for votings and lifecycle management.
+ *
  * @package Controllers
  */
 
@@ -7,6 +10,9 @@ class AdminVotingsController extends AdminController
 {
   private $id;
 
+  /**
+   * Parses the voting ID from the request URI.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -16,6 +22,12 @@ class AdminVotingsController extends AdminController
   }
 
 
+  /**
+   * Lists all votings with pagination.
+   *
+   * @param array $request Parsed request data (expects 'page' key).
+   * @return void
+   */
   public function index($request)
   {
     $pagination = Voting::paginate($request['page']);
@@ -25,6 +37,12 @@ class AdminVotingsController extends AdminController
     ]);
   }
 
+  /**
+   * Shows details for a single voting including whether the current user has voted.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function show($request)
   {
     $voting = Voting::find($this->id);
@@ -42,6 +60,12 @@ class AdminVotingsController extends AdminController
     }
   }
 
+  /**
+   * Renders the new-voting creation form.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function new($request)
   {
     $pagination = Voting::paginate($request['page']);
@@ -51,6 +75,12 @@ class AdminVotingsController extends AdminController
     ]);
   }
 
+  /**
+   * Persists a new voting.
+   *
+   * @param array $request Parsed request data including voting attributes.
+   * @return void
+   */
   public function create($request)
   {
     try {
@@ -89,6 +119,12 @@ class AdminVotingsController extends AdminController
     }
   }
 
+  /**
+   * Renders the edit form for an existing voting.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function edit($request)
   {
     $voting = Voting::find($this->id);
@@ -105,6 +141,12 @@ class AdminVotingsController extends AdminController
     }
   }
 
+  /**
+   * Updates an existing voting owned by the current user.
+   *
+   * @param array $request Parsed request data including updated voting attributes.
+   * @return void
+   */
   public function update($request)
   {
     try {
@@ -146,6 +188,12 @@ class AdminVotingsController extends AdminController
     }
   }
 
+  /**
+   * Deletes a voting owned by the current user.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function destroy($request)
   {
     try {

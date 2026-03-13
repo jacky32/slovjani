@@ -89,6 +89,10 @@
     <a href="packages/Config.html" class="">Config</a>
 </h4>
 
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Database.html" class="">Database</a>
+</h4>
+
                         </section>
             
     <section class="phpdocumentor-sidebar__category -reports">
@@ -132,14 +136,14 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">9</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Simple Router class to map URLs to controller actions.</p>
+            <p class="phpdocumentor-summary">Application router that maps request paths and methods to controller actions.</p>
 
 
-    <section class="phpdocumentor-description"><p>Supports RESTful resource routing for basic CRUD operations.</p>
+    <section class="phpdocumentor-description"><p>Supports RESTful resources and nested resources for admin and public routes.</p>
 </section>
 
 
@@ -197,6 +201,8 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
+<dd>Parses the incoming request URI, normalises the path, and matches it
+against all registered routes to set $controllerName and $action.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/Router.html#method_isGet">isGet()</a>
@@ -225,8 +231,9 @@ Defines nested RESTful routes for a child resource under a parent.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/Router.html#method_normalizeTrailingSlash">normalizeTrailingSlash()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string    </span>
 </dt>
+<dd>Removes a trailing slash from the path while preserving the root &#039;/&#039;.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/Router.html#method_regRoute">regRoute()</a>
@@ -249,8 +256,7 @@ Builds a regex pattern for resource routes</dd>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>resources
-Defines RESTful routes for a given resource and specified actions.</dd>
+<dd>Defines RESTful CRUD routes for a given resource and a set of actions.</dd>
 
     </dl>
 
@@ -282,7 +288,7 @@ Defines RESTful routes for a given resource and specified actions.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 
     </aside>
 
@@ -321,7 +327,7 @@ Defines RESTful routes for a given resource and specified actions.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 
     </aside>
 
@@ -361,7 +367,7 @@ This will be set based on the matched route and used to instantiate the controll
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -405,11 +411,13 @@ This will be set based on the matched route and used to instantiate the controll
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Parses the incoming request URI, normalises the path, and matches it
+against all registered routes to set $controllerName and $action.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
@@ -439,7 +447,7 @@ This will be set based on the matched route and used to instantiate the controll
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">166</span>
+    <span class="phpdocumentor-element-found-in__line">168</span>
 
     </aside>
 
@@ -479,7 +487,7 @@ Checks if the request method is GET</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">177</span>
+    <span class="phpdocumentor-element-found-in__line">179</span>
 
     </aside>
 
@@ -519,7 +527,7 @@ Checks if the request method is POST</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">276</span>
+    <span class="phpdocumentor-element-found-in__line">278</span>
 
     </aside>
 
@@ -604,14 +612,15 @@ Defines nested RESTful routes for a child resource under a parent.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">328</span>
+    <span class="phpdocumentor-element-found-in__line">335</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Removes a trailing slash from the path while preserving the root &#039;/&#039;.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">normalizeTrailingSlash</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">normalizeTrailingSlash</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -621,10 +630,12 @@ Defines nested RESTful routes for a child resource under a parent.</p>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$path</span>
-                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The raw URL path.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -632,7 +643,15 @@ Defines nested RESTful routes for a child resource under a parent.</p>
 
         
     
-    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Normalised path without a trailing slash.</p>
+</section>
+
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -648,7 +667,7 @@ Defines nested RESTful routes for a child resource under a parent.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">189</span>
+    <span class="phpdocumentor-element-found-in__line">191</span>
 
     </aside>
 
@@ -698,7 +717,7 @@ Checks if the current route matches a given regular expression</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">202</span>
+    <span class="phpdocumentor-element-found-in__line">204</span>
 
     </aside>
 
@@ -759,16 +778,15 @@ Builds a regex pattern for resource routes</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="config/router.php"><a href="files/config-router.html"><abbr title="config/router.php">router.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">215</span>
+    <span class="phpdocumentor-element-found-in__line">217</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">resources
-Defines RESTful routes for a given resource and specified actions.</p>
+        <p class="phpdocumentor-summary">Defines RESTful CRUD routes for a given resource and a set of actions.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">resources</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$admin</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$actions</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">["index", "show", "new", "create", "edit", "update", "destroy"]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">resources</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resource</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$admin</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$actions</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">["index", "show", "new", "create", "edit", "update", "destroy"]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -781,23 +799,25 @@ Defines RESTful routes for a given resource and specified actions.</p>
                 : <span class="phpdocumentor-argument-list__argument__type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Resource name (e.g., 'posts'). Must be plural.</p>
+                    <section class="phpdocumentor-description"><p>Resource name in plural snake_case (e.g. 'posts').</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$admin</span>
-                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
                  = <span class="phpdocumentor-argument-list__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>When true, routes are prefixed with /admin.</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-argument-list__argument__name">$actions</span>
                 : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
                  = <span class="phpdocumentor-argument-list__argument__default-value">["index", "show", "new", "create", "edit", "update", "destroy"]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Optional. List of actions to create routes for. Defaults to all CRUD actions.</p>
+                    <section class="phpdocumentor-description"><p>List of actions to register. Defaults to all CRUD actions.</p>
 </section>
 
             </dd>
@@ -811,7 +831,7 @@ Defines RESTful routes for a given resource and specified actions.</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
                     &mdash;
-                <section class="phpdocumentor-description"><p>True if a route is matched, false otherwise.</p>
+                <section class="phpdocumentor-description"><p>True if a route was matched, false otherwise.</p>
 </section>
 
             </section>

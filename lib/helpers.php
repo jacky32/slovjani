@@ -3,6 +3,9 @@
 /**
  * Converts a string to snake_case.
  * Example: "UserProfile" => "user_profile"
+ *
+ * @param string $input The string to convert.
+ * @return string The snake_case representation.
  */
 function toSnakeCase(string $input): string
 {
@@ -12,6 +15,9 @@ function toSnakeCase(string $input): string
 /**
  * Converts a string to PascalCase.
  * Example: "user_profile" => "UserProfile"
+ *
+ * @param string $input The snake_case string to convert.
+ * @return string The PascalCase representation.
  */
 function toPascalCase(string $input): string
 {
@@ -22,6 +28,10 @@ function toPascalCase(string $input): string
  * Simple translation function that loads translations from a YAML file.
  * The key is in the format "namespace.key.subkey".
  * Example: t("posts.new.title") would look for "posts" => ["new" => ["title" => "Title"]]
+ *
+ * @param string $key    Dot-separated translation key.
+ * @param array  $params Optional named placeholders to interpolate into the translation string.
+ * @return string The translated string, or $key if not found.
  */
 function t(string $key, array $params = []): string
 {
@@ -41,6 +51,13 @@ function t(string $key, array $params = []): string
   return $value;
 }
 
+/**
+ * Returns a cache-busted public asset path by appending the file's mtime as a
+ * query-string version parameter.
+ *
+ * @param string $path Asset path relative to the public/ directory (e.g. '/assets/app.css').
+ * @return string The path with an appended ?v=<mtime> query string, or $path if the file does not exist.
+ */
 function asset_path($path)
 {
   $filePath = __DIR__ . '/../public' . $path;

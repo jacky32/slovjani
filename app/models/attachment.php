@@ -1,5 +1,8 @@
 <?php
+
 /**
+ * File attachment model supporting polymorphic parent resources.
+ *
  * @package Models
  */
 class Attachment extends ApplicationRecord
@@ -39,6 +42,12 @@ class Attachment extends ApplicationRecord
     'presence' => ['creator_id', 'file_name', 'file_size', 'file_type', 'token', 'resource_id', 'resource_type', 'visible_name'],
   ];
 
+  /**
+   * Initialises the Attachment, auto-generating a random hex token when none
+   * is supplied in $data.
+   *
+   * @param array $data Associative array of attribute values to pre-populate.
+   */
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);

@@ -1,11 +1,17 @@
 <?php
+
 /**
+ * Public read-only controller for published posts and detail pages.
+ *
  * @package Controllers
  */
 class PostsController extends ApplicationController
 {
   private $id;
 
+  /**
+   * Parses the post ID from the request URI.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -15,6 +21,12 @@ class PostsController extends ApplicationController
   }
 
 
+  /**
+   * Lists publicly visible (published) posts with pagination.
+   *
+   * @param array $request Parsed request data (expects 'page' key).
+   * @return void
+   */
   public function index($request)
   {
     $pagination = Post::publiclyVisible()->paginate($request['page']);
@@ -24,6 +36,12 @@ class PostsController extends ApplicationController
     ]);
   }
 
+  /**
+   * Shows a single published post with its public attachments.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function show($request)
   {
     $post = Post::publiclyVisible()->find($this->id);

@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Admin controller handling user responses for voting questions.
+ *
  * @package Controllers
  */
 
@@ -9,6 +11,9 @@ class AdminUsersQuestionsController extends AdminController
   private $voting_id;
   private $users_question_id;
 
+  /**
+   * Parses the voting ID and optional users-question ID from the request URI.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -18,6 +23,12 @@ class AdminUsersQuestionsController extends AdminController
     $this->users_question_id = $matches[2] ?? null;
   }
 
+  /**
+   * Renders the ballot submission form for the current voting.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function new($request)
   {
     $voting = Voting::find($this->voting_id);
@@ -30,6 +41,12 @@ class AdminUsersQuestionsController extends AdminController
     ]);
   }
 
+  /**
+   * Persists the user's answers for all questions in the voting.
+   *
+   * @param array $request Parsed request data including array of question answers.
+   * @return void
+   */
   public function create($request)
   {
     try {
@@ -75,6 +92,12 @@ class AdminUsersQuestionsController extends AdminController
     }
   }
 
+  /**
+   * Retracts the user's vote for a specific answer in the voting.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function destroy($request)
   {
     try {

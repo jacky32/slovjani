@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Admin CRUD controller for events and related publishing actions.
+ *
  * @package Controllers
  */
 
@@ -8,6 +10,9 @@ class AdminEventsController extends AdminController
 {
   private $id;
 
+  /**
+   * Parses the event ID from the request URI.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -17,6 +22,12 @@ class AdminEventsController extends AdminController
   }
 
 
+  /**
+   * Lists all events with pagination.
+   *
+   * @param array $request Parsed request data (expects 'page' key).
+   * @return void
+   */
   public function index($request)
   {
     $pagination = Event::paginate($request['page']);
@@ -26,6 +37,12 @@ class AdminEventsController extends AdminController
     ]);
   }
 
+  /**
+   * Shows details for a single event.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function show($request)
   {
     $event = Event::find($this->id);
@@ -42,6 +59,12 @@ class AdminEventsController extends AdminController
     }
   }
 
+  /**
+   * Renders the new-event creation form.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function new($request)
   {
     $pagination = Event::paginate($request['page']);
@@ -51,6 +74,12 @@ class AdminEventsController extends AdminController
     ]);
   }
 
+  /**
+   * Persists a new event and regenerates static pages.
+   *
+   * @param array $request Parsed request data including event attributes.
+   * @return void
+   */
   public function create($request)
   {
     try {
@@ -90,6 +119,12 @@ class AdminEventsController extends AdminController
     }
   }
 
+  /**
+   * Renders the edit form for an existing event.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function edit($request)
   {
     $event = Event::find($this->id);
@@ -106,6 +141,12 @@ class AdminEventsController extends AdminController
     }
   }
 
+  /**
+   * Updates an existing event and regenerates static pages.
+   *
+   * @param array $request Parsed request data including updated event attributes.
+   * @return void
+   */
   public function update($request)
   {
     try {
@@ -150,6 +191,12 @@ class AdminEventsController extends AdminController
     }
   }
 
+  /**
+   * Deletes an event and triggers static page regeneration if the event was public.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function destroy($request)
   {
     try {

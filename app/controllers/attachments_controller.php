@@ -1,5 +1,8 @@
 <?php
+
 /**
+ * Public controller for serving attachments attached to visible resources.
+ *
  * @package Controllers
  */
 class AttachmentsController extends ApplicationController
@@ -9,6 +12,10 @@ class AttachmentsController extends ApplicationController
   private $attachment_id;
   private $resource;
 
+  /**
+   * Parses the resource type, resource ID, and optional attachment ID from the
+   * request URI and locates the parent resource.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -20,6 +27,12 @@ class AttachmentsController extends ApplicationController
     $this->resource = $this->findResource();
   }
 
+  /**
+   * Streams a publicly visible attachment file to the browser.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function show($request)
   {
     $attachment = $this->resource->attachments->where(['is_publicly_visible' => true])->find($this->attachment_id);
@@ -32,6 +45,11 @@ class AttachmentsController extends ApplicationController
     }
   }
 
+  /**
+   * Resolves the parent public resource (Post or Event) from the parsed type and ID.
+   *
+   * @return Post|Event|null The found resource, or null for unknown types.
+   */
   private function findResource()
   {
     switch ($this->resource_type) {

@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * User account model with role masks and owned resources.
+ *
  * @package Models
  */
 class User extends ApplicationRecord
@@ -62,6 +64,11 @@ class User extends ApplicationRecord
     ]
   ];
 
+  /**
+   * Initialises the User with the provided attribute data.
+   *
+   * @param array $data Associative array of attribute values to pre-populate.
+   */
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);

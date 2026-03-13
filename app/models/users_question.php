@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Join model storing a user's selected answer for a voting question.
+ *
  * @package Models
  */
 class UsersQuestion extends ApplicationRecord
@@ -34,6 +36,11 @@ class UsersQuestion extends ApplicationRecord
     'uniqueness' => [['user_id', 'question_id']]
   ];
 
+  /**
+   * Initialises the UsersQuestion with the provided attribute data.
+   *
+   * @param array $data Associative array of attribute values to pre-populate.
+   */
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);

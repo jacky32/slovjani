@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * View rendering coordinator for templates, partials, form helpers, and layout output.
+ *
  * @package Services
  */
 class ViewManager

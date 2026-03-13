@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Event domain model with visibility and scheduling attributes.
+ *
  * @package Models
  */
 class Event extends ApplicationRecord
@@ -45,6 +47,11 @@ class Event extends ApplicationRecord
     'length' => ["name" => ["min" => 4, "max" => 255], "description" => ["min" => 4, "max" => 5000]]
   ];
 
+  /**
+   * Initialises the Event with the provided attribute data.
+   *
+   * @param array $data Associative array of attribute values to pre-populate.
+   */
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);

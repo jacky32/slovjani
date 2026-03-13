@@ -2,11 +2,24 @@
 
 namespace ActiveModel\Validations;
 
+/**
+ * Validation exception raised for attribute length violations.
+ */
 class LengthException extends \ActiveModel\ValidationException {};
 
+/**
+ * Trait providing min/max/exact-length validation for attributes.
+ */
 trait LengthValidator
 {
-  // 'length' => ["name" => ["min" => 8, "max" => 255], "description" => ["min" => 8, "max" => 1000]]
+  /**
+   * Validates min, max, and exact length constraints for each specified attribute.
+   * Usage in model: 'length' => ["username" => ['min' => 3, 'max' => 20], "code" => ['is' => 6]]
+   *
+   * @param array $attributes Associative array mapping attribute names to constraint arrays
+   *                          with optional 'min', 'max', and 'is' keys.
+   * @return array Array of violation records, each with 'class', 'attribute', and 'message' keys.
+   */
   public function validates_length_of(array $attributes)
   {
     $caught_exceptions = [];

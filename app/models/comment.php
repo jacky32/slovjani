@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Comment model for polymorphic threaded comments across resources.
+ *
  * @package Models
  */
 class Comment extends ApplicationRecord
@@ -38,6 +40,11 @@ class Comment extends ApplicationRecord
     'presence' => ['creator_id', 'body', 'resource_id', 'resource_type'],
   ];
 
+  /**
+   * Initialises the Comment with the provided attribute data.
+   *
+   * @param array $data Associative array of attribute values to pre-populate.
+   */
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);

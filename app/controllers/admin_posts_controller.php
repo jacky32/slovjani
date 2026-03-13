@@ -1,12 +1,17 @@
 <?php
 
 /**
+ * Admin CRUD controller for posts and static-page regeneration triggers.
+ *
  * @package Controllers
  */
 class AdminPostsController extends AdminController
 {
   private $id;
 
+  /**
+   * Parses the post ID from the request URI.
+   */
   public function __construct()
   {
     parent::__construct();
@@ -16,6 +21,12 @@ class AdminPostsController extends AdminController
   }
 
 
+  /**
+   * Lists all posts with pagination.
+   *
+   * @param array $request Parsed request data (expects 'page' key).
+   * @return void
+   */
   public function index($request)
   {
     $pagination = Post::paginate($request['page']);
@@ -25,6 +36,12 @@ class AdminPostsController extends AdminController
     ]);
   }
 
+  /**
+   * Shows details for a single post.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function show($request)
   {
     $post = Post::find($this->id);
@@ -41,6 +58,12 @@ class AdminPostsController extends AdminController
     }
   }
 
+  /**
+   * Renders the new-post creation form.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function new($request)
   {
     $pagination = Post::paginate($request['page'], $this->id);
@@ -50,6 +73,12 @@ class AdminPostsController extends AdminController
     ]);
   }
 
+  /**
+   * Persists a new post and regenerates static pages.
+   *
+   * @param array $request Parsed request data including post attributes.
+   * @return void
+   */
   public function create($request)
   {
     try {
@@ -87,6 +116,12 @@ class AdminPostsController extends AdminController
     }
   }
 
+  /**
+   * Renders the edit form for an existing post.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function edit($request)
   {
     $post = Post::find($this->id);
@@ -103,6 +138,12 @@ class AdminPostsController extends AdminController
     }
   }
 
+  /**
+   * Updates an existing post and conditionally regenerates static pages.
+   *
+   * @param array $request Parsed request data including updated post attributes.
+   * @return void
+   */
   public function update($request)
   {
     try {
@@ -146,6 +187,12 @@ class AdminPostsController extends AdminController
     }
   }
 
+  /**
+   * Deletes a post and triggers static page regeneration if it was published.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
   public function destroy($request)
   {
     try {
