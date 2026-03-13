@@ -182,6 +182,7 @@ class QueryBuilder
 
   /**
    * Check if any records exist
+   * TODO: Předělat na efektivnější SQL dotaz SELECT 1 ... LIMIT 1 místo COUNT(*), aby se zbytečně nepočítaly všechny řádky.
    */
   public function exists(): bool
   {
