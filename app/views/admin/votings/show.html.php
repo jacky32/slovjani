@@ -15,8 +15,8 @@
         <?= t("updated_at") ?>: <?= (new DateTime($voting->updated_at))->format('d.m.Y H:i') ?>
       <?php endif; ?>
     </small>
-    <?php if ($voting->description): ?>
-      <p class="show-section__description"><?= htmlspecialchars($voting->description) ?></p>
+    <?php if (!empty($parsed_description)): ?>
+      <div class="show-section__description post-parsed-content"><?= $parsed_description ?></div>
     <?php endif; ?>
     <?php if ($voting->status == "DRAFT" && $this->auth->hasRole(\Delight\Auth\Role::ADMIN)): ?>
       <div class="action-buttons show-section__actions">

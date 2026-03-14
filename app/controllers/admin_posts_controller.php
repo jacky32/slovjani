@@ -47,10 +47,12 @@ class AdminPostsController extends AdminController
     $post = Post::find($this->id);
     $pagination = Post::paginate($request['page'], $this->id);
     if ($post) {
+      $parsedBody = (new EditorMarkupParser())->parse($post->body ?? '');
       $this->render("admin/posts/show", [
         "post" => $post,
         "posts" => $pagination->resources,
         "pagination" => $pagination,
+        "parsed_body" => $parsedBody,
       ]);
     } else {
       $this->addFlash('error', t("posts.show.post_not_found"));

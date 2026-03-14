@@ -57,6 +57,12 @@ class Router
     }
 
     // /admin/posts
+    if ($this->routeAction === '/admin/previews/preview_markup' && $this->isPost()) {
+      $this->controllerName = 'AdminPreviewsController';
+      $this->action = 'preview_markup';
+      return;
+    }
+
     if ($this->resources('posts', true)) {
       return;
     }

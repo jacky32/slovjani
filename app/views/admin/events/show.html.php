@@ -21,8 +21,8 @@
       <?php endif; ?>
       <?= t("attributes.event.is_publicly_visible") ?>: <?= $event->is_publicly_visible ? t("yes") : t("no") ?>
     </span>
-    <?php if ($event->description): ?>
-      <p class="show-section__description"><?= htmlspecialchars($event->description) ?></p>
+    <?php if (!empty($parsed_description)): ?>
+      <div class="show-section__description post-parsed-content"><?= $parsed_description ?></div>
     <?php endif; ?>
     <?php if ($event->creator_id == $this->auth->getUserId()): ?>
       <div class="action-buttons show-section__actions">

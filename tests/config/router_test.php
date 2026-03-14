@@ -204,6 +204,13 @@ final class router_test extends TestCase
     $this->assertSame('create', $r->action);
   }
 
+  public function testPostAdminPreviewsPreviewMarkupRoutesToAdminPreviewsPreviewMarkup(): void
+  {
+    $r = $this->route('POST', '/admin/previews/preview_markup');
+    $this->assertSame('AdminPreviewsController', $r->controllerName);
+    $this->assertSame('preview_markup', $r->action);
+  }
+
   public function testPostAdminPostsDestroyRoutesToAdminPostsDestroy(): void
   {
     $r = $this->route('POST', '/admin/posts/10/destroy');

@@ -32,12 +32,19 @@ class AdminUsersQuestionsController extends AdminController
   public function new($request)
   {
     $voting = Voting::find($this->voting_id);
+    $questions = $voting->questions->get();
+    $parser = new EditorMarkupParser();
+    $parsedQuestionDescriptions = [];
+    foreach ($questions as $question) {
+      $parsedQuestionDescriptions[$question->id] = $parser->parse($question->description ?? '');
+    }
     $pagination = Voting::paginate($request['page'], $this->voting_id);
     $this->render("admin/users_questions/new", [
       "voting" => $voting,
       "votings" => $pagination->resources,
       "pagination" => $pagination,
-      "questions" => $voting->questions->get()
+      "questions" => $questions,
+      "parsed_question_descriptions" => $parsedQuestionDescriptions,
     ]);
   }
 
@@ -81,12 +88,19 @@ class AdminUsersQuestionsController extends AdminController
       // if ($e instanceof \ActiveModel\ValidationException) {
       $this->addFlash('error', $e->getMessage());
       $voting = Voting::find($this->voting_id);
+      $questions = $voting->questions->get();
+      $parser = new EditorMarkupParser();
+      $parsedQuestionDescriptions = [];
+      foreach ($questions as $question) {
+        $parsedQuestionDescriptions[$question->id] = $parser->parse($question->description ?? '');
+      }
       $pagination = Voting::paginate($request['page'], $this->voting_id);
       $this->render("admin/users_questions/new", [
         "voting" => $voting,
         "votings" => $pagination->resources,
         "pagination" => $pagination,
-        "questions" => $voting->questions->get(),
+        "questions" => $questions,
+        "parsed_question_descriptions" => $parsedQuestionDescriptions,
         "errors" => $errors,
       ]);
     }

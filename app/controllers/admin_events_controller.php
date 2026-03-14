@@ -48,10 +48,12 @@ class AdminEventsController extends AdminController
     $event = Event::find($this->id);
     if ($event) {
       $pagination = Event::paginate($request['page'], $this->id);
+      $parsedDescription = (new EditorMarkupParser())->parse($event->description ?? '');
       $this->render("admin/events/show", [
         "event" => $event,
         "events" => $pagination->resources,
-        "pagination" => $pagination
+        "pagination" => $pagination,
+        "parsed_description" => $parsedDescription,
       ]);
     } else {
       $this->addFlash('error', t("events.show.event_not_found"));

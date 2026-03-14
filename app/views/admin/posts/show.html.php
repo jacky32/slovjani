@@ -15,8 +15,8 @@
         <?= t("updated_at") ?>: <?= (new DateTime($post->updated_at))->format('d.m.Y H:i') ?>
       <?php endif; ?>
     </span>
-    <?php if ($post->body): ?>
-      <p class="show-section__description"><?= htmlspecialchars($post->body) ?></p>
+    <?php if (!empty($parsed_body)): ?>
+      <div class="show-section__description post-parsed-content"><?= $parsed_body ?></div>
     <?php endif; ?>
     <div class="action-buttons show-section__actions">
       <a href='/admin/posts/<?= $post->id ?>/edit' class='button'><?= $this->renderIcon('pencil-square') ?> <?= t("edit") ?></a>

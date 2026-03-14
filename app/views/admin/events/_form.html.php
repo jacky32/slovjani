@@ -8,7 +8,36 @@
       <?= $this->renderErrors() ?>
 
       <?= $this->renderInput($event, "name") ?>
-      <?= $this->renderTextarea($event, "description") ?>
+      <label for="event-description-input"><?= Event::humanAttributeName("description") ?></label>
+      <?php
+      $descriptionHasError = false;
+      if (!empty($errors)) {
+        foreach ($errors as $error) {
+          if (($error['attribute'] ?? null) === 'description') {
+            $descriptionHasError = true;
+            break;
+          }
+        }
+      }
+      ?>
+      <textarea
+        id="event-description-input"
+        class="<?= $descriptionHasError ? 'warning' : '' ?>"
+        placeholder="<?= t('attributes.event.description') ?>"
+        name="event[description]"
+        data-live-preview="true"
+        data-preview-target="event-description-preview"
+        data-preview-endpoint="/admin/previews/preview_markup"
+        data-preview-param="input"
+        data-preview-parser="editor_markup"
+        data-preview-delay="2000"
+        data-preview-response-key="html"
+        data-preview-loading-text="<?= t('previews.loading') ?>"
+        data-preview-error-text="<?= t('previews.unavailable') ?>"
+        required><?= htmlspecialchars($event->description ?? '') ?></textarea>
+
+      <label for="event-description-preview" style="margin-top: 12px;"><?= t('previews.parsed_preview') ?></label>
+      <div id="event-description-preview" class="post-preview-panel"><?= t('previews.loading') ?></div>
 
       <?= $this->renderInput($event, "datetime_start", "datetime-local") ?>
       <?= $this->renderInput($event, "datetime_end", "datetime-local", false) ?>
@@ -27,3 +56,4 @@
 </section>
 
 <?= $this->renderPartial("layouts/_flatpickr") ?>
+<script src="<?= asset_path('/assets/javascripts/custom/post_body_preview.js') ?>"></script>

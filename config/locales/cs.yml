@@ -262,6 +262,12 @@ attributes:
 app:
   default_title: Slované
 
+previews:
+  parsed_preview: Náhled formátování
+  loading: Načítání náhledu...
+  unavailable: Náhled je dočasně nedostupný.
+  unsupported_parser: Nepodporovaný parser.
+
 enums:
   question_options:
     "YES": Ano

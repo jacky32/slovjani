@@ -20,7 +20,9 @@
     }
     ?>
   </small>
-  <p><?= htmlspecialchars($post->body ?? '') ?></p>
+  <?php if (!empty($parsed_body)): ?>
+    <div class="post-parsed-content"><?= $parsed_body ?></div>
+  <?php endif; ?>
 
   <hr>
   <h3><?= t("attachments.index.title") ?></h3>

@@ -48,10 +48,12 @@ class AdminVotingsController extends AdminController
     $voting = Voting::find($this->id);
     if ($voting) {
       $pagination = Voting::paginate($request['page'], $this->id);
+      $parsedDescription = (new EditorMarkupParser())->parse($voting->description ?? '');
       $this->render("admin/votings/show", [
         "voting" => $voting,
         "votings" => $pagination->resources,
         "pagination" => $pagination,
+        "parsed_description" => $parsedDescription,
         "has_voted" => $voting->hasUserVoted($this->auth->getUserId())
       ]);
     } else {

@@ -7,8 +7,8 @@
     <?php foreach ($questions as $index => $question): ?>
       <div class="show-section">
         <h2 class="show-section__title"><?= htmlspecialchars($question->name ?? '') ?></h2>
-        <?php if ($question->description): ?>
-          <p class="show-section__description"><?= htmlspecialchars($question->description) ?></p>
+        <?php if (!empty($parsed_question_descriptions[$question->id] ?? '')): ?>
+          <div class="show-section__description post-parsed-content"><?= $parsed_question_descriptions[$question->id] ?></div>
         <?php endif; ?>
         <?php foreach (["YES", "NO", "ABSTAIN"] as $option): ?>
           <div>

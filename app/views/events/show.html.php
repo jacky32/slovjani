@@ -20,7 +20,9 @@
     }
     ?>
   </small>
-  <p><?= htmlspecialchars($event->body ?? '') ?></p>
+  <?php if (!empty($parsed_description)): ?>
+    <div class="post-parsed-content"><?= $parsed_description ?></div>
+  <?php endif; ?>
 
   <hr>
   <h3><?= t("attachments.index.title") ?></h3>

@@ -15,6 +15,7 @@ class ViewManager
   private $auth;
   private $errors;
   private $pagination;
+  private bool $shouldRenderLayout = true;
 
 
   /**
@@ -29,10 +30,21 @@ class ViewManager
     if ($controllerOverride !== null) {
       $this->controller = $controllerOverride;
     } else {
-      $tmp = debug_backtrace();
-      $this->controller = $tmp[2]['class'];
-      if ($this->controller == "AdminController") {
-        $this->controller = $tmp[3]['class'];
+      $this->controller = 'ApplicationController';
+      $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+
+      foreach ($trace as $frame) {
+        $class = $frame['class'] ?? null;
+        if (!$class) {
+          continue;
+        }
+        if ($class === __CLASS__) {
+          continue;
+        }
+        if (str_ends_with($class, 'Controller')) {
+          $this->controller = $class;
+          break;
+        }
       }
     }
   }
@@ -234,6 +246,37 @@ class ViewManager
    */
   public function __destruct()
   {
-    include 'app/views/layouts/application.html.php';
+    if ($this->shouldRenderLayout) {
+      include 'app/views/layouts/application.html.php';
+    }
+  }
+
+  /**
+   * Disables layout rendering in __destruct(), useful for JSON endpoints.
+   */
+  public function disableLayout(): void
+  {
+    $this->shouldRenderLayout = false;
+  }
+
+  /**
+   * Sends a JSON response and disables layout rendering.
+   *
+   * @param array $payload Data to encode as JSON.
+   * @param int $statusCode HTTP status code (default 200).
+   */
+  public function renderJson(array $payload, int $statusCode = 200): void
+  {
+    $this->disableLayout();
+
+    // Prevent buffered notices/warnings or partial HTML from preceding JSON.
+    while (ob_get_level() > 0) {
+      ob_end_clean();
+    }
+
+    http_response_code($statusCode);
+    header('Content-Type: application/json; charset=UTF-8');
+    echo json_encode($payload, JSON_UNESCAPED_SLASHES);
+    exit();
   }
 }
