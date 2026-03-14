@@ -48,7 +48,9 @@ class PostsController extends ApplicationController
     if ($post) {
       $pagination = Post::publiclyVisible()->paginate($request['page'], $this->id);
       $attachments = $post->attachments->where(['is_publicly_visible' => true])->get();
-      $parsedBody = (new EditorMarkupParser())->parse($post->body ?? '');
+      $parsedBody = (new EditorMarkupParser(
+        new AttachmentMarkupMediaSourceResolver(Post::class, $post->id, 'posts', false, true)
+      ))->parse($post->body ?? '');
       $this->render("posts/show", [
         "post" => $post,
         "posts" => $pagination->resources,

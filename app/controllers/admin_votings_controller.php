@@ -48,7 +48,9 @@ class AdminVotingsController extends AdminController
     $voting = Voting::find($this->id);
     if ($voting) {
       $pagination = Voting::paginate($request['page'], $this->id);
-      $parsedDescription = (new EditorMarkupParser())->parse($voting->description ?? '');
+      $parsedDescription = (new EditorMarkupParser(
+        new AttachmentMarkupMediaSourceResolver(Voting::class, $voting->id, 'votings', true, true)
+      ))->parse($voting->description ?? '');
       $this->render("admin/votings/show", [
         "voting" => $voting,
         "votings" => $pagination->resources,

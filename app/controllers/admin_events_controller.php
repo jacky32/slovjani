@@ -48,7 +48,9 @@ class AdminEventsController extends AdminController
     $event = Event::find($this->id);
     if ($event) {
       $pagination = Event::paginate($request['page'], $this->id);
-      $parsedDescription = (new EditorMarkupParser())->parse($event->description ?? '');
+      $parsedDescription = (new EditorMarkupParser(
+        new AttachmentMarkupMediaSourceResolver(Event::class, $event->id, 'events', true, true)
+      ))->parse($event->description ?? '');
       $this->render("admin/events/show", [
         "event" => $event,
         "events" => $pagination->resources,

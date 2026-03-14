@@ -26,7 +26,26 @@ class AdminPreviewsController extends AdminController
       ], 422);
     }
 
-    $html = (new EditorMarkupParser())->parse($input);
+    $resolver = null;
+    $resourceType = isset($request['resource_type']) && is_string($request['resource_type']) ? trim($request['resource_type']) : '';
+    $resourceId = isset($request['resource_id']) ? (int) $request['resource_id'] : 0;
+    $adminContext = isset($request['admin_context']) ? (string) $request['admin_context'] === '1' : true;
+    $publicOnly = !isset($request['public_only']) || (string) $request['public_only'] === '1';
+
+    if ($resourceType !== '' && $resourceId > 0) {
+      $resourceClass = match ($resourceType) {
+        'posts' => Post::class,
+        'events' => Event::class,
+        'votings' => Voting::class,
+        default => null,
+      };
+
+      if ($resourceClass !== null) {
+        $resolver = new AttachmentMarkupMediaSourceResolver($resourceClass, $resourceId, $resourceType, $adminContext, $publicOnly);
+      }
+    }
+
+    $html = (new EditorMarkupParser($resolver))->parse($input);
     $this->viewManager->renderJson(['html' => $html]);
   }
 }

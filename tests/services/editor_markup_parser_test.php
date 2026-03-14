@@ -84,6 +84,35 @@ final class editor_markup_parser_test extends TestCase
     $this->assertStringContainsString('<figcaption>Alla govori o svojem ucenju se medzuslovjanskogo</figcaption></figure>', $html);
   }
 
+  public function testResolvesUnprefixedAttachmentAliasViaMediaSourceResolver(): void
+  {
+    $parser = new EditorMarkupParser(static function (string $source): ?string {
+      if ($source === 'hero.jpg') {
+        return '/posts/42/attachments/7';
+      }
+
+      return null;
+    });
+
+    $input = "//@hero.jpg@Nadpis\n//.";
+
+    $html = $parser->parse($input);
+
+    $this->assertStringContainsString('<img src="/posts/42/attachments/7" alt="Nadpis">', $html);
+    $this->assertStringContainsString('<figcaption>Nadpis</figcaption>', $html);
+  }
+
+  public function testFallsBackToOriginalSourceWhenResolverReturnsEmptyString(): void
+  {
+    $parser = new EditorMarkupParser(static fn(string $source): string => '   ');
+
+    $input = "//@hero.jpg@Nadpis\n//.";
+
+    $html = $parser->parse($input);
+
+    $this->assertStringContainsString('<img src="hero.jpg" alt="Nadpis">', $html);
+  }
+
   public function testParsesExtendedEscapedSpecialCharacterForms(): void
   {
     $input = "//Esc \/# \/\\< \/\\> \/\\[ \/\\] \/\\{ \/\\} \// \/\\/\n//.";

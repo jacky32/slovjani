@@ -47,7 +47,9 @@ class AdminPostsController extends AdminController
     $post = Post::find($this->id);
     $pagination = Post::paginate($request['page'], $this->id);
     if ($post) {
-      $parsedBody = (new EditorMarkupParser())->parse($post->body ?? '');
+      $parsedBody = (new EditorMarkupParser(
+        new AttachmentMarkupMediaSourceResolver(Post::class, $post->id, 'posts', true, true)
+      ))->parse($post->body ?? '');
       $this->render("admin/posts/show", [
         "post" => $post,
         "posts" => $pagination->resources,

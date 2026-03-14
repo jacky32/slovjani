@@ -28,6 +28,24 @@ class EditorMarkupParser
   private const TOKEN_BACKSLASH = '__EDITOR_TOKEN_BACKSLASH__';
 
   /**
+   * Optional callback used to resolve media sources (e.g. attachment aliases)
+   * before image/embed rendering.
+   *
+   * Signature: function(string $source): ?string
+   *
+   * @var callable|null
+   */
+  private $mediaSourceResolver;
+
+  /**
+   * @param callable|null $mediaSourceResolver Optional source resolver callback.
+   */
+  public function __construct(?callable $mediaSourceResolver = null)
+  {
+    $this->mediaSourceResolver = $mediaSourceResolver;
+  }
+
+  /**
    * Parses raw editor markup into sanitized HTML.
    *
    * @param string $input Raw editor text.
@@ -185,6 +203,7 @@ class EditorMarkupParser
     }
 
     $source = trim($matches[1]);
+    $source = $this->resolveMediaSource($source);
     $caption = $this->parseInline($matches[2]);
 
     if ($this->isYouTubeEmbedSource($source)) {
@@ -192,6 +211,27 @@ class EditorMarkupParser
     }
 
     return $this->parseImageFigure($source, $caption);
+  }
+
+  /**
+   * Resolves media source aliases through an optional callback.
+   *
+   * @param string $source Raw source value from markup.
+   * @return string Resolved source, or original source when unresolved.
+   */
+  private function resolveMediaSource(string $source): string
+  {
+    if (!is_callable($this->mediaSourceResolver)) {
+      return $source;
+    }
+
+    $resolved = ($this->mediaSourceResolver)($source);
+    if (!is_string($resolved)) {
+      return $source;
+    }
+
+    $resolved = trim($resolved);
+    return $resolved !== '' ? $resolved : $source;
   }
 
   /**

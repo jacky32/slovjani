@@ -33,7 +33,9 @@ class AdminUsersQuestionsController extends AdminController
   {
     $voting = Voting::find($this->voting_id);
     $questions = $voting->questions->get();
-    $parser = new EditorMarkupParser();
+    $parser = new EditorMarkupParser(
+      new AttachmentMarkupMediaSourceResolver(Voting::class, $voting->id, 'votings', true, true)
+    );
     $parsedQuestionDescriptions = [];
     foreach ($questions as $question) {
       $parsedQuestionDescriptions[$question->id] = $parser->parse($question->description ?? '');
@@ -89,7 +91,9 @@ class AdminUsersQuestionsController extends AdminController
       $this->addFlash('error', $e->getMessage());
       $voting = Voting::find($this->voting_id);
       $questions = $voting->questions->get();
-      $parser = new EditorMarkupParser();
+      $parser = new EditorMarkupParser(
+        new AttachmentMarkupMediaSourceResolver(Voting::class, $voting->id, 'votings', true, true)
+      );
       $parsedQuestionDescriptions = [];
       foreach ($questions as $question) {
         $parsedQuestionDescriptions[$question->id] = $parser->parse($question->description ?? '');

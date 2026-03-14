@@ -48,7 +48,9 @@ class EventsController extends ApplicationController
     if ($event) {
       $pagination = Event::where(["is_publicly_visible" => true])->paginate($request['page'], $this->id);
       $attachments = $event->attachments->where(['is_publicly_visible' => true])->get();
-      $parsedDescription = (new EditorMarkupParser())->parse($event->description ?? '');
+      $parsedDescription = (new EditorMarkupParser(
+        new AttachmentMarkupMediaSourceResolver(Event::class, $event->id, 'events', false, true)
+      ))->parse($event->description ?? '');
       $this->render("events/show", [
         "event" => $event,
         "events" => $pagination->resources,

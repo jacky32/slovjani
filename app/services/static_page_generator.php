@@ -106,12 +106,16 @@ class StaticPageGenerator
   {
     $pagination  = Post::publiclyVisible()->paginate(null, $post->id);
     $attachments = $post->attachments->where(['is_publicly_visible' => true])->get();
+    $parsedBody = (new EditorMarkupParser(
+      new AttachmentMarkupMediaSourceResolver(Post::class, $post->id, 'posts', false, true)
+    ))->parse($post->body ?? '');
 
     $html = $this->captureRender('posts/show', [
       'post'        => $post,
       'posts'       => $pagination->resources,
       'pagination'  => $pagination,
       'attachments' => $attachments,
+      'parsed_body' => $parsedBody,
     ], 'PostsController');
 
     $this->save("posts/{$post->id}.html", $html);
@@ -180,12 +184,16 @@ class StaticPageGenerator
   {
     $pagination  = Event::where(['is_publicly_visible' => true])->paginate(null, $event->id);
     $attachments = $event->attachments->where(['is_publicly_visible' => true])->get();
+    $parsedDescription = (new EditorMarkupParser(
+      new AttachmentMarkupMediaSourceResolver(Event::class, $event->id, 'events', false, true)
+    ))->parse($event->description ?? '');
 
     $html = $this->captureRender('events/show', [
       'event'       => $event,
       'events'      => $pagination->resources,
       'pagination'  => $pagination,
       'attachments' => $attachments,
+      'parsed_description' => $parsedDescription,
     ], 'EventsController');
 
     $this->save("events/{$event->id}.html", $html);

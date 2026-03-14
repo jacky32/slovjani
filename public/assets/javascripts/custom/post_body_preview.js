@@ -26,6 +26,9 @@
       previewParam = 'body',
       previewResponseKey = 'html',
       previewParser,
+      previewResourceType,
+      previewResourceId,
+      previewAdminContext,
       previewErrorText = '',
       previewLoadingText = '',
     } = source.dataset;
@@ -53,6 +56,15 @@
       const payloadData = { [previewParam]: source.value || '' };
       if (previewParser) {
         payloadData.parser = previewParser;
+      }
+      if (previewResourceType) {
+        payloadData.resource_type = previewResourceType;
+      }
+      if (previewResourceId) {
+        payloadData.resource_id = previewResourceId;
+      }
+      if (previewAdminContext) {
+        payloadData.admin_context = previewAdminContext;
       }
 
       const payload = new URLSearchParams(payloadData);
