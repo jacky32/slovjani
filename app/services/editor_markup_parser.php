@@ -255,8 +255,8 @@ class EditorMarkupParser
   /**
    * Replaces escaped control sequences with neutral placeholders.
    *
-  * Supports escaped marker forms used in source texts, e.g. `\<`, `\/<`,
-  * and `/\<`.
+   * Supports escaped marker forms used in source texts, e.g. `\<`, `\/<`,
+   * and `/\<`.
    *
    * @param string $content Raw inline content.
    * @return string Content with placeholder tokens.
