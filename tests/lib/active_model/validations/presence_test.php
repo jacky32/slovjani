@@ -2,12 +2,6 @@
 
 declare(strict_types=1);
 
-namespace ActiveModel {
-  if (!class_exists('\\ActiveModel\\ValidationException')) {
-    class ValidationException extends \Exception {}
-  }
-}
-
 // Stub t() in the validator's namespace so trait code resolves it without yaml
 namespace ActiveModel\Validations {
   if (!function_exists('ActiveModel\\Validations\\t')) {
@@ -19,7 +13,7 @@ namespace ActiveModel\Validations {
 }
 
 namespace {
-  require __DIR__ . '/../../../../lib/active_model/validations/presence.php';
+  require_once __DIR__ . '/../../../../lib/active_model/validations/validations.php';
 
   use PHPUnit\Framework\TestCase;
   use ActiveModel\Validations\PresenceValidator;

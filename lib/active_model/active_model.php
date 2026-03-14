@@ -1,10 +1,10 @@
 <?php
-require __DIR__ . '/validations/validations.php';
-require __DIR__ . '/relations/pagination.php';
-require __DIR__ . '/relations/query_builder.php';
-require __DIR__ . '/relations/collection.php';
-require __DIR__ . '/relations/relations.php';
-require __DIR__ . '/attributes/attributes.php';
+require_once __DIR__ . '/validations/validations.php';
+require_once __DIR__ . '/relations/pagination.php';
+require_once __DIR__ . '/relations/query_builder.php';
+require_once __DIR__ . '/relations/collection.php';
+require_once __DIR__ . '/relations/relations.php';
+require_once __DIR__ . '/attributes/attributes.php';
 
 use ActiveModel\Validations;
 
@@ -282,6 +282,12 @@ abstract class ActiveModel
     }
   }
 
+  /**
+   * Finds a record by its primary key ID.
+   *
+   * @param int|string $id The ID of the record to find.
+   * @return static|null The found record as an instance of the model, or null if not found.
+   */
   public static function find($id)
   {
     // Accept integer values or integer strings (e.g. "1" -> 1).
