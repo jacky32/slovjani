@@ -1,0 +1,84 @@
+services:
+  mysql:
+    container_name: php_app-mysql-prod
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD in .env.production}
+      MYSQL_USER: ${MYSQL_USER:?set MYSQL_USER in .env.production}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD in .env.production}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:?set MYSQL_DATABASE in .env.production}
+    command: mysqld -h 127.0.0.1 -P 3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "127.0.0.1",
+          "-u",
+          "root",
+          "--password=${MYSQL_ROOT_PASSWORD}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - appnet
+
+  php_app:
+    container_name: php_app-prod
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      APP_ENV: production
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      GOOGLE_PUBLIC_CALENDAR_ID: ${GOOGLE_PUBLIC_CALENDAR_ID:-}
+      GOOGLE_PRIVATE_CALENDAR_ID: ${GOOGLE_PRIVATE_CALENDAR_ID:-}
+      GOOGLE_SERVICE_ACCOUNT_EMAIL: ${GOOGLE_SERVICE_ACCOUNT_EMAIL:-}
+      GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: ${GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY:-}
+      GOOGLE_CALENDAR_DELEGATED_USER: ${GOOGLE_CALENDAR_DELEGATED_USER:-}
+      GOOGLE_OAUTH_TOKEN_URI: ${GOOGLE_OAUTH_TOKEN_URI:-https://oauth2.googleapis.com/token}
+      GOOGLE_CALENDAR_API_BASE_URI: ${GOOGLE_CALENDAR_API_BASE_URI:-https://www.googleapis.com/calendar/v3}
+      GOOGLE_API_TIMEOUT_SECONDS: ${GOOGLE_API_TIMEOUT_SECONDS:-15}
+      GOOGLE_CALENDAR_TIMEZONE: ${GOOGLE_CALENDAR_TIMEZONE:-Europe/Prague}
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - uploads-data:/var/www/html/uploads
+      - public-uploads-data:/var/www/html/public/uploads
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "php",
+          "-r",
+          "exit(@file_get_contents('http://127.0.0.1:3000/') === false ? 1 : 0);",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+    networks:
+      - appnet
+
+volumes:
+  mysql-data:
+  uploads-data:
+  public-uploads-data:
+
+networks:
+  appnet:

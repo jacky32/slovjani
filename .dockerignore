@@ -1,1 +1,19 @@
 .git
+.github
+.vscode
+
+# Local/runtime artifacts
+build
+tmp
+uploads
+
+# Development-only inputs
+tests
+docs
+
+# Dependency cache from host
+vendor
+
+# Local environment secrets
+.env
+.env.production

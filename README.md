@@ -4,6 +4,32 @@
   docker compose up
 ```
 
+# Production deploy and run
+
+1. Create a production env file and set strong secrets:
+
+```bash
+cp .env.production.sample .env.production
+```
+
+2. Build and start production services (MySQL + app):
+
+```bash
+./scripts/deploy_production.sh
+```
+
+3. Stop production services:
+
+```bash
+docker compose -f compose.production.yaml --env-file .env.production down
+```
+
+4. Check production logs:
+
+```bash
+docker compose -f compose.production.yaml --env-file .env.production logs -f php_app mysql
+```
+
 # Compile composer packages to /vendor
 
 ```bash
