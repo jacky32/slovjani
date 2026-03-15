@@ -18,6 +18,12 @@ cp .env.production.sample .env.production
 ./scripts/deploy_production.sh
 ```
 
+To also export startup logs into a specific file:
+
+```bash
+LOG_FILE=./logs/production-startup.log ./scripts/deploy_production.sh
+```
+
 3. Stop production services:
 
 ```bash
@@ -28,6 +34,18 @@ docker compose -f compose.production.yaml --env-file .env.production down
 
 ```bash
 docker compose -f compose.production.yaml --env-file .env.production logs -f nginx php_app mysql
+```
+
+5. Export logs into a specific file:
+
+```bash
+./scripts/export_production_logs.sh ./logs/production.log
+```
+
+Follow and continuously append logs:
+
+```bash
+./scripts/export_production_logs.sh ./logs/production.log --follow
 ```
 
 # Compile composer packages to /vendor
