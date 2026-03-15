@@ -1,8 +1,9 @@
 @startuml "Database Schema"
 !theme plain
 hide empty members
+top to bottom direction
 
-package "Enums" {
+package "Enums" as EnumsSection {
   enum VoteOption {
     YES
     NO
@@ -23,7 +24,7 @@ package "Enums" {
   }
 }
 
-package "Auth" {
+package "Auth" as AuthSection {
   class User {
     id : Integer <<PK>>
     email : String
@@ -103,7 +104,7 @@ package "Auth" {
   }
 }
 
-package "App" {
+package "App" as AppSection {
   class Post {
     id : Integer <<PK>>
     name : String
@@ -183,13 +184,21 @@ package "App" {
   }
 }
 
+EnumsSection -[hidden]down-> AuthSection
+AuthSection -[hidden]down-> AppSection
+VoteOption -[hidden]down-> User
+User -[hidden]down-> Voting
+Users2fa -[hidden]down-> Voting
+UsersReset -[hidden]down-> Voting
+UsersConfirmation -[hidden]down-> Voting
+
 ' Relationships from schema.sql and model usage
-User "1" -- "0..*" Post : creates
-User "1" -- "0..*" Voting : creates
-User "1" -- "0..*" Event : creates
-User "1" -- "0..*" Attachment : uploads
-User "1" -- "0..*" Comment : writes
-User "1" -- "0..*" UsersQuestion : votes
+User "1" -down- "0..*" Post : creates
+User "1" -down- "0..*" Voting : creates
+User "1" -down- "0..*" Event : creates
+User "1" -down- "0..*" Attachment : uploads
+User "1" -down- "0..*" Comment : writes
+User "1" -down- "0..*" UsersQuestion : votes
 
 User "1" -- "0..*" Users2fa
 User "1" -- "0..*" UsersAuditLog
