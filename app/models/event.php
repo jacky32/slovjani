@@ -14,6 +14,7 @@ class Event extends ApplicationRecord
     'description',
     'datetime_start',
     'datetime_end',
+    'google_calendar_event_id',
     'is_publicly_visible',
     'created_at',
     'updated_at'

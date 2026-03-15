@@ -20,7 +20,7 @@
             if (!container.querySelector('.flash')) container.remove();
           });
         });
-        setTimeout(() => container.remove(), 5000);
+        setTimeout(() => container.remove(), 15000);
       }
     }
   </script>

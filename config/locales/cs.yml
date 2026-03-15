@@ -82,6 +82,7 @@ events:
     title: Nová činnost
   create:
     success: Činnost byla úspěšně vytvořena.
+    google_calendar_creation_failed: Nastala chyba při vytváření události v Google Kalendáři. Činnost byla vytvořena lokálně, ale doporučujeme zkontrolovat stav události v Google Kalendáři.
   edit:
     title: Úprava činnosti
   show:
@@ -91,6 +92,10 @@ events:
   update:
     unauthorized: Nemáte oprávnění upravit tuto činnost.
     success: Činnost byla úspěšně aktualizována.
+    google_calendar_update_failed: Nastala chyba při aktualizaci události v Google Kalendáři. Činnost byla aktualizována lokálně, ale doporučujeme zkontrolovat stav události v Google Kalendáři.
+  destroy:
+    google_calendar_deletion_failed: Nastala chyba při mazání události z Google Kalendáře. Lokální událost byla smazána, ale doporučujeme zkontrolovat stav události v Google Kalendáři.
+    success: Činnost byla úspěšně smazána.
 
 votings:
   index:

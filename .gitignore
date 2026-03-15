@@ -5,3 +5,4 @@ docs/app/.build/
 *.cache
 pregenerated/*
 tmp/*
+.env

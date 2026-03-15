@@ -29,7 +29,7 @@ class EventsController extends ApplicationController
    */
   public function index($request)
   {
-    $pagination = Event::where(["is_publicly_visible" => true])->paginate($request['page']);
+    $pagination = Event::where(["is_publicly_visible" => true])->orderBy('created_at', 'desc')->paginate($request['page']);
     $this->render("events/index", [
       "events" => $pagination->resources,
       "pagination" => $pagination
@@ -46,7 +46,7 @@ class EventsController extends ApplicationController
   {
     $event = Event::where(["is_publicly_visible" => true])->find($this->id);
     if ($event) {
-      $pagination = Event::where(["is_publicly_visible" => true])->paginate($request['page'], $this->id);
+      $pagination = Event::where(["is_publicly_visible" => true])->orderBy('created_at', 'desc')->paginate($request['page'], $this->id);
       $attachments = $event->attachments->where(['is_publicly_visible' => true])->get();
       $parsedDescription = (new EditorMarkupParser(
         new AttachmentMarkupMediaSourceResolver(Event::class, $event->id, 'events', false, true)

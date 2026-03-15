@@ -33,6 +33,25 @@
   ./vendor/bin/phpunit
 ```
 
+## Google Calendar API
+
+- The app includes a lightweight Google Calendar client in `app/services/google_calendar_service.php`.
+- Required environment variables:
+
+```bash
+  GOOGLE_CALENDAR_ID=your-calendar-id@group.calendar.google.com
+  GOOGLE_SERVICE_ACCOUNT_EMAIL=service-account@project-id.iam.gserviceaccount.com
+  GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+```
+
+- Optional environment variables:
+
+```bash
+  GOOGLE_CALENDAR_DELEGATED_USER=calendar-admin@example.com
+  GOOGLE_CALENDAR_TIMEZONE=Europe/Prague
+  GOOGLE_API_TIMEOUT_SECONDS=15
+```
+
 ### PHP Doc
 
 Generates documentation into `/docs/app/` from the `app/`, `config/`, `db/`, `lib/` and `public/` folders.

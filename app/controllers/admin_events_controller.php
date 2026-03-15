@@ -30,7 +30,7 @@ class AdminEventsController extends AdminController
    */
   public function index($request)
   {
-    $pagination = Event::paginate($request['page']);
+    $pagination = Event::orderBy('created_at', 'desc')->paginate($request['page']);
     $this->render("admin/events/index", [
       "events" => $pagination->resources,
       "pagination" => $pagination
@@ -47,7 +47,7 @@ class AdminEventsController extends AdminController
   {
     $event = Event::find($this->id);
     if ($event) {
-      $pagination = Event::paginate($request['page'], $this->id);
+      $pagination = Event::orderBy('created_at', 'desc')->paginate($request['page'], $this->id);
       $parsedDescription = (new EditorMarkupParser(
         new AttachmentMarkupMediaSourceResolver(Event::class, $event->id, 'events', true, true)
       ))->parse($event->description ?? '');
@@ -71,7 +71,7 @@ class AdminEventsController extends AdminController
    */
   public function new($request)
   {
-    $pagination = Event::paginate($request['page']);
+    $pagination = Event::orderBy('created_at', 'desc')->paginate($request['page']);
     $this->render("admin/events/new", [
       "events" => $pagination->resources,
       "pagination" => $pagination
@@ -98,17 +98,25 @@ class AdminEventsController extends AdminController
         'is_publicly_visible' => isset($request['event']['is_publicly_visible']) ? true : 0,
         'creator_id' => $this->auth->getUserId()
       ]);
+      try {
+        $google_event = (new GoogleCalendarService($event->is_publicly_visible))->insertTimedEvent($event->name, $event->datetime_start, $event->datetime_end);
+        $event->google_calendar_event_id = $google_event['id'] ?? null;
+      } catch (Exception $e) {
+        Logger::error("Failed to create event in Google Calendar: " . $e->getMessage());
+        $this->addFlash('error', t("events.create.google_calendar_creation_failed"));
+      }
       $event->save();
       (new StaticPageGenerator())->regenerateAll();
       $this->addFlash('success', t("events.create.success"));
       header("Location: /admin/events");
     } catch (Exception $e) {
       $errors = [];
+      Logger::error("Failed to create event: " . $e->getMessage());
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
-      $pagination = Event::paginate($request['page']);
+      $pagination = Event::orderBy('created_at', 'desc')->paginate($request['page']);
       $this->render("admin/events/new", [
         "event" => new Event([
           'name' => $request['event']['name'],
@@ -133,7 +141,7 @@ class AdminEventsController extends AdminController
   {
     $event = Event::find($this->id);
     if ($event) {
-      $pagination = Event::paginate($request['page'], $this->id);
+      $pagination = Event::orderBy('created_at', 'desc')->paginate($request['page'], $this->id);
       $this->render("admin/events/edit", [
         "event" => $event,
         "events" => $pagination->resources,
@@ -159,12 +167,32 @@ class AdminEventsController extends AdminController
 
       // Find event and check ownership
       $event = Event::find($this->id);
+      $previous_publicly_visible = $event ? (bool) $event->is_publicly_visible : false;
       if ($event && $event->creator_id == $this->auth->getUserId()) {
         foreach (Event::getDbAttributes() as $attribute) {
           if ($attribute == "is_publicly_visible") {
             $event->{$attribute} = $request['event'][$attribute] ? true : 0;
           } else if (isset($request['event'][$attribute])) {
             $event->{$attribute} = $request['event'][$attribute];
+          }
+        }
+        if ($event->google_calendar_event_id && ($previous_publicly_visible != $event->is_publicly_visible)) {
+          try {
+            (new GoogleCalendarService($previous_publicly_visible))->destroyEvent(
+              $event->google_calendar_event_id,
+              $event->name,
+              $event->datetime_start,
+              $event->datetime_end
+            );
+            $google_event = (new GoogleCalendarService($event->is_publicly_visible))->insertTimedEvent(
+              $event->name,
+              $event->datetime_start,
+              $event->datetime_end
+            );
+            $event->google_calendar_event_id = $google_event['id'] ?? null;
+          } catch (Exception $e) {
+            Logger::error("Failed to update Google Calendar event with ID " . $event->google_calendar_event_id . ": " . $e->getMessage());
+            $this->addFlash('error', t("events.update.google_calendar_update_failed"));
           }
         }
         $event->save();
@@ -185,7 +213,7 @@ class AdminEventsController extends AdminController
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
-      $pagination = Event::paginate($request['page'], $this->id);
+      $pagination = Event::orderBy('created_at', 'desc')->paginate($request['page'], $this->id);
       $this->render("admin/events/edit", [
         "event" => $event,
         "events" => $pagination->resources,
@@ -211,6 +239,14 @@ class AdminEventsController extends AdminController
       $event = Event::find($this->id);
       if ($event && $event->creator_id == $this->auth->getUserId()) {
         $wasPubliclyVisible = (bool) $event->is_publicly_visible;
+        if ($event->google_calendar_event_id) {
+          try {
+            (new GoogleCalendarService($event->is_publicly_visible))->destroyEvent($event->google_calendar_event_id);
+          } catch (Exception $e) {
+            Logger::error("Failed to delete Google Calendar event with ID " . $event->google_calendar_event_id . ": " . $e->getMessage());
+            $this->addFlash('error', t("events.destroy.google_calendar_deletion_failed"));
+          }
+        }
         $event->destroy();
         if ($wasPubliclyVisible) {
           (new StaticPageGenerator())->regenerateAll();
