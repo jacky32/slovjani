@@ -1,8 +1,12 @@
 @startuml "Voting System Class Diagram"
+!theme plain
+hide empty members
+skinparam linetype ortho
 
 class User {
   id : Integer <<PK>>
-  name : String
+  username : String
+  roles_mask : Integer
   created_at : Datetime
   updated_at : Datetime
 }
@@ -14,6 +18,7 @@ class Voting {
   creator_id : Integer
   name : String
   description : Text
+  status : VotingStatus
   created_at : Datetime
   updated_at : Datetime
 }
@@ -33,6 +38,13 @@ enum VoteOption {
   ABSTAIN
 }
 
+enum VotingStatus {
+  DRAFT
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
 class UsersQuestion {
   user_id : Integer <<PK>>
   question_id : Integer <<PK>>
@@ -41,10 +53,9 @@ class UsersQuestion {
   updated_at : Datetime
 }
 
-' Relations
-Voting "1" -- "0..*" Question
-User "1" -- "0..*" UsersQuestion
-Question "1" -- "0..*" UsersQuestion
-User "1" - "0..*" Voting
+User "1" -- "0..*" Voting : creates
+Voting "1" -- "0..*" Question : contains
+Question "1" -- "0..*" UsersQuestion : receives answers
+User "1" -- "0..*" UsersQuestion : answers
 
 @enduml

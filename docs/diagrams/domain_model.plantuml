@@ -1,0 +1,151 @@
+@startuml "Domain class diagram"
+!theme plain
+hide empty fields
+hide circles
+left to right direction
+
+skinparam class {
+  BorderColor Black
+  BackgroundColor #f8f8f8
+}
+skinparam linetype ortho
+skinparam nodesep 85
+skinparam ranksep 75
+skinparam packageStyle rectangle
+skinparam ArrowThickness 1
+skinparam NoteBackgroundColor #fffdf2
+skinparam NoteBorderColor #b9b9b9
+
+' Domain enums used by business rules
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum VotingStatus {
+  DRAFT
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum VoteOption {
+  YES
+  NO
+  ABSTAIN
+}
+
+package "Core ORM" {
+  class ActiveModel {
+    +validates()
+    +errors
+    +save()
+    +destroy()
+    +all()
+    +where()
+    +find()
+    +exists()
+  }
+
+  class ApplicationRecord
+}
+
+package "Domain" {
+  interface Attachable
+  interface Commentable
+
+  class User {
+    +AVAILABLE_ROLES
+  }
+
+  class Post {
+    +publiclyVisible()
+  }
+
+  class Event
+
+  class Voting {
+    +hasUserVoted(userId)
+  }
+
+  class Question
+
+  class UsersQuestion
+
+  class Attachment
+  class Comment
+}
+
+' Layout hints for a wider, less cramped view
+User -[hidden]- Post
+Post -[hidden]- Event
+Event -[hidden]- Voting
+Question -[hidden]- UsersQuestion
+
+' Keep interfaces in a dedicated right lane and away from voting/question flow
+Voting -[hidden]- Attachable
+Attachable -[hidden]- Commentable
+Attachable -[hidden]- Attachment
+Commentable -[hidden]- Comment
+Attachment -[hidden]- Comment
+
+' Inheritance from the common ORM/domain base
+ActiveModel <|-- ApplicationRecord
+
+note right of ApplicationRecord
+  Base class for all
+  domain models.
+end note
+
+' Core ownership and composition
+Voting "1" -down-> "0..*" Question : contains
+Question "1" -down-> "0..*" UsersQuestion : receives answers
+User "1" -right-> "0..*" UsersQuestion : submits answers
+
+User "1" -up-> "0..*" Post : creates
+User "1" -> "0..*" Event : creates
+User "1" -down-> "0..*" Voting : creates
+
+
+' Polymorphic resource interactions in business logic
+Post ..|> Attachable
+Event ..|> Attachable
+Voting ..|> Attachable
+Attachable "1" --> "0..*" Attachment : attachments
+
+Post ..|> Commentable
+Event ..|> Commentable
+Voting ..|> Commentable
+Commentable "1" --> "0..*" Comment : comments
+Comment "0..1" --> "0..*" Comment : replies-to
+
+' State/value usage links
+Post --> PostStatus : uses
+Voting --> VotingStatus : uses
+UsersQuestion --> VoteOption : uses
+
+note right of Voting
+  Voting business rule:
+  hasUserVoted(userId)
+  checks if at least one
+  answer exists for this voting.
+end note
+
+note left of UsersQuestion
+  Domain invariant:
+  one answer per
+  user + question pair.
+end note
+
+note right of Attachment
+  Attachment target is polymorphic
+  via resource_type/resource_id.
+end note
+
+note left of Comment
+  Comment target is polymorphic
+  and comments can be threaded.
+end note
+
+@enduml

@@ -1,0 +1,80 @@
+@startuml "Use Case Diagram - User Roles"
+top to bottom direction
+!theme plain
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+skinparam ranksep 35
+skinparam nodesep 20
+
+actor "Unlogged User" as Guest
+actor "Logged-in User" as Logged
+actor "Admin" as Admin
+actor "User" as User
+
+Guest -up-|> User
+Logged --|> User
+Admin --|> Logged
+
+rectangle "Web Application" {
+  package "Public" {
+    usecase "View homepage" as UC_Home
+    usecase "Browse public posts" as UC_PublicPosts
+    usecase "Browse public events" as UC_PublicEvents
+    usecase "View post/event detail" as UC_Detail
+    usecase "Log in" as UC_Login
+  }
+
+  package "Logged-in" {
+    usecase "Log out" as UC_Logout
+    usecase "Access admin section" as UC_AdminArea
+    usecase "Vote in active voting" as UC_Vote
+    usecase "Download internal attachments" as UC_InternalAttachments
+    usecase "Manage posts, events, comments\nand attachments" as UC_ContentManagement
+  }
+
+  package "Administration" {
+    usecase "Manage users" as UC_UserManagement
+    usecase "Create/edit/close voting" as UC_VotingManagement
+    usecase "Manage voting questions" as UC_QuestionManagement
+  }
+}
+
+User -- UC_Home
+User -- UC_PublicPosts
+User -- UC_PublicEvents
+User -- UC_Detail
+Guest -- UC_Login
+
+Logged -- UC_Logout
+Logged -- UC_AdminArea
+Logged -- UC_Vote
+Logged -- UC_InternalAttachments
+Logged -- UC_ContentManagement
+
+Admin -- UC_UserManagement
+Admin -- UC_VotingManagement
+Admin -- UC_QuestionManagement
+
+UC_AdminArea ..> UC_ContentManagement : <<include>>
+UC_AdminArea ..> UC_Vote : <<include>>
+UC_VotingManagement ..> UC_QuestionManagement : <<include>>
+
+' Layout constraints: keep package groups vertically ordered.
+UC_Login -[hidden]down-> UC_Logout
+UC_ContentManagement -[hidden]down-> UC_UserManagement
+
+' Layout constraints: keep public use cases left-to-right with login at far left.
+UC_Login -[hidden]right-> UC_Home
+UC_Home -[hidden]right-> UC_PublicPosts
+UC_PublicPosts -[hidden]right-> UC_PublicEvents
+UC_PublicEvents -[hidden]right-> UC_Detail
+
+' Layout constraints: keep actor lanes aligned with package rows.
+Guest -[hidden]down-> Logged
+Logged -[hidden]down-> Admin
+Guest -[hidden]right-> UC_Home
+Logged -[hidden]right-> UC_Logout
+Admin -[hidden]right-> UC_UserManagement
+
+@enduml

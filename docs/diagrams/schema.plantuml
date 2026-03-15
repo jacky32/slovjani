@@ -1,4 +1,6 @@
-@startuml "Database schema"
+@startuml "Database Schema"
+!theme plain
+hide empty members
 
 package "Enums" {
   enum VoteOption {
@@ -149,6 +151,7 @@ package "App" {
     datetime_end : Datetime
     creator_id : Integer
     is_publicly_visible : Boolean
+    google_calendar_event_id : Text?
     created_at : Datetime
     updated_at : Datetime
   }
@@ -167,14 +170,25 @@ package "App" {
     created_at : Datetime
     updated_at : Datetime
   }
+
+  class Comment {
+    id : Integer <<PK>>
+    resource_id : Integer
+    resource_type : String
+    body : String
+    parent_comment_id : Integer?
+    creator_id : Integer
+    created_at : Datetime
+    updated_at : Datetime
+  }
 }
 
-' Relationships
-
+' Relationships from schema.sql and model usage
 User "1" -- "0..*" Post : creates
 User "1" -- "0..*" Voting : creates
 User "1" -- "0..*" Event : creates
 User "1" -- "0..*" Attachment : uploads
+User "1" -- "0..*" Comment : writes
 User "1" -- "0..*" UsersQuestion : votes
 
 User "1" -- "0..*" Users2fa
@@ -184,7 +198,25 @@ User "1" -- "0..*" UsersOtp
 User "1" -- "0..*" UsersRemembered
 User "1" -- "0..*" UsersReset
 
+User "0..1" -- "0..*" UsersAuditLog : admin_id
+
 Voting "1" -- "0..*" Question : contains
 Question "1" -- "0..*" UsersQuestion : receives
+
+Comment "0..1" -- "0..*" Comment : replies
+
+note bottom of Attachment
+  Polymorphic attachment target via
+  (resource_type, resource_id)
+  - Post
+  - Event
+  - Voting
+end note
+
+note bottom of Comment
+  Polymorphic comment target via
+  (resource_type, resource_id)
+  + optional threaded replies
+end note
 
 @enduml

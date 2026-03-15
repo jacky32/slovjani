@@ -3,87 +3,110 @@
 hide empty members
 hide circles
 
-' Style definitions for clarity
 skinparam class {
-    BackgroundColor<<Public>> LightBlue
-    BackgroundColor<<Admin>> Moccasin
     BorderColor Black
+    BackgroundColor<<Public>> #d6ecff
+    BackgroundColor<<Auth>> #f3e7cb
+    BackgroundColor<<Admin>> #f5deb3
 }
 
-title Website Structure
+title Website Structure and Main Routes
 
-' Main navigation hub
-class "Homepage" as Home <<Public>>
+class "Homepage\n/" as Home <<Public>>
 
-' --- PUBLIC SECTION ---
-package "Public section" {
-    class "About us" as Onas <<Public>> {
+package "Public Section" {
+    class "About\n/" as PublicHome <<Public>> {
         + Association description
         + Photo gallery
-        --
-        # Links to other pages
+        + Links to other pages
     }
 
-    class "Posts (Public)" as PostsPub <<Public>> {
-        + List of published posts
+    class "Posts (Public)\n/posts\n/posts/:id" as PublicPosts <<Public>> {
+        + list of published posts
+        + post detail
     }
 
-    class "Activities (Public)" as CinnostPub <<Public>> {
-        + Event calendar
-        + List of public events
-    }
-}
-
-' --- ADMIN SECTION ---
-package "Admin section (Login required)" {
-    class "Login / Auth" as Login <<Admin>> {
-        + login()
-        + logout()
-    }
-
-    class "Posts (Internal)" as AdminPostsPage <<Admin>> {
-        + Post management
-    }
-
-    class "Kontakty" as Kontakty <<Admin>> {
-        + List of all members
-        + Member detail
-    }
-
-    class "Activities (Internal)" as CinnostPriv <<Admin>> {
-        + Meeting minutes
-        + Calendar (complete)
-        + Public events
-        + Private events
-    }
-
-    class "Voting" as Hlasovani <<Admin>> {
-        - Voting topic
-        - Options: For / Against / Abstain
-        --
-        + Admin: creates voting
-        + Admin: closes voting
-        + User: votes
+    class "Activities (Public)\n/events\n/events/:id" as PublicEvents <<Public>> {
+        + public events calendar
+        + event detail
     }
 }
 
-' Vztahy a navigace
-Home --> Onas
-Home --> PostsPub
-Home --> CinnostPub
+package "Authentication" {
+    class "Login\n/login" as Login <<Auth>> {
+        + GET new
+        + POST create
+        + optional bootstrap default admin
+    }
+
+    class "Logout\n/logout" as Logout <<Auth>> {
+        + POST destroy
+    }
+}
+
+package "Admin Section (login required)" {
+    class "Posts (Internal)\n/admin/posts" as AdminPosts <<Admin>> {
+        + CRUD
+        + comment threads
+        + attachments
+    }
+
+    class "Activities (Internal)\n/admin/events" as AdminEvents <<Admin>> {
+        + CRUD
+        + public and private events
+        + comment threads
+        + attachments
+    }
+
+    class "Voting\n/admin/votings" as AdminVotings <<Admin>> {
+        + voting CRUD
+        + questions (/questions)
+        + user votes (/users_questions)
+        + comment threads
+        + attachments
+    }
+
+    class "Contacts / Users\n/admin/users" as AdminUsers <<Admin>> {
+        + members list
+        + member detail
+        + user management
+        + comment threads
+        + attachments
+    }
+
+    class "Preview API\n/admin/previews/preview_markup" as AdminPreview <<Admin>> {
+        + POST preview_markup
+    }
+}
+
+class "Fallback\n404" as NotFound <<Auth>> {
+    + ErrorsController#notFound
+}
+
+Home --> PublicHome
+Home --> PublicPosts
+Home --> PublicEvents
 Home --> Login
 
-Login ..> CinnostPriv : after login
-Login ..> Hlasovani
-Login ..> Kontakty
-Login ..> AdminPostsPage
+Login ..> Logout : after login
+Login ..> AdminPosts : after login
+Login ..> AdminEvents : after login
+Login ..> AdminVotings : after login
+Login ..> AdminUsers : after login
+AdminPosts --> AdminPreview : markup preview
+AdminEvents --> AdminPreview : markup preview
+AdminVotings --> AdminPreview : markup preview
 
-' Notes for logic explanation
-note right of Hlasovani
-  VOTING LOGIC:
-  - Admin starts/closes
-  - Users cannot see WHO voted how
-  - Everyone only sees the totals
+note right of AdminVotings
+    Voting logic:
+    - admin creates and closes voting
+    - voting is done per question: YES/NO/ABSTAIN
+    - system shows totals, not who voted what
+end note
+
+note bottom of NotFound
+    If route is not found,
+    Router returns ErrorsController#notFound.
 end note
 
 @enduml

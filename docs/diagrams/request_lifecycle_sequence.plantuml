@@ -1,0 +1,67 @@
+@startuml "Sequence Diagram - Request Lifecycle"
+!theme plain
+
+actor Client
+participant "index.php" as Front
+participant "StaticPageRouter" as Static
+participant "Router\n(config/router.php)" as Router
+participant "Controller" as Ctrl
+participant "Model(s)" as Model
+participant "ViewManager" as View
+participant "View + Partials" as Templates
+
+Client -> Front: HTTP request (GET/POST)
+Front -> Front: Parse URI path + method
+
+alt GET static file from /public and extension allowed
+  Front -> Front: Resolve realpath + mime + headers
+  Front --> Client: 200 static content
+else Dynamic application flow
+  Front -> Front: require core libs + session_start()
+
+  alt GET + guest + pregenerated file exists
+    Front -> Static: resolve(GET, false, path, page)
+    Static --> Front: absolute pregenerated html path
+    Front --> Client: 200 HTML + X-Pregenerated: true
+  else Full runtime path
+    Front -> Front: Load .env + register autoloader
+    Front -> Front: ScriptManager::loadSchema(...)
+    Front -> Router: resolve route by URL and method
+    Router --> Front: controllerName + action
+
+    opt CSRF token missing in session
+      Front -> Front: Generate random CSRF token
+    end
+
+    Front -> Ctrl: new resolved controller(dbConnection)
+    Front -> Ctrl: resolved action($_REQUEST)
+
+    opt POST action protected by CSRF
+      Ctrl -> Ctrl: verifyCSRF(formAction)
+      opt CSRF missing/invalid
+        Ctrl --> Front: exception handled by controller (flash + render/redirect)
+        Front --> Client: 302/200 (controller-specific)
+      end
+    end
+
+    alt Resolved route is ErrorsController#notFound
+      Ctrl -> View: render(layouts/errors/404)
+      View -> Templates: include 404 template
+      Templates --> View: 404 HTML
+      View --> Ctrl: html output prepared
+      Ctrl --> Front: HTTP 404
+      Front --> Client: 404 response
+    else Regular controller action
+      Ctrl -> Model: find/paginate/create/update/destroy + validate
+      Model --> Ctrl: data or validation errors
+      Ctrl -> View: render(view, data) or redirect
+      View -> Templates: include view + renderPartial(...)
+      Templates --> View: composed HTML
+      View --> Ctrl: html output prepared
+      Ctrl --> Front: response body/redirect
+      Front --> Client: 200/302 response
+    end
+  end
+end
+
+@enduml
