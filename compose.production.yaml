@@ -62,6 +62,7 @@ services:
       mysql:
         condition: service_healthy
     volumes:
+      - ./.env.production:/var/www/html/.env:ro
       - uploads-data:/var/www/html/uploads
       - public-uploads-data:/var/www/html/public/uploads
     healthcheck:
