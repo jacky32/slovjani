@@ -59,6 +59,83 @@ class AdminUsersController extends AdminController
   }
 
   /**
+   * Renders the form for creating a new user in admin.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
+  public function new($request)
+  {
+    if (!$this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
+      $this->addFlash('error', t('errors.unauthorized'));
+      header('Location: /admin/users');
+      return;
+    }
+
+    $pagination = User::paginate($request['page']);
+    $this->render("admin/users/new", [
+      "user" => new User(),
+      "users" => $pagination->resources,
+      "pagination" => $pagination,
+    ]);
+  }
+
+  /**
+   * Creates a new user account from admin and assigns the selected role.
+   *
+   * @param array $request Parsed request data.
+   * @return void
+   */
+  public function create($request)
+  {
+    $userAttributes = $request['user'] ?? [];
+
+    try {
+      $this->verifyCSRF('/admin/users');
+
+      if (!$this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
+        throw new RuntimeException(t('errors.unauthorized'));
+      }
+
+      $email = trim((string) ($userAttributes['email'] ?? ''));
+      $username = trim((string) ($userAttributes['username'] ?? ''));
+      $password = (string) ($userAttributes['password'] ?? '');
+      $selectedRole = (string) ($userAttributes['role'] ?? 'none');
+
+      if (!array_key_exists($selectedRole, User::AVAILABLE_ROLES)) {
+        throw new RuntimeException(t('users.create.invalid_role'));
+      }
+
+      $newUserId = $this->auth->admin()->createUser($email, $password, $username);
+      $roleMask = (int) User::AVAILABLE_ROLES[$selectedRole];
+      if ($roleMask !== 0) {
+        $this->auth->admin()->addRoleForUserById($newUserId, $roleMask);
+      }
+
+      $this->addFlash('success', t('users.create.success'));
+      header('Location: /admin/users/' . $newUserId);
+    } catch (\Delight\Auth\InvalidEmailException) {
+      $this->addFlash('error', t('users.create.invalid_email'));
+      $this->renderNewWithErrors($request, $userAttributes);
+    } catch (\Delight\Auth\InvalidPasswordException) {
+      $this->addFlash('error', t('users.create.invalid_password'));
+      $this->renderNewWithErrors($request, $userAttributes);
+    } catch (\Delight\Auth\UserAlreadyExistsException) {
+      $this->addFlash('error', t('users.create.user_already_exists'));
+      $this->renderNewWithErrors($request, $userAttributes);
+    } catch (\Delight\Auth\DuplicateUsernameException) {
+      $this->addFlash('error', t('users.create.username_already_exists'));
+      $this->renderNewWithErrors($request, $userAttributes);
+    } catch (\Delight\Auth\TooManyRequestsException) {
+      $this->addFlash('error', t('users.create.too_many_requests'));
+      $this->renderNewWithErrors($request, $userAttributes);
+    } catch (\Throwable $exception) {
+      $this->addFlash('error', $exception->getMessage());
+      $this->renderNewWithErrors($request, $userAttributes);
+    }
+  }
+
+  /**
    * Renders the edit form for an existing user.
    *
    * @param array $request Parsed request data.
@@ -159,5 +236,26 @@ class AdminUsersController extends AdminController
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/users/" . $this->id);
     }
+  }
+
+  /**
+   * @param array<string, mixed> $request
+   * @param array<string, mixed> $userAttributes
+   */
+  private function renderNewWithErrors(array $request, array $userAttributes): void
+  {
+    $pagination = User::paginate($request['page'] ?? null);
+    $user = new User([
+      'email' => $userAttributes['email'] ?? '',
+      'username' => $userAttributes['username'] ?? '',
+      'roles_mask' => User::AVAILABLE_ROLES[$userAttributes['role'] ?? 'none'] ?? 0,
+    ]);
+
+    $this->render('admin/users/new', [
+      'user' => $user,
+      'users' => $pagination->resources,
+      'pagination' => $pagination,
+      'errors' => [],
+    ]);
   }
 }

@@ -384,4 +384,41 @@ abstract class ActiveModel
 
     return new Collection($results);
   }
+
+  /**
+   * Returns true if a record exists with the given conditions, false otherwise.
+   *
+   */
+  public static function exists(array $conditions = []): bool
+  {
+    $table = toSnakeCase(static::class) . 's';
+    $sql = "SELECT 1 FROM `{$table}` LIMIT 1";
+    $params = [];
+
+    if (!empty($conditions)) {
+      $whereParts = [];
+      foreach ($conditions as $column => $value) {
+        $whereParts[] = "`{$column}` = ?";
+        $params[] = $value;
+      }
+      $sql .= " WHERE " . implode(" AND ", $whereParts);
+    }
+
+    Logger::sql($sql, $params);
+    $database = new Database();
+    $connection = $database->getConnection();
+    $stmt = $connection->prepare($sql);
+    if (!empty($params)) {
+      $types = str_repeat('s', count($params));
+      $stmt->bind_param($types, ...$params);
+    }
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+      return (int) $row['1'] > 0;
+    }
+
+    return false;
+  }
 }

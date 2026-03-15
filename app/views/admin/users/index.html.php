@@ -2,5 +2,5 @@
 <section id="rightpane">
   <?= t("users.index.placeholder") ?>
   <br><br>
-  <!-- <a href='/admin/users/new' class='button'><?= t("users.new.title") ?></a> -->
+  <a href='/admin/users/new' class='button'><?= $this->renderIcon('plus-circle') ?> <?= t("users.new.title") ?></a>
 </section>

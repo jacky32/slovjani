@@ -93,7 +93,7 @@ class Router
     }
 
     // /admin/users
-    if ($this->resources('users', true, ["index", "show", "edit", "update", "destroy"])) {
+    if ($this->resources('users', true, ["index", "show", "new", "create", "edit", "update", "destroy"])) {
       return;
     }
 
@@ -132,6 +132,12 @@ class Router
       return;
     }
 
+    if ($this->routeAction === '/login/bootstrap_default_admin' && $this->isPost()) {
+      $this->controllerName = 'SessionsController';
+      $this->action = 'bootstrap_default_admin';
+      return;
+    }
+
     switch ($this->routeAction) {
       case '/login':
         $this->controllerName = 'SessionsController';
@@ -141,16 +147,6 @@ class Router
         $this->controllerName = 'SessionsController';
         if ($this->isPost()) {
           $this->action = 'destroy';
-          break;
-        }
-      case '/registration':
-        $this->controllerName = 'UsersController';
-        if ($this->isGet()) {
-          $this->action = 'new';
-          break;
-        }
-        if ($this->isPost()) {
-          $this->action = 'create';
           break;
         }
       case '/':

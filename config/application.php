@@ -24,4 +24,13 @@ return [
     'timeout_seconds' => (int) (getenv('GOOGLE_API_TIMEOUT_SECONDS') ?: 15),
     'time_zone' => getenv('GOOGLE_CALENDAR_TIMEZONE') ?: date_default_timezone_get(),
   ],
+  'recaptcha' => [
+    'enabled' => filter_var(getenv('RECAPTCHA_ENABLED') ?: 'false', FILTER_VALIDATE_BOOL),
+    'v3_site_key' => getenv('RECAPTCHA_V3_SITE_KEY') ?: '',
+    'v3_secret_key' => getenv('RECAPTCHA_V3_SECRET_KEY') ?: '',
+    'v3_score_threshold' => (float) (getenv('RECAPTCHA_V3_SCORE_THRESHOLD') ?: 0.5),
+    'v3_action' => getenv('RECAPTCHA_V3_ACTION') ?: 'login',
+    'v2_site_key' => getenv('RECAPTCHA_V2_SITE_KEY') ?: '',
+    'v2_secret_key' => getenv('RECAPTCHA_V2_SECRET_KEY') ?: '',
+  ],
 ];

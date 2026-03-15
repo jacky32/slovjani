@@ -9,6 +9,9 @@
 
       <?= $this->renderInput($user, "email") ?><br>
       <?= $this->renderInput($user, "username") ?><br>
+      <?php if (!$user->id): ?>
+        <?= $this->renderInput($user, "password", "password") ?><br>
+      <?php endif; ?>
 
       <label for="status-select"><?= User::humanAttributeName("role") ?></label>
       <select id="status-select" name="user[role]">
@@ -19,7 +22,7 @@
 
       <div class="action-buttons show-section__actions">
         <button class="button"><?= $this->renderIcon($user->id ? 'pencil-square' : 'plus-circle') ?> <?= $user->id ? t("update") : t("create") ?></button>
-        <a href='<?= $user->id ? "/admin/users/{$user->id}" : "/admin/users/" ?>' class='button'><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
+        <a href='<?= $user->id ? "/admin/users/{$user->id}" : "/admin/users" ?>' class='button'><?= $this->renderIcon('x-mark') ?> <?= t("cancel") ?></a>
       </div>
     </form>
   </div>

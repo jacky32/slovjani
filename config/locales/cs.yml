@@ -154,18 +154,6 @@ users_questions:
     not_found: Hlasování neexistuje.
     unauthorized: Nemáte oprávnění smazat toto hlasování.
 
-registrations:
-  new:
-    title: Registrace
-    submit: Registrovat
-    back_to_login: Zpět na přihlášení
-  create:
-    invalid_email: Neplatný email.
-    invalid_password: Neplatné heslo.
-    user_already_exists: Uživatel již existuje.
-    too_many_requests: Příliš mnoho pokusů.
-    success: Úspěšně zaregistrován.
-
 sessions:
   already_logged_in: Již jste přihlášeni.
   invalid_email: Špatný email.
@@ -174,10 +162,20 @@ sessions:
   too_many_requests: Příliš mnoho pokusů.
   successfully_logged_in: Úspěšně přihlášen.
   successfully_logged_out: Úspěšně odhlášen.
+  recaptcha:
+    v2_required: Potvrďte prosím, že nejste robot.
+    verification_failed: Ověření proti robotům selhalo. Zkuste to prosím znovu.
+    v2_prompt: Dokončete prosím bezpečnostní kontrolu.
+  bootstrap_default_admin:
+    title: První administrátor
+    description: Pokud je databáze prázdná, můžete jednorázově vytvořit výchozího administrátora.
+    submit: Vytvořit výchozího administrátora
+    success: Výchozí administrátor byl vytvořen (admin@admin.cz / adminadmin123).
+    not_available: Výchozího administrátora lze vytvořit jen když neexistuje žádný uživatel.
+    failed: Nepodařilo se vytvořit výchozího administrátora.
   new:
     title: Přihlášení
     submit: Přihlásit se
-    to_register: K registraci
 
 users:
   index:
@@ -185,6 +183,14 @@ users:
     placeholder: index stránka kontaktů
   new:
     title: Nový uživatel
+  create:
+    success: Uživatel byl úspěšně vytvořen.
+    invalid_role: Neplatná role uživatele.
+    username_already_exists: Uživatelské jméno již existuje.
+    invalid_email: Neplatný email.
+    invalid_password: Neplatné heslo.
+    user_already_exists: Uživatel již existuje.
+    too_many_requests: Příliš mnoho pokusů.
   edit:
     title: Úprava uživatele
   show:
