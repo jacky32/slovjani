@@ -1,10 +1,10 @@
 x-common-variables: &common-variables
   MYSQL_HOST: mysql
-  MYSQL_ROOT_PASSWORD: abcd
-  MYSQL_USER: php_app
-  MYSQL_PASSWORD: php_app
-  MYSQL_DATABASE: php_app_development
-  MYSQL_PORT: 3307
+  MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-abcd}
+  MYSQL_USER: ${MYSQL_USER:-php_app}
+  MYSQL_PASSWORD: ${MYSQL_PASSWORD:-abcd}
+  MYSQL_DATABASE: ${MYSQL_DATABASE:-php_app_development}
+  MYSQL_PORT: ${MYSQL_PORT:-3306}
 
 services:
   mysql:
