@@ -58,20 +58,20 @@ posts:
     no_posts_found: Žádné zprávy nebyly nalezeny.
     placeholder: index stránka zpráv
   new:
-    title: Nový příspěvek
+    title: Nová zpráva
   show:
     creator: Autor
     created_at: Vytvořeno dne
-    post_not_found: Příspěvek nebyl nalezen.
+    post_not_found: Zpráva nebyla nalezena.
   create:
-    success: Příspěvek byl úspěšně vytvořen.
+    success: Zpráva byla úspěšně vytvořena.
   update:
-    unauthorized: Nemáte oprávnění upravit tento příspěvek.
-    success: Příspěvek byl úspěšně aktualizován.
+    unauthorized: Nemáte oprávnění upravit tuto zprávu.
+    success: Zpráva byla úspěšně aktualizována.
   destroy:
-    success: Příspěvek byl úspěšně smazán.
-    not_found: Příspěvek neexistuje.
-    unauthorized: Nemáte oprávnění smazat tento příspěvek.
+    success: Zpráva byla úspěšně smazána.
+    not_found: Zpráva neexistuje.
+    unauthorized: Nemáte oprávnění smazat tuto zprávu.
 
 events:
   index:
