@@ -27,7 +27,7 @@ docker compose -f compose.production.yaml --env-file .env.production down
 4. Check production logs:
 
 ```bash
-docker compose -f compose.production.yaml --env-file .env.production logs -f php_app mysql
+docker compose -f compose.production.yaml --env-file .env.production logs -f nginx php_app mysql
 ```
 
 # Compile composer packages to /vendor

@@ -17,4 +17,4 @@ docker compose -f compose.production.yaml --env-file .env.production up -d --rem
 echo "Production stack status:"
 docker compose -f compose.production.yaml --env-file .env.production ps
 
-echo "Done. App should be available on APP_PORT (default 3000)."
+echo "Done. App should be available via NGINX_HTTP_PORT (default 80)."
