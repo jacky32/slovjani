@@ -10,8 +10,6 @@ skinparam class {
     BackgroundColor<<Admin>> #f5deb3
 }
 
-title Website Structure and Main Routes
-
 class "Homepage\n/" as Home <<Public>>
 
 package "Public Section" as PublicSection {
