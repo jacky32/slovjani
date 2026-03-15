@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS DB_NAME.users (
   `registered` int unsigned NOT NULL,
   `last_login` int unsigned DEFAULT NULL,
   `force_logout` mediumint unsigned NOT NULL DEFAULT '0',
-  'created_at' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  'updated_at' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
