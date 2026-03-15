@@ -14,7 +14,7 @@ title Website Structure and Main Routes
 
 class "Homepage\n/" as Home <<Public>>
 
-package "Public Section" {
+package "Public Section" as PublicSection {
     class "About\n/" as PublicHome <<Public>> {
         + Association description
         + Photo gallery
@@ -32,7 +32,7 @@ package "Public Section" {
     }
 }
 
-package "Authentication" {
+package "Authentication" as AuthSection {
     class "Login\n/login" as Login <<Auth>> {
         + GET new
         + POST create
@@ -44,7 +44,7 @@ package "Authentication" {
     }
 }
 
-package "Admin Section (login required)" {
+package "Admin Section (login required)" as AdminSection {
     class "Posts (Internal)\n/admin/posts" as AdminPosts <<Admin>> {
         + CRUD
         + comment threads
@@ -79,20 +79,23 @@ package "Admin Section (login required)" {
     }
 }
 
-class "Fallback\n404" as NotFound <<Auth>> {
+class "Fallback\n404" as NotFound <<Public>> {
     + ErrorsController#notFound
 }
+
+PublicSection -[hidden]down-> AuthSection
+AuthSection -[hidden]down-> AdminSection
 
 Home --> PublicHome
 Home --> PublicPosts
 Home --> PublicEvents
 Home --> Login
 
-Login ..> Logout : after login
-Login ..> AdminPosts : after login
-Login ..> AdminEvents : after login
-Login ..> AdminVotings : after login
-Login ..> AdminUsers : after login
+Login .> Logout : after login
+Login .> AdminPosts : after login
+Login .> AdminEvents : after login
+Login .> AdminVotings : after login
+Login .> AdminUsers : after login
 AdminPosts --> AdminPreview : markup preview
 AdminEvents --> AdminPreview : markup preview
 AdminVotings --> AdminPreview : markup preview
