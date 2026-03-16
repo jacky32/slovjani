@@ -152,7 +152,7 @@ package "App" as AppSection {
     datetime_end : Datetime
     creator_id : Integer
     is_publicly_visible : Boolean
-    google_calendar_event_id : Text?
+    google_calendar_event_id : Text
     created_at : Datetime
     updated_at : Datetime
   }
@@ -177,7 +177,7 @@ package "App" as AppSection {
     resource_id : Integer
     resource_type : String
     body : String
-    parent_comment_id : Integer?
+    parent_comment_id : Integer
     creator_id : Integer
     created_at : Datetime
     updated_at : Datetime
