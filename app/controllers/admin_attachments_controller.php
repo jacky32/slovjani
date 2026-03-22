@@ -119,70 +119,14 @@ class AdminAttachmentsController extends AdminController
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
       $pagination = $this->resource::class::paginate($request['page'], $this->resource_id);
-      // $this->render("admin/{$this->resource_type}/{$this->resource_id}/attachments/new", [
-      //   "{$this->resource_type}" => $pagination->resources,
-      //   "{$this->resource_type}" => new $this->resource([
-
-      //   ]),
-      //   "errors" => $errors,
-      //   "pagination" => $pagination,
-      // ]);
+      $this->render("admin/{$this->resource_type}/{$this->resource_id}/attachments/new", [
+        "{$this->resource_type}" => $pagination->resources,
+        "{$this->resource_type}" => new $this->resource([]),
+        "errors" => $errors,
+        "pagination" => $pagination,
+      ]);
     }
   }
-
-  // public function edit($request)
-  // {
-  //   $pagination = $this->resource::class::paginate($request['page'], $this->resource_id);
-  //   if ($this->resource) {
-  //     $this->render("admin/attachments/edit", [
-  //       "{strtolower($this->resource_type::class)}" => $this->resource,
-  //       "{$this->resource_type}" => $pagination->resources,
-  //       "pagination" => $pagination,
-  //     ]);
-  //   } else {
-  //     $this->addFlash('error', t("posts.show.post_not_found"));
-  //     header("Location: /admin/posts");
-  //   }
-  // }
-
-  // public function update($request)
-  // {
-  //   try {
-  //     // Verify CSRF token
-  //     $this->verifyCSRF('/admin/posts/' . $this->id);
-
-  //     // Find post and check ownership
-  //     $post = Post::find($this->id);
-  //     if ($post && $post->creator_id == $this->auth->getUserId()) {
-  //       $post->name = $request['post']['name'];
-  //       $post->body = $request['post']['body'];
-  //       $post->status = $request['post']['status'];
-  //       $post->save();
-  //       $this->addFlash('success', t("posts.update.success"));
-  //       header("Location: /admin/posts/" . $post->id);
-  //     } else {
-  //       if (!$post) {
-  //         $this->addFlash('error', t("posts.show.post_not_found"));
-  //       } else if ($post->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
-  //         $this->addFlash('error', t("posts.update.unauthorized"));
-  //       }
-  //       header("Location: /admin/posts/" . $post->id . "/edit");
-  //     }
-  //   } catch (Exception $e) {
-  //     $errors = [];
-  //     $this->addFlash('error', $e->getMessage());
-  //     if ($e instanceof \ActiveModel\ValidationException) {
-  //       $errors = array_merge($errors, $e->getValidationExceptions());
-  //     }
-  //     $pagination = Post::paginate($request['page'], $this->id);
-  //     $this->render("admin/posts/edit", [
-  //       "post" => $post,
-  //       "posts" => $pagination->resources,
-  //       "pagination" => $pagination,
-  //       "errors" => $errors,
-  //     ]);
-  //   }
-  // }
 
   /**
    * Deletes an attachment record and its corresponding file on disk.

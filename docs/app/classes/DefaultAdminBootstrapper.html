@@ -74,7 +74,7 @@
 </h4>
 
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="packages/Controllers.html" class="-active">Controllers</a>
+    <a href="packages/Controllers.html" class="">Controllers</a>
 </h4>
 
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -113,42 +113,221 @@
                                         <ul class="phpdocumentor-breadcrumbs">
     </ul>
 
-    <article class="phpdocumentor-element -package">
-        <h2 class="phpdocumentor-content__title">Controllers</h2>
+    <article class="phpdocumentor-element -class">
+        <h2 class="phpdocumentor-content__title">
+    DefaultAdminBootstrapper
 
-        
+    
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Services.html">Services</a></li>
+                            </ul>
+        </div>
+    
+    
+    </h2>
+
+<div class="phpdocumentor-label-line">
+
+
+</div>
+
+        <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/default_admin_bootstrapper.php"><a href="files/app-services-default-admin-bootstrapper.html"><abbr title="app/services/default_admin_bootstrapper.php">default_admin_bootstrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">10</span>
+
+    </aside>
+
+            <p class="phpdocumentor-summary">Ensures a first administrator account exists on fresh installations.</p>
+
+
+
+
+
+    
+    
 <h3 id="toc">
     Table of Contents
-    <a href="packages/Controllers.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/DefaultAdminBootstrapper.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
 
 
 
-    <h4 id="toc-classes">
-        Classes
-        <a href="packages/Controllers.html#toc-classes" class="headerlink"><i class="fas fa-link"></i></a>
+
+
+
+
+
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/DefaultAdminBootstrapper.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/DefaultAdminBootstrapper.html#method_canBootstrap">canBootstrap()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/DefaultAdminBootstrapper.html#method_ensureExists">ensureExists()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/DefaultAdminBootstrapper.html#method_usersTableHasAnyUser">usersTableHasAnyUser()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+
+    </dl>
+
+
+
+        
+
+        
+
+            <section class="phpdocumentor-methods">
+        <h3 class="phpdocumentor-elements__header" id="methods">
+            Methods
+            <a href="classes/DefaultAdminBootstrapper.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_canBootstrap">
+        canBootstrap()
+        <a href="classes/DefaultAdminBootstrapper.html#method_canBootstrap" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
-    <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminAttachmentsController.html"><abbr title="\AdminAttachmentsController">AdminAttachmentsController</abbr></a></dt><dd>Admin controller for creating, serving, and deleting resource attachments.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminCommentsController.html"><abbr title="\AdminCommentsController">AdminCommentsController</abbr></a></dt><dd>Admin controller for managing comments on posts, users, events, and votings.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminController.html"><abbr title="\AdminController">AdminController</abbr></a></dt><dd>Base controller for all admin controllers that handles basic authentication and authorisation.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminEventsController.html"><abbr title="\AdminEventsController">AdminEventsController</abbr></a></dt><dd>Admin CRUD controller for events and related publishing actions.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminPostsController.html"><abbr title="\AdminPostsController">AdminPostsController</abbr></a></dt><dd>Admin CRUD controller for posts and static-page regeneration triggers.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminPreviewsController.html"><abbr title="\AdminPreviewsController">AdminPreviewsController</abbr></a></dt><dd>Centralized admin preview controller for live parser previews in forms.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminQuestionsController.html"><abbr title="\AdminQuestionsController">AdminQuestionsController</abbr></a></dt><dd>Admin controller for creating and maintaining voting questions.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminUsersController.html"><abbr title="\AdminUsersController">AdminUsersController</abbr></a></dt><dd>Admin controller for listing, editing, and removing user accounts.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminUsersQuestionsController.html"><abbr title="\AdminUsersQuestionsController">AdminUsersQuestionsController</abbr></a></dt><dd>Admin controller handling user responses for voting questions.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AdminVotingsController.html"><abbr title="\AdminVotingsController">AdminVotingsController</abbr></a></dt><dd>Admin CRUD controller for votings and lifecycle management.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ApplicationController.html"><abbr title="\ApplicationController">ApplicationController</abbr></a></dt><dd>Base controller that provides shared auth, rendering, CSRF, and flash helpers.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/AttachmentsController.html"><abbr title="\AttachmentsController">AttachmentsController</abbr></a></dt><dd>Public controller for serving attachments attached to visible resources.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/ErrorsController.html"><abbr title="\ErrorsController">ErrorsController</abbr></a></dt><dd>Controller for fallback error pages such as 404 responses.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/EventsController.html"><abbr title="\EventsController">EventsController</abbr></a></dt><dd>Public read-only controller for listing and viewing visible events.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/HomeController.html"><abbr title="\HomeController">HomeController</abbr></a></dt><dd>Controller for the application landing page.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/PostsController.html"><abbr title="\PostsController">PostsController</abbr></a></dt><dd>Public read-only controller for published posts and detail pages.</dd>            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/SessionsController.html"><abbr title="\SessionsController">SessionsController</abbr></a></dt><dd>Authentication controller for login and logout session actions.</dd>    </dl>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/default_admin_bootstrapper.php"><a href="files/app-services-default-admin-bootstrapper.html"><abbr title="app/services/default_admin_bootstrapper.php">default_admin_bootstrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">13</span>
 
+    </aside>
 
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">canBootstrap</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-
-
-
-
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
 
         
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_ensureExists">
+        ensureExists()
+        <a href="classes/DefaultAdminBootstrapper.html#method_ensureExists" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/default_admin_bootstrapper.php"><a href="files/app-services-default-admin-bootstrapper.html"><abbr title="app/services/default_admin_bootstrapper.php">default_admin_bootstrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">18</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">ensureExists</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><abbr title="\Delight\Auth\Auth">Auth</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$auth</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$auth</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\Delight\Auth\Auth">Auth</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
 
         
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_usersTableHasAnyUser">
+        usersTableHasAnyUser()
+        <a href="classes/DefaultAdminBootstrapper.html#method_usersTableHasAnyUser" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/default_admin_bootstrapper.php"><a href="files/app-services-default-admin-bootstrapper.html"><abbr title="app/services/default_admin_bootstrapper.php">default_admin_bootstrapper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">38</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">usersTableHasAnyUser</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+            </section>
+
         <div class="phpdocumentor-modal" id="source-view">
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/app/services/default_admin_bootstrapper.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -241,7 +420,7 @@
     </article>
                                 </section>
                 <section class="phpdocumentor-on-this-page__sidebar">
-                            
+                                
     <section class="phpdocumentor-on-this-page__content">
         <strong class="phpdocumentor-on-this-page__title">On this page</strong>
 
@@ -249,11 +428,19 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                                        <li><a href="packages/Controllers.html#toc-classes">Classes</a></li>
-                                                                                                                    </ul>
+                                                                                <li><a href="classes/DefaultAdminBootstrapper.html#toc-methods">Methods</a></li>
+                                    </ul>
             </li>
-
             
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li class=""><a href="classes/DefaultAdminBootstrapper.html#method_canBootstrap">canBootstrap()</a></li>
+                                            <li class=""><a href="classes/DefaultAdminBootstrapper.html#method_ensureExists">ensureExists()</a></li>
+                                            <li class=""><a href="classes/DefaultAdminBootstrapper.html#method_usersTableHasAnyUser">usersTableHasAnyUser()</a></li>
+                                    </ul>
+            </li>
                     </ul>
     </section>
 
@@ -271,7 +458,7 @@
     </section>
 </section>
         </div>
-        <a href="packages/Controllers.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/DefaultAdminBootstrapper.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

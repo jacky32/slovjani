@@ -221,6 +221,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/AdminPostsController.html#property_id"
         },                {
+            "fqsen": "\\AdminPreviewsController",
+            "name": "AdminPreviewsController",
+            "summary": "Centralized\u0020admin\u0020preview\u0020controller\u0020for\u0020live\u0020parser\u0020previews\u0020in\u0020forms.",
+            "url": "classes/AdminPreviewsController.html"
+        },                {
+            "fqsen": "\\AdminPreviewsController\u003A\u003Apreview_markup\u0028\u0029",
+            "name": "preview_markup",
+            "summary": "Parses\u0020incoming\u0020text\u0020and\u0020returns\u0020JSON\u0020HTML\u0020preview.",
+            "url": "classes/AdminPreviewsController.html#method_preview_markup"
+        },                {
             "fqsen": "\\AdminQuestionsController",
             "name": "AdminQuestionsController",
             "summary": "Admin\u0020controller\u0020for\u0020creating\u0020and\u0020maintaining\u0020voting\u0020questions.",
@@ -286,6 +296,16 @@ Search.appendIndex(
             "summary": "Shows\u0020details\u0020for\u0020a\u0020single\u0020user.",
             "url": "classes/AdminUsersController.html#method_show"
         },                {
+            "fqsen": "\\AdminUsersController\u003A\u003Anew\u0028\u0029",
+            "name": "new",
+            "summary": "Renders\u0020the\u0020form\u0020for\u0020creating\u0020a\u0020new\u0020user\u0020in\u0020admin.",
+            "url": "classes/AdminUsersController.html#method_new"
+        },                {
+            "fqsen": "\\AdminUsersController\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "Creates\u0020a\u0020new\u0020user\u0020account\u0020from\u0020admin\u0020and\u0020assigns\u0020the\u0020selected\u0020role.",
+            "url": "classes/AdminUsersController.html#method_create"
+        },                {
             "fqsen": "\\AdminUsersController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
             "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020user.",
@@ -300,6 +320,11 @@ Search.appendIndex(
             "name": "destroy",
             "summary": "Deletes\u0020a\u0020user\u0020account.",
             "url": "classes/AdminUsersController.html#method_destroy"
+        },                {
+            "fqsen": "\\AdminUsersController\u003A\u003ArenderNewWithErrors\u0028\u0029",
+            "name": "renderNewWithErrors",
+            "summary": "",
+            "url": "classes/AdminUsersController.html#method_renderNewWithErrors"
         },                {
             "fqsen": "\\AdminUsersController\u003A\u003A\u0024id",
             "name": "id",
@@ -430,6 +455,16 @@ Search.appendIndex(
             "name": "auth",
             "summary": "",
             "url": "classes/ApplicationController.html#property_auth"
+        },                {
+            "fqsen": "\\ApplicationController\u003A\u003A\u0024connection",
+            "name": "connection",
+            "summary": "",
+            "url": "classes/ApplicationController.html#property_connection"
+        },                {
+            "fqsen": "\\ApplicationController\u003A\u003A\u0024recaptchaService",
+            "name": "recaptchaService",
+            "summary": "",
+            "url": "classes/ApplicationController.html#property_recaptchaService"
         },                {
             "fqsen": "\\AttachmentsController",
             "name": "AttachmentsController",
@@ -566,6 +601,11 @@ Search.appendIndex(
             "summary": "Renders\u0020the\u0020login\u0020form,\u0020or\u0020redirects\u0020already\u002Dauthenticated\u0020users.",
             "url": "classes/SessionsController.html#method_new"
         },                {
+            "fqsen": "\\SessionsController\u003A\u003Abootstrap_default_admin\u0028\u0029",
+            "name": "bootstrap_default_admin",
+            "summary": "One\u002Dtime\u0020action\u0020that\u0020creates\u0020the\u0020default\u0020admin\u0020user\u0020on\u0020an\u0020empty\u0020database.",
+            "url": "classes/SessionsController.html#method_bootstrap_default_admin"
+        },                {
             "fqsen": "\\SessionsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Attempts\u0020to\u0020log\u0020the\u0020user\u0020in\u0020with\u0020the\u0020submitted\u0020email\u0020and\u0020password.",
@@ -575,31 +615,6 @@ Search.appendIndex(
             "name": "destroy",
             "summary": "Logs\u0020the\u0020current\u0020user\u0020out\u0020and\u0020redirects\u0020to\u0020the\u0020home\u0020page.",
             "url": "classes/SessionsController.html#method_destroy"
-        },                {
-            "fqsen": "\\UsersController",
-            "name": "UsersController",
-            "summary": "Public\u0020controller\u0020for\u0020user\u0020registration\u0020actions.",
-            "url": "classes/UsersController.html"
-        },                {
-            "fqsen": "\\UsersController\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initialises\u0020the\u0020controller\u003A\u0020opens\u0020a\u0020PDO\u0020connection,\u0020creates\u0020the\u0020Auth\nservice\u0020and\u0020the\u0020ViewManager.",
-            "url": "classes/UsersController.html#method___construct"
-        },                {
-            "fqsen": "\\UsersController\u003A\u003Anew\u0028\u0029",
-            "name": "new",
-            "summary": "Renders\u0020the\u0020registration\u0020form.",
-            "url": "classes/UsersController.html#method_new"
-        },                {
-            "fqsen": "\\UsersController\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Registers\u0020a\u0020new\u0020user\u0020account\u0020with\u0020the\u0020provided\u0020email,\u0020password,\u0020and\u0020username.",
-            "url": "classes/UsersController.html#method_create"
-        },                {
-            "fqsen": "\\UsersController\u003A\u003A\u0024user",
-            "name": "user",
-            "summary": "",
-            "url": "classes/UsersController.html#property_user"
         },                {
             "fqsen": "\\ApplicationRecord",
             "name": "ApplicationRecord",
@@ -671,6 +686,11 @@ Search.appendIndex(
             "summary": "Initialises\u0020the\u0020Event\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
             "url": "classes/Event.html#method___construct"
         },                {
+            "fqsen": "\\Event\u003A\u003Avalidate_datetime_range\u0028\u0029",
+            "name": "validate_datetime_range",
+            "summary": "Ensures\u0020datetime_start\u0020is\u0020strictly\u0020earlier\u0020than\u0020datetime_end.",
+            "url": "classes/Event.html#method_validate_datetime_range"
+        },                {
             "fqsen": "\\Event\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
@@ -685,6 +705,11 @@ Search.appendIndex(
             "name": "validations",
             "summary": "",
             "url": "classes/Event.html#property_validations"
+        },                {
+            "fqsen": "\\Event\u003A\u003A\u0024validation_callbacks",
+            "name": "validation_callbacks",
+            "summary": "",
+            "url": "classes/Event.html#property_validation_callbacks"
         },                {
             "fqsen": "\\Post",
             "name": "Post",
@@ -831,6 +856,71 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Voting.html#property_validations"
         },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver",
+            "name": "AttachmentMarkupMediaSourceResolver",
+            "summary": "Resolves\u0020editor\u0020media\u0020source\u0020aliases\u0020to\u0020existing\u0020attachment\u0020routes.",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method___construct"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A__invoke\u0028\u0029",
+            "name": "__invoke",
+            "summary": "",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method___invoke"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AisNonResolvableSource\u0028\u0029",
+            "name": "isNonResolvableSource",
+            "summary": "Non\u002Dresolvable\u0020sources\u0020should\u0020keep\u0020original\u0020parser\u0020behavior.",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_isNonResolvableSource"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AextractIdentifier\u0028\u0029",
+            "name": "extractIdentifier",
+            "summary": "Removes\u0020explicit\u0020\u0060attachment\u003A\u0060\u0020prefix\u0020when\u0020present.",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_extractIdentifier"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AfindAttachment\u0028\u0029",
+            "name": "findAttachment",
+            "summary": "Tries\u0020multiple\u0020lookup\u0020strategies\u0020against\u0020Attachment\u0020model.",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_findAttachment"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AfindBy\u0028\u0029",
+            "name": "findBy",
+            "summary": "",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_findBy"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AbuildAttachmentUrl\u0028\u0029",
+            "name": "buildAttachmentUrl",
+            "summary": "",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_buildAttachmentUrl"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024resourceType",
+            "name": "resourceType",
+            "summary": "",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_resourceType"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024resourceId",
+            "name": "resourceId",
+            "summary": "",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_resourceId"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024resourcePath",
+            "name": "resourcePath",
+            "summary": "",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_resourcePath"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024adminContext",
+            "name": "adminContext",
+            "summary": "",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_adminContext"
+        },                {
+            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024publicOnly",
+            "name": "publicOnly",
+            "summary": "",
+            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_publicOnly"
+        },                {
             "fqsen": "\\Database",
             "name": "Database",
             "summary": "Database\u0020connection\u0020bootstrapper\u0020with\u0020first\u002Drun\u0020schema\u0020initialisation.",
@@ -861,6 +951,201 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Database.html#property_db"
         },                {
+            "fqsen": "\\DefaultAdminBootstrapper",
+            "name": "DefaultAdminBootstrapper",
+            "summary": "Ensures\u0020a\u0020first\u0020administrator\u0020account\u0020exists\u0020on\u0020fresh\u0020installations.",
+            "url": "classes/DefaultAdminBootstrapper.html"
+        },                {
+            "fqsen": "\\DefaultAdminBootstrapper\u003A\u003AcanBootstrap\u0028\u0029",
+            "name": "canBootstrap",
+            "summary": "",
+            "url": "classes/DefaultAdminBootstrapper.html#method_canBootstrap"
+        },                {
+            "fqsen": "\\DefaultAdminBootstrapper\u003A\u003AensureExists\u0028\u0029",
+            "name": "ensureExists",
+            "summary": "",
+            "url": "classes/DefaultAdminBootstrapper.html#method_ensureExists"
+        },                {
+            "fqsen": "\\DefaultAdminBootstrapper\u003A\u003AusersTableHasAnyUser\u0028\u0029",
+            "name": "usersTableHasAnyUser",
+            "summary": "",
+            "url": "classes/DefaultAdminBootstrapper.html#method_usersTableHasAnyUser"
+        },                {
+            "fqsen": "\\EditorMarkupParser",
+            "name": "EditorMarkupParser",
+            "summary": "Converts\u0020editor\u0020markup\u0020syntax\u0020into\u0020HTML.",
+            "url": "classes/EditorMarkupParser.html"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#method___construct"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003Aparse\u0028\u0029",
+            "name": "parse",
+            "summary": "Parses\u0020raw\u0020editor\u0020markup\u0020into\u0020sanitized\u0020HTML.",
+            "url": "classes/EditorMarkupParser.html#method_parse"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AcoalesceWrappedLines\u0028\u0029",
+            "name": "coalesceWrappedLines",
+            "summary": "Joins\u0020wrapped\u0020physical\u0020lines\u0020into\u0020logical\u0020lines.",
+            "url": "classes/EditorMarkupParser.html#method_coalesceWrappedLines"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseNormalParagraph\u0028\u0029",
+            "name": "parseNormalParagraph",
+            "summary": "Parses\u0020a\u0020normal\u0020paragraph\u0020block.",
+            "url": "classes/EditorMarkupParser.html#method_parseNormalParagraph"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseBulletedParagraph\u0028\u0029",
+            "name": "parseBulletedParagraph",
+            "summary": "Parses\u0020one\u0020unordered\u002Dlist\u0020item.",
+            "url": "classes/EditorMarkupParser.html#method_parseBulletedParagraph"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseNumberedParagraph\u0028\u0029",
+            "name": "parseNumberedParagraph",
+            "summary": "Parses\u0020one\u0020ordered\u002Dlist\u0020item.",
+            "url": "classes/EditorMarkupParser.html#method_parseNumberedParagraph"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseCenteredParagraph\u0028\u0029",
+            "name": "parseCenteredParagraph",
+            "summary": "Parses\u0020a\u0020centered\u0020paragraph\u0020block.",
+            "url": "classes/EditorMarkupParser.html#method_parseCenteredParagraph"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseSmallHeading\u0028\u0029",
+            "name": "parseSmallHeading",
+            "summary": "Parses\u0020a\u0020small\u0020heading\u0020block.",
+            "url": "classes/EditorMarkupParser.html#method_parseSmallHeading"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseMediaParagraph\u0028\u0029",
+            "name": "parseMediaParagraph",
+            "summary": "Parses\u0020media\u0020block\u0020syntax\u0020\u0028image\/YouTube\u0020embed\u0029.",
+            "url": "classes/EditorMarkupParser.html#method_parseMediaParagraph"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AresolveMediaSource\u0028\u0029",
+            "name": "resolveMediaSource",
+            "summary": "Resolves\u0020media\u0020source\u0020aliases\u0020through\u0020an\u0020optional\u0020callback.",
+            "url": "classes/EditorMarkupParser.html#method_resolveMediaSource"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseImageFigure\u0028\u0029",
+            "name": "parseImageFigure",
+            "summary": "Builds\u0020HTML\u0020figure\u0020markup\u0020for\u0020an\u0020image.",
+            "url": "classes/EditorMarkupParser.html#method_parseImageFigure"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseYouTubeEmbed\u0028\u0029",
+            "name": "parseYouTubeEmbed",
+            "summary": "Builds\u0020HTML\u0020figure\u0020markup\u0020for\u0020a\u0020YouTube\u0020embed.",
+            "url": "classes/EditorMarkupParser.html#method_parseYouTubeEmbed"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AisYouTubeEmbedSource\u0028\u0029",
+            "name": "isYouTubeEmbedSource",
+            "summary": "Validates\u0020whether\u0020a\u0020media\u0020source\u0020is\u0020a\u0020supported\u0020YouTube\u0020embed\u0020URL.",
+            "url": "classes/EditorMarkupParser.html#method_isYouTubeEmbedSource"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseInline\u0028\u0029",
+            "name": "parseInline",
+            "summary": "Inline\u0020parser\u0020pipeline.",
+            "url": "classes/EditorMarkupParser.html#method_parseInline"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseEscapedTokens\u0028\u0029",
+            "name": "parseEscapedTokens",
+            "summary": "Replaces\u0020escaped\u0020control\u0020sequences\u0020with\u0020neutral\u0020placeholders.",
+            "url": "classes/EditorMarkupParser.html#method_parseEscapedTokens"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseLineBreakToken\u0028\u0029",
+            "name": "parseLineBreakToken",
+            "summary": "Converts\u0020line\u002Dbreak\u0020placeholder\u0020token\u0020to\u0020HTML\u0020break\u0020tags.",
+            "url": "classes/EditorMarkupParser.html#method_parseLineBreakToken"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseBoldToken\u0028\u0029",
+            "name": "parseBoldToken",
+            "summary": "Converts\u0020\u0060\u005Btext\u005D\u0060\u0020to\u0020\u0060\u003Cstrong\u003Etext\u003C\/strong\u003E\u0060.",
+            "url": "classes/EditorMarkupParser.html#method_parseBoldToken"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseItalicToken\u0028\u0029",
+            "name": "parseItalicToken",
+            "summary": "Converts\u0020escaped\u0020\u0060\u003Ctext\u003E\u0060\u0020markers\u0020to\u0020\u0060\u003Cem\u003Etext\u003C\/em\u003E\u0060.",
+            "url": "classes/EditorMarkupParser.html#method_parseItalicToken"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseCurlyReferenceToken\u0028\u0029",
+            "name": "parseCurlyReferenceToken",
+            "summary": "Parses\u0020\u0060\u007B...\u007D\u0060\u0020references\u0020as\u0020email\/URL\u0020links\u0020when\u0020valid.",
+            "url": "classes/EditorMarkupParser.html#method_parseCurlyReferenceToken"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AparseCurlyReference\u0028\u0029",
+            "name": "parseCurlyReference",
+            "summary": "Parses\u0020one\u0020curly\u002Dbrace\u0020reference\u0020payload.",
+            "url": "classes/EditorMarkupParser.html#method_parseCurlyReference"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ArestoreEscapedTokens\u0028\u0029",
+            "name": "restoreEscapedTokens",
+            "summary": "Restores\u0020placeholder\u0020tokens\u0020back\u0020to\u0020literal\u0020characters.",
+            "url": "classes/EditorMarkupParser.html#method_restoreEscapedTokens"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AopenListIfNeeded\u0028\u0029",
+            "name": "openListIfNeeded",
+            "summary": "Opens\u0020target\u0020list\u0020type\u0020if\u0020needed\u0020and\u0020closes\u0020previous\u0020list\u0020when\u0020switching.",
+            "url": "classes/EditorMarkupParser.html#method_openListIfNeeded"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003AcloseListIfOpen\u0028\u0029",
+            "name": "closeListIfOpen",
+            "summary": "Closes\u0020the\u0020currently\u0020open\u0020list\u0020if\u0020one\u0020is\u0020active.",
+            "url": "classes/EditorMarkupParser.html#method_closeListIfOpen"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_BREAK",
+            "name": "TOKEN_BREAK",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_BREAK"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_HASH",
+            "name": "TOKEN_HASH",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_HASH"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_LT",
+            "name": "TOKEN_LT",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_LT"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_GT",
+            "name": "TOKEN_GT",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_GT"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_LB",
+            "name": "TOKEN_LB",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_LB"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_RB",
+            "name": "TOKEN_RB",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_RB"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_LC",
+            "name": "TOKEN_LC",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_LC"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_RC",
+            "name": "TOKEN_RC",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_RC"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_SLASH",
+            "name": "TOKEN_SLASH",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_SLASH"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_BACKSLASH",
+            "name": "TOKEN_BACKSLASH",
+            "summary": "",
+            "url": "classes/EditorMarkupParser.html#constant_TOKEN_BACKSLASH"
+        },                {
+            "fqsen": "\\EditorMarkupParser\u003A\u003A\u0024mediaSourceResolver",
+            "name": "mediaSourceResolver",
+            "summary": "Optional\u0020callback\u0020used\u0020to\u0020resolve\u0020media\u0020sources\u0020\u0028e.g.\u0020attachment\u0020aliases\u0029\nbefore\u0020image\/embed\u0020rendering.",
+            "url": "classes/EditorMarkupParser.html#property_mediaSourceResolver"
+        },                {
             "fqsen": "\\FlashManager",
             "name": "FlashManager",
             "summary": "Session\u002Dbacked\u0020flash\u0020message\u0020manager\u0020for\u0020user\u002Dfacing\u0020notifications.",
@@ -881,6 +1166,161 @@ Search.appendIndex(
             "summary": "Returns\u0020whether\u0020there\u0020are\u0020any\u0020pending\u0020flash\u0020messages\u0020in\u0020the\u0020session.",
             "url": "classes/FlashManager.html#method_hasFlashes"
         },                {
+            "fqsen": "\\GoogleCalendarService",
+            "name": "GoogleCalendarService",
+            "summary": "Minimal\u0020Google\u0020Calendar\u0020API\u0020client\u0020for\u0020inserting\u0020and\u0020deleting\u0020events.",
+            "url": "classes/GoogleCalendarService.html"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method___construct"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AinsertTimedEvent\u0028\u0029",
+            "name": "insertTimedEvent",
+            "summary": "Inserts\u0020a\u0020timed\u0020Google\u0020Calendar\u0020event\u0020using\u0020a\u0020simplified\u0020input\u0020signature.",
+            "url": "classes/GoogleCalendarService.html#method_insertTimedEvent"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AlistEvents\u0028\u0029",
+            "name": "listEvents",
+            "summary": "Lists\u0020Google\u0020Calendar\u0020events\u0020with\u0020optional\u0020query\u0020parameters.",
+            "url": "classes/GoogleCalendarService.html#method_listEvents"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AinsertEvent\u0028\u0029",
+            "name": "insertEvent",
+            "summary": "Inserts\u0020a\u0020Google\u0020Calendar\u0020event\u0020using\u0020the\u0020raw\u0020Calendar\u0020API\u0020payload.",
+            "url": "classes/GoogleCalendarService.html#method_insertEvent"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AdestroyEvent\u0028\u0029",
+            "name": "destroyEvent",
+            "summary": "Deletes\u0020a\u0020Google\u0020Calendar\u0020event\u0020by\u0020its\u0020Google\u002Dassigned\u0020event\u0020ID.",
+            "url": "classes/GoogleCalendarService.html#method_destroyEvent"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003Arequest\u0028\u0029",
+            "name": "request",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_request"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AfetchAccessToken\u0028\u0029",
+            "name": "fetchAccessToken",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_fetchAccessToken"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AbuildSignedJwt\u0028\u0029",
+            "name": "buildSignedJwt",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_buildSignedJwt"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AloadDefaultConfig\u0028\u0029",
+            "name": "loadDefaultConfig",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_loadDefaultConfig"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AassertConfiguration\u0028\u0029",
+            "name": "assertConfiguration",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_assertConfiguration"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AeventsEndpoint\u0028\u0029",
+            "name": "eventsEndpoint",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_eventsEndpoint"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AformatDateTime\u0028\u0029",
+            "name": "formatDateTime",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_formatDateTime"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AnormalizePrivateKey\u0028\u0029",
+            "name": "normalizePrivateKey",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_normalizePrivateKey"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AnormalizeOptionalString\u0028\u0029",
+            "name": "normalizeOptionalString",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_normalizeOptionalString"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AdecodeJsonBody\u0028\u0029",
+            "name": "decodeJsonBody",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_decodeJsonBody"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003Abase64UrlEncode\u0028\u0029",
+            "name": "base64UrlEncode",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_base64UrlEncode"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AcompactBody\u0028\u0029",
+            "name": "compactBody",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_compactBody"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AsendCurlRequest\u0028\u0029",
+            "name": "sendCurlRequest",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_sendCurlRequest"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003AparseHeaders\u0028\u0029",
+            "name": "parseHeaders",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#method_parseHeaders"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003ACALENDAR_SCOPE",
+            "name": "CALENDAR_SCOPE",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#constant_CALENDAR_SCOPE"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024calendarId",
+            "name": "calendarId",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_calendarId"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024serviceAccountEmail",
+            "name": "serviceAccountEmail",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_serviceAccountEmail"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024privateKey",
+            "name": "privateKey",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_privateKey"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024delegatedUser",
+            "name": "delegatedUser",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_delegatedUser"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024tokenUri",
+            "name": "tokenUri",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_tokenUri"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024baseUri",
+            "name": "baseUri",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_baseUri"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024timeoutSeconds",
+            "name": "timeoutSeconds",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_timeoutSeconds"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024defaultTimeZone",
+            "name": "defaultTimeZone",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_defaultTimeZone"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024httpClient",
+            "name": "httpClient",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_httpClient"
+        },                {
+            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024clock",
+            "name": "clock",
+            "summary": "",
+            "url": "classes/GoogleCalendarService.html#property_clock"
+        },                {
             "fqsen": "\\GuestAuth",
             "name": "GuestAuth",
             "summary": "A\u0020minimal\u0020auth\u0020stub\u0020that\u0020represents\u0020an\u0020unauthenticated\u0020\u0028guest\u0029\u0020user.",
@@ -900,6 +1340,66 @@ Search.appendIndex(
             "name": "hasRole",
             "summary": "Always\u0020returns\u0020false\u0020\u2013\u0020a\u0020guest\u0020has\u0020no\u0020roles.",
             "url": "classes/GuestAuth.html#method_hasRole"
+        },                {
+            "fqsen": "\\RecaptchaService",
+            "name": "RecaptchaService",
+            "summary": "Verifies\u0020Google\u0020reCAPTCHA\u0020tokens\u0020for\u0020login\u0020forms.",
+            "url": "classes/RecaptchaService.html"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#method___construct"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003AisEnabled\u0028\u0029",
+            "name": "isEnabled",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#method_isEnabled"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003AgetV3SiteKey\u0028\u0029",
+            "name": "getV3SiteKey",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#method_getV3SiteKey"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003AgetV2SiteKey\u0028\u0029",
+            "name": "getV2SiteKey",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#method_getV2SiteKey"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003AverifyLogin\u0028\u0029",
+            "name": "verifyLogin",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#method_verifyLogin"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003AverifyV3\u0028\u0029",
+            "name": "verifyV3",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#method_verifyV3"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003AverifyToken\u0028\u0029",
+            "name": "verifyToken",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#method_verifyToken"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003AsendVerificationRequest\u0028\u0029",
+            "name": "sendVerificationRequest",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#method_sendVerificationRequest"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003AVERIFY_ENDPOINT",
+            "name": "VERIFY_ENDPOINT",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#constant_VERIFY_ENDPOINT"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003A\u0024config",
+            "name": "config",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#property_config"
+        },                {
+            "fqsen": "\\RecaptchaService\u003A\u003A\u0024httpClient",
+            "name": "httpClient",
+            "summary": "",
+            "url": "classes/RecaptchaService.html#property_httpClient"
         },                {
             "fqsen": "\\StaticPageGenerator",
             "name": "StaticPageGenerator",
@@ -1056,6 +1556,16 @@ Search.appendIndex(
             "summary": "The\u0020destructor\u0020method\u0020for\u0020the\u0020ViewManager\u0020class.\u0020This\u0020method\u0020is\u0020called\u0020when\u0020the\u0020object\u0020is\u0020destroyed,\nwhich\u0020typically\u0020happens\u0020at\u0020the\u0020end\u0020of\u0020the\u0020request\u0020lifecycle.",
             "url": "classes/ViewManager.html#method___destruct"
         },                {
+            "fqsen": "\\ViewManager\u003A\u003AdisableLayout\u0028\u0029",
+            "name": "disableLayout",
+            "summary": "Disables\u0020layout\u0020rendering\u0020in\u0020__destruct\u0028\u0029,\u0020useful\u0020for\u0020JSON\u0020endpoints.",
+            "url": "classes/ViewManager.html#method_disableLayout"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003ArenderJson\u0028\u0029",
+            "name": "renderJson",
+            "summary": "Sends\u0020a\u0020JSON\u0020response\u0020and\u0020disables\u0020layout\u0020rendering.",
+            "url": "classes/ViewManager.html#method_renderJson"
+        },                {
             "fqsen": "\\ViewManager\u003A\u003A\u0024content",
             "name": "content",
             "summary": "",
@@ -1095,6 +1605,11 @@ Search.appendIndex(
             "name": "pagination",
             "summary": "",
             "url": "classes/ViewManager.html#property_pagination"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003A\u0024shouldRenderLayout",
+            "name": "shouldRenderLayout",
+            "summary": "",
+            "url": "classes/ViewManager.html#property_shouldRenderLayout"
         },                {
             "fqsen": "\\Router",
             "name": "Router",
@@ -1253,7 +1768,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ActiveModel\u003A\u003Afind\u0028\u0029",
             "name": "find",
-            "summary": "",
+            "summary": "Finds\u0020a\u0020record\u0020by\u0020its\u0020primary\u0020key\u0020ID.",
             "url": "classes/ActiveModel.html#method_find"
         },                {
             "fqsen": "\\ActiveModel\u003A\u003Awhere\u0028\u0029",
@@ -1276,6 +1791,11 @@ Search.appendIndex(
             "summary": "Return\u0020all\u0020records\u0020as\u0020Collection",
             "url": "classes/ActiveModel.html#method_all"
         },                {
+            "fqsen": "\\ActiveModel\u003A\u003Aexists\u0028\u0029",
+            "name": "exists",
+            "summary": "Returns\u0020true\u0020if\u0020a\u0020record\u0020exists\u0020with\u0020the\u0020given\u0020conditions,\u0020false\u0020otherwise.",
+            "url": "classes/ActiveModel.html#method_exists"
+        },                {
             "fqsen": "\\ActiveModel\u003A\u003A\u0024db",
             "name": "db",
             "summary": "",
@@ -1295,6 +1815,11 @@ Search.appendIndex(
             "name": "validations",
             "summary": "",
             "url": "classes/ActiveModel.html#property_validations"
+        },                {
+            "fqsen": "\\ActiveModel\u003A\u003A\u0024validation_callbacks",
+            "name": "validation_callbacks",
+            "summary": "",
+            "url": "classes/ActiveModel.html#property_validation_callbacks"
         },                {
             "fqsen": "\\Attributes",
             "name": "Attributes",
@@ -1533,7 +2058,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\QueryBuilder\u003A\u003Aexists\u0028\u0029",
             "name": "exists",
-            "summary": "Check\u0020if\u0020any\u0020records\u0020exist\nTODO\u003A\u0020P\u0159ed\u011Blat\u0020na\u0020efektivn\u011Bj\u0161\u00ED\u0020SQL\u0020dotaz\u0020SELECT\u00201\u0020...\u0020LIMIT\u00201\u0020m\u00EDsto\u0020COUNT\u0028\u002A\u0029,\u0020aby\u0020se\u0020zbyte\u010Dn\u011B\u0020nepo\u010D\u00EDtaly\u0020v\u0161echny\u0020\u0159\u00E1dky.",
+            "summary": "Check\u0020if\u0020any\u0020records\u0020exist",
             "url": "classes/QueryBuilder.html#method_exists"
         },                {
             "fqsen": "\\QueryBuilder\u003A\u003Apluck\u0028\u0029",

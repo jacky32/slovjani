@@ -145,7 +145,6 @@ class AdminUsersController extends AdminController
   {
     $user = User::find($this->id);
     $pagination = User::paginate($request['page'], $this->id);
-    Logger::debug($user->roles_mask);
     if ($user) {
       $this->render("admin/users/edit", [
         "user" => $user,
@@ -176,7 +175,6 @@ class AdminUsersController extends AdminController
       if ($user) {
         $user->email = $request['user']['email'];
         $user->username = $request['user']['username'];
-        Logger::debug("Selected role: " . $request['user']['role']);
         $user->roles_mask = intval(User::AVAILABLE_ROLES[$request['user']['role']]) ?? 0;
         $user->save();
         $this->addFlash('success', t("users.update.success"));

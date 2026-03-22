@@ -202,6 +202,12 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a class="" href="classes/ActiveModel.html#property_validation_callbacks">$validation_callbacks</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a class="" href="classes/Comment.html#property_validations">$validations</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
@@ -285,10 +291,18 @@
 <dd>Deletes the database row corresponding to this record.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/ActiveModel.html#method_exists">exists()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Returns true if a record exists with the given conditions, false otherwise.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/ActiveModel.html#method_find">find()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: static|null    </span>
 </dt>
+<dd>Finds a record by its primary key ID.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/ActiveModel.html#method_getConnection">getConnection()</a>
@@ -608,6 +622,43 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
             -protected
             -static                                                        "
 >
+    <h4 class="phpdocumentor-element__name" id="property_validation_callbacks">
+        $validation_callbacks
+        <a href="classes/ActiveModel.html#property_validation_callbacks" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">25</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__name">$validation_callbacks</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_validations">
         $validations
         <a href="classes/Comment.html#property_validations" class="headerlink"><i class="fas fa-link"></i></a>
@@ -744,7 +795,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">93</span>
+    <span class="phpdocumentor-element-found-in__line">94</span>
 
     </aside>
 
@@ -779,7 +830,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">55</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 
     </aside>
 
@@ -834,7 +885,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">85</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 
     </aside>
 
@@ -885,7 +936,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">75</span>
 
     </aside>
 
@@ -941,7 +992,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">362</span>
+    <span class="phpdocumentor-element-found-in__line">381</span>
 
     </aside>
 
@@ -980,7 +1031,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">115</span>
 
     </aside>
 
@@ -1015,7 +1066,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">184</span>
+    <span class="phpdocumentor-element-found-in__line">197</span>
 
     </aside>
 
@@ -1050,7 +1101,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">255</span>
+    <span class="phpdocumentor-element-found-in__line">268</span>
 
     </aside>
 
@@ -1077,22 +1128,23 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
             -public
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_find">
-        find()
-        <a href="classes/ActiveModel.html#method_find" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_exists">
+        exists()
+        <a href="classes/ActiveModel.html#method_exists" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">285</span>
+    <span class="phpdocumentor-element-found-in__line">405</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Returns true if a record exists with the given conditions, false otherwise.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">find</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">exists</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$conditions</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1101,9 +1153,9 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-argument-list__argument__name">$id</span>
-                : <span class="phpdocumentor-argument-list__argument__type">mixed</span>
-                            </dt>
+                <span class="phpdocumentor-argument-list__argument__name">$conditions</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -1113,7 +1165,66 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
 
         
     
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_find">
+        find()
+        <a href="classes/ActiveModel.html#method_find" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">304</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Finds a record by its primary key ID.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">find</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">int|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
     
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$id</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int|string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The ID of the record to find.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The found record as an instance of the model, or null if not found.</p>
+</section>
+
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1129,7 +1240,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">104</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
@@ -1168,7 +1279,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
@@ -1211,7 +1322,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">127</span>
+    <span class="phpdocumentor-element-found-in__line">128</span>
 
     </aside>
 
@@ -1266,7 +1377,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">336</span>
+    <span class="phpdocumentor-element-found-in__line">355</span>
 
     </aside>
 
@@ -1322,7 +1433,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">353</span>
+    <span class="phpdocumentor-element-found-in__line">372</span>
 
     </aside>
 
@@ -1386,7 +1497,7 @@ $pagination-&gt;next_page; // Next page number or null if on last page</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">138</span>
+    <span class="phpdocumentor-element-found-in__line">139</span>
 
     </aside>
 
@@ -1438,7 +1549,7 @@ $pagination-&gt;next_page; // Next page number or null if on last page</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">220</span>
+    <span class="phpdocumentor-element-found-in__line">233</span>
 
     </aside>
 
@@ -1473,7 +1584,7 @@ $pagination-&gt;next_page; // Next page number or null if on last page</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">154</span>
+    <span class="phpdocumentor-element-found-in__line">155</span>
 
     </aside>
 
@@ -1525,7 +1636,7 @@ $pagination-&gt;next_page; // Next page number or null if on last page</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/active_model.php"><a href="files/lib-active-model-active-model.html"><abbr title="lib/active_model/active_model.php">active_model.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">327</span>
+    <span class="phpdocumentor-element-found-in__line">346</span>
 
     </aside>
 
@@ -2021,6 +2132,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</p
                                                     <li class=""><a href="classes/ActiveModel.html#property_db">$db</a></li>
                                                     <li class=""><a href="classes/Comment.html#property_db_attributes">$db_attributes</a></li>
                                                     <li class=""><a href="classes/Comment.html#property_relations">$relations</a></li>
+                                                    <li class=""><a href="classes/ActiveModel.html#property_validation_callbacks">$validation_callbacks</a></li>
                                                     <li class=""><a href="classes/Comment.html#property_validations">$validations</a></li>
                                                     <li class=""><a href="classes/Relations.html#property__loaded_relations">$_loaded_relations</a></li>
                                             </ul>
@@ -2038,6 +2150,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</p
                                             <li class=""><a href="classes/ActiveModel.html#method_closeConnection">closeConnection()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_create">create()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_destroy">destroy()</a></li>
+                                            <li class=""><a href="classes/ActiveModel.html#method_exists">exists()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_find">find()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_getConnection">getConnection()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_getDbAttributes">getDbAttributes()</a></li>

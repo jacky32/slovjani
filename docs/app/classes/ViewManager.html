@@ -211,6 +211,12 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a class="" href="classes/ViewManager.html#property_shouldRenderLayout">$shouldRenderLayout</a>
+    <span>
+                        &nbsp;: bool            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/ViewManager.html#property_title">$title</a>
     <span>
                         &nbsp;: mixed            </span>
@@ -238,6 +244,13 @@
 </dt>
 <dd>The destructor method for the ViewManager class. This method is called when the object is destroyed,
 which typically happens at the end of the request lifecycle.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/ViewManager.html#method_disableLayout">disableLayout()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Disables layout rendering in __destruct(), useful for JSON endpoints.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/ViewManager.html#method_render">render()</a>
@@ -285,6 +298,13 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
                                 &nbsp;: string    </span>
 </dt>
 <dd>Renders an input form field for a given object&#039;s attribute, with optional validation error highlighting.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/ViewManager.html#method_renderJson">renderJson()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Sends a JSON response and disables layout rendering.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/ViewManager.html#method_renderPartial">renderPartial()</a>
@@ -579,6 +599,43 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
             -private
                                                                     "
 >
+    <h4 class="phpdocumentor-element__name" id="property_shouldRenderLayout">
+        $shouldRenderLayout
+        <a href="classes/ViewManager.html#property_shouldRenderLayout" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">18</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$shouldRenderLayout</span>
+     = <span class="phpdocumentor-signature__default-value">\true</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                                    "
+>
     <h4 class="phpdocumentor-element__name" id="property_title">
         $title
         <a href="classes/ViewManager.html#property_title" class="headerlink"><i class="fas fa-link"></i></a>
@@ -631,7 +688,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -689,7 +746,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">235</span>
+    <span class="phpdocumentor-element-found-in__line">247</span>
 
     </aside>
 
@@ -722,6 +779,41 @@ within the overall page layout.</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_disableLayout">
+        disableLayout()
+        <a href="classes/ViewManager.html#method_disableLayout" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">257</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Disables layout rendering in __destruct(), useful for JSON endpoints.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">disableLayout</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_render">
         render()
         <a href="classes/ViewManager.html#method_render" class="headerlink"><i class="fas fa-link"></i></a>
@@ -730,7 +822,7 @@ within the overall page layout.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">49</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
@@ -798,7 +890,7 @@ The method also sets the page title and makes any errors or pagination data avai
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">174</span>
+    <span class="phpdocumentor-element-found-in__line">186</span>
 
     </aside>
 
@@ -859,7 +951,7 @@ and comparing it to the submitted token.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">151</span>
+    <span class="phpdocumentor-element-found-in__line">163</span>
 
     </aside>
 
@@ -918,7 +1010,7 @@ Uses CSRF token for protection</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">85</span>
+    <span class="phpdocumentor-element-found-in__line">97</span>
 
     </aside>
 
@@ -964,7 +1056,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">190</span>
+    <span class="phpdocumentor-element-found-in__line">202</span>
 
     </aside>
 
@@ -1023,7 +1115,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">125</span>
+    <span class="phpdocumentor-element-found-in__line">137</span>
 
     </aside>
 
@@ -1097,6 +1189,62 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_renderJson">
+        renderJson()
+        <a href="classes/ViewManager.html#method_renderJson" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">268</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Sends a JSON response and disables layout rendering.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">renderJson</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$payload</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$statusCode</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">200</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$payload</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Data to encode as JSON.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$statusCode</span>
+                : <span class="phpdocumentor-argument-list__argument__type">int</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">200</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>HTTP status code (default 200).</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_renderPartial">
         renderPartial()
         <a href="classes/ViewManager.html#method_renderPartial" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1105,7 +1253,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">67</span>
+    <span class="phpdocumentor-element-found-in__line">79</span>
 
     </aside>
 
@@ -1169,7 +1317,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">100</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 
     </aside>
 
@@ -1350,6 +1498,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
                                                     <li class=""><a href="classes/ViewManager.html#property_controllerData">$controllerData</a></li>
                                                     <li class=""><a href="classes/ViewManager.html#property_errors">$errors</a></li>
                                                     <li class=""><a href="classes/ViewManager.html#property_pagination">$pagination</a></li>
+                                                    <li class=""><a href="classes/ViewManager.html#property_shouldRenderLayout">$shouldRenderLayout</a></li>
                                                     <li class=""><a href="classes/ViewManager.html#property_title">$title</a></li>
                                             </ul>
                 </li>
@@ -1359,12 +1508,14 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/ViewManager.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method___destruct">__destruct()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_disableLayout">disableLayout()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_render">render()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderCSRFToken">renderCSRFToken()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderDestroyButton">renderDestroyButton()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderErrors">renderErrors()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderIcon">renderIcon()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderInput">renderInput()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_renderJson">renderJson()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderPartial">renderPartial()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderTextarea">renderTextarea()</a></li>
                                     </ul>
