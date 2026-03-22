@@ -216,6 +216,12 @@ namespace {
       $this->assertSame(255, $v['length']['name']['max']);
     }
 
+    public function testEventRegistersCustomValidationCallback(): void
+    {
+      $callbacks = $this->staticProp('Event', 'validation_callbacks');
+      $this->assertContains('validate_datetime_range', $callbacks);
+    }
+
     // ---- Comment model ----
 
     public function testCommentDbAttributesContainsExpectedColumns(): void

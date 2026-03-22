@@ -48,6 +48,10 @@ class Event extends ApplicationRecord
     'length' => ["name" => ["min" => 4, "max" => 255], "description" => ["min" => 4, "max" => 5000]]
   ];
 
+  protected static array $validation_callbacks = [
+    'validate_datetime_range'
+  ];
+
   /**
    * Initialises the Event with the provided attribute data.
    *
@@ -58,6 +62,32 @@ class Event extends ApplicationRecord
     parent::__construct($data, self::$db_attributes, self::$relations);
   }
 
-  // Methods
+  /**
+   * Ensures datetime_start is strictly earlier than datetime_end.
+   *
+   * @return array<int, array{class: string, attribute: string, message: string}>
+   */
+  protected function validate_datetime_range(): array
+  {
+    $caught_exceptions = [];
+
+    $start_timestamp = strtotime((string) $this->datetime_start);
+    $end_timestamp = strtotime((string) $this->datetime_end);
+    if (
+      $this->datetime_start !== null
+      && $this->datetime_end !== null
+      && $start_timestamp !== false
+      && $end_timestamp !== false
+      && $start_timestamp >= $end_timestamp
+    ) {
+      $caught_exceptions[] = [
+        'class' => static::class,
+        'attribute' => 'datetime_end',
+        'message' => t('errors.must_be_after_datetime_start')
+      ];
+    }
+
+    return $caught_exceptions;
+  }
 
 }

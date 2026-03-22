@@ -22,6 +22,7 @@ abstract class ActiveModel
 
   protected static array $db_attributes = [];
   protected static array $validations = [];
+  protected static array $validation_callbacks = [];
 
   /**
    * Returns the list of database column names defined for this model class.
@@ -169,6 +170,18 @@ abstract class ActiveModel
           $caught_exceptions = array_merge($caught_exceptions, $this->validates_length_of($attributes));
           break;
       }
+    }
+    foreach (static::$validation_callbacks as $callback) {
+      if (!method_exists($this, $callback)) {
+        throw new \LogicException("Validation callback '{$callback}' is not defined on " . static::class . ".");
+      }
+
+      $callback_result = $this->{$callback}();
+      if (!is_array($callback_result)) {
+        throw new \LogicException("Validation callback '{$callback}' on " . static::class . " must return an array of validation exceptions.");
+      }
+
+      $caught_exceptions = array_merge($caught_exceptions, $callback_result);
     }
     if (!empty($caught_exceptions)) {
       throw new \ActiveModel\ValidationException(t("errors.validation_failed"), 0, null, $caught_exceptions);

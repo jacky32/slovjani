@@ -33,6 +33,7 @@ errors:
   must_not_be_longer_than: nesmí být delší než {count} znaků
   must_be_exactly_characters_long: musí být přesně {count} znaků dlouhý
   must_be_included_in: musí být zahrnut v možných možnostech ({options})
+  must_be_after_datetime_start: musí být později než datum a čas začátku
   unauthenticated: Pro přístup k této akci musíte být přihlášeni.
   unauthorized: Nemáte oprávnění provést tuto akci.
   page_not_found: Stránka nenalezena

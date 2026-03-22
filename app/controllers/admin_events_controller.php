@@ -98,14 +98,15 @@ class AdminEventsController extends AdminController
         'is_publicly_visible' => isset($request['event']['is_publicly_visible']) ? true : 0,
         'creator_id' => $this->auth->getUserId()
       ]);
+      $event->save();
       try {
         $google_event = (new GoogleCalendarService($event->is_publicly_visible))->insertTimedEvent($event->name, $event->datetime_start, $event->datetime_end);
         $event->google_calendar_event_id = $google_event['id'] ?? null;
+        $event->save();
       } catch (Exception $e) {
         Logger::error("Failed to create event in Google Calendar: " . $e->getMessage());
         $this->addFlash('error', t("events.create.google_calendar_creation_failed"));
       }
-      $event->save();
       (new StaticPageGenerator())->regenerateAll();
       $this->addFlash('success', t("events.create.success"));
       header("Location: /admin/events");
