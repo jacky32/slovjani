@@ -13,6 +13,18 @@ namespace ActiveModel\Validations {
 
 namespace {
 
+  if (!function_exists('yaml_parse_file')) {
+    function yaml_parse_file(string $filename): array
+    {
+      return [
+        'errors' => [
+          'validation_failed' => 'errors.validation_failed',
+          'must_be_after_datetime_start' => 'errors.must_be_after_datetime_start',
+        ],
+      ];
+    }
+  }
+
   if (!function_exists('toSnakeCase')) {
     function toSnakeCase(string $input): string
     {

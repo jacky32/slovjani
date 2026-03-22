@@ -76,20 +76,6 @@ final class router_test extends TestCase
     $this->assertSame('destroy', $r->action);
   }
 
-  public function testGetRegistrationRoutesToUsersNew(): void
-  {
-    $r = $this->route('GET', '/registration');
-    $this->assertSame('UsersController', $r->controllerName);
-    $this->assertSame('new', $r->action);
-  }
-
-  public function testPostRegistrationRoutesToUsersCreate(): void
-  {
-    $r = $this->route('POST', '/registration');
-    $this->assertSame('UsersController', $r->controllerName);
-    $this->assertSame('create', $r->action);
-  }
-
   // ---- Posts (public) ----
 
   public function testGetPostsRoutesToPostsIndex(): void

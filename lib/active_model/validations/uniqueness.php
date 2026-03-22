@@ -29,7 +29,7 @@ trait UniquenessValidator
     foreach ($attributes as $attribute) {
       $table = toSnakeCase((new \ReflectionClass($this))->getShortName()) . "s";
 
-      $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$this->getConditionStringFromAttributes($attribute)}" . $this->getIdCondition();
+      $query = "SELECT 1 as count FROM {$table} WHERE {$this->getConditionStringFromAttributes($attribute)}" . $this->getIdCondition();
       \Logger::sql($query);
       $database = new \Database();
       $connection = $database->getConnection();
