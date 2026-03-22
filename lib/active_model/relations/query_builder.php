@@ -182,11 +182,17 @@ class QueryBuilder
 
   /**
    * Check if any records exist
-   * TODO: Předělat na efektivnější SQL dotaz SELECT 1 ... LIMIT 1 místo COUNT(*), aby se zbytečně nepočítaly všechny řádky.
    */
   public function exists(): bool
   {
-    return $this->count() > 0;
+    $table = toSnakeCase($this->modelClass) . 's';
+    $sql = "SELECT 1 FROM `{$table}`";
+
+    if (!empty($this->conditions)) {
+      $sql .= " WHERE " . implode(" AND ", $this->conditions);
+    }
+
+    return $sql . ";";
   }
 
   /**
