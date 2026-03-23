@@ -25,6 +25,8 @@
         class="<?= $descriptionHasError ? 'warning' : '' ?>"
         placeholder="<?= t('attributes.voting.description') ?>"
         name="voting[description]"
+        aria-invalid="<?= $descriptionHasError ? 'true' : 'false' ?>"
+        <?= $descriptionHasError ? 'aria-describedby="error-voting-description"' : '' ?>
         data-live-preview="true"
         data-preview-target="voting-description-preview"
         data-preview-endpoint="/admin/previews/preview_markup"

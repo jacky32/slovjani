@@ -40,6 +40,9 @@
       return;
     }
 
+    target.setAttribute('aria-live', 'polite');
+    target.setAttribute('aria-atomic', 'true');
+
     if (previewLoadingText) {
       target.textContent = previewLoadingText;
     }
@@ -53,6 +56,7 @@
       }
 
       activeController = new AbortController();
+      target.setAttribute('aria-busy', 'true');
       const payloadData = { [previewParam]: source.value || '' };
       if (previewParser) {
         payloadData.parser = previewParser;
@@ -86,6 +90,7 @@
 
         const data = await response.json();
         target.innerHTML = data?.[previewResponseKey] ?? '';
+        target.setAttribute('aria-busy', 'false');
       } catch (error) {
         if (error?.name === 'AbortError') {
           return;
@@ -94,6 +99,7 @@
         target.innerHTML = previewErrorText
           ? '<p class="post-preview-error">' + previewErrorText + '</p>'
           : '';
+        target.setAttribute('aria-busy', 'false');
       }
     };
 

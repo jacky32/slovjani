@@ -21,7 +21,9 @@ $action  = $destroy
     <?php if (!$comment->id && isset($parent_comment_id) && $parent_comment_id): ?>
       <input type="hidden" name="comment[parent_comment_id]" value="<?= htmlspecialchars($parent_comment_id) ?>">
     <?php endif; ?>
-    <textarea name="comment[body]" class="input" rows="3" required
+    <?php $commentBodyId = 'comment-body-' . ($comment->id ? (int) $comment->id : 'new') . '-' . (isset($parent_comment_id) ? (int) $parent_comment_id : 0); ?>
+    <label for="<?= $commentBodyId ?>"><?= t('attributes.comment.body') ?></label>
+    <textarea id="<?= $commentBodyId ?>" name="comment[body]" class="input" rows="3" required
       <?= !$comment->id ? 'placeholder="' . t("comments.new.title") . '"' : '' ?>><?= $comment->id ? htmlspecialchars($comment->body ?? '') : '' ?></textarea>
     <div class="comment-inline-form__actions">
       <button class="button" type="submit"><?= $this->renderIcon($comment->id ? 'pencil-square' : 'plus-circle') ?> <?= $comment->id ? t("update") : t("create") ?></button>

@@ -25,6 +25,8 @@
         class="<?= $descriptionHasError ? 'warning' : '' ?>"
         placeholder="<?= t('attributes.question.description') ?>"
         name="question[description]"
+        aria-invalid="<?= $descriptionHasError ? 'true' : 'false' ?>"
+        <?= $descriptionHasError ? 'aria-describedby="error-question-description"' : '' ?>
         data-live-preview="true"
         data-preview-target="question-description-preview"
         data-preview-endpoint="/admin/previews/preview_markup"

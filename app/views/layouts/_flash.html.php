@@ -1,11 +1,11 @@
 <?php if (FlashManager::hasFlashes()) : ?>
   <?php $flashes = FlashManager::getFlashes(); ?>
-  <div class="flash-container">
+  <div class="flash-container" role="status" aria-live="polite" aria-atomic="true">
     <?php foreach ($flashes as $type => $messages) : ?>
       <?php foreach ($messages as $message) : ?>
-        <div class="flash alert-<?= htmlspecialchars($type) ?>" role="alert">
+        <div class="flash alert-<?= htmlspecialchars($type) ?>" role="<?= $type === 'error' ? 'alert' : 'status' ?>">
           <p><?= htmlspecialchars($message) ?></p>
-          <button type="button" class="close" aria-label="Zavřít"><?= $this->renderIcon('x-mark') ?></button>
+          <button type="button" class="close" aria-label="<?= t('close') ?>"><?= $this->renderIcon('x-mark') ?></button>
         </div>
       <?php endforeach; ?>
     <?php endforeach; ?>

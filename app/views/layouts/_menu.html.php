@@ -1,4 +1,4 @@
-<nav id="header">
+<nav id="header" aria-label="<?= t('a11y.main_navigation') ?>">
   <span id="header-logo-lat"><?= t("menu.header.logo.lat") ?><br></span>
   <span id="header-logo-cyr"><?= t("menu.header.logo.cyr") ?><br></span>
   <div id="header-text">

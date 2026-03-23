@@ -25,6 +25,8 @@
         class="<?= $descriptionHasError ? 'warning' : '' ?>"
         placeholder="<?= t('attributes.event.description') ?>"
         name="event[description]"
+        aria-invalid="<?= $descriptionHasError ? 'true' : 'false' ?>"
+        <?= $descriptionHasError ? 'aria-describedby="error-event-description"' : '' ?>
         data-live-preview="true"
         data-preview-target="event-description-preview"
         data-preview-endpoint="/admin/previews/preview_markup"

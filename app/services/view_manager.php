@@ -111,19 +111,28 @@ class ViewManager
    */
   public function renderTextarea(ActiveModel $object, string $attribute, bool $required = true): string
   {
+    $fieldId = toSnakeCase($object::class) . "-" . $attribute . "-input";
     $placeholder = t("attributes." . strtolower($object::class) . "." . $attribute);
     $name = toSnakeCase($object::class) . "[" . $attribute . "]";
+    $label = $object::humanAttributeName($attribute);
+    $currentValue = (string) ($object->{$attribute} ?? '');
+    $fluidLabelClass = trim('a11y-fluid-label ' . ($currentValue !== '' ? 'a11y-fluid-label--filled' : ''));
     $class = "";
+    $hasError = false;
+    $describedBy = '';
 
     if (isset($this->errors) && !empty($this->errors)) {
       foreach ($this->errors as $error) {
         if ($error['attribute'] === $attribute) {
           $class = "warning";
+          $hasError = true;
+          $describedBy = "aria-describedby='error-" . toSnakeCase($object::class) . "-" . $attribute . "'";
           break;
         }
       }
     }
-    return "<textarea class='" . $class . "' placeholder='" . $placeholder . "' name='" . $name . "' " . ($required ? "required" : "") . ">" . htmlspecialchars($object->{$attribute} ?? '') . "</textarea>";
+    return "<label class='" . $fluidLabelClass . "' for='" . $fieldId . "'><span>" . $label . "</span>" .
+      "<textarea id='" . $fieldId . "' class='" . $class . "' placeholder='" . $placeholder . "' name='" . $name . "' " . ($required ? "required" : "") . " " . ($hasError ? "aria-invalid='true'" : "") . " " . $describedBy . ">" . htmlspecialchars($currentValue) . "</textarea></label>";
   }
 
   /**
@@ -136,20 +145,29 @@ class ViewManager
    */
   public function renderInput(ActiveModel $object, string $attribute, string $type = "text", bool $required = true): string
   {
+    $fieldId = toSnakeCase($object::class) . "-" . $attribute . "-input";
+    $label = $object::humanAttributeName($attribute);
     $placeholder = t("attributes." . strtolower($object::class) . "." . $attribute);
     $name = toSnakeCase($object::class) . "[" . $attribute . "]";
-    $value = htmlspecialchars($object->{$attribute} ?? '');
+    $rawValue = (string) ($object->{$attribute} ?? '');
+    $value = htmlspecialchars($rawValue);
+    $fluidLabelClass = trim('a11y-fluid-label ' . ($rawValue !== '' ? 'a11y-fluid-label--filled' : ''));
     $class = "";
+    $hasError = false;
+    $describedBy = '';
 
     if (isset($this->errors) && !empty($this->errors)) {
       foreach ($this->errors as $error) {
         if ($error['attribute'] === $attribute) {
           $class = "warning";
+          $hasError = true;
+          $describedBy = "aria-describedby='error-" . toSnakeCase($object::class) . "-" . $attribute . "'";
           break;
         }
       }
     }
-    return "<input type='" . $type . "' class='" . $class . "' placeholder='" . $placeholder . "' name='" . $name . "' value='" . $value . "' " . ($required ? "required" : "") . " />";
+    return "<label class='" . $fluidLabelClass . "' for='" . $fieldId . "'><span>" . $label . "</span>" .
+      "<input type='" . $type . "' id='" . $fieldId . "' class='" . $class . "' placeholder='" . $placeholder . "' name='" . $name . "' value='" . $value . "' " . ($required ? "required" : "") . " " . ($hasError ? "aria-invalid='true'" : "") . " " . $describedBy . " /></label>";
   }
 
   /**
@@ -199,9 +217,10 @@ class ViewManager
    * @param string $icon_name The original Heroicons name of the icon to render.
    * @return string The inline SVG HTML string for the icon, or an empty string if the icon is not found.
    */
-  public function renderIcon(string $icon_name): string
+  public function renderIcon(string $icon_name, bool $decorative = true): string
   {
-    $attrs = 'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18" aria-hidden="true" style="margin-right: 4px; vertical-align: text-bottom;"';
+    $accessibilityAttrs = $decorative ? 'aria-hidden="true" focusable="false"' : 'role="img"';
+    $attrs = 'xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18" ' . $accessibilityAttrs . ' style="margin-right: 4px; vertical-align: text-bottom;"';
     switch ($icon_name) {
       case 'arrow-right-on-rectangle':
         return '<svg ' . $attrs . '><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" /></svg>';

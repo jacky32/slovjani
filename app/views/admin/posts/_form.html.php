@@ -26,6 +26,8 @@
         class="<?= $bodyHasError ? 'warning' : '' ?>"
         placeholder="<?= t('attributes.post.body') ?>"
         name="post[body]"
+        aria-invalid="<?= $bodyHasError ? 'true' : 'false' ?>"
+        <?= $bodyHasError ? 'aria-describedby="error-post-body"' : '' ?>
         data-live-preview="true"
         data-preview-target="post-body-preview"
         data-preview-endpoint="/admin/previews/preview_markup"

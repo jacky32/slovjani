@@ -13,6 +13,62 @@
   vertical-align: middle;
 }
 
+.skip-link {
+  position: absolute;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
+  transform: translateY(-200%);
+  background: #ffffff;
+  color: #0f172a;
+  border: 2px solid #0f172a;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.a11y-fluid-label {
+  position: relative;
+  display: block;
+  margin-block: 0.75rem;
+
+  > span {
+    position: absolute;
+    inset-inline-start: 0.75rem;
+    inset-block-start: 0.65rem;
+    background: #ffffff;
+    color: var(--darkblue);
+    font-size: 0.8rem;
+    line-height: 1;
+    padding-inline: 0.25rem;
+    opacity: 0;
+    transform: translateY(0.25rem);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }
+
+  > :is(input, textarea) {
+    width: 100%;
+    box-sizing: border-box;
+    padding-block: 0.6rem;
+    transition: padding 0.2s ease;
+  }
+
+  &:is(:focus-within, .a11y-fluid-label--filled) > span {
+    opacity: 1;
+    transform: translateY(-0.55rem);
+  }
+
+  &:is(:focus-within, .a11y-fluid-label--filled) > :is(input, textarea) {
+    padding-block-start: 1.15rem;
+    padding-block-end: 0.4rem;
+  }
+}
+
 #header-text.menu {
   display: flex;
 }
@@ -37,6 +93,36 @@ textarea.warning,
 select.warning {
   border: 2px solid #ef4444;
   box-shadow: 0 0 0 1px #ef4444;
+}
+
+.warning {
+  border-inline-start: 0.25rem solid #b91c1c;
+  background: #fef2f2;
+  padding: 0.75rem;
+  margin-block-end: 1rem;
+}
+
+.warning__title {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: #7f1d1d;
+}
+
+.warning__list {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+}
+
+.form-help {
+  display: block;
+  margin-block: 0.35rem 0.65rem;
+  color: #334155;
+  font-size: 0.875rem;
+}
+
+:is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #0f172a;
+  outline-offset: 2px;
 }
 
 input[type="checkbox"], input[type="radio"] {

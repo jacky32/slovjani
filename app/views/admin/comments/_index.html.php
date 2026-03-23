@@ -19,7 +19,8 @@
     <summary class="button"><?= $this->renderIcon('plus-circle') ?> <?= t("comments.new.title") ?></summary>
     <form action="/admin/<?= $resource_type ?>/<?= $resource_id ?>/comments" method="POST" class="comment-inline-form">
       <?= $this->renderCSRFToken("/admin/{$resource_type}/{$resource_id}/comments") ?>
-      <textarea name="comment[body]" class="input" rows="4" required placeholder="<?= t("comments.new.title") ?>"></textarea>
+      <label for="new-comment-body"><?= t('attributes.comment.body') ?></label>
+      <textarea id="new-comment-body" name="comment[body]" class="input" rows="4" required placeholder="<?= t("comments.new.title") ?>"></textarea>
       <div class="comment-inline-form__actions">
         <button class="button" type="submit"><?= $this->renderIcon('plus-circle') ?> <?= t("create") ?></button>
       </div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="cs">
 
 <head>
   <meta charset="UTF-8" />
@@ -9,9 +9,10 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#container"><?= t('a11y.skip_to_content') ?></a>
   <?php require '_menu.html.php'; ?>
   <?php require '_flash.html.php'; ?>
-  <main id="container">
+  <main id="container" tabindex="-1">
     <?= $this->content ?>
   </main>
   <div id="footer"></div>
