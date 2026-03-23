@@ -57,6 +57,8 @@ class PostsController extends ApplicationController
         "pagination" => $pagination,
         "attachments" => $attachments,
         "parsed_body" => $parsedBody,
+        "title" => (string) ($post->name ?? ''),
+        "meta_description_source" => (string) ($post->body ?? ''),
       ]);
     } else {
       $this->addFlash('error', t("posts.show.post_not_found"));

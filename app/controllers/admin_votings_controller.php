@@ -56,7 +56,9 @@ class AdminVotingsController extends AdminController
         "votings" => $pagination->resources,
         "pagination" => $pagination,
         "parsed_description" => $parsedDescription,
-        "has_voted" => $voting->hasUserVoted($this->auth->getUserId())
+        "has_voted" => $voting->hasUserVoted($this->auth->getUserId()),
+        "title" => (string) ($voting->name ?? ''),
+        "meta_description_source" => (string) ($voting->description ?? ''),
       ]);
     } else {
       $this->addFlash('error', t("votings.show.voting_not_found"));

@@ -56,6 +56,8 @@ class AdminEventsController extends AdminController
         "events" => $pagination->resources,
         "pagination" => $pagination,
         "parsed_description" => $parsedDescription,
+        "title" => (string) ($event->name ?? ''),
+        "meta_description_source" => (string) ($event->description ?? ''),
       ]);
     } else {
       $this->addFlash('error', t("events.show.event_not_found"));

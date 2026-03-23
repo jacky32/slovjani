@@ -51,6 +51,8 @@ class AdminUsersController extends AdminController
         "user" => $user,
         "users" => $pagination->resources,
         "pagination" => $pagination,
+        "title" => (string) ($user->username ?? ''),
+        "meta_description_source" => (string) ($user->email ?? ''),
       ]);
     } else {
       $this->addFlash('error', t("users.show.user_not_found"));

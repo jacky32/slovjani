@@ -277,6 +277,7 @@ attributes:
 
 app:
   default_title: Slované
+  default_description: Webové stránky mezinárodního spolku pro podporu Slovanů.
 
 a11y:
   skip_to_content: Přeskočit na hlavní obsah

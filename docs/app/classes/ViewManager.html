@@ -205,6 +205,18 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a class="" href="classes/ViewManager.html#property_metaDescription">$metaDescription</a>
+    <span>
+                        &nbsp;: string|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a class="" href="classes/ViewManager.html#property_metaDescriptionSource">$metaDescriptionSource</a>
+    <span>
+                        &nbsp;: string|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/ViewManager.html#property_pagination">$pagination</a>
     <span>
                         &nbsp;: mixed            </span>
@@ -220,6 +232,12 @@
     <a class="" href="classes/ViewManager.html#property_title">$title</a>
     <span>
                         &nbsp;: mixed            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a class="" href="classes/ViewManager.html#property_view">$view</a>
+    <span>
+                        &nbsp;: string            </span>
 </dt>
 
     </dl>
@@ -251,6 +269,34 @@ which typically happens at the end of the request lifecycle.</dd>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Disables layout rendering in __destruct(), useful for JSON endpoints.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/ViewManager.html#method_getMetaDescription">getMetaDescription()</a>
+    <span>
+                                &nbsp;: string|null    </span>
+</dt>
+<dd>Returns an explicit page meta description, when set.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/ViewManager.html#method_getMetaDescriptionSource">getMetaDescriptionSource()</a>
+    <span>
+                                &nbsp;: string|null    </span>
+</dt>
+<dd>Returns the source text used for generated meta descriptions.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/ViewManager.html#method_getTitle">getTitle()</a>
+    <span>
+                                &nbsp;: string|null    </span>
+</dt>
+<dd>Returns the currently resolved page title.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/ViewManager.html#method_isShowPage">isShowPage()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Indicates whether the current view is a detail/show page.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/ViewManager.html#method_render">render()</a>
@@ -320,6 +366,41 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
 </dt>
 <dd>Renders a textarea form field for a given object&#039;s attribute, with optional validation error highlighting.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ViewManager.html#method_applySeoMetadata">applySeoMetadata()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Stores SEO-related metadata for the current view render cycle.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ViewManager.html#method_inferMetaDescriptionSource">inferMetaDescriptionSource()</a>
+    <span>
+                                &nbsp;: string|null    </span>
+</dt>
+<dd>Infers a fallback text source for show-page meta descriptions.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ViewManager.html#method_resolveExplicitMetaDescription">resolveExplicitMetaDescription()</a>
+    <span>
+                                &nbsp;: string|null    </span>
+</dt>
+<dd>Resolves an explicitly provided meta description, if any.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ViewManager.html#method_resolveMetaDescriptionSource">resolveMetaDescriptionSource()</a>
+    <span>
+                                &nbsp;: string|null    </span>
+</dt>
+<dd>Resolves the best source text for generated meta descriptions.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ViewManager.html#method_resolveSeoTitle">resolveSeoTitle()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Resolves the page title used in SEO tags and &lt;title&gt;.</dd>
+
     </dl>
 
 
@@ -387,7 +468,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">15</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 
     </aside>
 
@@ -498,7 +579,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 
     </aside>
 
@@ -535,7 +616,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">19</span>
 
     </aside>
 
@@ -562,6 +643,80 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
             -private
                                                                     "
 >
+    <h4 class="phpdocumentor-element__name" id="property_metaDescription">
+        $metaDescription
+        <a href="classes/ViewManager.html#property_metaDescription" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">14</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$metaDescription</span>
+     = <span class="phpdocumentor-signature__default-value">\null</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_metaDescriptionSource">
+        $metaDescriptionSource
+        <a href="classes/ViewManager.html#property_metaDescriptionSource" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">15</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$metaDescriptionSource</span>
+     = <span class="phpdocumentor-signature__default-value">\null</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                                    "
+>
     <h4 class="phpdocumentor-element__name" id="property_pagination">
         $pagination
         <a href="classes/ViewManager.html#property_pagination" class="headerlink"><i class="fas fa-link"></i></a>
@@ -572,7 +727,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
@@ -609,7 +764,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 
     </aside>
 
@@ -666,6 +821,43 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
         
 
 </article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_view">
+        $view
+        <a href="classes/ViewManager.html#property_view" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">16</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$view</span>
+     = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
             </section>
 
             <section class="phpdocumentor-methods">
@@ -688,7 +880,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -746,7 +938,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">247</span>
+    <span class="phpdocumentor-element-found-in__line">394</span>
 
     </aside>
 
@@ -787,7 +979,7 @@ within the overall page layout.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">257</span>
+    <span class="phpdocumentor-element-found-in__line">404</span>
 
     </aside>
 
@@ -814,6 +1006,178 @@ within the overall page layout.</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getMetaDescription">
+        getMetaDescription()
+        <a href="classes/ViewManager.html#method_getMetaDescription" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">149</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns an explicit page meta description, when set.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getMetaDescription</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Explicit meta description value.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getMetaDescriptionSource">
+        getMetaDescriptionSource()
+        <a href="classes/ViewManager.html#method_getMetaDescriptionSource" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">159</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns the source text used for generated meta descriptions.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getMetaDescriptionSource</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Meta description source text.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getTitle">
+        getTitle()
+        <a href="classes/ViewManager.html#method_getTitle" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">139</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns the currently resolved page title.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getTitle</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The current title or null if not resolved yet.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isShowPage">
+        isShowPage()
+        <a href="classes/ViewManager.html#method_isShowPage" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">169</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Indicates whether the current view is a detail/show page.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">isShowPage</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>True when current view path ends with /show.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_render">
         render()
         <a href="classes/ViewManager.html#method_render" class="headerlink"><i class="fas fa-link"></i></a>
@@ -822,7 +1186,7 @@ within the overall page layout.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">61</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 
     </aside>
 
@@ -890,7 +1254,7 @@ The method also sets the page title and makes any errors or pagination data avai
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">186</span>
+    <span class="phpdocumentor-element-found-in__line">332</span>
 
     </aside>
 
@@ -951,7 +1315,7 @@ and comparing it to the submitted token.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">163</span>
+    <span class="phpdocumentor-element-found-in__line">309</span>
 
     </aside>
 
@@ -1010,7 +1374,7 @@ Uses CSRF token for protection</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">97</span>
+    <span class="phpdocumentor-element-found-in__line">225</span>
 
     </aside>
 
@@ -1056,7 +1420,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">202</span>
+    <span class="phpdocumentor-element-found-in__line">348</span>
 
     </aside>
 
@@ -1064,7 +1428,7 @@ it renders the &quot;layouts/forms/_errors&quot; partial view and passes the err
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">renderIcon</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$icon_name</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">renderIcon</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$icon_name</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$decorative</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1084,6 +1448,13 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
                     <section class="phpdocumentor-description"><p>The original Heroicons name of the icon to render.</p>
 </section>
 
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$decorative</span>
+                : <span class="phpdocumentor-argument-list__argument__type">bool</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
             </dd>
             </dl>
 
@@ -1115,7 +1486,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">137</span>
+    <span class="phpdocumentor-element-found-in__line">274</span>
 
     </aside>
 
@@ -1197,7 +1568,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">268</span>
+    <span class="phpdocumentor-element-found-in__line">415</span>
 
     </aside>
 
@@ -1253,7 +1624,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">79</span>
+    <span class="phpdocumentor-element-found-in__line">207</span>
 
     </aside>
 
@@ -1317,7 +1688,7 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">112</span>
+    <span class="phpdocumentor-element-found-in__line">240</span>
 
     </aside>
 
@@ -1371,6 +1742,291 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
         <span class="phpdocumentor-signature__response_type">string</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>The HTML string for the textarea form field.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_applySeoMetadata">
+        applySeoMetadata()
+        <a href="classes/ViewManager.html#method_applySeoMetadata" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">84</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Stores SEO-related metadata for the current view render cycle.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">applySeoMetadata</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$view</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$view</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The view path being rendered.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$data</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Render payload that may include title/meta keys.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_inferMetaDescriptionSource">
+        inferMetaDescriptionSource()
+        <a href="classes/ViewManager.html#method_inferMetaDescriptionSource" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">180</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Infers a fallback text source for show-page meta descriptions.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">inferMetaDescriptionSource</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$data</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Render payload that may contain resource objects.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>First non-empty candidate value from known resource fields.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_resolveExplicitMetaDescription">
+        resolveExplicitMetaDescription()
+        <a href="classes/ViewManager.html#method_resolveExplicitMetaDescription" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">109</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Resolves an explicitly provided meta description, if any.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">resolveExplicitMetaDescription</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$data</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Render payload.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Explicit meta description or null when absent.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_resolveMetaDescriptionSource">
+        resolveMetaDescriptionSource()
+        <a href="classes/ViewManager.html#method_resolveMetaDescriptionSource" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">122</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Resolves the best source text for generated meta descriptions.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">resolveMetaDescriptionSource</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$view</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$view</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The view path being rendered.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$data</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Render payload.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Description source text or null when unavailable.</p>
+</section>
+
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_resolveSeoTitle">
+        resolveSeoTitle()
+        <a href="classes/ViewManager.html#method_resolveSeoTitle" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/view_manager.php"><a href="files/app-services-view-manager.html"><abbr title="app/services/view_manager.php">view_manager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">97</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Resolves the page title used in SEO tags and &lt;title&gt;.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">resolveSeoTitle</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$data</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Render payload.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>A non-empty page title.</p>
 </section>
 
             </section>
@@ -1497,9 +2153,12 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
                                                     <li class=""><a href="classes/ViewManager.html#property_controller">$controller</a></li>
                                                     <li class=""><a href="classes/ViewManager.html#property_controllerData">$controllerData</a></li>
                                                     <li class=""><a href="classes/ViewManager.html#property_errors">$errors</a></li>
+                                                    <li class=""><a href="classes/ViewManager.html#property_metaDescription">$metaDescription</a></li>
+                                                    <li class=""><a href="classes/ViewManager.html#property_metaDescriptionSource">$metaDescriptionSource</a></li>
                                                     <li class=""><a href="classes/ViewManager.html#property_pagination">$pagination</a></li>
                                                     <li class=""><a href="classes/ViewManager.html#property_shouldRenderLayout">$shouldRenderLayout</a></li>
                                                     <li class=""><a href="classes/ViewManager.html#property_title">$title</a></li>
+                                                    <li class=""><a href="classes/ViewManager.html#property_view">$view</a></li>
                                             </ul>
                 </li>
             
@@ -1509,6 +2168,10 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
                                             <li class=""><a href="classes/ViewManager.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method___destruct">__destruct()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_disableLayout">disableLayout()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_getMetaDescription">getMetaDescription()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_getMetaDescriptionSource">getMetaDescriptionSource()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_getTitle">getTitle()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_isShowPage">isShowPage()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_render">render()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderCSRFToken">renderCSRFToken()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderDestroyButton">renderDestroyButton()</a></li>
@@ -1518,6 +2181,11 @@ chat-bubble-left-ellipsis, chevron-left, chevron-right, user-plus, check.</p>
                                             <li class=""><a href="classes/ViewManager.html#method_renderJson">renderJson()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderPartial">renderPartial()</a></li>
                                             <li class=""><a href="classes/ViewManager.html#method_renderTextarea">renderTextarea()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_applySeoMetadata">applySeoMetadata()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_inferMetaDescriptionSource">inferMetaDescriptionSource()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_resolveExplicitMetaDescription">resolveExplicitMetaDescription()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_resolveMetaDescriptionSource">resolveMetaDescriptionSource()</a></li>
+                                            <li class=""><a href="classes/ViewManager.html#method_resolveSeoTitle">resolveSeoTitle()</a></li>
                                     </ul>
             </li>
                     </ul>

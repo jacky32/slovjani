@@ -11,6 +11,9 @@ class ViewManager
   private $controller;
   private $action;
   private $title;
+  private ?string $metaDescription = null;
+  private ?string $metaDescriptionSource = null;
+  private string $view = '';
   private $controllerData;
   private $auth;
   private $errors;
@@ -60,14 +63,139 @@ class ViewManager
    */
   public function render(string $view, array $data = []): string
   {
+    $this->view = $view;
     $this->controllerData = extract($data);
     $this->pagination = $data['pagination'] ?? null;
     $this->errors = $data['errors'] ?? [];
+    $this->applySeoMetadata($view, $data);
+
     ob_start();
-    $this->title = isset($title) ? $title : t("app.default_title");
     include "app/views/$view.html.php";
     $this->content = ob_get_clean();
     return $this->content;
+  }
+
+  /**
+   * Stores SEO-related metadata for the current view render cycle.
+   *
+   * @param string $view The view path being rendered.
+   * @param array  $data Render payload that may include title/meta keys.
+   */
+  private function applySeoMetadata(string $view, array $data): void
+  {
+    $this->title = $this->resolveSeoTitle($data);
+    $this->metaDescription = $this->resolveExplicitMetaDescription($data);
+    $this->metaDescriptionSource = $this->resolveMetaDescriptionSource($view, $data);
+  }
+
+  /**
+   * Resolves the page title used in SEO tags and <title>.
+   *
+   * @param array $data Render payload.
+   * @return string A non-empty page title.
+   */
+  private function resolveSeoTitle(array $data): string
+  {
+    $title = trim((string) ($data['title'] ?? ''));
+    return $title !== '' ? $title : t("app.default_title");
+  }
+
+  /**
+   * Resolves an explicitly provided meta description, if any.
+   *
+   * @param array $data Render payload.
+   * @return string|null Explicit meta description or null when absent.
+   */
+  private function resolveExplicitMetaDescription(array $data): ?string
+  {
+    $metaDescription = trim((string) ($data['meta_description'] ?? ''));
+    return $metaDescription !== '' ? $metaDescription : null;
+  }
+
+  /**
+   * Resolves the best source text for generated meta descriptions.
+   *
+   * @param string $view The view path being rendered.
+   * @param array  $data Render payload.
+   * @return string|null Description source text or null when unavailable.
+   */
+  private function resolveMetaDescriptionSource(string $view, array $data): ?string
+  {
+    $metaDescriptionSource = trim((string) ($data['meta_description_source'] ?? ''));
+    if ($metaDescriptionSource !== '') {
+      return $metaDescriptionSource;
+    }
+    if (str_ends_with($view, '/show')) {
+      return $this->inferMetaDescriptionSource($data);
+    }
+    return null;
+  }
+
+  /**
+   * Returns the currently resolved page title.
+   *
+   * @return string|null The current title or null if not resolved yet.
+   */
+  public function getTitle(): ?string
+  {
+    return $this->title ?? null;
+  }
+
+  /**
+   * Returns an explicit page meta description, when set.
+   *
+   * @return string|null Explicit meta description value.
+   */
+  public function getMetaDescription(): ?string
+  {
+    return $this->metaDescription;
+  }
+
+  /**
+   * Returns the source text used for generated meta descriptions.
+   *
+   * @return string|null Meta description source text.
+   */
+  public function getMetaDescriptionSource(): ?string
+  {
+    return $this->metaDescriptionSource;
+  }
+
+  /**
+   * Indicates whether the current view is a detail/show page.
+   *
+   * @return bool True when current view path ends with /show.
+   */
+  public function isShowPage(): bool
+  {
+    return str_ends_with($this->view, '/show');
+  }
+
+  /**
+   * Infers a fallback text source for show-page meta descriptions.
+   *
+   * @param array $data Render payload that may contain resource objects.
+   * @return string|null First non-empty candidate value from known resource fields.
+   */
+  private function inferMetaDescriptionSource(array $data): ?string
+  {
+    $resourceKeys = ['post', 'event', 'voting', 'user'];
+    $resourceFields = ['description', 'body', 'email'];
+
+    foreach ($resourceKeys as $resourceKey) {
+      $resource = $data[$resourceKey] ?? null;
+      if (!is_object($resource)) {
+        continue;
+      }
+      foreach ($resourceFields as $field) {
+        $rawValue = trim((string) ($resource->{$field} ?? ''));
+        if ($rawValue !== '') {
+          return $rawValue;
+        }
+      }
+    }
+
+    return null;
   }
 
   /**

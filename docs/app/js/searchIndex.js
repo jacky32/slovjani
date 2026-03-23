@@ -1401,6 +1401,31 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/RecaptchaService.html#property_httpClient"
         },                {
+            "fqsen": "\\SeoMetaService",
+            "name": "SeoMetaService",
+            "summary": "Builds\u0020SEO\u0020metadata\u0020for\u0020HTML\u0020head\u0020tags.",
+            "url": "classes/SeoMetaService.html"
+        },                {
+            "fqsen": "\\SeoMetaService\u003A\u003Abuild\u0028\u0029",
+            "name": "build",
+            "summary": "Build\u0020SEO\u0020metadata\u0020values\u0020from\u0020request\u0020and\u0020page\u0020context.",
+            "url": "classes/SeoMetaService.html#method_build"
+        },                {
+            "fqsen": "\\SeoMetaService\u003A\u003AresolveDescription\u0028\u0029",
+            "name": "resolveDescription",
+            "summary": "",
+            "url": "classes/SeoMetaService.html#method_resolveDescription"
+        },                {
+            "fqsen": "\\SeoMetaService\u003A\u003AnormalizeText\u0028\u0029",
+            "name": "normalizeText",
+            "summary": "",
+            "url": "classes/SeoMetaService.html#method_normalizeText"
+        },                {
+            "fqsen": "\\SeoMetaService\u003A\u003Atruncate\u0028\u0029",
+            "name": "truncate",
+            "summary": "",
+            "url": "classes/SeoMetaService.html#method_truncate"
+        },                {
             "fqsen": "\\StaticPageGenerator",
             "name": "StaticPageGenerator",
             "summary": "Generates\u0020static\u0020HTML\u0020snapshots\u0020of\u0020public\u0020pages\u0020\u0028posts\/\u0020and\u0020events\/\u0029\u0020and\nsaves\u0020them\u0020under\u0020\/pregenerated\u0020so\u0020that\u0020index.php\u0020can\u0020serve\u0020them\u0020directly\nwithout\u0020going\u0020through\u0020PHP\u0020routing\u0020for\u0020each\u0020anonymous\u0020request.",
@@ -1516,6 +1541,51 @@ Search.appendIndex(
             "summary": "Renders\u0020a\u0020view\u0020with\u0020the\u0020given\u0020data.\u0020It\u0020extracts\u0020the\u0020data\u0020into\u0020variables,\ncaptures\u0020the\u0020output\u0020of\u0020including\u0020the\u0020view\u0020file,\u0020and\u0020stores\u0020it\u0020in\u0020the\u0020\u0024content\u0020property.",
             "url": "classes/ViewManager.html#method_render"
         },                {
+            "fqsen": "\\ViewManager\u003A\u003AapplySeoMetadata\u0028\u0029",
+            "name": "applySeoMetadata",
+            "summary": "Stores\u0020SEO\u002Drelated\u0020metadata\u0020for\u0020the\u0020current\u0020view\u0020render\u0020cycle.",
+            "url": "classes/ViewManager.html#method_applySeoMetadata"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003AresolveSeoTitle\u0028\u0029",
+            "name": "resolveSeoTitle",
+            "summary": "Resolves\u0020the\u0020page\u0020title\u0020used\u0020in\u0020SEO\u0020tags\u0020and\u0020\u003Ctitle\u003E.",
+            "url": "classes/ViewManager.html#method_resolveSeoTitle"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003AresolveExplicitMetaDescription\u0028\u0029",
+            "name": "resolveExplicitMetaDescription",
+            "summary": "Resolves\u0020an\u0020explicitly\u0020provided\u0020meta\u0020description,\u0020if\u0020any.",
+            "url": "classes/ViewManager.html#method_resolveExplicitMetaDescription"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003AresolveMetaDescriptionSource\u0028\u0029",
+            "name": "resolveMetaDescriptionSource",
+            "summary": "Resolves\u0020the\u0020best\u0020source\u0020text\u0020for\u0020generated\u0020meta\u0020descriptions.",
+            "url": "classes/ViewManager.html#method_resolveMetaDescriptionSource"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003AgetTitle\u0028\u0029",
+            "name": "getTitle",
+            "summary": "Returns\u0020the\u0020currently\u0020resolved\u0020page\u0020title.",
+            "url": "classes/ViewManager.html#method_getTitle"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003AgetMetaDescription\u0028\u0029",
+            "name": "getMetaDescription",
+            "summary": "Returns\u0020an\u0020explicit\u0020page\u0020meta\u0020description,\u0020when\u0020set.",
+            "url": "classes/ViewManager.html#method_getMetaDescription"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003AgetMetaDescriptionSource\u0028\u0029",
+            "name": "getMetaDescriptionSource",
+            "summary": "Returns\u0020the\u0020source\u0020text\u0020used\u0020for\u0020generated\u0020meta\u0020descriptions.",
+            "url": "classes/ViewManager.html#method_getMetaDescriptionSource"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003AisShowPage\u0028\u0029",
+            "name": "isShowPage",
+            "summary": "Indicates\u0020whether\u0020the\u0020current\u0020view\u0020is\u0020a\u0020detail\/show\u0020page.",
+            "url": "classes/ViewManager.html#method_isShowPage"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003AinferMetaDescriptionSource\u0028\u0029",
+            "name": "inferMetaDescriptionSource",
+            "summary": "Infers\u0020a\u0020fallback\u0020text\u0020source\u0020for\u0020show\u002Dpage\u0020meta\u0020descriptions.",
+            "url": "classes/ViewManager.html#method_inferMetaDescriptionSource"
+        },                {
             "fqsen": "\\ViewManager\u003A\u003ArenderPartial\u0028\u0029",
             "name": "renderPartial",
             "summary": "Render\u0020a\u0020partial\u0020view\u0020with\u0020the\u0020given\u0020variables.",
@@ -1585,6 +1655,21 @@ Search.appendIndex(
             "name": "title",
             "summary": "",
             "url": "classes/ViewManager.html#property_title"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003A\u0024metaDescription",
+            "name": "metaDescription",
+            "summary": "",
+            "url": "classes/ViewManager.html#property_metaDescription"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003A\u0024metaDescriptionSource",
+            "name": "metaDescriptionSource",
+            "summary": "",
+            "url": "classes/ViewManager.html#property_metaDescriptionSource"
+        },                {
+            "fqsen": "\\ViewManager\u003A\u003A\u0024view",
+            "name": "view",
+            "summary": "",
+            "url": "classes/ViewManager.html#property_view"
         },                {
             "fqsen": "\\ViewManager\u003A\u003A\u0024controllerData",
             "name": "controllerData",
