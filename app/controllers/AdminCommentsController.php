@@ -191,4 +191,3 @@ class AdminCommentsController extends AdminController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\AdminCommentsController', 'AdminCommentsController');

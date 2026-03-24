@@ -146,4 +146,3 @@ class AttachmentMarkupMediaSourceResolver
   }
 }
 
-class_alias(__NAMESPACE__ . '\\AttachmentMarkupMediaSourceResolver', 'AttachmentMarkupMediaSourceResolver');

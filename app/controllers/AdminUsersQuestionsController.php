@@ -153,4 +153,3 @@ class AdminUsersQuestionsController extends AdminController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\AdminUsersQuestionsController', 'AdminUsersQuestionsController');

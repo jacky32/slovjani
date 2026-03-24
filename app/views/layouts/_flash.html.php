@@ -1,5 +1,5 @@
-<?php if (FlashManager::hasFlashes()) : ?>
-  <?php $flashes = FlashManager::getFlashes(); ?>
+<?php if (\App\Services\FlashManager::hasFlashes()) : ?>
+  <?php $flashes = \App\Services\FlashManager::getFlashes(); ?>
   <div class="flash-container" role="status" aria-live="polite" aria-atomic="true">
     <?php foreach ($flashes as $type => $messages) : ?>
       <?php foreach ($messages as $message) : ?>

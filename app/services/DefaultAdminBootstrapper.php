@@ -46,4 +46,3 @@ class DefaultAdminBootstrapper
   }
 }
 
-class_alias(__NAMESPACE__ . '\\DefaultAdminBootstrapper', 'DefaultAdminBootstrapper');

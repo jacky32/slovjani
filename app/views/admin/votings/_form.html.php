@@ -8,7 +8,7 @@
       <?= $this->renderErrors() ?>
 
       <?= $this->renderInput($voting, "name") ?>
-      <label for="voting-description-input"><?= Voting::humanAttributeName("description") ?></label>
+      <label for="voting-description-input"><?= App\Models\Voting::humanAttributeName("description") ?></label>
       <?php
       $descriptionHasError = false;
       if (!empty($errors)) {

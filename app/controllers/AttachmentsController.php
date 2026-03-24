@@ -70,4 +70,3 @@ class AttachmentsController extends ApplicationController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\AttachmentsController', 'AttachmentsController');

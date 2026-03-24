@@ -164,7 +164,7 @@ class QueryBuilder
     $sql = $this->buildCountSql();
     Logger::sql($sql, $this->bindingsForLog);
 
-    $database = new Database();
+    $database = new \App\Services\Database();
     $connection = $database->getConnection();
     $stmt = $connection->prepare($sql);
 
@@ -232,7 +232,7 @@ class QueryBuilder
 
     Logger::sql($sql, $this->bindingsForLog);
 
-    $database = new Database();
+    $database = new \App\Services\Database();
     $connection = $database->getConnection();
     $stmt = $connection->prepare($sql);
 
@@ -281,7 +281,7 @@ class QueryBuilder
     $sql = $this->buildSql();
     Logger::sql($sql, $this->bindingsForLog);
 
-    $database = new Database();
+    $database = new \App\Services\Database();
     $connection = $database->getConnection();
     $stmt = $connection->prepare($sql);
 

@@ -64,4 +64,3 @@ class FlashManager
   }
 }
 
-class_alias(__NAMESPACE__ . '\\FlashManager', 'FlashManager');

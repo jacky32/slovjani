@@ -38,4 +38,3 @@ class GuestAuth
   }
 }
 
-class_alias(__NAMESPACE__ . '\\GuestAuth', 'GuestAuth');

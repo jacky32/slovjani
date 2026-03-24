@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../app/services/RecaptchaService.php';
 
+use App\Services\RecaptchaService;
 use PHPUnit\Framework\TestCase;
 
 final class RecaptchaServiceTest extends TestCase

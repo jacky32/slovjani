@@ -324,4 +324,3 @@ class StaticPageGenerator
   }
 }
 
-class_alias(__NAMESPACE__ . '\\StaticPageGenerator', 'StaticPageGenerator');

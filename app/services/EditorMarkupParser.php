@@ -502,4 +502,3 @@ class EditorMarkupParser
   }
 }
 
-class_alias(__NAMESPACE__ . '\\EditorMarkupParser', 'EditorMarkupParser');

@@ -31,7 +31,7 @@ trait UniquenessValidator
 
       $query = "SELECT 1 FROM {$table} WHERE {$this->getConditionStringFromAttributes($attribute)}" . $this->getIdCondition() . " LIMIT 1";
       \Logger::sql($query);
-      $database = new \Database();
+      $database = new \App\Services\Database();
       $connection = $database->getConnection();
       $result = $connection->query($query);
       if ($result === false) {

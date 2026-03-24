@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../app/services/GuestAuth.php';
 
+use App\Services\GuestAuth;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -6,22 +6,22 @@
         <legend class="fieldset-legend"><?= t("sessions.new.title") ?></legend>
 
         <label class='my-1 floating-label'>
-          <span><?= User::humanAttributeName("email") ?></span>
+          <span><?= \App\Models\User::humanAttributeName("email") ?></span>
           <input
             required
             type='email'
             name='email'
-            placeholder='<?= User::humanAttributeName("email") ?>'
+            placeholder='<?= \App\Models\User::humanAttributeName("email") ?>'
             class='input input-md' />
         </label>
 
         <label class='my-1 floating-label'>
-          <span><?= User::humanAttributeName("password") ?></span>
+          <span><?= \App\Models\User::humanAttributeName("password") ?></span>
           <input
             required
             type='password'
             name='password'
-            placeholder='<?= User::humanAttributeName("password") ?>'
+            placeholder='<?= \App\Models\User::humanAttributeName("password") ?>'
             class='input input-md' />
         </label>
 

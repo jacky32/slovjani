@@ -64,4 +64,3 @@ class Attachment extends ApplicationRecord
 
 }
 
-class_alias(__NAMESPACE__ . '\\Attachment', 'Attachment');

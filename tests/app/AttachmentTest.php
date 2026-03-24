@@ -11,6 +11,20 @@ namespace ActiveModel\Validations {
   }
 }
 
+namespace App\Services {
+  if (!class_exists('App\\Services\\Database')) {
+    class Database
+    {
+      public function getConnection(): object
+      {
+        return new class {
+          public function close(): void {}
+        };
+      }
+    }
+  }
+}
+
 namespace {
 
   if (!function_exists('toSnakeCase')) {
@@ -40,27 +54,17 @@ namespace {
   if (!class_exists('ActiveModel')) {
     require_once __DIR__ . '/../../lib/active_model/ActiveModel.php';
   }
-  if (!class_exists('Database')) {
-    class Database
-    {
-      public function getConnection(): object
-      {
-        return new class {
-          public function close(): void {}
-        };
-      }
-    }
-  }
-  if (!class_exists('ApplicationRecord')) {
+  if (!class_exists('App\\Models\\ApplicationRecord')) {
     require_once __DIR__ . '/../../app/models/ApplicationRecord.php';
   }
   foreach (['User', 'Post', 'Event', 'Comment', 'Attachment', 'Voting', 'Question', 'UsersQuestion'] as $_m) {
-    $cls = $_m;
+    $cls = 'App\\Models\\' . $_m;
     if (!class_exists($cls)) {
       require_once __DIR__ . "/../../app/models/{$_m}.php";
     }
   }
 
+  use App\Models\Attachment;
   use PHPUnit\Framework\TestCase;
 
   /**
@@ -109,7 +113,7 @@ namespace {
 
     public function testAttachmentDbAttributesContainsExpectedColumns(): void
     {
-      $ref = new ReflectionProperty('Attachment', 'db_attributes');
+      $ref = new ReflectionProperty(Attachment::class, 'db_attributes');
       $ref->setAccessible(true);
       $attrs = $ref->getValue();
       foreach (['id', 'resource_id', 'resource_type', 'file_name', 'file_size', 'file_type', 'visible_name', 'token', 'creator_id', 'is_publicly_visible'] as $col) {
@@ -119,7 +123,7 @@ namespace {
 
     public function testAttachmentValidatesPresenceOfRequiredFields(): void
     {
-      $ref = new ReflectionProperty('Attachment', 'validations');
+      $ref = new ReflectionProperty(Attachment::class, 'validations');
       $ref->setAccessible(true);
       $v = $ref->getValue();
       foreach (['creator_id', 'file_name', 'file_size', 'file_type', 'token', 'resource_id', 'resource_type', 'visible_name'] as $f) {

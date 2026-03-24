@@ -266,4 +266,3 @@ class AdminUsersController extends AdminController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\AdminUsersController', 'AdminUsersController');

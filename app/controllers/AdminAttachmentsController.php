@@ -65,6 +65,7 @@ class AdminAttachmentsController extends AdminController
   {
     $pagination = $this->resource::class::paginate($request['page'], $this->resource_id);
     $this->render("admin/attachments/new", [
+      "attachment" => new Attachment(),
       "resource" => $this->resource,
       "resources" => $pagination->resources,
       "pagination" => $pagination,
@@ -191,5 +192,3 @@ class AdminAttachmentsController extends AdminController
     }
   }
 }
-
-class_alias(__NAMESPACE__ . '\\AdminAttachmentsController', 'AdminAttachmentsController');

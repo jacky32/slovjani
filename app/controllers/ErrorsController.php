@@ -35,4 +35,3 @@ class ErrorsController extends ApplicationController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\ErrorsController', 'ErrorsController');

@@ -89,4 +89,3 @@ class Voting extends ApplicationRecord
   }
 }
 
-class_alias(__NAMESPACE__ . '\\Voting', 'Voting');

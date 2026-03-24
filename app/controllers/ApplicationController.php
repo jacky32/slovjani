@@ -86,4 +86,3 @@ class ApplicationController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\ApplicationController', 'ApplicationController');

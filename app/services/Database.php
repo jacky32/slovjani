@@ -68,4 +68,3 @@ class Database
   }
 }
 
-class_alias(__NAMESPACE__ . '\\Database', 'Database');

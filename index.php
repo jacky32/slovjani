@@ -88,36 +88,36 @@ foreach ($lines as $line) {
 }
 
 // Autoloader
-spl_autoload_register(function ($class) {
-  $classBaseName = basename(str_replace('\\', '/', $class));
-  if (file_exists('app/controllers/' . $classBaseName . '.php')) {
-    require_once 'app/controllers/' . $classBaseName . '.php';
-    return;
-  }
-  if (file_exists('app/models/' . $classBaseName . '.php')) {
-    require_once 'app/models/' . $classBaseName . '.php';
-    return;
-  }
-  if (file_exists('app/services/' . $classBaseName . '.php')) {
-    require_once 'app/services/' . $classBaseName . '.php';
-    return;
-  }
-  if (file_exists('db/' . $classBaseName . '.php')) {
-    require_once 'db/' . $classBaseName . '.php';
-    return;
-  }
-  if (file_exists('db/' . toSnakeCase($class) . '.php')) {
-    require_once 'db/' . toSnakeCase($class) . '.php';
-    return;
-  }
-  if (file_exists('config/' . $classBaseName . '.php')) {
-    require_once 'config/' . $classBaseName . '.php';
-    return;
-  }
-  if (file_exists('config/' . toSnakeCase($class) . '.php')) {
-    require_once 'config/' . toSnakeCase($class) . '.php';
-  }
-});
+// spl_autoload_register(function ($class) {
+//   $classBaseName = basename(str_replace('\\', '/', $class));
+//   if (file_exists('app/controllers/' . $classBaseName . '.php')) {
+//     require_once 'app/controllers/' . $classBaseName . '.php';
+//     return;
+//   }
+//   if (file_exists('app/models/' . $classBaseName . '.php')) {
+//     require_once 'app/models/' . $classBaseName . '.php';
+//     return;
+//   }
+//   if (file_exists('app/services/' . $classBaseName . '.php')) {
+//     require_once 'app/services/' . $classBaseName . '.php';
+//     return;
+//   }
+//   if (file_exists('db/' . $classBaseName . '.php')) {
+//     require_once 'db/' . $classBaseName . '.php';
+//     return;
+//   }
+//   if (file_exists('db/' . toSnakeCase($class) . '.php')) {
+//     require_once 'db/' . toSnakeCase($class) . '.php';
+//     return;
+//   }
+//   if (file_exists('config/' . $classBaseName . '.php')) {
+//     require_once 'config/' . $classBaseName . '.php';
+//     return;
+//   }
+//   if (file_exists('config/' . toSnakeCase($class) . '.php')) {
+//     require_once 'config/' . toSnakeCase($class) . '.php';
+//   }
+// });
 
 // Uncomment to reset DB schema
 // ScriptManager::loadSchema($appConfig['connection'], true);
@@ -136,7 +136,7 @@ if (empty($_SESSION['token'])) {
 }
 $token = $_SESSION['token'];
 
-$db = new Database($appConfig);
+$db = new App\Services\Database();
 $dbConnection = null;
 if ($db) {
   $dbConnection = $db->getConnection();
@@ -153,6 +153,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if ($_FILES) {
   Logger::info("Uploaded files: ", $_FILES);
 }
+
+if (!class_exists($controllerName, true) && strpos($controllerName, '\\') === false) {
+  $namespacedController = 'App\\Controllers\\' . $controllerName;
+  if (class_exists($namespacedController, true)) {
+    $controllerName = $namespacedController;
+  }
+}
+
 $controller = new $controllerName($dbConnection);
 $request = $_REQUEST;
 $request['page'] ??= NULL;

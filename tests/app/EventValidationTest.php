@@ -11,6 +11,20 @@ namespace ActiveModel\Validations {
   }
 }
 
+namespace App\Services {
+  if (!class_exists('App\\Services\\Database')) {
+    class Database
+    {
+      public function getConnection(): object
+      {
+        return new class {
+          public function close(): void {}
+        };
+      }
+    }
+  }
+}
+
 namespace {
 
   if (!function_exists('yaml_parse_file')) {
@@ -62,34 +76,23 @@ namespace {
     require_once __DIR__ . '/../../lib/active_model/ActiveModel.php';
   }
 
-  if (!class_exists('Database')) {
-    class Database
-    {
-      public function getConnection(): object
-      {
-        return new class {
-          public function close(): void {}
-        };
-      }
-    }
-  }
-
-  if (!class_exists('ApplicationRecord')) {
+  if (!class_exists('App\\Models\\ApplicationRecord')) {
     require_once __DIR__ . '/../../app/models/ApplicationRecord.php';
   }
-  if (!class_exists('User')) {
+  if (!class_exists('App\\Models\\User')) {
     require_once __DIR__ . '/../../app/models/User.php';
   }
-  if (!class_exists('Attachment')) {
+  if (!class_exists('App\\Models\\Attachment')) {
     require_once __DIR__ . '/../../app/models/Attachment.php';
   }
-  if (!class_exists('Comment')) {
+  if (!class_exists('App\\Models\\Comment')) {
     require_once __DIR__ . '/../../app/models/Comment.php';
   }
-  if (!class_exists('Event')) {
+  if (!class_exists('App\\Models\\Event')) {
     require_once __DIR__ . '/../../app/models/Event.php';
   }
 
+  use App\Models\Event;
   use ActiveModel\ValidationException;
   use PHPUnit\Framework\TestCase;
 

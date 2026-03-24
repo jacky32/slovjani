@@ -396,4 +396,3 @@ class GoogleCalendarService
   }
 }
 
-class_alias(__NAMESPACE__ . '\\GoogleCalendarService', 'GoogleCalendarService');

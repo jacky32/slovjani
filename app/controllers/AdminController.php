@@ -33,4 +33,3 @@ class AdminController extends ApplicationController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\AdminController', 'AdminController');

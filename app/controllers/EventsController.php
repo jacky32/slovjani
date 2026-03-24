@@ -75,4 +75,3 @@ class EventsController extends ApplicationController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\EventsController', 'EventsController');

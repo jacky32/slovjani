@@ -11,6 +11,20 @@ namespace ActiveModel\Validations {
   }
 }
 
+namespace App\Services {
+  if (!class_exists('App\\Services\\Database')) {
+    class Database
+    {
+      public function getConnection(): object
+      {
+        return new class {
+          public function close(): void {}
+        };
+      }
+    }
+  }
+}
+
 namespace {
 
   // ---- load dependencies ----
@@ -42,32 +56,25 @@ namespace {
     require_once __DIR__ . '/../../lib/active_model/ActiveModel.php';
   }
 
-  // ---- Database stub so ActiveModel::__construct() never connects ----
-  if (!class_exists('Database')) {
-    class Database
-    {
-      public function getConnection(): object
-      {
-        return new class {
-          public function close(): void {}
-        };
-      }
-    }
-  }
-
   // ---- Load models in dependency order ----
-  if (!class_exists('ApplicationRecord')) {
+  if (!class_exists('App\\Models\\ApplicationRecord')) {
     require_once __DIR__ . '/../../app/models/ApplicationRecord.php';
   }
   foreach (['User', 'Post', 'Event', 'Comment', 'Attachment', 'Voting', 'Question', 'UsersQuestion'] as $_m) {
-    $cls = match ($_m) {
-      default => $_m,
-    };
+    $cls = 'App\\Models\\' . $_m;
     if (!class_exists($cls)) {
       require_once __DIR__ . "/../../app/models/{$_m}.php";
     }
   }
 
+  use App\Models\Attachment;
+  use App\Models\Comment;
+  use App\Models\Event;
+  use App\Models\Post;
+  use App\Models\Question;
+  use App\Models\User;
+  use App\Models\UsersQuestion;
+  use App\Models\Voting;
   use PHPUnit\Framework\TestCase;
 
   /**
@@ -91,7 +98,7 @@ namespace {
 
     public function testUserDbAttributesContainsExpectedColumns(): void
     {
-      $attrs = $this->staticProp('User', 'db_attributes');
+      $attrs = $this->staticProp(User::class, 'db_attributes');
       foreach (['id', 'username', 'email', 'password', 'roles_mask', 'created_at', 'updated_at'] as $col) {
         $this->assertContains($col, $attrs, "User::\$db_attributes missing '$col'");
       }
@@ -99,7 +106,7 @@ namespace {
 
     public function testUserValidatesPresenceOfRequiredFields(): void
     {
-      $v = $this->staticProp('User', 'validations');
+      $v = $this->staticProp(User::class, 'validations');
       $this->assertArrayHasKey('presence', $v);
       foreach (['username', 'email', 'password'] as $field) {
         $this->assertContains($field, $v['presence']);
@@ -108,7 +115,7 @@ namespace {
 
     public function testUserValidatesLength(): void
     {
-      $v = $this->staticProp('User', 'validations');
+      $v = $this->staticProp(User::class, 'validations');
       $this->assertArrayHasKey('length', $v);
       $this->assertArrayHasKey('username', $v['length']);
       $this->assertSame(3,  $v['length']['username']['min']);
@@ -117,7 +124,7 @@ namespace {
 
     public function testUserValidatesUniqueness(): void
     {
-      $v = $this->staticProp('User', 'validations');
+      $v = $this->staticProp(User::class, 'validations');
       $this->assertArrayHasKey('uniqueness', $v);
       $this->assertContains('username', $v['uniqueness']);
       $this->assertContains('email',    $v['uniqueness']);
@@ -141,7 +148,7 @@ namespace {
 
     public function testUserHasManyRelationsAreDeclared(): void
     {
-      $r = $this->staticProp('User', 'relations');
+      $r = $this->staticProp(User::class, 'relations');
       $this->assertArrayHasKey('has_many', $r);
       foreach (['posts', 'votings', 'users_questions', 'attachments', 'comments'] as $rel) {
         $this->assertArrayHasKey($rel, $r['has_many'], "User missing has_many '$rel'");
@@ -152,7 +159,7 @@ namespace {
 
     public function testPostDbAttributesContainsExpectedColumns(): void
     {
-      $attrs = $this->staticProp('Post', 'db_attributes');
+      $attrs = $this->staticProp(Post::class, 'db_attributes');
       foreach (['id', 'name', 'body', 'creator_id', 'status', 'created_at', 'updated_at'] as $col) {
         $this->assertContains($col, $attrs);
       }
@@ -160,7 +167,7 @@ namespace {
 
     public function testPostValidatesPresence(): void
     {
-      $v = $this->staticProp('Post', 'validations');
+      $v = $this->staticProp(Post::class, 'validations');
       foreach (['name', 'body', 'creator_id', 'status'] as $f) {
         $this->assertContains($f, $v['presence']);
       }
@@ -168,7 +175,7 @@ namespace {
 
     public function testPostValidatesStatusInclusion(): void
     {
-      $v = $this->staticProp('Post', 'validations');
+      $v = $this->staticProp(Post::class, 'validations');
       $this->assertArrayHasKey('inclusion', $v);
       $this->assertContains('PUBLISHED', $v['inclusion']['status']);
       $this->assertContains('DRAFT',     $v['inclusion']['status']);
@@ -177,14 +184,14 @@ namespace {
 
     public function testPostHasBelongsToCreator(): void
     {
-      $r = $this->staticProp('Post', 'relations');
+      $r = $this->staticProp(Post::class, 'relations');
       $this->assertArrayHasKey('creator', $r['belongs_to']);
       $this->assertSame('creator_id', $r['belongs_to']['creator']['foreign_key']);
     }
 
     public function testPostHasManyAttachmentsAndComments(): void
     {
-      $r = $this->staticProp('Post', 'relations');
+      $r = $this->staticProp(Post::class, 'relations');
       $this->assertArrayHasKey('attachments', $r['has_many']);
       $this->assertArrayHasKey('comments',    $r['has_many']);
     }
@@ -193,7 +200,7 @@ namespace {
 
     public function testEventDbAttributesContainsExpectedColumns(): void
     {
-      $attrs = $this->staticProp('Event', 'db_attributes');
+      $attrs = $this->staticProp(Event::class, 'db_attributes');
       foreach (['id', 'creator_id', 'name', 'description', 'datetime_start', 'datetime_end', 'is_publicly_visible'] as $col) {
         $this->assertContains($col, $attrs);
       }
@@ -201,7 +208,7 @@ namespace {
 
     public function testEventValidatesPresence(): void
     {
-      $v = $this->staticProp('Event', 'validations');
+      $v = $this->staticProp(Event::class, 'validations');
       foreach (['creator_id', 'name', 'description', 'datetime_start'] as $f) {
         $this->assertContains($f, $v['presence']);
       }
@@ -209,7 +216,7 @@ namespace {
 
     public function testEventValidatesLength(): void
     {
-      $v = $this->staticProp('Event', 'validations');
+      $v = $this->staticProp(Event::class, 'validations');
       $this->assertArrayHasKey('name', $v['length']);
       $this->assertSame(4,   $v['length']['name']['min']);
       $this->assertSame(255, $v['length']['name']['max']);
@@ -217,7 +224,7 @@ namespace {
 
     public function testEventRegistersCustomValidationCallback(): void
     {
-      $callbacks = $this->staticProp('Event', 'validation_callbacks');
+      $callbacks = $this->staticProp(Event::class, 'validation_callbacks');
       $this->assertContains('validate_datetime_range', $callbacks);
     }
 
@@ -225,7 +232,7 @@ namespace {
 
     public function testCommentDbAttributesContainsExpectedColumns(): void
     {
-      $attrs = $this->staticProp('Comment', 'db_attributes');
+      $attrs = $this->staticProp(Comment::class, 'db_attributes');
       foreach (['id', 'resource_id', 'resource_type', 'body', 'creator_id'] as $col) {
         $this->assertContains($col, $attrs);
       }
@@ -233,7 +240,7 @@ namespace {
 
     public function testCommentValidatesPresence(): void
     {
-      $v = $this->staticProp('Comment', 'validations');
+      $v = $this->staticProp(Comment::class, 'validations');
       foreach (['creator_id', 'body', 'resource_id', 'resource_type'] as $f) {
         $this->assertContains($f, $v['presence']);
       }
@@ -241,7 +248,7 @@ namespace {
 
     public function testCommentHasBelongsToCreatorAndCommentable(): void
     {
-      $r = $this->staticProp('Comment', 'relations');
+      $r = $this->staticProp(Comment::class, 'relations');
       $this->assertArrayHasKey('creator',     $r['belongs_to']);
       $this->assertArrayHasKey('commentable', $r['belongs_to']);
       $this->assertTrue($r['belongs_to']['commentable']['polymorphic']);
@@ -251,7 +258,7 @@ namespace {
 
     public function testVotingDbAttributesContainsExpectedColumns(): void
     {
-      $attrs = $this->staticProp('Voting', 'db_attributes');
+      $attrs = $this->staticProp(Voting::class, 'db_attributes');
       foreach (['id', 'name', 'status', 'description', 'creator_id', 'datetime_start', 'datetime_end'] as $col) {
         $this->assertContains($col, $attrs);
       }
@@ -259,7 +266,7 @@ namespace {
 
     public function testVotingValidatesStatusInclusion(): void
     {
-      $v = $this->staticProp('Voting', 'validations');
+      $v = $this->staticProp(Voting::class, 'validations');
       foreach (['DRAFT', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED'] as $s) {
         $this->assertContains($s, $v['inclusion']['status']);
       }
@@ -269,7 +276,7 @@ namespace {
 
     public function testQuestionDbAttributesContainsExpectedColumns(): void
     {
-      $attrs = $this->staticProp('Question', 'db_attributes');
+      $attrs = $this->staticProp(Question::class, 'db_attributes');
       foreach (['id', 'voting_id', 'name', 'description'] as $col) {
         $this->assertContains($col, $attrs);
       }
@@ -277,7 +284,7 @@ namespace {
 
     public function testQuestionValidatesPresence(): void
     {
-      $v = $this->staticProp('Question', 'validations');
+      $v = $this->staticProp(Question::class, 'validations');
       foreach (['voting_id', 'name', 'description'] as $f) {
         $this->assertContains($f, $v['presence']);
       }
@@ -285,14 +292,14 @@ namespace {
 
     public function testQuestionBelongsToVoting(): void
     {
-      $r = $this->staticProp('Question', 'relations');
+      $r = $this->staticProp(Question::class, 'relations');
       $this->assertArrayHasKey('voting', $r['belongs_to']);
       $this->assertSame('voting_id', $r['belongs_to']['voting']['foreign_key']);
     }
 
     public function testQuestionHasManyUsersQuestions(): void
     {
-      $r = $this->staticProp('Question', 'relations');
+      $r = $this->staticProp(Question::class, 'relations');
       $this->assertArrayHasKey('users_questions', $r['has_many']);
     }
 
@@ -300,7 +307,7 @@ namespace {
 
     public function testUsersQuestionDbAttributesContainsExpectedColumns(): void
     {
-      $attrs = $this->staticProp('UsersQuestion', 'db_attributes');
+      $attrs = $this->staticProp(UsersQuestion::class, 'db_attributes');
       foreach (['question_id', 'user_id', 'chosen_option'] as $col) {
         $this->assertContains($col, $attrs);
       }
@@ -308,7 +315,7 @@ namespace {
 
     public function testUsersQuestionValidatesChosenOptionInclusion(): void
     {
-      $v = $this->staticProp('UsersQuestion', 'validations');
+      $v = $this->staticProp(UsersQuestion::class, 'validations');
       foreach (['YES', 'NO', 'ABSTAIN'] as $opt) {
         $this->assertContains($opt, $v['inclusion']['chosen_option']);
       }
@@ -316,13 +323,13 @@ namespace {
 
     public function testUsersQuestionValidatesUniquenessCompositeKey(): void
     {
-      $v = $this->staticProp('UsersQuestion', 'validations');
+      $v = $this->staticProp(UsersQuestion::class, 'validations');
       $this->assertContains(['user_id', 'question_id'], $v['uniqueness']);
     }
 
     public function testUsersQuestionCompositePrimaryKey(): void
     {
-      $ref = new ReflectionProperty('UsersQuestion', 'composite_primary_key');
+      $ref = new ReflectionProperty(UsersQuestion::class, 'composite_primary_key');
       $ref->setAccessible(true);
       $pk = $ref->getValue();
       $this->assertContains('user_id',     $pk);

@@ -27,6 +27,12 @@ class ComposerStaticInita6bfcec0ae185d25903079f0306928ee
             'Delight\\Auth\\' => 13,
             'DeepCopy\\' => 9,
         ),
+        'A' =>
+        array (
+            'App\\Services\\' => 13,
+            'App\\Models\\' => 11,
+            'App\\Controllers\\' => 16,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -66,9 +72,59 @@ class ComposerStaticInita6bfcec0ae185d25903079f0306928ee
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'App\\Services\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/app/services',
+        ),
+        'App\\Models\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/app/models',
+        ),
+        'App\\Controllers\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/app/controllers',
+        ),
     );
 
     public static $classMap = array (
+        'App\\Controllers\\AdminAttachmentsController' => __DIR__ . '/../..' . '/app/controllers/AdminAttachmentsController.php',
+        'App\\Controllers\\AdminCommentsController' => __DIR__ . '/../..' . '/app/controllers/AdminCommentsController.php',
+        'App\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/controllers/AdminController.php',
+        'App\\Controllers\\AdminEventsController' => __DIR__ . '/../..' . '/app/controllers/AdminEventsController.php',
+        'App\\Controllers\\AdminPostsController' => __DIR__ . '/../..' . '/app/controllers/AdminPostsController.php',
+        'App\\Controllers\\AdminPreviewsController' => __DIR__ . '/../..' . '/app/controllers/AdminPreviewsController.php',
+        'App\\Controllers\\AdminQuestionsController' => __DIR__ . '/../..' . '/app/controllers/AdminQuestionsController.php',
+        'App\\Controllers\\AdminUsersController' => __DIR__ . '/../..' . '/app/controllers/AdminUsersController.php',
+        'App\\Controllers\\AdminUsersQuestionsController' => __DIR__ . '/../..' . '/app/controllers/AdminUsersQuestionsController.php',
+        'App\\Controllers\\AdminVotingsController' => __DIR__ . '/../..' . '/app/controllers/AdminVotingsController.php',
+        'App\\Controllers\\ApplicationController' => __DIR__ . '/../..' . '/app/controllers/ApplicationController.php',
+        'App\\Controllers\\AttachmentsController' => __DIR__ . '/../..' . '/app/controllers/AttachmentsController.php',
+        'App\\Controllers\\ErrorsController' => __DIR__ . '/../..' . '/app/controllers/ErrorsController.php',
+        'App\\Controllers\\EventsController' => __DIR__ . '/../..' . '/app/controllers/EventsController.php',
+        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
+        'App\\Controllers\\PostsController' => __DIR__ . '/../..' . '/app/controllers/PostsController.php',
+        'App\\Controllers\\SessionsController' => __DIR__ . '/../..' . '/app/controllers/SessionsController.php',
+        'App\\Models\\ApplicationRecord' => __DIR__ . '/../..' . '/app/models/ApplicationRecord.php',
+        'App\\Models\\Attachment' => __DIR__ . '/../..' . '/app/models/Attachment.php',
+        'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/models/Comment.php',
+        'App\\Models\\Event' => __DIR__ . '/../..' . '/app/models/Event.php',
+        'App\\Models\\Post' => __DIR__ . '/../..' . '/app/models/Post.php',
+        'App\\Models\\Question' => __DIR__ . '/../..' . '/app/models/Question.php',
+        'App\\Models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
+        'App\\Models\\UsersQuestion' => __DIR__ . '/../..' . '/app/models/UsersQuestion.php',
+        'App\\Models\\Voting' => __DIR__ . '/../..' . '/app/models/Voting.php',
+        'App\\Services\\AttachmentMarkupMediaSourceResolver' => __DIR__ . '/../..' . '/app/services/AttachmentMarkupMediaSourceResolver.php',
+        'App\\Services\\Database' => __DIR__ . '/../..' . '/app/services/Database.php',
+        'App\\Services\\DefaultAdminBootstrapper' => __DIR__ . '/../..' . '/app/services/DefaultAdminBootstrapper.php',
+        'App\\Services\\EditorMarkupParser' => __DIR__ . '/../..' . '/app/services/EditorMarkupParser.php',
+        'App\\Services\\FlashManager' => __DIR__ . '/../..' . '/app/services/FlashManager.php',
+        'App\\Services\\GoogleCalendarService' => __DIR__ . '/../..' . '/app/services/GoogleCalendarService.php',
+        'App\\Services\\GuestAuth' => __DIR__ . '/../..' . '/app/services/GuestAuth.php',
+        'App\\Services\\RecaptchaService' => __DIR__ . '/../..' . '/app/services/RecaptchaService.php',
+        'App\\Services\\SeoMetaService' => __DIR__ . '/../..' . '/app/services/SeoMetaService.php',
+        'App\\Services\\StaticPageGenerator' => __DIR__ . '/../..' . '/app/services/StaticPageGenerator.php',
+        'App\\Services\\StaticPageRouter' => __DIR__ . '/../..' . '/app/services/StaticPageRouter.php',
+        'App\\Services\\ViewManager' => __DIR__ . '/../..' . '/app/services/ViewManager.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PHPUnit\\Event\\Application\\Finished' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/Finished.php',
         'PHPUnit\\Event\\Application\\FinishedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/FinishedSubscriber.php',
@@ -1152,6 +1208,8 @@ class ComposerStaticInita6bfcec0ae185d25903079f0306928ee
         'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
+        'Router' => __DIR__ . '/../..' . '/config/Router.php',
+        'ScriptManager' => __DIR__ . '/../..' . '/db/ScriptManager.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',
         'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',

@@ -96,4 +96,3 @@ class Event extends ApplicationRecord
 
 }
 
-class_alias(__NAMESPACE__ . '\\Event', 'Event');

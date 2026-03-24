@@ -9,7 +9,7 @@
 
       <?= $this->renderInput($post, "name") ?>
 
-      <label for="post-body-input"><?= Post::humanAttributeName("body") ?></label>
+      <label for="post-body-input"><?= App\Models\Post::humanAttributeName("body") ?></label>
       <?php
       $bodyHasError = false;
       if (!empty($errors)) {
@@ -45,7 +45,7 @@
       <label for="post-body-preview" style="margin-top: 12px;"><?= t('previews.parsed_preview') ?></label>
       <div id="post-body-preview" class="post-preview-panel"><?= t('previews.loading') ?></div>
 
-      <label for="status-select"><?= Post::humanAttributeName("status") ?></label>
+      <label for="status-select"><?= App\Models\Post::humanAttributeName("status") ?></label>
       <select id="status-select" name="post[status]">
         <option value="DRAFT" <?= $post->status == 'DRAFT' ? 'selected' : '' ?>><?= t("enums.post_statuses.DRAFT") ?></option>
         <option value="PUBLISHED" <?= $post->status == 'PUBLISHED' ? 'selected' : '' ?>><?= t("enums.post_statuses.PUBLISHED") ?></option>

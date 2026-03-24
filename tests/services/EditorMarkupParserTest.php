@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../app/services/EditorMarkupParser.php';
 
+use App\Services\EditorMarkupParser;
 use PHPUnit\Framework\TestCase;
 
 final class EditorMarkupParserTest extends TestCase

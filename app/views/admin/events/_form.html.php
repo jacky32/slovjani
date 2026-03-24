@@ -8,7 +8,7 @@
       <?= $this->renderErrors() ?>
 
       <?= $this->renderInput($event, "name") ?>
-      <label for="event-description-input"><?= Event::humanAttributeName("description") ?></label>
+      <label for="event-description-input"><?= App\Models\Event::humanAttributeName("description") ?></label>
       <?php
       $descriptionHasError = false;
       if (!empty($errors)) {

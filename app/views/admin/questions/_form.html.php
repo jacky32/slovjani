@@ -8,7 +8,7 @@
       <?= $this->renderErrors() ?>
 
       <?= $this->renderInput($question, "name") ?>
-      <label for="question-description-input"><?= Question::humanAttributeName("description") ?></label>
+      <label for="question-description-input"><?= App\Models\Question::humanAttributeName("description") ?></label>
       <?php
       $descriptionHasError = false;
       if (!empty($errors)) {

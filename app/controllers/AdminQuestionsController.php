@@ -39,6 +39,7 @@ class AdminQuestionsController extends AdminController
   {
     $pagination = Voting::paginate($request['page'], $this->voting_id);
     $this->render("admin/questions/new", [
+      "question" => new Question(),
       "voting" => Voting::find($this->voting_id),
       "votings" => $pagination->resources,
       "pagination" => $pagination,
@@ -194,5 +195,3 @@ class AdminQuestionsController extends AdminController
     }
   }
 }
-
-class_alias(__NAMESPACE__ . '\\AdminQuestionsController', 'AdminQuestionsController');

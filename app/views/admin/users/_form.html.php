@@ -13,7 +13,7 @@
         <?= $this->renderInput($user, "password", "password") ?><br>
       <?php endif; ?>
 
-      <label for="status-select"><?= User::humanAttributeName("role") ?></label>
+      <label for="status-select"><?= \App\Models\User::humanAttributeName("role") ?></label>
       <select id="status-select" name="user[role]">
         <option value="admin" <?= $user->roles_mask == \Delight\Auth\Role::ADMIN ? 'selected' : '' ?>><?= t("enums.user_roles.ADMIN") ?></option>
         <option value="collaborator" <?= $user->roles_mask == \Delight\Auth\Role::COLLABORATOR ? 'selected' : '' ?>><?= t("enums.user_roles.COLLABORATOR") ?></option>

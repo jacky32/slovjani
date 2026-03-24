@@ -79,4 +79,3 @@ class User extends ApplicationRecord
   }
 }
 
-class_alias(__NAMESPACE__ . '\\User', 'User');

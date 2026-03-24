@@ -54,4 +54,3 @@ class Question extends ApplicationRecord
 
 }
 
-class_alias(__NAMESPACE__ . '\\Question', 'Question');

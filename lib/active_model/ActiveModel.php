@@ -41,7 +41,7 @@ abstract class ActiveModel
    */
   public function __construct($data = [])
   {
-    $this->db = new Database();
+    $this->db = new \App\Services\Database();
     $this->connection = $this->db->getConnection();
 
     $this->initializeAttributes($data);
@@ -317,7 +317,7 @@ abstract class ActiveModel
     $sql = "SELECT * FROM `{$table}` WHERE id = ?";
     Logger::sql($sql, [$id]);
 
-    $database = new Database();
+    $database = new \App\Services\Database();
     $connection = $database->getConnection();
     $stmt = $connection->prepare($sql);
     $stmt->bind_param('i', $id);
@@ -386,7 +386,7 @@ abstract class ActiveModel
     $results = [];
     $sql = "SELECT * FROM " . toSnakeCase(static::class) . "s";
     Logger::sql($sql);
-    $database = new Database();
+    $database = new \App\Services\Database();
     $connection = $database->getConnection();
     $result = $connection->query($sql);
 
@@ -421,7 +421,7 @@ abstract class ActiveModel
     }
 
     Logger::sql($sql, $params);
-    $database = new Database();
+    $database = new \App\Services\Database();
     $connection = $database->getConnection();
     $stmt = $connection->prepare($sql);
     if (!empty($params)) {

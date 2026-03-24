@@ -26,7 +26,7 @@
       <details class="comment-form-toggle">
         <summary class="button"><?= $this->renderIcon('chat-bubble-left-ellipsis') ?> <?= t("reply") ?></summary>
         <?= $this->renderPartial("admin/comments/_form", [
-          'comment'           => new Comment(),
+          'comment'           => new App\Models\Comment(),
           'resource_type'     => $resource_type,
           'resource_id'       => $resource_id,
           'parent_comment_id' => $comment->id,

@@ -73,4 +73,3 @@ class Post extends ApplicationRecord
 
 }
 
-class_alias(__NAMESPACE__ . '\\Post', 'Post');

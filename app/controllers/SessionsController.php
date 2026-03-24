@@ -139,4 +139,3 @@ class SessionsController extends ApplicationController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\SessionsController', 'SessionsController');

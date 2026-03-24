@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../app/services/GoogleCalendarService.php';
 
+use App\Services\GoogleCalendarService;
 use PHPUnit\Framework\TestCase;
 
 final class GoogleCalendarServiceTest extends TestCase

@@ -96,4 +96,3 @@ class StaticPageRouter
   }
 }
 
-class_alias(__NAMESPACE__ . '\\StaticPageRouter', 'StaticPageRouter');

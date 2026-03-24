@@ -206,4 +206,3 @@ class RecaptchaService
   }
 }
 
-class_alias(__NAMESPACE__ . '\\RecaptchaService', 'RecaptchaService');

@@ -60,4 +60,3 @@ class AdminPreviewsController extends AdminController
   }
 }
 
-class_alias(__NAMESPACE__ . '\\AdminPreviewsController', 'AdminPreviewsController');

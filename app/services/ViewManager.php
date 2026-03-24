@@ -431,5 +431,3 @@ class ViewManager
     exit();
   }
 }
-
-class_alias(__NAMESPACE__ . '\\ViewManager', 'ViewManager');

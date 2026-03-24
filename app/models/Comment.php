@@ -58,4 +58,3 @@ class Comment extends ApplicationRecord
 
 }
 
-class_alias(__NAMESPACE__ . '\\Comment', 'Comment');

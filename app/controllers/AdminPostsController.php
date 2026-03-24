@@ -83,6 +83,7 @@ class AdminPostsController extends AdminController
   {
     $pagination = Post::paginate($request['page'], $this->id);
     $this->render("admin/posts/new", [
+      "post" => new Post(),
       "posts" => $pagination->resources,
       "pagination" => $pagination,
     ]);
@@ -238,5 +239,3 @@ class AdminPostsController extends AdminController
     }
   }
 }
-
-class_alias(__NAMESPACE__ . '\\AdminPostsController', 'AdminPostsController');

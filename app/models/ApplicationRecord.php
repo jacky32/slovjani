@@ -22,4 +22,3 @@ abstract class ApplicationRecord extends \ActiveModel
   }
 }
 
-class_alias(__NAMESPACE__ . '\\ApplicationRecord', 'ApplicationRecord');

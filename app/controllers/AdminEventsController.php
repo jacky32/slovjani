@@ -85,6 +85,7 @@ class AdminEventsController extends AdminController
   {
     $pagination = Event::orderBy('created_at', 'desc')->paginate($request['page']);
     $this->render("admin/events/new", [
+      "event" => new Event(),
       "events" => $pagination->resources,
       "pagination" => $pagination
     ]);
@@ -280,5 +281,3 @@ class AdminEventsController extends AdminController
     }
   }
 }
-
-class_alias(__NAMESPACE__ . '\\AdminEventsController', 'AdminEventsController');

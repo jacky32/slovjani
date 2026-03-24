@@ -114,4 +114,3 @@ class SeoMetaService
   }
 }
 
-class_alias(__NAMESPACE__ . '\\SeoMetaService', 'SeoMetaService');
