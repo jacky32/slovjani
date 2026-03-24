@@ -87,38 +87,6 @@ foreach ($lines as $line) {
   }
 }
 
-// Autoloader
-// spl_autoload_register(function ($class) {
-//   $classBaseName = basename(str_replace('\\', '/', $class));
-//   if (file_exists('app/controllers/' . $classBaseName . '.php')) {
-//     require_once 'app/controllers/' . $classBaseName . '.php';
-//     return;
-//   }
-//   if (file_exists('app/models/' . $classBaseName . '.php')) {
-//     require_once 'app/models/' . $classBaseName . '.php';
-//     return;
-//   }
-//   if (file_exists('app/services/' . $classBaseName . '.php')) {
-//     require_once 'app/services/' . $classBaseName . '.php';
-//     return;
-//   }
-//   if (file_exists('db/' . $classBaseName . '.php')) {
-//     require_once 'db/' . $classBaseName . '.php';
-//     return;
-//   }
-//   if (file_exists('db/' . toSnakeCase($class) . '.php')) {
-//     require_once 'db/' . toSnakeCase($class) . '.php';
-//     return;
-//   }
-//   if (file_exists('config/' . $classBaseName . '.php')) {
-//     require_once 'config/' . $classBaseName . '.php';
-//     return;
-//   }
-//   if (file_exists('config/' . toSnakeCase($class) . '.php')) {
-//     require_once 'config/' . toSnakeCase($class) . '.php';
-//   }
-// });
-
 // Uncomment to reset DB schema
 // ScriptManager::loadSchema($appConfig['connection'], true);
 // Uncomment to load DB and tables without dropping existing DB
