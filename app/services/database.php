@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Database connection bootstrapper with first-run schema initialisation.
  *
@@ -23,7 +25,7 @@ class Database
    */
   public function __construct()
   {
-    $appConfig = require 'config/application.php';
+    $appConfig = require 'config/Application.php';
     $this->connectionParams = $appConfig['connection'];
 
     $this->db = $this->connect();

@@ -48,12 +48,12 @@ if ($realPath && $publicDir && strpos($realPath, $publicDir) === 0 && is_file($r
   }
 }
 
-require 'lib/logger.php';
-$appConfig = require './config/application.php';
-require 'lib/helpers.php';
-require 'lib/active_model/active_model.php';
+require 'lib/Logger.php';
+$appConfig = require './config/Application.php';
+require 'lib/Helpers.php';
+require 'lib/active_model/ActiveModel.php';
 require __DIR__ . '/vendor/autoload.php';
-require 'app/services/static_page_router.php';
+require 'app/services/StaticPageRouter.php';
 
 // Start the session early so we can check login state before the pregen shortcut.
 session_start();
@@ -89,11 +89,34 @@ foreach ($lines as $line) {
 
 // Autoloader
 spl_autoload_register(function ($class) {
-  if (file_exists('app/controllers/' . toSnakeCase($class) . '.php')) include 'app/controllers/' . toSnakeCase($class) . '.php';
-  if (file_exists('app/models/' . toSnakeCase($class) . '.php')) include 'app/models/' . toSnakeCase($class) . '.php';
-  if (file_exists('app/services/' . toSnakeCase($class) . '.php')) include 'app/services/' . toSnakeCase($class) . '.php';
-  if (file_exists('db/' . toSnakeCase($class) . '.php')) include 'db/' . toSnakeCase($class) . '.php';
-  if (file_exists('config/' . toSnakeCase($class) . '.php')) include 'config/' . toSnakeCase($class) . '.php';
+  $classBaseName = basename(str_replace('\\', '/', $class));
+  if (file_exists('app/controllers/' . $classBaseName . '.php')) {
+    require_once 'app/controllers/' . $classBaseName . '.php';
+    return;
+  }
+  if (file_exists('app/models/' . $classBaseName . '.php')) {
+    require_once 'app/models/' . $classBaseName . '.php';
+    return;
+  }
+  if (file_exists('app/services/' . $classBaseName . '.php')) {
+    require_once 'app/services/' . $classBaseName . '.php';
+    return;
+  }
+  if (file_exists('db/' . $classBaseName . '.php')) {
+    require_once 'db/' . $classBaseName . '.php';
+    return;
+  }
+  if (file_exists('db/' . toSnakeCase($class) . '.php')) {
+    require_once 'db/' . toSnakeCase($class) . '.php';
+    return;
+  }
+  if (file_exists('config/' . $classBaseName . '.php')) {
+    require_once 'config/' . $classBaseName . '.php';
+    return;
+  }
+  if (file_exists('config/' . toSnakeCase($class) . '.php')) {
+    require_once 'config/' . toSnakeCase($class) . '.php';
+  }
 });
 
 // Uncomment to reset DB schema
