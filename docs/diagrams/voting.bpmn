@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  id="Definitions_1"
+  targetNamespace="http://bpmn.io/schema/bpmn">
+
+  <bpmn:collaboration id="Collaboration_1">
+    <bpmn:participant id="Participant_1" name="Proces hlasování" processRef="Process_Voting" />
+  </bpmn:collaboration>
+
+  <bpmn:process id="Process_Voting" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_Admin" name="Administrátor">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_VytvoritHlasovani</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_VytvoritOtazky</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_KontrolaOtazek</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Spustit</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Ukoncit</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_System" name="Systém">
+        <bpmn:flowNodeRef>Timer_Spusteni</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_MergeKonec</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_User" name="Přihlášený uživatel">
+        <bpmn:flowNodeRef>Task_Hlasovat</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:userTask id="Task_VytvoritHlasovani" name="Vytvořit hlasování">
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_VytvoritOtazky" name="Vytvořit otázky">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:incoming>Flow_Gateway_To_Otazky</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:exclusiveGateway id="Gateway_KontrolaOtazek" name="Je vytvořena alespoň 1 otázka?">
+      <bpmn:incoming>Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Flow_Gateway_To_Timer</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Gateway_To_Otazky</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:intermediateCatchEvent id="Timer_Spusteni" name="Čekání na datetime_start">
+      <bpmn:incoming>Flow_Gateway_To_Timer</bpmn:incoming>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+      <bpmn:timerEventDefinition>
+        <bpmn:timeDate>${datetime_start}</bpmn:timeDate>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+
+    <bpmn:userTask id="Task_Spustit" name="Spustit hlasování">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="Task_Hlasovat" name="Uživatelé hlasují">
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+      <bpmn:outgoing>Flow_AllVoted</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="false" />
+    </bpmn:userTask>
+
+    <bpmn:boundaryEvent id="Timer_Konec_Boundary" name="Uplynul datetime_end"
+      attachedToRef="Task_Hlasovat">
+      <bpmn:outgoing>Flow_TimerEnd</bpmn:outgoing>
+      <bpmn:timerEventDefinition>
+        <bpmn:timeDate>${datetime_end}</bpmn:timeDate>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+
+    <bpmn:exclusiveGateway id="Gateway_MergeKonec" name="Důvod ukončení">
+      <bpmn:incoming>Flow_AllVoted</bpmn:incoming>
+      <bpmn:incoming>Flow_TimerEnd</bpmn:incoming>
+      <bpmn:outgoing>Flow_Merge_To_Ukoncit</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:userTask id="Task_Ukoncit" name="Ukončit a vyhodnotit">
+      <bpmn:incoming>Flow_Merge_To_Ukoncit</bpmn:incoming>
+      <bpmn:outgoing>Flow_8</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:endEvent id="EndEvent_1" name="Konec">
+      <bpmn:incoming>Flow_8</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_VytvoritHlasovani" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_VytvoritHlasovani"
+      targetRef="Task_VytvoritOtazky" />
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_VytvoritOtazky"
+      targetRef="Gateway_KontrolaOtazek" />
+    <bpmn:sequenceFlow id="Flow_Gateway_To_Timer" name="Ano" sourceRef="Gateway_KontrolaOtazek"
+      targetRef="Timer_Spusteni">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${pocet_otazek > 0}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_Gateway_To_Otazky" name="Ne" sourceRef="Gateway_KontrolaOtazek"
+      targetRef="Task_VytvoritOtazky">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${pocet_otazek == 0}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Timer_Spusteni" targetRef="Task_Spustit" />
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_Spustit" targetRef="Task_Hlasovat" />
+
+    <bpmn:sequenceFlow id="Flow_AllVoted" name="Všichni odhlasovali" sourceRef="Task_Hlasovat"
+      targetRef="Gateway_MergeKonec" />
+    <bpmn:sequenceFlow id="Flow_TimerEnd" name="Vypršel čas" sourceRef="Timer_Konec_Boundary"
+      targetRef="Gateway_MergeKonec" />
+    <bpmn:sequenceFlow id="Flow_Merge_To_Ukoncit" sourceRef="Gateway_MergeKonec"
+      targetRef="Task_Ukoncit" />
+
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="Task_Ukoncit" targetRef="EndEvent_1" />
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="Participant_1_di" bpmnElement="Participant_1" isHorizontal="true">
+        <dc:Bounds x="100" y="30" width="1280" height="470" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Admin_di" bpmnElement="Lane_Admin" isHorizontal="true">
+        <dc:Bounds x="130" y="30" width="1250" height="170" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_System_di" bpmnElement="Lane_System" isHorizontal="true">
+        <dc:Bounds x="130" y="200" width="1250" height="150" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_User_di" bpmnElement="Lane_User" isHorizontal="true">
+        <dc:Bounds x="130" y="350" width="1250" height="150" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="180" y="107" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_VytvoritHlasovani_di" bpmnElement="Task_VytvoritHlasovani">
+        <dc:Bounds x="260" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_VytvoritOtazky_di" bpmnElement="Task_VytvoritOtazky">
+        <dc:Bounds x="400" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Gateway_KontrolaOtazek_di" bpmnElement="Gateway_KontrolaOtazek"
+        isMarkerVisible="true">
+        <dc:Bounds x="530" y="100" width="50" height="50" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Timer_Spusteni_di" bpmnElement="Timer_Spusteni">
+        <dc:Bounds x="630" y="257" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Spustit_di" bpmnElement="Task_Spustit">
+        <dc:Bounds x="720" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Hlasovat_di" bpmnElement="Task_Hlasovat">
+        <dc:Bounds x="850" y="385" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Timer_Konec_Boundary_di" bpmnElement="Timer_Konec_Boundary">
+        <dc:Bounds x="932" y="367" width="36" height="36" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Gateway_MergeKonec_di" bpmnElement="Gateway_MergeKonec"
+        isMarkerVisible="true">
+        <dc:Bounds x="1050" y="250" width="50" height="50" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Task_Ukoncit_di" bpmnElement="Task_Ukoncit">
+        <dc:Bounds x="1150" y="85" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="1300" y="107" width="36" height="36" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="216" y="125" />
+        <di:waypoint x="260" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="360" y="125" />
+        <di:waypoint x="400" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="500" y="125" />
+        <di:waypoint x="530" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Gateway_To_Timer_di" bpmnElement="Flow_Gateway_To_Timer">
+        <di:waypoint x="580" y="125" />
+        <di:waypoint x="600" y="125" />
+        <di:waypoint x="600" y="275" />
+        <di:waypoint x="630" y="275" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Gateway_To_Otazky_di" bpmnElement="Flow_Gateway_To_Otazky">
+        <di:waypoint x="555" y="100" />
+        <di:waypoint x="555" y="60" />
+        <di:waypoint x="450" y="60" />
+        <di:waypoint x="450" y="85" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="666" y="275" />
+        <di:waypoint x="690" y="275" />
+        <di:waypoint x="690" y="125" />
+        <di:waypoint x="720" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="820" y="125" />
+        <di:waypoint x="835" y="125" />
+        <di:waypoint x="835" y="425" />
+        <di:waypoint x="850" y="425" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_AllVoted_di" bpmnElement="Flow_AllVoted">
+        <di:waypoint x="950" y="425" />
+        <di:waypoint x="1075" y="425" />
+        <di:waypoint x="1075" y="300" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="975" y="433" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_TimerEnd_di" bpmnElement="Flow_TimerEnd">
+        <di:waypoint x="950" y="367" />
+        <di:waypoint x="950" y="275" />
+        <di:waypoint x="1050" y="275" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="965" y="255" width="60" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_Merge_To_Ukoncit_di" bpmnElement="Flow_Merge_To_Ukoncit">
+        <di:waypoint x="1075" y="250" />
+        <di:waypoint x="1075" y="125" />
+        <di:waypoint x="1150" y="125" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="1250" y="125" />
+        <di:waypoint x="1300" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

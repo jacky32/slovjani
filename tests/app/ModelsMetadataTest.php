@@ -272,6 +272,12 @@ namespace {
       }
     }
 
+    public function testVotingRegistersCustomValidationCallback(): void
+    {
+      $callbacks = $this->staticProp(Voting::class, 'validation_callbacks');
+      $this->assertContains('validate_status_lifecycle', $callbacks);
+    }
+
     // ---- Question model ----
 
     public function testQuestionDbAttributesContainsExpectedColumns(): void

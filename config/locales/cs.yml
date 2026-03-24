@@ -36,6 +36,9 @@ errors:
   must_be_exactly_characters_long: musí být přesně {count} znaků dlouhý
   must_be_included_in: musí být zahrnut v možných možnostech ({options})
   must_be_after_datetime_start: musí být později než datum a čas začátku
+  voting_cannot_start_without_questions: Hlasování nelze spustit bez alespoň jedné otázky.
+  voting_cannot_start_before_datetime_start: Hlasování lze spustit až po datu a čase začátku.
+  voting_cannot_end_before_datetime_end_or_all_users_voted: Hlasování lze ukončit až po datu a čase konce, nebo když již hlasovali všichni uživatelé.
   unauthenticated: Pro přístup k této akci musíte být přihlášeni.
   unauthorized: Nemáte oprávnění provést tuto akci.
   page_not_found: Stránka nenalezena
@@ -260,6 +263,7 @@ attributes:
     description: Popis
     datetime_start: Datum a čas začátku
     datetime_end: Datum a čas konce
+    status: Stav
   question:
     name: Název
     description: Popis

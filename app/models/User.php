@@ -64,7 +64,7 @@ class User extends ApplicationRecord
     ],
     "uniqueness" => ["username", "email"],
     "inclusion" => [
-      "role" => [1, 4, 0]
+      "roles_mask" => [1, 4, 0]
     ]
   ];
 
@@ -77,5 +77,13 @@ class User extends ApplicationRecord
   {
     parent::__construct($data, self::$db_attributes, self::$relations);
   }
-}
 
+  /**
+   * Scope for users with any role (admin or collaborator).
+   * @return \QueryBuilder
+   */
+  public static function withAnyRole(): \QueryBuilder
+  {
+    return self::where(["roles_mask" => [1, 4]]);
+  }
+}

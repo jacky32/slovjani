@@ -188,17 +188,28 @@ class AdminVotingsController extends AdminController
       }
     } catch (\Exception $e) {
       $errors = [];
-      $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
         $errors = array_merge($errors, $e->getValidationExceptions());
       }
       $pagination = Voting::paginate($request['page'], $this->id);
-      $this->render("admin/votings/edit", [
-        "voting" => $voting,
-        "votings" => $pagination->resources,
-        "pagination" => $pagination,
-        "errors" => $errors,
-      ]);
+      if ($voting->status === "DRAFT") {
+        $this->addFlash('error', $e->getMessage());
+        $this->render("admin/votings/edit", [
+          "voting" => $voting,
+          "votings" => $pagination->resources,
+          "pagination" => $pagination,
+          "errors" => $errors,
+        ]);
+      } else {
+        if (count($errors) > 0) {
+          foreach ($errors as $error) {
+            $this->addFlash('error', $error['message']);
+          }
+        } else {
+          $this->addFlash('error', $e->getMessage());
+        }
+        $this->show($request);
+      }
     }
   }
 
