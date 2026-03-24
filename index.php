@@ -48,15 +48,12 @@ if ($realPath && $publicDir && strpos($realPath, $publicDir) === 0 && is_file($r
   }
 }
 
-require 'lib/Logger.php';
-$appConfig = require './config/Application.php';
-require 'lib/Helpers.php';
-require 'lib/active_model/ActiveModel.php';
-require __DIR__ . '/vendor/autoload.php';
-require 'app/services/StaticPageRouter.php';
 
 // Start the session early so we can check login state before the pregen shortcut.
 session_start();
+
+// Check for pregenerated static HTML before booting the full app.
+require_once __DIR__ . '/app/services/StaticPageRouter.php';
 
 // Serve pregenerated static HTML for public pages (GET requests only, guests only)
 // Covers /posts, /posts?page=N, /posts/:id, /events, /events?page=N, /events/:id
@@ -76,6 +73,10 @@ if ($pregeneratedFile !== null) {
   exit;
 }
 // Continue with normal PHP routing for all other requests (including logged-in users and non-GET requests).
+
+$appConfig = require './config/Application.php';
+require __DIR__ . '/vendor/autoload.php';
+
 // Load .env variables into environment
 $env = file_get_contents(__DIR__ . "/.env");
 $lines = explode("\n", $env);

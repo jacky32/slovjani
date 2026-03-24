@@ -2,12 +2,6 @@
 
 declare(strict_types=1);
 
-// Router depends on toPascalCase() from helpers.php.
-if (!function_exists('toSnakeCase')) {
-  require __DIR__ . '/../../lib/Helpers.php';
-}
-require_once __DIR__ . '/../../config/Router.php';
-
 use PHPUnit\Framework\TestCase;
 
 /**

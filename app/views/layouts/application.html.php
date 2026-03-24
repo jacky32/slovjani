@@ -11,7 +11,7 @@
   $title = (string) ($this->getTitle() ?? t('app.default_title'));
   $seoMeta = null;
   if ($isPublicPage) {
-    $seoMeta = (new SeoMetaService())->build(
+    $seoMeta = (new App\Services\SeoMetaService())->build(
       siteName: t('app.default_title'),
       defaultDescription: t('app.default_description'),
       pageTitle: $title,

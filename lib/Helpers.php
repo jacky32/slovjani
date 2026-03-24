@@ -7,13 +7,15 @@
  * @param string $input The string to convert.
  * @return string The snake_case representation.
  */
-function toSnakeCase(string $input): string
-{
-  if (str_contains($input, '\\')) {
-    $input = (string) preg_replace('/^.*\\\\/', '', $input);
-  }
+if (!function_exists('toSnakeCase')) {
+  function toSnakeCase(string $input): string
+  {
+    if (str_contains($input, '\\')) {
+      $input = (string) preg_replace('/^.*\\\\/', '', $input);
+    }
 
-  return strtolower((string) preg_replace('/(?<!^)[A-Z]/', '_$0', $input));
+    return strtolower((string) preg_replace('/(?<!^)[A-Z]/', '_$0', $input));
+  }
 }
 
 /**
@@ -23,9 +25,11 @@ function toSnakeCase(string $input): string
  * @param string $input The snake_case string to convert.
  * @return string The PascalCase representation.
  */
-function toPascalCase(string $input): string
-{
-  return str_replace(' ', '', ucwords(str_replace('_', ' ', $input)));
+if (!function_exists('toPascalCase')) {
+  function toPascalCase(string $input): string
+  {
+    return str_replace(' ', '', ucwords(str_replace('_', ' ', $input)));
+  }
 }
 
 /**
@@ -37,22 +41,24 @@ function toPascalCase(string $input): string
  * @param array  $params Optional named placeholders to interpolate into the translation string.
  * @return string The translated string, or $key if not found.
  */
-function t(string $key, array $params = []): string
-{
-  $translations = yaml_parse_file('config/locales/cs.yml');
-  $keys = explode('.', $key);
-  $value = $translations;
-  foreach ($keys as $k) {
-    if (isset($value[$k])) {
-      $value = $value[$k];
-    } else {
-      return $key;
+if (!function_exists('t')) {
+  function t(string $key, array $params = []): string
+  {
+    $translations = yaml_parse_file('config/locales/cs.yml');
+    $keys = explode('.', $key);
+    $value = $translations;
+    foreach ($keys as $k) {
+      if (isset($value[$k])) {
+        $value = $value[$k];
+      } else {
+        return $key;
+      }
     }
+    foreach ($params as $param_key => $param_value) {
+      $value = str_replace('{' . $param_key . '}', $param_value, $value);
+    }
+    return $value;
   }
-  foreach ($params as $param_key => $param_value) {
-    $value = str_replace('{' . $param_key . '}', $param_value, $value);
-  }
-  return $value;
 }
 
 /**
@@ -62,12 +68,14 @@ function t(string $key, array $params = []): string
  * @param string $path Asset path relative to the public/ directory (e.g. '/assets/app.css').
  * @return string The path with an appended ?v=<mtime> query string, or $path if the file does not exist.
  */
-function asset_path($path)
-{
-  $filePath = __DIR__ . '/../public' . $path;
-  if (file_exists($filePath)) {
-    $mtime = filemtime($filePath);
-    return $path . '?v=' . $mtime;
+if (!function_exists('asset_path')) {
+  function asset_path($path)
+  {
+    $filePath = __DIR__ . '/../public' . $path;
+    if (file_exists($filePath)) {
+      $mtime = filemtime($filePath);
+      return $path . '?v=' . $mtime;
+    }
+    return $path;
   }
-  return $path;
 }

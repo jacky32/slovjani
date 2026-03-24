@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../../app/services/StaticPageRouter.php';
-
 use App\Services\StaticPageRouter;
 use PHPUnit\Framework\TestCase;
 

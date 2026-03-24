@@ -2,20 +2,6 @@
 
 declare(strict_types=1);
 
-// Load dependencies in the correct order, guarding against double-declaration
-// when other test files have already required the same source.
-if (!function_exists('toSnakeCase')) {
-  require __DIR__ . '/../../../lib/Helpers.php';
-}
-if (!class_exists('Logger')) {
-  require __DIR__ . '/../../../lib/Logger.php';
-}
-if (!class_exists('Collection')) {
-  require __DIR__ . '/../../../lib/active_model/relations/Collection.php';
-}
-if (!class_exists('QueryBuilder')) {
-  require __DIR__ . '/../../../lib/active_model/relations/QueryBuilder.php';
-}
 
 use PHPUnit\Framework\TestCase;
 

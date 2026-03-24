@@ -54,6 +54,12 @@ Follow and continuously append logs:
   docker compose exec php_app composer install --no-dev --prefer-dist
 ```
 
+# autoload
+
+```bash
+ docker compose exec php_app composer dump-autoload
+```
+
 # External libraries used
 
 ## PHP
