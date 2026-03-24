@@ -1,19 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Models;
+
 /**
- * Comment model for polymorphic threaded comments across resources.
+ * File attachment model supporting polymorphic parent resources.
  *
  * @package Models
  */
-class Comment extends ApplicationRecord
+class Attachment extends ApplicationRecord
 {
   protected static array $db_attributes = [
     'id',
     'resource_id',
     'resource_type',
-    'body',
-    'parent_comment_id',
+    'file_name',
+    'file_size',
+    'file_type',
+    'visible_name',
+    'token',
     'creator_id',
+    'is_publicly_visible',
     'created_at',
     'updated_at'
   ];
@@ -23,33 +31,37 @@ class Comment extends ApplicationRecord
       'creator' => [
         'class_name' => User::class,
         'foreign_key' => 'creator_id'
-      ],
-      'commentable' => [
+      ]
+    ],
+    'belongs_to' => [
+      'attachable' => [
         'polymorphic' => true,
         'foreign_key' => 'resource_id',
         'foreign_type' => 'resource_type'
-      ],
-      'parent_comment' => [
-        'class_name' => self::class,
-        'foreign_key' => 'parent_comment_id'
       ]
     ]
   ];
 
   protected static array $validations = [
-    'presence' => ['creator_id', 'body', 'resource_id', 'resource_type'],
+    'presence' => ['creator_id', 'file_name', 'file_size', 'file_type', 'token', 'resource_id', 'resource_type', 'visible_name'],
   ];
 
   /**
-   * Initialises the Comment with the provided attribute data.
+   * Initialises the Attachment, auto-generating a random hex token when none
+   * is supplied in $data.
    *
    * @param array $data Associative array of attribute values to pre-populate.
    */
   public function __construct($data = [])
   {
     parent::__construct($data, self::$db_attributes, self::$relations);
+    if (!isset($data['token'])) {
+      $this->token = bin2hex(random_bytes(16));
+    }
   }
 
   // Methods
 
 }
+
+class_alias(__NAMESPACE__ . '\\Attachment', 'Attachment');

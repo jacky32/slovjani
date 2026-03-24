@@ -1,5 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\Post;
+use App\Services\AttachmentMarkupMediaSourceResolver;
+use App\Services\EditorMarkupParser;
+use App\Services\StaticPageGenerator;
+
 /**
  * Admin CRUD controller for posts and static-page regeneration triggers.
  *
@@ -102,7 +111,7 @@ class AdminPostsController extends AdminController
       (new StaticPageGenerator())->regenerateAll();
       $this->addFlash('success', t("posts.create.success"));
       header("Location: /admin/posts");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
@@ -177,7 +186,7 @@ class AdminPostsController extends AdminController
         }
         header("Location: /admin/posts/" . $post->id . "/edit");
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
@@ -223,9 +232,11 @@ class AdminPostsController extends AdminController
         $this->addFlash('error', t("error"));
       }
       header("Location: /admin/posts");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/posts/" . $this->id);
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AdminPostsController', 'AdminPostsController');

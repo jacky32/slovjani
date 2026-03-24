@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
 /**
  * Base controller for all admin controllers that handles basic authentication and authorisation.
  *
@@ -28,3 +32,5 @@ class AdminController extends ApplicationController
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AdminController', 'AdminController');

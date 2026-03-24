@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
 /**
  * Converts editor markup syntax into HTML.
  *
@@ -499,3 +501,5 @@ class EditorMarkupParser
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\EditorMarkupParser', 'EditorMarkupParser');

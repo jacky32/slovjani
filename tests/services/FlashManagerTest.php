@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../app/services/FlashManager.php';
 
+use App\Services\FlashManager;
 use PHPUnit\Framework\TestCase;
 
 /**

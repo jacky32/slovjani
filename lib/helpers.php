@@ -9,7 +9,11 @@
  */
 function toSnakeCase(string $input): string
 {
-  return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $input));
+  if (str_contains($input, '\\')) {
+    $input = (string) preg_replace('/^.*\\\\/', '', $input);
+  }
+
+  return strtolower((string) preg_replace('/(?<!^)[A-Z]/', '_$0', $input));
 }
 
 /**

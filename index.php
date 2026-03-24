@@ -62,7 +62,7 @@ session_start();
 // Covers /posts, /posts?page=N, /posts/:id, /events, /events?page=N, /events/:id
 // Logged-in users are always routed through PHP so they see live, session-aware content.
 $userIsLoggedIn  = isset($_SESSION['auth_logged_in']) && $_SESSION['auth_logged_in'] === true;
-$pregeneratedFile = (new StaticPageRouter(__DIR__ . '/pregenerated'))->resolve(
+$pregeneratedFile = (new App\Services\StaticPageRouter(__DIR__ . '/pregenerated'))->resolve(
   $_SERVER['REQUEST_METHOD'],
   $userIsLoggedIn,
   parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH),

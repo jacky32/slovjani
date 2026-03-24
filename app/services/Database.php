@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
 /**
  * Database connection bootstrapper with first-run schema initialisation.
  *
@@ -12,7 +14,7 @@ class Database
   private $connectionParams;
 
   /**
-   * @var mysqli
+   * @var \mysqli
    */
   private $db;
 
@@ -21,7 +23,7 @@ class Database
    * Loads application config, opens a mysqli connection, and attempts to
    * bootstrap the schema automatically on first run if the database is missing.
    *
-   * @throws Exception If a connection cannot be established after schema load.
+   * @throws \Exception If a connection cannot be established after schema load.
    */
   public function __construct()
   {
@@ -33,13 +35,13 @@ class Database
     if (mysqli_connect_errno()) {
       printf("Connect failed: %s\n", mysqli_connect_error());
       if (strpos(mysqli_connect_error(), "Unknown database") !== NULL) {
-        ScriptManager::loadSchema($this->connectionParams);
+        \ScriptManager::loadSchema($this->connectionParams);
       }
       $this->db = $this->connect();
     }
 
     if (mysqli_connect_errno()) {
-      throw new Exception(sprintf("Connect failed: %s\n", mysqli_connect_error()));
+      throw new \Exception(sprintf("Connect failed: %s\n", mysqli_connect_error()));
     }
   }
 
@@ -51,7 +53,7 @@ class Database
    */
   private function connect()
   {
-    $this->db = ScriptManager::connectToDatabase($this->connectionParams);
+    $this->db = \ScriptManager::connectToDatabase($this->connectionParams);
     return $this->db;
   }
 
@@ -65,3 +67,5 @@ class Database
     return $this->db;
   }
 }
+
+class_alias(__NAMESPACE__ . '\\Database', 'Database');

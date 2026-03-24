@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Models;
+
 /**
  * Base model class shared by all application domain models.
  *
  * @package Models
  */
-abstract class ApplicationRecord extends ActiveModel
+abstract class ApplicationRecord extends \ActiveModel
 {
   /**
    * Passes initialisation data up to ActiveModel.
@@ -17,3 +21,5 @@ abstract class ApplicationRecord extends ActiveModel
     parent::__construct($data);
   }
 }
+
+class_alias(__NAMESPACE__ . '\\ApplicationRecord', 'ApplicationRecord');

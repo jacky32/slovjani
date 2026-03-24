@@ -57,11 +57,39 @@
                     <section class="phpdocumentor-sidebar__category -namespaces">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/app.html" class="">App</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/app-controllers.html" class="">Controllers</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-models.html" class="">Models</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-services.html" class="">Services</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="namespaces/activemodel.html" class="">ActiveModel</a>
 </h4>
     <ul class="phpdocumentor-list">
                     <li>
                 <a href="namespaces/activemodel-validations.html" class="">Validations</a>
+                
+            </li>
+            </ul>
+
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/psr.html" class="">Psr</a>
+</h4>
+    <ul class="phpdocumentor-list">
+                    <li>
+                <a href="namespaces/psr-log.html" class="">Log</a>
                 
             </li>
             </ul>
@@ -136,7 +164,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 
     </aside>
 
@@ -182,6 +210,12 @@ Logger::error('Error message');</p>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a class="" href="classes/Logger.html#property_psrAdapter">$psrAdapter</a>
+    <span>
+                        &nbsp;: <a href="classes/Psr-Log-LoggerInterface.html"><abbr title="\Psr\Log\LoggerInterface">LoggerInterface</abbr></a>|null            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/Logger.html#property_reset">$reset</a>
     <span>
                         &nbsp;: string            </span>
@@ -223,6 +257,13 @@ Logger::error('Error message');</p>
 <dd>Logs an info-level message.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/Logger.html#method_psr">psr()</a>
+    <span>
+                                &nbsp;: <a href="classes/Psr-Log-LoggerInterface.html"><abbr title="\Psr\Log\LoggerInterface">LoggerInterface</abbr></a>    </span>
+</dt>
+<dd>Returns a PSR-3 compatible logger adapter for dependency injection.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Logger.html#method_setLevel">setLevel()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -244,7 +285,7 @@ Logger::error('Error message');</p>
 <dd>Logs a warning-level message.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a class="" href="classes/Logger.html#method_log">log()</a>
+    <a class="" href="classes/Logger.html#method_writeLog">writeLog()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -280,7 +321,7 @@ Logger::error('Error message');</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 
     </aside>
 
@@ -307,6 +348,43 @@ Logger::error('Error message');</p>
             -private
             -static                                                        "
 >
+    <h4 class="phpdocumentor-element__name" id="property_psrAdapter">
+        $psrAdapter
+        <a href="classes/Logger.html#property_psrAdapter" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">66</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type"><a href="classes/Psr-Log-LoggerInterface.html"><abbr title="\Psr\Log\LoggerInterface">LoggerInterface</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__name">$psrAdapter</span>
+     = <span class="phpdocumentor-signature__default-value">\null</span></code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+            -static                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_reset">
         $reset
         <a href="classes/Logger.html#property_reset" class="headerlink"><i class="fas fa-link"></i></a>
@@ -317,7 +395,7 @@ Logger::error('Error message');</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">68</span>
 
     </aside>
 
@@ -354,7 +432,7 @@ Logger::error('Error message');</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">61</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
 
     </aside>
 
@@ -396,7 +474,7 @@ Logger::error('Error message');</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">134</span>
 
     </aside>
 
@@ -452,7 +530,7 @@ Logger::error('Error message');</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">159</span>
+    <span class="phpdocumentor-element-found-in__line">179</span>
 
     </aside>
 
@@ -508,7 +586,7 @@ Logger::error('Error message');</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">125</span>
+    <span class="phpdocumentor-element-found-in__line">145</span>
 
     </aside>
 
@@ -556,6 +634,45 @@ Logger::error('Error message');</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_psr">
+        psr()
+        <a href="classes/Logger.html#method_psr" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">85</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns a PSR-3 compatible logger adapter for dependency injection.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">psr</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Psr-Log-LoggerInterface.html"><abbr title="\Psr\Log\LoggerInterface">LoggerInterface</abbr></a></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/Psr-Log-LoggerInterface.html"><abbr title="\Psr\Log\LoggerInterface">LoggerInterface</abbr></a></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_setLevel">
         setLevel()
         <a href="classes/Logger.html#method_setLevel" class="headerlink"><i class="fas fa-link"></i></a>
@@ -564,7 +681,7 @@ Logger::error('Error message');</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">69</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 
     </aside>
 
@@ -611,7 +728,7 @@ Logger::error('Error message');</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">136</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
@@ -667,7 +784,7 @@ Logger::error('Error message');</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">148</span>
+    <span class="phpdocumentor-element-found-in__line">168</span>
 
     </aside>
 
@@ -715,15 +832,15 @@ Logger::error('Error message');</p>
             -private
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_log">
-        log()
-        <a href="classes/Logger.html#method_log" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_writeLog">
+        writeLog()
+        <a href="classes/Logger.html#method_writeLog" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/Logger.php"><a href="files/lib-logger.html"><abbr title="lib/Logger.php">Logger.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">82</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 
     </aside>
 
@@ -731,7 +848,7 @@ Logger::error('Error message');</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">log</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><a href="classes/LogLevel.html"><abbr title="\LogLevel">LogLevel</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$level</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$message</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$context</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">writeLog</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><a href="classes/LogLevel.html"><abbr title="\LogLevel">LogLevel</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$level</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$message</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$context</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -890,6 +1007,7 @@ Logger::error('Error message');</p>
                 <li>
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="classes/Logger.html#property_minLevel">$minLevel</a></li>
+                                                    <li class=""><a href="classes/Logger.html#property_psrAdapter">$psrAdapter</a></li>
                                                     <li class=""><a href="classes/Logger.html#property_reset">$reset</a></li>
                                                     <li class=""><a href="classes/Logger.html#property_timestampFormat">$timestampFormat</a></li>
                                             </ul>
@@ -901,10 +1019,11 @@ Logger::error('Error message');</p>
                                             <li class=""><a href="classes/Logger.html#method_debug">debug()</a></li>
                                             <li class=""><a href="classes/Logger.html#method_error">error()</a></li>
                                             <li class=""><a href="classes/Logger.html#method_info">info()</a></li>
+                                            <li class=""><a href="classes/Logger.html#method_psr">psr()</a></li>
                                             <li class=""><a href="classes/Logger.html#method_setLevel">setLevel()</a></li>
                                             <li class=""><a href="classes/Logger.html#method_sql">sql()</a></li>
                                             <li class=""><a href="classes/Logger.html#method_warning">warning()</a></li>
-                                            <li class=""><a href="classes/Logger.html#method_log">log()</a></li>
+                                            <li class=""><a href="classes/Logger.html#method_writeLog">writeLog()</a></li>
                                     </ul>
             </li>
                     </ul>

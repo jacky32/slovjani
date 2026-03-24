@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
+use App\Models\Attachment;
+
 /**
  * Resolves editor media source aliases to existing attachment routes.
  *
@@ -141,3 +145,5 @@ class AttachmentMarkupMediaSourceResolver
     return $base . '/' . $this->resourcePath . '/' . $this->resourceId . '/attachments/' . $attachmentId;
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AttachmentMarkupMediaSourceResolver', 'AttachmentMarkupMediaSourceResolver');

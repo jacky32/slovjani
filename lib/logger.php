@@ -1,5 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
+require_once __DIR__ . '/PsrLogShim.php';
+
+use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel as PsrLogLevel;
+
 /**
  * Enumerates supported logger severities and related output metadata.
  */
@@ -56,6 +63,7 @@ enum LogLevel: int
  */
 class Logger
 {
+  private static ?LoggerInterface $psrAdapter = null;
   private static LogLevel $minLevel = LogLevel::DEBUG;
   private static string $reset = "\033[0m";
   private static string $timestampFormat = 'd/m H:i:s';
@@ -72,6 +80,18 @@ class Logger
   }
 
   /**
+   * Returns a PSR-3 compatible logger adapter for dependency injection.
+   */
+  public static function psr(): LoggerInterface
+  {
+    if (self::$psrAdapter === null) {
+      self::$psrAdapter = new LoggerPsrAdapter();
+    }
+
+    return self::$psrAdapter;
+  }
+
+  /**
    * Formats and writes a log entry to stderr if the level meets the minimum threshold.
    *
    * @param LogLevel $level   The severity level of this entry.
@@ -79,7 +99,7 @@ class Logger
    * @param array    $context Optional structured context data to append.
    * @return void
    */
-  private static function log(LogLevel $level, string $message, array $context = []): void
+  private static function writeLog(LogLevel $level, string $message, array $context = []): void
   {
     if ($level->value < self::$minLevel->value) {
       return;
@@ -111,9 +131,9 @@ class Logger
    * @param array  $context Optional structured context data.
    * @return void
    */
-  public static function debug(string $message, array $context = []): void
+  public static function debug(string|\Stringable $message, array $context = []): void
   {
-    self::log(LogLevel::DEBUG, $message, $context);
+    self::writeLog(LogLevel::DEBUG, (string) $message, $context);
   }
   /**
    * Logs an info-level message.
@@ -122,9 +142,9 @@ class Logger
    * @param array  $context Optional structured context data.
    * @return void
    */
-  public static function info(string $message, array $context = []): void
+  public static function info(string|\Stringable $message, array $context = []): void
   {
-    self::log(LogLevel::INFO, $message, $context);
+    self::writeLog(LogLevel::INFO, (string) $message, $context);
   }
   /**
    * Logs a SQL query at SQL-level severity.
@@ -133,9 +153,9 @@ class Logger
    * @param array  $params Bound parameter values for contextual logging.
    * @return void
    */
-  public static function sql(string $query, array $params = []): void
+  public static function sql(string|\Stringable $query, array $params = []): void
   {
-    self::log(LogLevel::SQL, $query, $params);
+    self::writeLog(LogLevel::SQL, (string) $query, $params);
     // Logger::debug((new \Exception())->getTraceAsString());
   }
   /**
@@ -145,9 +165,9 @@ class Logger
    * @param array  $context Optional structured context data.
    * @return void
    */
-  public static function warning(string $message, array $context = []): void
+  public static function warning(string|\Stringable $message, array $context = []): void
   {
-    self::log(LogLevel::WARNING, $message, $context);
+    self::writeLog(LogLevel::WARNING, (string) $message, $context);
   }
   /**
    * Logs an error-level message.
@@ -156,8 +176,92 @@ class Logger
    * @param array  $context Optional structured context data.
    * @return void
    */
-  public static function error(string $message, array $context = []): void
+  public static function error(string|\Stringable $message, array $context = []): void
   {
-    self::log(LogLevel::ERROR, $message, $context);
+    self::writeLog(LogLevel::ERROR, (string) $message, $context);
+  }
+}
+
+/**
+ * Thin PSR-3 adapter that delegates to the static Logger facade.
+ */
+final class LoggerPsrAdapter implements LoggerInterface
+{
+  public function emergency(string|\Stringable $message, array $context = []): void
+  {
+    Logger::error((string) $message, $context);
+  }
+
+  /**
+   * Logs emergency-level message (mapped to ERROR severity in internal logger).
+   */
+  public function alert(string|\Stringable $message, array $context = []): void
+  {
+    Logger::error((string) $message, $context);
+  }
+
+  /**
+   * Logs alert-level message (mapped to ERROR severity in internal logger).
+   */
+  public function critical(string|\Stringable $message, array $context = []): void
+  {
+    Logger::error((string) $message, $context);
+  }
+
+  /**
+   * Logs critical-level message (mapped to ERROR severity in internal logger).
+   */
+  public function error(string|\Stringable $message, array $context = []): void
+  {
+    Logger::error((string) $message, $context);
+  }
+
+  /**
+   * Logs notice-level message (mapped to INFO severity in internal logger).
+   */
+  public function warning(string|\Stringable $message, array $context = []): void
+  {
+    Logger::warning((string) $message, $context);
+  }
+
+  /**
+   * Generic PSR-3 log entry point.
+   */
+  public function notice(string|\Stringable $message, array $context = []): void
+  {
+    Logger::info((string) $message, $context);
+  }
+
+  public function info(string|\Stringable $message, array $context = []): void
+  {
+    Logger::info((string) $message, $context);
+  }
+
+  public function debug(string|\Stringable $message, array $context = []): void
+  {
+    Logger::debug((string) $message, $context);
+  }
+
+  public function log($level, string|\Stringable $message, array $context = []): void
+  {
+    $mapped = match ($level) {
+      PsrLogLevel::DEBUG => LogLevel::DEBUG,
+      PsrLogLevel::INFO => LogLevel::INFO,
+      PsrLogLevel::NOTICE => LogLevel::INFO,
+      PsrLogLevel::WARNING => LogLevel::WARNING,
+      PsrLogLevel::ERROR => LogLevel::ERROR,
+      PsrLogLevel::CRITICAL => LogLevel::ERROR,
+      PsrLogLevel::ALERT => LogLevel::ERROR,
+      PsrLogLevel::EMERGENCY => LogLevel::ERROR,
+      default => LogLevel::INFO,
+    };
+
+    match ($mapped) {
+      LogLevel::DEBUG => Logger::debug((string) $message, $context),
+      LogLevel::INFO => Logger::info((string) $message, $context),
+      LogLevel::SQL => Logger::sql((string) $message, $context),
+      LogLevel::WARNING => Logger::warning((string) $message, $context),
+      LogLevel::ERROR => Logger::error((string) $message, $context),
+    };
   }
 }

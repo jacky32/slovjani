@@ -1,1700 +1,1700 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\AdminAttachmentsController",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController",
             "name": "AdminAttachmentsController",
             "summary": "Admin\u0020controller\u0020for\u0020creating,\u0020serving,\u0020and\u0020deleting\u0020resource\u0020attachments.",
-            "url": "classes/AdminAttachmentsController.html"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020resource\u0020type,\u0020resource\u0020ID,\u0020and\u0020optional\u0020attachment\u0020ID\u0020from\u0020the\nrequest\u0020URI\u0020and\u0020locates\u0020the\u0020parent\u0020resource.",
-            "url": "classes/AdminAttachmentsController.html#method___construct"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#method___construct"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003Ashow\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
             "summary": "Streams\u0020the\u0020raw\u0020attachment\u0020file\u0020to\u0020the\u0020browser.",
-            "url": "classes/AdminAttachmentsController.html#method_show"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#method_show"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003Anew\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
             "summary": "Renders\u0020the\u0020upload\u0020form\u0020for\u0020a\u0020new\u0020attachment\u0020on\u0020the\u0020parent\u0020resource.",
-            "url": "classes/AdminAttachmentsController.html#method_new"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#method_new"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Handles\u0020the\u0020multipart\u0020file\u0020upload,\u0020persists\u0020the\u0020Attachment\u0020record\u0020and\nmoves\u0020the\u0020file\u0020to\u0020the\u0020uploads\u0020directory.",
-            "url": "classes/AdminAttachmentsController.html#method_create"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#method_create"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003Adestroy\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Deletes\u0020an\u0020attachment\u0020record\u0020and\u0020its\u0020corresponding\u0020file\u0020on\u0020disk.",
-            "url": "classes/AdminAttachmentsController.html#method_destroy"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#method_destroy"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003AfindResource\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003AfindResource\u0028\u0029",
             "name": "findResource",
             "summary": "Resolves\u0020the\u0020parent\u0020resource\u0020instance\u0020from\u0020the\u0020parsed\u0020resource\u0020type\u0020and\u0020ID.",
-            "url": "classes/AdminAttachmentsController.html#method_findResource"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#method_findResource"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003A\u0024resource_type",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003A\u0024resource_type",
             "name": "resource_type",
             "summary": "",
-            "url": "classes/AdminAttachmentsController.html#property_resource_type"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#property_resource_type"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003A\u0024resource_id",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003A\u0024resource_id",
             "name": "resource_id",
             "summary": "",
-            "url": "classes/AdminAttachmentsController.html#property_resource_id"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#property_resource_id"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003A\u0024attachment_id",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003A\u0024attachment_id",
             "name": "attachment_id",
             "summary": "",
-            "url": "classes/AdminAttachmentsController.html#property_attachment_id"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#property_attachment_id"
         },                {
-            "fqsen": "\\AdminAttachmentsController\u003A\u003A\u0024resource",
+            "fqsen": "\\App\\Controllers\\AdminAttachmentsController\u003A\u003A\u0024resource",
             "name": "resource",
             "summary": "",
-            "url": "classes/AdminAttachmentsController.html#property_resource"
+            "url": "classes/App-Controllers-AdminAttachmentsController.html#property_resource"
         },                {
-            "fqsen": "\\AdminCommentsController",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController",
             "name": "AdminCommentsController",
             "summary": "Admin\u0020controller\u0020for\u0020managing\u0020comments\u0020on\u0020posts,\u0020users,\u0020events,\u0020and\u0020votings.",
-            "url": "classes/AdminCommentsController.html"
+            "url": "classes/App-Controllers-AdminCommentsController.html"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020resource\u0020type,\u0020resource\u0020ID,\u0020and\u0020optional\u0020comment\u0020ID\u0020from\u0020the\nrequest\u0020URI\u0020and\u0020locates\u0020the\u0020parent\u0020resource.",
-            "url": "classes/AdminCommentsController.html#method___construct"
+            "url": "classes/App-Controllers-AdminCommentsController.html#method___construct"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Persists\u0020a\u0020new\u0020comment\u0020on\u0020the\u0020parent\u0020resource.",
-            "url": "classes/AdminCommentsController.html#method_create"
+            "url": "classes/App-Controllers-AdminCommentsController.html#method_create"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003Aupdate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
             "summary": "Updates\u0020the\u0020body\u0020of\u0020an\u0020existing\u0020comment\u0020owned\u0020by\u0020the\u0020current\u0020user.",
-            "url": "classes/AdminCommentsController.html#method_update"
+            "url": "classes/App-Controllers-AdminCommentsController.html#method_update"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003Adestroy\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Deletes\u0020a\u0020comment\u0020owned\u0020by\u0020the\u0020current\u0020user.",
-            "url": "classes/AdminCommentsController.html#method_destroy"
+            "url": "classes/App-Controllers-AdminCommentsController.html#method_destroy"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003AfindComment\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003AfindComment\u0028\u0029",
             "name": "findComment",
             "summary": "Finds\u0020the\u0020comment\u0020by\u0020ID\u0020and\u0020verifies\u0020it\u0020belongs\u0020to\u0020the\u0020current\u0020resource.",
-            "url": "classes/AdminCommentsController.html#method_findComment"
+            "url": "classes/App-Controllers-AdminCommentsController.html#method_findComment"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003AfindResource\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003AfindResource\u0028\u0029",
             "name": "findResource",
             "summary": "Resolves\u0020the\u0020parent\u0020resource\u0020instance\u0020from\u0020the\u0020parsed\u0020resource\u0020type\u0020and\u0020ID.",
-            "url": "classes/AdminCommentsController.html#method_findResource"
+            "url": "classes/App-Controllers-AdminCommentsController.html#method_findResource"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003A\u0024resource_type",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003A\u0024resource_type",
             "name": "resource_type",
             "summary": "",
-            "url": "classes/AdminCommentsController.html#property_resource_type"
+            "url": "classes/App-Controllers-AdminCommentsController.html#property_resource_type"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003A\u0024resource_id",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003A\u0024resource_id",
             "name": "resource_id",
             "summary": "",
-            "url": "classes/AdminCommentsController.html#property_resource_id"
+            "url": "classes/App-Controllers-AdminCommentsController.html#property_resource_id"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003A\u0024comment_id",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003A\u0024comment_id",
             "name": "comment_id",
             "summary": "",
-            "url": "classes/AdminCommentsController.html#property_comment_id"
+            "url": "classes/App-Controllers-AdminCommentsController.html#property_comment_id"
         },                {
-            "fqsen": "\\AdminCommentsController\u003A\u003A\u0024resource",
+            "fqsen": "\\App\\Controllers\\AdminCommentsController\u003A\u003A\u0024resource",
             "name": "resource",
             "summary": "",
-            "url": "classes/AdminCommentsController.html#property_resource"
+            "url": "classes/App-Controllers-AdminCommentsController.html#property_resource"
         },                {
-            "fqsen": "\\AdminController",
+            "fqsen": "\\App\\Controllers\\AdminController",
             "name": "AdminController",
             "summary": "Base\u0020controller\u0020for\u0020all\u0020admin\u0020controllers\u0020that\u0020handles\u0020basic\u0020authentication\u0020and\u0020authorisation.",
-            "url": "classes/AdminController.html"
+            "url": "classes/App-Controllers-AdminController.html"
         },                {
-            "fqsen": "\\AdminController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Enforces\u0020authentication\u0020and\u0020admin\/collaborator\u0020role\u0020before\u0020any\u0020action.",
-            "url": "classes/AdminController.html#method___construct"
+            "url": "classes/App-Controllers-AdminController.html#method___construct"
         },                {
-            "fqsen": "\\AdminEventsController",
+            "fqsen": "\\App\\Controllers\\AdminEventsController",
             "name": "AdminEventsController",
             "summary": "Admin\u0020CRUD\u0020controller\u0020for\u0020events\u0020and\u0020related\u0020publishing\u0020actions.",
-            "url": "classes/AdminEventsController.html"
+            "url": "classes/App-Controllers-AdminEventsController.html"
         },                {
-            "fqsen": "\\AdminEventsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminEventsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020event\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
-            "url": "classes/AdminEventsController.html#method___construct"
+            "url": "classes/App-Controllers-AdminEventsController.html#method___construct"
         },                {
-            "fqsen": "\\AdminEventsController\u003A\u003Aindex\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminEventsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
             "summary": "Lists\u0020all\u0020events\u0020with\u0020pagination.",
-            "url": "classes/AdminEventsController.html#method_index"
+            "url": "classes/App-Controllers-AdminEventsController.html#method_index"
         },                {
-            "fqsen": "\\AdminEventsController\u003A\u003Ashow\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminEventsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
             "summary": "Shows\u0020details\u0020for\u0020a\u0020single\u0020event.",
-            "url": "classes/AdminEventsController.html#method_show"
+            "url": "classes/App-Controllers-AdminEventsController.html#method_show"
         },                {
-            "fqsen": "\\AdminEventsController\u003A\u003Anew\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminEventsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
             "summary": "Renders\u0020the\u0020new\u002Devent\u0020creation\u0020form.",
-            "url": "classes/AdminEventsController.html#method_new"
+            "url": "classes/App-Controllers-AdminEventsController.html#method_new"
         },                {
-            "fqsen": "\\AdminEventsController\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminEventsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Persists\u0020a\u0020new\u0020event\u0020and\u0020regenerates\u0020static\u0020pages.",
-            "url": "classes/AdminEventsController.html#method_create"
+            "url": "classes/App-Controllers-AdminEventsController.html#method_create"
         },                {
-            "fqsen": "\\AdminEventsController\u003A\u003Aedit\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminEventsController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
             "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020event.",
-            "url": "classes/AdminEventsController.html#method_edit"
+            "url": "classes/App-Controllers-AdminEventsController.html#method_edit"
         },                {
-            "fqsen": "\\AdminEventsController\u003A\u003Aupdate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminEventsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
             "summary": "Updates\u0020an\u0020existing\u0020event\u0020and\u0020regenerates\u0020static\u0020pages.",
-            "url": "classes/AdminEventsController.html#method_update"
+            "url": "classes/App-Controllers-AdminEventsController.html#method_update"
         },                {
-            "fqsen": "\\AdminEventsController\u003A\u003Adestroy\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminEventsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Deletes\u0020an\u0020event\u0020and\u0020triggers\u0020static\u0020page\u0020regeneration\u0020if\u0020the\u0020event\u0020was\u0020public.",
-            "url": "classes/AdminEventsController.html#method_destroy"
+            "url": "classes/App-Controllers-AdminEventsController.html#method_destroy"
         },                {
-            "fqsen": "\\AdminEventsController\u003A\u003A\u0024id",
+            "fqsen": "\\App\\Controllers\\AdminEventsController\u003A\u003A\u0024id",
             "name": "id",
             "summary": "",
-            "url": "classes/AdminEventsController.html#property_id"
+            "url": "classes/App-Controllers-AdminEventsController.html#property_id"
         },                {
-            "fqsen": "\\AdminPostsController",
+            "fqsen": "\\App\\Controllers\\AdminPostsController",
             "name": "AdminPostsController",
             "summary": "Admin\u0020CRUD\u0020controller\u0020for\u0020posts\u0020and\u0020static\u002Dpage\u0020regeneration\u0020triggers.",
-            "url": "classes/AdminPostsController.html"
+            "url": "classes/App-Controllers-AdminPostsController.html"
         },                {
-            "fqsen": "\\AdminPostsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminPostsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020post\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
-            "url": "classes/AdminPostsController.html#method___construct"
+            "url": "classes/App-Controllers-AdminPostsController.html#method___construct"
         },                {
-            "fqsen": "\\AdminPostsController\u003A\u003Aindex\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminPostsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
             "summary": "Lists\u0020all\u0020posts\u0020with\u0020pagination.",
-            "url": "classes/AdminPostsController.html#method_index"
+            "url": "classes/App-Controllers-AdminPostsController.html#method_index"
         },                {
-            "fqsen": "\\AdminPostsController\u003A\u003Ashow\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminPostsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
             "summary": "Shows\u0020details\u0020for\u0020a\u0020single\u0020post.",
-            "url": "classes/AdminPostsController.html#method_show"
+            "url": "classes/App-Controllers-AdminPostsController.html#method_show"
         },                {
-            "fqsen": "\\AdminPostsController\u003A\u003Anew\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminPostsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
             "summary": "Renders\u0020the\u0020new\u002Dpost\u0020creation\u0020form.",
-            "url": "classes/AdminPostsController.html#method_new"
+            "url": "classes/App-Controllers-AdminPostsController.html#method_new"
         },                {
-            "fqsen": "\\AdminPostsController\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminPostsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Persists\u0020a\u0020new\u0020post\u0020and\u0020regenerates\u0020static\u0020pages.",
-            "url": "classes/AdminPostsController.html#method_create"
+            "url": "classes/App-Controllers-AdminPostsController.html#method_create"
         },                {
-            "fqsen": "\\AdminPostsController\u003A\u003Aedit\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminPostsController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
             "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020post.",
-            "url": "classes/AdminPostsController.html#method_edit"
+            "url": "classes/App-Controllers-AdminPostsController.html#method_edit"
         },                {
-            "fqsen": "\\AdminPostsController\u003A\u003Aupdate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminPostsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
             "summary": "Updates\u0020an\u0020existing\u0020post\u0020and\u0020conditionally\u0020regenerates\u0020static\u0020pages.",
-            "url": "classes/AdminPostsController.html#method_update"
+            "url": "classes/App-Controllers-AdminPostsController.html#method_update"
         },                {
-            "fqsen": "\\AdminPostsController\u003A\u003Adestroy\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminPostsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Deletes\u0020a\u0020post\u0020and\u0020triggers\u0020static\u0020page\u0020regeneration\u0020if\u0020it\u0020was\u0020published.",
-            "url": "classes/AdminPostsController.html#method_destroy"
+            "url": "classes/App-Controllers-AdminPostsController.html#method_destroy"
         },                {
-            "fqsen": "\\AdminPostsController\u003A\u003A\u0024id",
+            "fqsen": "\\App\\Controllers\\AdminPostsController\u003A\u003A\u0024id",
             "name": "id",
             "summary": "",
-            "url": "classes/AdminPostsController.html#property_id"
+            "url": "classes/App-Controllers-AdminPostsController.html#property_id"
         },                {
-            "fqsen": "\\AdminPreviewsController",
+            "fqsen": "\\App\\Controllers\\AdminPreviewsController",
             "name": "AdminPreviewsController",
             "summary": "Centralized\u0020admin\u0020preview\u0020controller\u0020for\u0020live\u0020parser\u0020previews\u0020in\u0020forms.",
-            "url": "classes/AdminPreviewsController.html"
+            "url": "classes/App-Controllers-AdminPreviewsController.html"
         },                {
-            "fqsen": "\\AdminPreviewsController\u003A\u003Apreview_markup\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminPreviewsController\u003A\u003Apreview_markup\u0028\u0029",
             "name": "preview_markup",
             "summary": "Parses\u0020incoming\u0020text\u0020and\u0020returns\u0020JSON\u0020HTML\u0020preview.",
-            "url": "classes/AdminPreviewsController.html#method_preview_markup"
+            "url": "classes/App-Controllers-AdminPreviewsController.html#method_preview_markup"
         },                {
-            "fqsen": "\\AdminQuestionsController",
+            "fqsen": "\\App\\Controllers\\AdminQuestionsController",
             "name": "AdminQuestionsController",
             "summary": "Admin\u0020controller\u0020for\u0020creating\u0020and\u0020maintaining\u0020voting\u0020questions.",
-            "url": "classes/AdminQuestionsController.html"
+            "url": "classes/App-Controllers-AdminQuestionsController.html"
         },                {
-            "fqsen": "\\AdminQuestionsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminQuestionsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020voting\u0020ID\u0020and\u0020optional\u0020question\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
-            "url": "classes/AdminQuestionsController.html#method___construct"
+            "url": "classes/App-Controllers-AdminQuestionsController.html#method___construct"
         },                {
-            "fqsen": "\\AdminQuestionsController\u003A\u003Anew\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminQuestionsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
             "summary": "Renders\u0020the\u0020new\u002Dquestion\u0020form\u0020under\u0020the\u0020parent\u0020voting.",
-            "url": "classes/AdminQuestionsController.html#method_new"
+            "url": "classes/App-Controllers-AdminQuestionsController.html#method_new"
         },                {
-            "fqsen": "\\AdminQuestionsController\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminQuestionsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Persists\u0020a\u0020new\u0020question\u0020for\u0020the\u0020parent\u0020voting.",
-            "url": "classes/AdminQuestionsController.html#method_create"
+            "url": "classes/App-Controllers-AdminQuestionsController.html#method_create"
         },                {
-            "fqsen": "\\AdminQuestionsController\u003A\u003Aedit\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminQuestionsController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
             "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020question.",
-            "url": "classes/AdminQuestionsController.html#method_edit"
+            "url": "classes/App-Controllers-AdminQuestionsController.html#method_edit"
         },                {
-            "fqsen": "\\AdminQuestionsController\u003A\u003Aupdate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminQuestionsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
             "summary": "Updates\u0020an\u0020existing\u0020question\u0020belonging\u0020to\u0020the\u0020current\u0020user\u0027s\u0020voting.",
-            "url": "classes/AdminQuestionsController.html#method_update"
+            "url": "classes/App-Controllers-AdminQuestionsController.html#method_update"
         },                {
-            "fqsen": "\\AdminQuestionsController\u003A\u003Adestroy\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminQuestionsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Deletes\u0020a\u0020question\u0020from\u0020the\u0020parent\u0020voting.",
-            "url": "classes/AdminQuestionsController.html#method_destroy"
+            "url": "classes/App-Controllers-AdminQuestionsController.html#method_destroy"
         },                {
-            "fqsen": "\\AdminQuestionsController\u003A\u003A\u0024voting_id",
+            "fqsen": "\\App\\Controllers\\AdminQuestionsController\u003A\u003A\u0024voting_id",
             "name": "voting_id",
             "summary": "",
-            "url": "classes/AdminQuestionsController.html#property_voting_id"
+            "url": "classes/App-Controllers-AdminQuestionsController.html#property_voting_id"
         },                {
-            "fqsen": "\\AdminQuestionsController\u003A\u003A\u0024question_id",
+            "fqsen": "\\App\\Controllers\\AdminQuestionsController\u003A\u003A\u0024question_id",
             "name": "question_id",
             "summary": "",
-            "url": "classes/AdminQuestionsController.html#property_question_id"
+            "url": "classes/App-Controllers-AdminQuestionsController.html#property_question_id"
         },                {
-            "fqsen": "\\AdminUsersController",
+            "fqsen": "\\App\\Controllers\\AdminUsersController",
             "name": "AdminUsersController",
             "summary": "Admin\u0020controller\u0020for\u0020listing,\u0020editing,\u0020and\u0020removing\u0020user\u0020accounts.",
-            "url": "classes/AdminUsersController.html"
+            "url": "classes/App-Controllers-AdminUsersController.html"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020user\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
-            "url": "classes/AdminUsersController.html#method___construct"
+            "url": "classes/App-Controllers-AdminUsersController.html#method___construct"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003Aindex\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
             "summary": "Lists\u0020all\u0020users\u0020with\u0020pagination.",
-            "url": "classes/AdminUsersController.html#method_index"
+            "url": "classes/App-Controllers-AdminUsersController.html#method_index"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003Ashow\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
             "summary": "Shows\u0020details\u0020for\u0020a\u0020single\u0020user.",
-            "url": "classes/AdminUsersController.html#method_show"
+            "url": "classes/App-Controllers-AdminUsersController.html#method_show"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003Anew\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003Anew\u0028\u0029",
             "name": "new",
             "summary": "Renders\u0020the\u0020form\u0020for\u0020creating\u0020a\u0020new\u0020user\u0020in\u0020admin.",
-            "url": "classes/AdminUsersController.html#method_new"
+            "url": "classes/App-Controllers-AdminUsersController.html#method_new"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Creates\u0020a\u0020new\u0020user\u0020account\u0020from\u0020admin\u0020and\u0020assigns\u0020the\u0020selected\u0020role.",
-            "url": "classes/AdminUsersController.html#method_create"
+            "url": "classes/App-Controllers-AdminUsersController.html#method_create"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003Aedit\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
             "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020user.",
-            "url": "classes/AdminUsersController.html#method_edit"
+            "url": "classes/App-Controllers-AdminUsersController.html#method_edit"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003Aupdate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
             "summary": "Updates\u0020an\u0020existing\u0020user\u0027s\u0020email,\u0020username,\u0020and\u0020role.",
-            "url": "classes/AdminUsersController.html#method_update"
+            "url": "classes/App-Controllers-AdminUsersController.html#method_update"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003Adestroy\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Deletes\u0020a\u0020user\u0020account.",
-            "url": "classes/AdminUsersController.html#method_destroy"
+            "url": "classes/App-Controllers-AdminUsersController.html#method_destroy"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003ArenderNewWithErrors\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003ArenderNewWithErrors\u0028\u0029",
             "name": "renderNewWithErrors",
             "summary": "",
-            "url": "classes/AdminUsersController.html#method_renderNewWithErrors"
+            "url": "classes/App-Controllers-AdminUsersController.html#method_renderNewWithErrors"
         },                {
-            "fqsen": "\\AdminUsersController\u003A\u003A\u0024id",
+            "fqsen": "\\App\\Controllers\\AdminUsersController\u003A\u003A\u0024id",
             "name": "id",
             "summary": "",
-            "url": "classes/AdminUsersController.html#property_id"
+            "url": "classes/App-Controllers-AdminUsersController.html#property_id"
         },                {
-            "fqsen": "\\AdminUsersQuestionsController",
+            "fqsen": "\\App\\Controllers\\AdminUsersQuestionsController",
             "name": "AdminUsersQuestionsController",
             "summary": "Admin\u0020controller\u0020handling\u0020user\u0020responses\u0020for\u0020voting\u0020questions.",
-            "url": "classes/AdminUsersQuestionsController.html"
+            "url": "classes/App-Controllers-AdminUsersQuestionsController.html"
         },                {
-            "fqsen": "\\AdminUsersQuestionsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersQuestionsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020voting\u0020ID\u0020and\u0020optional\u0020users\u002Dquestion\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
-            "url": "classes/AdminUsersQuestionsController.html#method___construct"
+            "url": "classes/App-Controllers-AdminUsersQuestionsController.html#method___construct"
         },                {
-            "fqsen": "\\AdminUsersQuestionsController\u003A\u003Anew\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersQuestionsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
             "summary": "Renders\u0020the\u0020ballot\u0020submission\u0020form\u0020for\u0020the\u0020current\u0020voting.",
-            "url": "classes/AdminUsersQuestionsController.html#method_new"
+            "url": "classes/App-Controllers-AdminUsersQuestionsController.html#method_new"
         },                {
-            "fqsen": "\\AdminUsersQuestionsController\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersQuestionsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Persists\u0020the\u0020user\u0027s\u0020answers\u0020for\u0020all\u0020questions\u0020in\u0020the\u0020voting.",
-            "url": "classes/AdminUsersQuestionsController.html#method_create"
+            "url": "classes/App-Controllers-AdminUsersQuestionsController.html#method_create"
         },                {
-            "fqsen": "\\AdminUsersQuestionsController\u003A\u003Adestroy\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminUsersQuestionsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Retracts\u0020the\u0020user\u0027s\u0020vote\u0020for\u0020a\u0020specific\u0020answer\u0020in\u0020the\u0020voting.",
-            "url": "classes/AdminUsersQuestionsController.html#method_destroy"
+            "url": "classes/App-Controllers-AdminUsersQuestionsController.html#method_destroy"
         },                {
-            "fqsen": "\\AdminUsersQuestionsController\u003A\u003A\u0024voting_id",
+            "fqsen": "\\App\\Controllers\\AdminUsersQuestionsController\u003A\u003A\u0024voting_id",
             "name": "voting_id",
             "summary": "",
-            "url": "classes/AdminUsersQuestionsController.html#property_voting_id"
+            "url": "classes/App-Controllers-AdminUsersQuestionsController.html#property_voting_id"
         },                {
-            "fqsen": "\\AdminUsersQuestionsController\u003A\u003A\u0024users_question_id",
+            "fqsen": "\\App\\Controllers\\AdminUsersQuestionsController\u003A\u003A\u0024users_question_id",
             "name": "users_question_id",
             "summary": "",
-            "url": "classes/AdminUsersQuestionsController.html#property_users_question_id"
+            "url": "classes/App-Controllers-AdminUsersQuestionsController.html#property_users_question_id"
         },                {
-            "fqsen": "\\AdminVotingsController",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController",
             "name": "AdminVotingsController",
             "summary": "Admin\u0020CRUD\u0020controller\u0020for\u0020votings\u0020and\u0020lifecycle\u0020management.",
-            "url": "classes/AdminVotingsController.html"
+            "url": "classes/App-Controllers-AdminVotingsController.html"
         },                {
-            "fqsen": "\\AdminVotingsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020voting\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
-            "url": "classes/AdminVotingsController.html#method___construct"
+            "url": "classes/App-Controllers-AdminVotingsController.html#method___construct"
         },                {
-            "fqsen": "\\AdminVotingsController\u003A\u003Aindex\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
             "summary": "Lists\u0020all\u0020votings\u0020with\u0020pagination.",
-            "url": "classes/AdminVotingsController.html#method_index"
+            "url": "classes/App-Controllers-AdminVotingsController.html#method_index"
         },                {
-            "fqsen": "\\AdminVotingsController\u003A\u003Ashow\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
             "summary": "Shows\u0020details\u0020for\u0020a\u0020single\u0020voting\u0020including\u0020whether\u0020the\u0020current\u0020user\u0020has\u0020voted.",
-            "url": "classes/AdminVotingsController.html#method_show"
+            "url": "classes/App-Controllers-AdminVotingsController.html#method_show"
         },                {
-            "fqsen": "\\AdminVotingsController\u003A\u003Anew\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
             "summary": "Renders\u0020the\u0020new\u002Dvoting\u0020creation\u0020form.",
-            "url": "classes/AdminVotingsController.html#method_new"
+            "url": "classes/App-Controllers-AdminVotingsController.html#method_new"
         },                {
-            "fqsen": "\\AdminVotingsController\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Persists\u0020a\u0020new\u0020voting.",
-            "url": "classes/AdminVotingsController.html#method_create"
+            "url": "classes/App-Controllers-AdminVotingsController.html#method_create"
         },                {
-            "fqsen": "\\AdminVotingsController\u003A\u003Aedit\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController\u003A\u003Aedit\u0028\u0029",
             "name": "edit",
             "summary": "Renders\u0020the\u0020edit\u0020form\u0020for\u0020an\u0020existing\u0020voting.",
-            "url": "classes/AdminVotingsController.html#method_edit"
+            "url": "classes/App-Controllers-AdminVotingsController.html#method_edit"
         },                {
-            "fqsen": "\\AdminVotingsController\u003A\u003Aupdate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
             "summary": "Updates\u0020an\u0020existing\u0020voting\u0020owned\u0020by\u0020the\u0020current\u0020user.",
-            "url": "classes/AdminVotingsController.html#method_update"
+            "url": "classes/App-Controllers-AdminVotingsController.html#method_update"
         },                {
-            "fqsen": "\\AdminVotingsController\u003A\u003Adestroy\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Deletes\u0020a\u0020voting\u0020owned\u0020by\u0020the\u0020current\u0020user.",
-            "url": "classes/AdminVotingsController.html#method_destroy"
+            "url": "classes/App-Controllers-AdminVotingsController.html#method_destroy"
         },                {
-            "fqsen": "\\AdminVotingsController\u003A\u003A\u0024id",
+            "fqsen": "\\App\\Controllers\\AdminVotingsController\u003A\u003A\u0024id",
             "name": "id",
             "summary": "",
-            "url": "classes/AdminVotingsController.html#property_id"
+            "url": "classes/App-Controllers-AdminVotingsController.html#property_id"
         },                {
-            "fqsen": "\\ApplicationController",
+            "fqsen": "\\App\\Controllers\\ApplicationController",
             "name": "ApplicationController",
             "summary": "Base\u0020controller\u0020that\u0020provides\u0020shared\u0020auth,\u0020rendering,\u0020CSRF,\u0020and\u0020flash\u0020helpers.",
-            "url": "classes/ApplicationController.html"
+            "url": "classes/App-Controllers-ApplicationController.html"
         },                {
-            "fqsen": "\\ApplicationController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\ApplicationController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020controller\u003A\u0020opens\u0020a\u0020PDO\u0020connection,\u0020creates\u0020the\u0020Auth\nservice\u0020and\u0020the\u0020ViewManager.",
-            "url": "classes/ApplicationController.html#method___construct"
+            "url": "classes/App-Controllers-ApplicationController.html#method___construct"
         },                {
-            "fqsen": "\\ApplicationController\u003A\u003AverifyCSRF\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\ApplicationController\u003A\u003AverifyCSRF\u0028\u0029",
             "name": "verifyCSRF",
             "summary": "Verifies\u0020the\u0020CSRF\u0020token\u0020submitted\u0020with\u0020a\u0020form.",
-            "url": "classes/ApplicationController.html#method_verifyCSRF"
+            "url": "classes/App-Controllers-ApplicationController.html#method_verifyCSRF"
         },                {
-            "fqsen": "\\ApplicationController\u003A\u003AaddFlash\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\ApplicationController\u003A\u003AaddFlash\u0028\u0029",
             "name": "addFlash",
             "summary": "Adds\u0020a\u0020flash\u0020message\u0020to\u0020the\u0020session\u0020via\u0020FlashManager.",
-            "url": "classes/ApplicationController.html#method_addFlash"
+            "url": "classes/App-Controllers-ApplicationController.html#method_addFlash"
         },                {
-            "fqsen": "\\ApplicationController\u003A\u003Arender\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\ApplicationController\u003A\u003Arender\u0028\u0029",
             "name": "render",
             "summary": "Renders\u0020a\u0020view\u0020template\u0020through\u0020the\u0020ViewManager.",
-            "url": "classes/ApplicationController.html#method_render"
+            "url": "classes/App-Controllers-ApplicationController.html#method_render"
         },                {
-            "fqsen": "\\ApplicationController\u003A\u003A\u0024errors",
+            "fqsen": "\\App\\Controllers\\ApplicationController\u003A\u003A\u0024errors",
             "name": "errors",
             "summary": "",
-            "url": "classes/ApplicationController.html#property_errors"
+            "url": "classes/App-Controllers-ApplicationController.html#property_errors"
         },                {
-            "fqsen": "\\ApplicationController\u003A\u003A\u0024viewManager",
+            "fqsen": "\\App\\Controllers\\ApplicationController\u003A\u003A\u0024viewManager",
             "name": "viewManager",
             "summary": "",
-            "url": "classes/ApplicationController.html#property_viewManager"
+            "url": "classes/App-Controllers-ApplicationController.html#property_viewManager"
         },                {
-            "fqsen": "\\ApplicationController\u003A\u003A\u0024auth",
+            "fqsen": "\\App\\Controllers\\ApplicationController\u003A\u003A\u0024auth",
             "name": "auth",
             "summary": "",
-            "url": "classes/ApplicationController.html#property_auth"
+            "url": "classes/App-Controllers-ApplicationController.html#property_auth"
         },                {
-            "fqsen": "\\ApplicationController\u003A\u003A\u0024connection",
+            "fqsen": "\\App\\Controllers\\ApplicationController\u003A\u003A\u0024connection",
             "name": "connection",
             "summary": "",
-            "url": "classes/ApplicationController.html#property_connection"
+            "url": "classes/App-Controllers-ApplicationController.html#property_connection"
         },                {
-            "fqsen": "\\ApplicationController\u003A\u003A\u0024recaptchaService",
+            "fqsen": "\\App\\Controllers\\ApplicationController\u003A\u003A\u0024recaptchaService",
             "name": "recaptchaService",
             "summary": "",
-            "url": "classes/ApplicationController.html#property_recaptchaService"
+            "url": "classes/App-Controllers-ApplicationController.html#property_recaptchaService"
         },                {
-            "fqsen": "\\AttachmentsController",
+            "fqsen": "\\App\\Controllers\\AttachmentsController",
             "name": "AttachmentsController",
             "summary": "Public\u0020controller\u0020for\u0020serving\u0020attachments\u0020attached\u0020to\u0020visible\u0020resources.",
-            "url": "classes/AttachmentsController.html"
+            "url": "classes/App-Controllers-AttachmentsController.html"
         },                {
-            "fqsen": "\\AttachmentsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AttachmentsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020resource\u0020type,\u0020resource\u0020ID,\u0020and\u0020optional\u0020attachment\u0020ID\u0020from\u0020the\nrequest\u0020URI\u0020and\u0020locates\u0020the\u0020parent\u0020resource.",
-            "url": "classes/AttachmentsController.html#method___construct"
+            "url": "classes/App-Controllers-AttachmentsController.html#method___construct"
         },                {
-            "fqsen": "\\AttachmentsController\u003A\u003Ashow\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AttachmentsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
             "summary": "Streams\u0020a\u0020publicly\u0020visible\u0020attachment\u0020file\u0020to\u0020the\u0020browser.",
-            "url": "classes/AttachmentsController.html#method_show"
+            "url": "classes/App-Controllers-AttachmentsController.html#method_show"
         },                {
-            "fqsen": "\\AttachmentsController\u003A\u003AfindResource\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\AttachmentsController\u003A\u003AfindResource\u0028\u0029",
             "name": "findResource",
             "summary": "Resolves\u0020the\u0020parent\u0020public\u0020resource\u0020\u0028Post\u0020or\u0020Event\u0029\u0020from\u0020the\u0020parsed\u0020type\u0020and\u0020ID.",
-            "url": "classes/AttachmentsController.html#method_findResource"
+            "url": "classes/App-Controllers-AttachmentsController.html#method_findResource"
         },                {
-            "fqsen": "\\AttachmentsController\u003A\u003A\u0024resource_type",
+            "fqsen": "\\App\\Controllers\\AttachmentsController\u003A\u003A\u0024resource_type",
             "name": "resource_type",
             "summary": "",
-            "url": "classes/AttachmentsController.html#property_resource_type"
+            "url": "classes/App-Controllers-AttachmentsController.html#property_resource_type"
         },                {
-            "fqsen": "\\AttachmentsController\u003A\u003A\u0024resource_id",
+            "fqsen": "\\App\\Controllers\\AttachmentsController\u003A\u003A\u0024resource_id",
             "name": "resource_id",
             "summary": "",
-            "url": "classes/AttachmentsController.html#property_resource_id"
+            "url": "classes/App-Controllers-AttachmentsController.html#property_resource_id"
         },                {
-            "fqsen": "\\AttachmentsController\u003A\u003A\u0024attachment_id",
+            "fqsen": "\\App\\Controllers\\AttachmentsController\u003A\u003A\u0024attachment_id",
             "name": "attachment_id",
             "summary": "",
-            "url": "classes/AttachmentsController.html#property_attachment_id"
+            "url": "classes/App-Controllers-AttachmentsController.html#property_attachment_id"
         },                {
-            "fqsen": "\\AttachmentsController\u003A\u003A\u0024resource",
+            "fqsen": "\\App\\Controllers\\AttachmentsController\u003A\u003A\u0024resource",
             "name": "resource",
             "summary": "",
-            "url": "classes/AttachmentsController.html#property_resource"
+            "url": "classes/App-Controllers-AttachmentsController.html#property_resource"
         },                {
-            "fqsen": "\\ErrorsController",
+            "fqsen": "\\App\\Controllers\\ErrorsController",
             "name": "ErrorsController",
             "summary": "Controller\u0020for\u0020fallback\u0020error\u0020pages\u0020such\u0020as\u0020404\u0020responses.",
-            "url": "classes/ErrorsController.html"
+            "url": "classes/App-Controllers-ErrorsController.html"
         },                {
-            "fqsen": "\\ErrorsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\ErrorsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020errors\u0020controller.",
-            "url": "classes/ErrorsController.html#method___construct"
+            "url": "classes/App-Controllers-ErrorsController.html#method___construct"
         },                {
-            "fqsen": "\\ErrorsController\u003A\u003AnotFound\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\ErrorsController\u003A\u003AnotFound\u0028\u0029",
             "name": "notFound",
             "summary": "Renders\u0020the\u0020404\u0020Not\u0020Found\u0020page\u0020with\u0020a\u0020404\u0020HTTP\u0020response\u0020code.",
-            "url": "classes/ErrorsController.html#method_notFound"
+            "url": "classes/App-Controllers-ErrorsController.html#method_notFound"
         },                {
-            "fqsen": "\\EventsController",
+            "fqsen": "\\App\\Controllers\\EventsController",
             "name": "EventsController",
             "summary": "Public\u0020read\u002Donly\u0020controller\u0020for\u0020listing\u0020and\u0020viewing\u0020visible\u0020events.",
-            "url": "classes/EventsController.html"
+            "url": "classes/App-Controllers-EventsController.html"
         },                {
-            "fqsen": "\\EventsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\EventsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020event\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
-            "url": "classes/EventsController.html#method___construct"
+            "url": "classes/App-Controllers-EventsController.html#method___construct"
         },                {
-            "fqsen": "\\EventsController\u003A\u003Aindex\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\EventsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
             "summary": "Lists\u0020publicly\u0020visible\u0020events\u0020with\u0020pagination.",
-            "url": "classes/EventsController.html#method_index"
+            "url": "classes/App-Controllers-EventsController.html#method_index"
         },                {
-            "fqsen": "\\EventsController\u003A\u003Ashow\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\EventsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
             "summary": "Shows\u0020a\u0020single\u0020publicly\u0020visible\u0020event\u0020with\u0020its\u0020public\u0020attachments.",
-            "url": "classes/EventsController.html#method_show"
+            "url": "classes/App-Controllers-EventsController.html#method_show"
         },                {
-            "fqsen": "\\EventsController\u003A\u003A\u0024id",
+            "fqsen": "\\App\\Controllers\\EventsController\u003A\u003A\u0024id",
             "name": "id",
             "summary": "",
-            "url": "classes/EventsController.html#property_id"
+            "url": "classes/App-Controllers-EventsController.html#property_id"
         },                {
-            "fqsen": "\\HomeController",
+            "fqsen": "\\App\\Controllers\\HomeController",
             "name": "HomeController",
             "summary": "Controller\u0020for\u0020the\u0020application\u0020landing\u0020page.",
-            "url": "classes/HomeController.html"
+            "url": "classes/App-Controllers-HomeController.html"
         },                {
-            "fqsen": "\\HomeController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\HomeController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020home\u0020controller.",
-            "url": "classes/HomeController.html#method___construct"
+            "url": "classes/App-Controllers-HomeController.html#method___construct"
         },                {
-            "fqsen": "\\HomeController\u003A\u003Aindex\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\HomeController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
             "summary": "Renders\u0020the\u0020home\/index\u0020view.",
-            "url": "classes/HomeController.html#method_index"
+            "url": "classes/App-Controllers-HomeController.html#method_index"
         },                {
-            "fqsen": "\\PostsController",
+            "fqsen": "\\App\\Controllers\\PostsController",
             "name": "PostsController",
             "summary": "Public\u0020read\u002Donly\u0020controller\u0020for\u0020published\u0020posts\u0020and\u0020detail\u0020pages.",
-            "url": "classes/PostsController.html"
+            "url": "classes/App-Controllers-PostsController.html"
         },                {
-            "fqsen": "\\PostsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\PostsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Parses\u0020the\u0020post\u0020ID\u0020from\u0020the\u0020request\u0020URI.",
-            "url": "classes/PostsController.html#method___construct"
+            "url": "classes/App-Controllers-PostsController.html#method___construct"
         },                {
-            "fqsen": "\\PostsController\u003A\u003Aindex\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\PostsController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
             "summary": "Lists\u0020publicly\u0020visible\u0020\u0028published\u0029\u0020posts\u0020with\u0020pagination.",
-            "url": "classes/PostsController.html#method_index"
+            "url": "classes/App-Controllers-PostsController.html#method_index"
         },                {
-            "fqsen": "\\PostsController\u003A\u003Ashow\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\PostsController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
             "summary": "Shows\u0020a\u0020single\u0020published\u0020post\u0020with\u0020its\u0020public\u0020attachments.",
-            "url": "classes/PostsController.html#method_show"
+            "url": "classes/App-Controllers-PostsController.html#method_show"
         },                {
-            "fqsen": "\\PostsController\u003A\u003A\u0024id",
+            "fqsen": "\\App\\Controllers\\PostsController\u003A\u003A\u0024id",
             "name": "id",
             "summary": "",
-            "url": "classes/PostsController.html#property_id"
+            "url": "classes/App-Controllers-PostsController.html#property_id"
         },                {
-            "fqsen": "\\SessionsController",
+            "fqsen": "\\App\\Controllers\\SessionsController",
             "name": "SessionsController",
             "summary": "Authentication\u0020controller\u0020for\u0020login\u0020and\u0020logout\u0020session\u0020actions.",
-            "url": "classes/SessionsController.html"
+            "url": "classes/App-Controllers-SessionsController.html"
         },                {
-            "fqsen": "\\SessionsController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\SessionsController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020sessions\u0020controller.",
-            "url": "classes/SessionsController.html#method___construct"
+            "url": "classes/App-Controllers-SessionsController.html#method___construct"
         },                {
-            "fqsen": "\\SessionsController\u003A\u003Anew\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\SessionsController\u003A\u003Anew\u0028\u0029",
             "name": "new",
             "summary": "Renders\u0020the\u0020login\u0020form,\u0020or\u0020redirects\u0020already\u002Dauthenticated\u0020users.",
-            "url": "classes/SessionsController.html#method_new"
+            "url": "classes/App-Controllers-SessionsController.html#method_new"
         },                {
-            "fqsen": "\\SessionsController\u003A\u003Abootstrap_default_admin\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\SessionsController\u003A\u003Abootstrap_default_admin\u0028\u0029",
             "name": "bootstrap_default_admin",
             "summary": "One\u002Dtime\u0020action\u0020that\u0020creates\u0020the\u0020default\u0020admin\u0020user\u0020on\u0020an\u0020empty\u0020database.",
-            "url": "classes/SessionsController.html#method_bootstrap_default_admin"
+            "url": "classes/App-Controllers-SessionsController.html#method_bootstrap_default_admin"
         },                {
-            "fqsen": "\\SessionsController\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\SessionsController\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "Attempts\u0020to\u0020log\u0020the\u0020user\u0020in\u0020with\u0020the\u0020submitted\u0020email\u0020and\u0020password.",
-            "url": "classes/SessionsController.html#method_create"
+            "url": "classes/App-Controllers-SessionsController.html#method_create"
         },                {
-            "fqsen": "\\SessionsController\u003A\u003Adestroy\u0028\u0029",
+            "fqsen": "\\App\\Controllers\\SessionsController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Logs\u0020the\u0020current\u0020user\u0020out\u0020and\u0020redirects\u0020to\u0020the\u0020home\u0020page.",
-            "url": "classes/SessionsController.html#method_destroy"
+            "url": "classes/App-Controllers-SessionsController.html#method_destroy"
         },                {
-            "fqsen": "\\ApplicationRecord",
+            "fqsen": "\\App\\Models\\ApplicationRecord",
             "name": "ApplicationRecord",
             "summary": "Base\u0020model\u0020class\u0020shared\u0020by\u0020all\u0020application\u0020domain\u0020models.",
-            "url": "classes/ApplicationRecord.html"
+            "url": "classes/App-Models-ApplicationRecord.html"
         },                {
-            "fqsen": "\\ApplicationRecord\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Models\\ApplicationRecord\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Passes\u0020initialisation\u0020data\u0020up\u0020to\u0020ActiveModel.",
-            "url": "classes/ApplicationRecord.html#method___construct"
+            "url": "classes/App-Models-ApplicationRecord.html#method___construct"
         },                {
-            "fqsen": "\\Attachment",
+            "fqsen": "\\App\\Models\\Attachment",
             "name": "Attachment",
             "summary": "File\u0020attachment\u0020model\u0020supporting\u0020polymorphic\u0020parent\u0020resources.",
-            "url": "classes/Attachment.html"
+            "url": "classes/App-Models-Attachment.html"
         },                {
-            "fqsen": "\\Attachment\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Models\\Attachment\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020Attachment,\u0020auto\u002Dgenerating\u0020a\u0020random\u0020hex\u0020token\u0020when\u0020none\nis\u0020supplied\u0020in\u0020\u0024data.",
-            "url": "classes/Attachment.html#method___construct"
+            "url": "classes/App-Models-Attachment.html#method___construct"
         },                {
-            "fqsen": "\\Attachment\u003A\u003A\u0024db_attributes",
+            "fqsen": "\\App\\Models\\Attachment\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
-            "url": "classes/Attachment.html#property_db_attributes"
+            "url": "classes/App-Models-Attachment.html#property_db_attributes"
         },                {
-            "fqsen": "\\Attachment\u003A\u003A\u0024relations",
+            "fqsen": "\\App\\Models\\Attachment\u003A\u003A\u0024relations",
             "name": "relations",
             "summary": "",
-            "url": "classes/Attachment.html#property_relations"
+            "url": "classes/App-Models-Attachment.html#property_relations"
         },                {
-            "fqsen": "\\Attachment\u003A\u003A\u0024validations",
+            "fqsen": "\\App\\Models\\Attachment\u003A\u003A\u0024validations",
             "name": "validations",
             "summary": "",
-            "url": "classes/Attachment.html#property_validations"
+            "url": "classes/App-Models-Attachment.html#property_validations"
         },                {
-            "fqsen": "\\Comment",
+            "fqsen": "\\App\\Models\\Comment",
             "name": "Comment",
             "summary": "Comment\u0020model\u0020for\u0020polymorphic\u0020threaded\u0020comments\u0020across\u0020resources.",
-            "url": "classes/Comment.html"
+            "url": "classes/App-Models-Comment.html"
         },                {
-            "fqsen": "\\Comment\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Models\\Comment\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020Comment\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
-            "url": "classes/Comment.html#method___construct"
+            "url": "classes/App-Models-Comment.html#method___construct"
         },                {
-            "fqsen": "\\Comment\u003A\u003A\u0024db_attributes",
+            "fqsen": "\\App\\Models\\Comment\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
-            "url": "classes/Comment.html#property_db_attributes"
+            "url": "classes/App-Models-Comment.html#property_db_attributes"
         },                {
-            "fqsen": "\\Comment\u003A\u003A\u0024relations",
+            "fqsen": "\\App\\Models\\Comment\u003A\u003A\u0024relations",
             "name": "relations",
             "summary": "",
-            "url": "classes/Comment.html#property_relations"
+            "url": "classes/App-Models-Comment.html#property_relations"
         },                {
-            "fqsen": "\\Comment\u003A\u003A\u0024validations",
+            "fqsen": "\\App\\Models\\Comment\u003A\u003A\u0024validations",
             "name": "validations",
             "summary": "",
-            "url": "classes/Comment.html#property_validations"
+            "url": "classes/App-Models-Comment.html#property_validations"
         },                {
-            "fqsen": "\\Event",
+            "fqsen": "\\App\\Models\\Event",
             "name": "Event",
             "summary": "Event\u0020domain\u0020model\u0020with\u0020visibility\u0020and\u0020scheduling\u0020attributes.",
-            "url": "classes/Event.html"
+            "url": "classes/App-Models-Event.html"
         },                {
-            "fqsen": "\\Event\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Models\\Event\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020Event\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
-            "url": "classes/Event.html#method___construct"
+            "url": "classes/App-Models-Event.html#method___construct"
         },                {
-            "fqsen": "\\Event\u003A\u003Avalidate_datetime_range\u0028\u0029",
+            "fqsen": "\\App\\Models\\Event\u003A\u003Avalidate_datetime_range\u0028\u0029",
             "name": "validate_datetime_range",
             "summary": "Ensures\u0020datetime_start\u0020is\u0020strictly\u0020earlier\u0020than\u0020datetime_end.",
-            "url": "classes/Event.html#method_validate_datetime_range"
+            "url": "classes/App-Models-Event.html#method_validate_datetime_range"
         },                {
-            "fqsen": "\\Event\u003A\u003A\u0024db_attributes",
+            "fqsen": "\\App\\Models\\Event\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
-            "url": "classes/Event.html#property_db_attributes"
+            "url": "classes/App-Models-Event.html#property_db_attributes"
         },                {
-            "fqsen": "\\Event\u003A\u003A\u0024relations",
+            "fqsen": "\\App\\Models\\Event\u003A\u003A\u0024relations",
             "name": "relations",
             "summary": "",
-            "url": "classes/Event.html#property_relations"
+            "url": "classes/App-Models-Event.html#property_relations"
         },                {
-            "fqsen": "\\Event\u003A\u003A\u0024validations",
+            "fqsen": "\\App\\Models\\Event\u003A\u003A\u0024validations",
             "name": "validations",
             "summary": "",
-            "url": "classes/Event.html#property_validations"
+            "url": "classes/App-Models-Event.html#property_validations"
         },                {
-            "fqsen": "\\Event\u003A\u003A\u0024validation_callbacks",
+            "fqsen": "\\App\\Models\\Event\u003A\u003A\u0024validation_callbacks",
             "name": "validation_callbacks",
             "summary": "",
-            "url": "classes/Event.html#property_validation_callbacks"
+            "url": "classes/App-Models-Event.html#property_validation_callbacks"
         },                {
-            "fqsen": "\\Post",
+            "fqsen": "\\App\\Models\\Post",
             "name": "Post",
             "summary": "Post\u0020domain\u0020model\u0020with\u0020publish\u002Dstate\u0020workflow.",
-            "url": "classes/Post.html"
+            "url": "classes/App-Models-Post.html"
         },                {
-            "fqsen": "\\Post\u003A\u003ApubliclyVisible\u0028\u0029",
+            "fqsen": "\\App\\Models\\Post\u003A\u003ApubliclyVisible\u0028\u0029",
             "name": "publiclyVisible",
             "summary": "Returns\u0020a\u0020QueryBuilder\u0020scoped\u0020to\u0020published\u0020posts\u0020only.",
-            "url": "classes/Post.html#method_publiclyVisible"
+            "url": "classes/App-Models-Post.html#method_publiclyVisible"
         },                {
-            "fqsen": "\\Post\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Models\\Post\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020Post\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
-            "url": "classes/Post.html#method___construct"
+            "url": "classes/App-Models-Post.html#method___construct"
         },                {
-            "fqsen": "\\Post\u003A\u003A\u0024db_attributes",
+            "fqsen": "\\App\\Models\\Post\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
-            "url": "classes/Post.html#property_db_attributes"
+            "url": "classes/App-Models-Post.html#property_db_attributes"
         },                {
-            "fqsen": "\\Post\u003A\u003A\u0024relations",
+            "fqsen": "\\App\\Models\\Post\u003A\u003A\u0024relations",
             "name": "relations",
             "summary": "",
-            "url": "classes/Post.html#property_relations"
+            "url": "classes/App-Models-Post.html#property_relations"
         },                {
-            "fqsen": "\\Post\u003A\u003A\u0024validations",
+            "fqsen": "\\App\\Models\\Post\u003A\u003A\u0024validations",
             "name": "validations",
             "summary": "",
-            "url": "classes/Post.html#property_validations"
+            "url": "classes/App-Models-Post.html#property_validations"
         },                {
-            "fqsen": "\\Question",
+            "fqsen": "\\App\\Models\\Question",
             "name": "Question",
             "summary": "Question\u0020model\u0020belonging\u0020to\u0020a\u0020voting\u0020with\u0020user\u0020responses.",
-            "url": "classes/Question.html"
+            "url": "classes/App-Models-Question.html"
         },                {
-            "fqsen": "\\Question\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Models\\Question\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020Question\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
-            "url": "classes/Question.html#method___construct"
+            "url": "classes/App-Models-Question.html#method___construct"
         },                {
-            "fqsen": "\\Question\u003A\u003A\u0024db_attributes",
+            "fqsen": "\\App\\Models\\Question\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
-            "url": "classes/Question.html#property_db_attributes"
+            "url": "classes/App-Models-Question.html#property_db_attributes"
         },                {
-            "fqsen": "\\Question\u003A\u003A\u0024relations",
+            "fqsen": "\\App\\Models\\Question\u003A\u003A\u0024relations",
             "name": "relations",
             "summary": "",
-            "url": "classes/Question.html#property_relations"
+            "url": "classes/App-Models-Question.html#property_relations"
         },                {
-            "fqsen": "\\Question\u003A\u003A\u0024validations",
+            "fqsen": "\\App\\Models\\Question\u003A\u003A\u0024validations",
             "name": "validations",
             "summary": "",
-            "url": "classes/Question.html#property_validations"
+            "url": "classes/App-Models-Question.html#property_validations"
         },                {
-            "fqsen": "\\User",
+            "fqsen": "\\App\\Models\\User",
             "name": "User",
             "summary": "User\u0020account\u0020model\u0020with\u0020role\u0020masks\u0020and\u0020owned\u0020resources.",
-            "url": "classes/User.html"
+            "url": "classes/App-Models-User.html"
         },                {
-            "fqsen": "\\User\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Models\\User\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020User\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
-            "url": "classes/User.html#method___construct"
+            "url": "classes/App-Models-User.html#method___construct"
         },                {
-            "fqsen": "\\User\u003A\u003AAVAILABLE_ROLES",
+            "fqsen": "\\App\\Models\\User\u003A\u003AAVAILABLE_ROLES",
             "name": "AVAILABLE_ROLES",
             "summary": "",
-            "url": "classes/User.html#constant_AVAILABLE_ROLES"
+            "url": "classes/App-Models-User.html#constant_AVAILABLE_ROLES"
         },                {
-            "fqsen": "\\User\u003A\u003A\u0024db_attributes",
+            "fqsen": "\\App\\Models\\User\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
-            "url": "classes/User.html#property_db_attributes"
+            "url": "classes/App-Models-User.html#property_db_attributes"
         },                {
-            "fqsen": "\\User\u003A\u003A\u0024relations",
+            "fqsen": "\\App\\Models\\User\u003A\u003A\u0024relations",
             "name": "relations",
             "summary": "",
-            "url": "classes/User.html#property_relations"
+            "url": "classes/App-Models-User.html#property_relations"
         },                {
-            "fqsen": "\\User\u003A\u003A\u0024validations",
+            "fqsen": "\\App\\Models\\User\u003A\u003A\u0024validations",
             "name": "validations",
             "summary": "",
-            "url": "classes/User.html#property_validations"
+            "url": "classes/App-Models-User.html#property_validations"
         },                {
-            "fqsen": "\\UsersQuestion",
+            "fqsen": "\\App\\Models\\UsersQuestion",
             "name": "UsersQuestion",
             "summary": "Join\u0020model\u0020storing\u0020a\u0020user\u0027s\u0020selected\u0020answer\u0020for\u0020a\u0020voting\u0020question.",
-            "url": "classes/UsersQuestion.html"
+            "url": "classes/App-Models-UsersQuestion.html"
         },                {
-            "fqsen": "\\UsersQuestion\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Models\\UsersQuestion\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020UsersQuestion\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
-            "url": "classes/UsersQuestion.html#method___construct"
+            "url": "classes/App-Models-UsersQuestion.html#method___construct"
         },                {
-            "fqsen": "\\UsersQuestion\u003A\u003A\u0024db_attributes",
+            "fqsen": "\\App\\Models\\UsersQuestion\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
-            "url": "classes/UsersQuestion.html#property_db_attributes"
+            "url": "classes/App-Models-UsersQuestion.html#property_db_attributes"
         },                {
-            "fqsen": "\\UsersQuestion\u003A\u003A\u0024composite_primary_key",
+            "fqsen": "\\App\\Models\\UsersQuestion\u003A\u003A\u0024composite_primary_key",
             "name": "composite_primary_key",
             "summary": "",
-            "url": "classes/UsersQuestion.html#property_composite_primary_key"
+            "url": "classes/App-Models-UsersQuestion.html#property_composite_primary_key"
         },                {
-            "fqsen": "\\UsersQuestion\u003A\u003A\u0024relations",
+            "fqsen": "\\App\\Models\\UsersQuestion\u003A\u003A\u0024relations",
             "name": "relations",
             "summary": "",
-            "url": "classes/UsersQuestion.html#property_relations"
+            "url": "classes/App-Models-UsersQuestion.html#property_relations"
         },                {
-            "fqsen": "\\UsersQuestion\u003A\u003A\u0024validations",
+            "fqsen": "\\App\\Models\\UsersQuestion\u003A\u003A\u0024validations",
             "name": "validations",
             "summary": "",
-            "url": "classes/UsersQuestion.html#property_validations"
+            "url": "classes/App-Models-UsersQuestion.html#property_validations"
         },                {
-            "fqsen": "\\Voting",
+            "fqsen": "\\App\\Models\\Voting",
             "name": "Voting",
             "summary": "Voting\u0020model\u0020with\u0020questions,\u0020status\u0020lifecycle,\u0020and\u0020participation\u0020helpers.",
-            "url": "classes/Voting.html"
+            "url": "classes/App-Models-Voting.html"
         },                {
-            "fqsen": "\\Voting\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Models\\Voting\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Initialises\u0020the\u0020Voting\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
-            "url": "classes/Voting.html#method___construct"
+            "url": "classes/App-Models-Voting.html#method___construct"
         },                {
-            "fqsen": "\\Voting\u003A\u003AhasUserVoted\u0028\u0029",
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AhasUserVoted\u0028\u0029",
             "name": "hasUserVoted",
             "summary": "Checks\u0020whether\u0020a\u0020user\u0020has\u0020already\u0020submitted\u0020at\u0020least\u0020one\u0020answer\u0020in\u0020this\u0020voting.",
-            "url": "classes/Voting.html#method_hasUserVoted"
+            "url": "classes/App-Models-Voting.html#method_hasUserVoted"
         },                {
-            "fqsen": "\\Voting\u003A\u003A\u0024db_attributes",
+            "fqsen": "\\App\\Models\\Voting\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
-            "url": "classes/Voting.html#property_db_attributes"
+            "url": "classes/App-Models-Voting.html#property_db_attributes"
         },                {
-            "fqsen": "\\Voting\u003A\u003A\u0024relations",
+            "fqsen": "\\App\\Models\\Voting\u003A\u003A\u0024relations",
             "name": "relations",
             "summary": "",
-            "url": "classes/Voting.html#property_relations"
+            "url": "classes/App-Models-Voting.html#property_relations"
         },                {
-            "fqsen": "\\Voting\u003A\u003A\u0024validations",
+            "fqsen": "\\App\\Models\\Voting\u003A\u003A\u0024validations",
             "name": "validations",
             "summary": "",
-            "url": "classes/Voting.html#property_validations"
+            "url": "classes/App-Models-Voting.html#property_validations"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver",
             "name": "AttachmentMarkupMediaSourceResolver",
             "summary": "Resolves\u0020editor\u0020media\u0020source\u0020aliases\u0020to\u0020existing\u0020attachment\u0020routes.",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method___construct"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#method___construct"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A__invoke\u0028\u0029",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003A__invoke\u0028\u0029",
             "name": "__invoke",
             "summary": "",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method___invoke"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#method___invoke"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AisNonResolvableSource\u0028\u0029",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003AisNonResolvableSource\u0028\u0029",
             "name": "isNonResolvableSource",
             "summary": "Non\u002Dresolvable\u0020sources\u0020should\u0020keep\u0020original\u0020parser\u0020behavior.",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_isNonResolvableSource"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#method_isNonResolvableSource"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AextractIdentifier\u0028\u0029",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003AextractIdentifier\u0028\u0029",
             "name": "extractIdentifier",
             "summary": "Removes\u0020explicit\u0020\u0060attachment\u003A\u0060\u0020prefix\u0020when\u0020present.",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_extractIdentifier"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#method_extractIdentifier"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AfindAttachment\u0028\u0029",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003AfindAttachment\u0028\u0029",
             "name": "findAttachment",
             "summary": "Tries\u0020multiple\u0020lookup\u0020strategies\u0020against\u0020Attachment\u0020model.",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_findAttachment"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#method_findAttachment"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AfindBy\u0028\u0029",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003AfindBy\u0028\u0029",
             "name": "findBy",
             "summary": "",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_findBy"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#method_findBy"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003AbuildAttachmentUrl\u0028\u0029",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003AbuildAttachmentUrl\u0028\u0029",
             "name": "buildAttachmentUrl",
             "summary": "",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#method_buildAttachmentUrl"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#method_buildAttachmentUrl"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024resourceType",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024resourceType",
             "name": "resourceType",
             "summary": "",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_resourceType"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#property_resourceType"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024resourceId",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024resourceId",
             "name": "resourceId",
             "summary": "",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_resourceId"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#property_resourceId"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024resourcePath",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024resourcePath",
             "name": "resourcePath",
             "summary": "",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_resourcePath"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#property_resourcePath"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024adminContext",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024adminContext",
             "name": "adminContext",
             "summary": "",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_adminContext"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#property_adminContext"
         },                {
-            "fqsen": "\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024publicOnly",
+            "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver\u003A\u003A\u0024publicOnly",
             "name": "publicOnly",
             "summary": "",
-            "url": "classes/AttachmentMarkupMediaSourceResolver.html#property_publicOnly"
+            "url": "classes/App-Services-AttachmentMarkupMediaSourceResolver.html#property_publicOnly"
         },                {
-            "fqsen": "\\Database",
+            "fqsen": "\\App\\Services\\Database",
             "name": "Database",
             "summary": "Database\u0020connection\u0020bootstrapper\u0020with\u0020first\u002Drun\u0020schema\u0020initialisation.",
-            "url": "classes/Database.html"
+            "url": "classes/App-Services-Database.html"
         },                {
-            "fqsen": "\\Database\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Services\\Database\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Loads\u0020application\u0020config,\u0020opens\u0020a\u0020mysqli\u0020connection,\u0020and\u0020attempts\u0020to\nbootstrap\u0020the\u0020schema\u0020automatically\u0020on\u0020first\u0020run\u0020if\u0020the\u0020database\u0020is\u0020missing.",
-            "url": "classes/Database.html#method___construct"
+            "url": "classes/App-Services-Database.html#method___construct"
         },                {
-            "fqsen": "\\Database\u003A\u003Aconnect\u0028\u0029",
+            "fqsen": "\\App\\Services\\Database\u003A\u003Aconnect\u0028\u0029",
             "name": "connect",
             "summary": "Opens\u0020\u0028or\u0020re\u002Dopens\u0029\u0020the\u0020mysqli\u0020connection\u0020using\u0020the\u0020stored\u0020connection\u0020params.",
-            "url": "classes/Database.html#method_connect"
+            "url": "classes/App-Services-Database.html#method_connect"
         },                {
-            "fqsen": "\\Database\u003A\u003AgetConnection\u0028\u0029",
+            "fqsen": "\\App\\Services\\Database\u003A\u003AgetConnection\u0028\u0029",
             "name": "getConnection",
             "summary": "Returns\u0020the\u0020active\u0020mysqli\u0020connection.",
-            "url": "classes/Database.html#method_getConnection"
+            "url": "classes/App-Services-Database.html#method_getConnection"
         },                {
-            "fqsen": "\\Database\u003A\u003A\u0024connectionParams",
+            "fqsen": "\\App\\Services\\Database\u003A\u003A\u0024connectionParams",
             "name": "connectionParams",
             "summary": "",
-            "url": "classes/Database.html#property_connectionParams"
+            "url": "classes/App-Services-Database.html#property_connectionParams"
         },                {
-            "fqsen": "\\Database\u003A\u003A\u0024db",
+            "fqsen": "\\App\\Services\\Database\u003A\u003A\u0024db",
             "name": "db",
             "summary": "",
-            "url": "classes/Database.html#property_db"
+            "url": "classes/App-Services-Database.html#property_db"
         },                {
-            "fqsen": "\\DefaultAdminBootstrapper",
+            "fqsen": "\\App\\Services\\DefaultAdminBootstrapper",
             "name": "DefaultAdminBootstrapper",
             "summary": "Ensures\u0020a\u0020first\u0020administrator\u0020account\u0020exists\u0020on\u0020fresh\u0020installations.",
-            "url": "classes/DefaultAdminBootstrapper.html"
+            "url": "classes/App-Services-DefaultAdminBootstrapper.html"
         },                {
-            "fqsen": "\\DefaultAdminBootstrapper\u003A\u003AcanBootstrap\u0028\u0029",
+            "fqsen": "\\App\\Services\\DefaultAdminBootstrapper\u003A\u003AcanBootstrap\u0028\u0029",
             "name": "canBootstrap",
             "summary": "",
-            "url": "classes/DefaultAdminBootstrapper.html#method_canBootstrap"
+            "url": "classes/App-Services-DefaultAdminBootstrapper.html#method_canBootstrap"
         },                {
-            "fqsen": "\\DefaultAdminBootstrapper\u003A\u003AensureExists\u0028\u0029",
+            "fqsen": "\\App\\Services\\DefaultAdminBootstrapper\u003A\u003AensureExists\u0028\u0029",
             "name": "ensureExists",
             "summary": "",
-            "url": "classes/DefaultAdminBootstrapper.html#method_ensureExists"
+            "url": "classes/App-Services-DefaultAdminBootstrapper.html#method_ensureExists"
         },                {
-            "fqsen": "\\DefaultAdminBootstrapper\u003A\u003AusersTableHasAnyUser\u0028\u0029",
+            "fqsen": "\\App\\Services\\DefaultAdminBootstrapper\u003A\u003AusersTableHasAnyUser\u0028\u0029",
             "name": "usersTableHasAnyUser",
             "summary": "",
-            "url": "classes/DefaultAdminBootstrapper.html#method_usersTableHasAnyUser"
+            "url": "classes/App-Services-DefaultAdminBootstrapper.html#method_usersTableHasAnyUser"
         },                {
-            "fqsen": "\\EditorMarkupParser",
+            "fqsen": "\\App\\Services\\EditorMarkupParser",
             "name": "EditorMarkupParser",
             "summary": "Converts\u0020editor\u0020markup\u0020syntax\u0020into\u0020HTML.",
-            "url": "classes/EditorMarkupParser.html"
+            "url": "classes/App-Services-EditorMarkupParser.html"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#method___construct"
+            "url": "classes/App-Services-EditorMarkupParser.html#method___construct"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003Aparse\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003Aparse\u0028\u0029",
             "name": "parse",
             "summary": "Parses\u0020raw\u0020editor\u0020markup\u0020into\u0020sanitized\u0020HTML.",
-            "url": "classes/EditorMarkupParser.html#method_parse"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parse"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AcoalesceWrappedLines\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AcoalesceWrappedLines\u0028\u0029",
             "name": "coalesceWrappedLines",
             "summary": "Joins\u0020wrapped\u0020physical\u0020lines\u0020into\u0020logical\u0020lines.",
-            "url": "classes/EditorMarkupParser.html#method_coalesceWrappedLines"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_coalesceWrappedLines"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseNormalParagraph\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseNormalParagraph\u0028\u0029",
             "name": "parseNormalParagraph",
             "summary": "Parses\u0020a\u0020normal\u0020paragraph\u0020block.",
-            "url": "classes/EditorMarkupParser.html#method_parseNormalParagraph"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseNormalParagraph"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseBulletedParagraph\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseBulletedParagraph\u0028\u0029",
             "name": "parseBulletedParagraph",
             "summary": "Parses\u0020one\u0020unordered\u002Dlist\u0020item.",
-            "url": "classes/EditorMarkupParser.html#method_parseBulletedParagraph"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseBulletedParagraph"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseNumberedParagraph\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseNumberedParagraph\u0028\u0029",
             "name": "parseNumberedParagraph",
             "summary": "Parses\u0020one\u0020ordered\u002Dlist\u0020item.",
-            "url": "classes/EditorMarkupParser.html#method_parseNumberedParagraph"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseNumberedParagraph"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseCenteredParagraph\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseCenteredParagraph\u0028\u0029",
             "name": "parseCenteredParagraph",
             "summary": "Parses\u0020a\u0020centered\u0020paragraph\u0020block.",
-            "url": "classes/EditorMarkupParser.html#method_parseCenteredParagraph"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseCenteredParagraph"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseSmallHeading\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseSmallHeading\u0028\u0029",
             "name": "parseSmallHeading",
             "summary": "Parses\u0020a\u0020small\u0020heading\u0020block.",
-            "url": "classes/EditorMarkupParser.html#method_parseSmallHeading"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseSmallHeading"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseMediaParagraph\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseMediaParagraph\u0028\u0029",
             "name": "parseMediaParagraph",
             "summary": "Parses\u0020media\u0020block\u0020syntax\u0020\u0028image\/YouTube\u0020embed\u0029.",
-            "url": "classes/EditorMarkupParser.html#method_parseMediaParagraph"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseMediaParagraph"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AresolveMediaSource\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AresolveMediaSource\u0028\u0029",
             "name": "resolveMediaSource",
             "summary": "Resolves\u0020media\u0020source\u0020aliases\u0020through\u0020an\u0020optional\u0020callback.",
-            "url": "classes/EditorMarkupParser.html#method_resolveMediaSource"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_resolveMediaSource"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseImageFigure\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseImageFigure\u0028\u0029",
             "name": "parseImageFigure",
             "summary": "Builds\u0020HTML\u0020figure\u0020markup\u0020for\u0020an\u0020image.",
-            "url": "classes/EditorMarkupParser.html#method_parseImageFigure"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseImageFigure"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseYouTubeEmbed\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseYouTubeEmbed\u0028\u0029",
             "name": "parseYouTubeEmbed",
             "summary": "Builds\u0020HTML\u0020figure\u0020markup\u0020for\u0020a\u0020YouTube\u0020embed.",
-            "url": "classes/EditorMarkupParser.html#method_parseYouTubeEmbed"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseYouTubeEmbed"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AisYouTubeEmbedSource\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AisYouTubeEmbedSource\u0028\u0029",
             "name": "isYouTubeEmbedSource",
             "summary": "Validates\u0020whether\u0020a\u0020media\u0020source\u0020is\u0020a\u0020supported\u0020YouTube\u0020embed\u0020URL.",
-            "url": "classes/EditorMarkupParser.html#method_isYouTubeEmbedSource"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_isYouTubeEmbedSource"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseInline\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseInline\u0028\u0029",
             "name": "parseInline",
             "summary": "Inline\u0020parser\u0020pipeline.",
-            "url": "classes/EditorMarkupParser.html#method_parseInline"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseInline"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseEscapedTokens\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseEscapedTokens\u0028\u0029",
             "name": "parseEscapedTokens",
             "summary": "Replaces\u0020escaped\u0020control\u0020sequences\u0020with\u0020neutral\u0020placeholders.",
-            "url": "classes/EditorMarkupParser.html#method_parseEscapedTokens"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseEscapedTokens"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseLineBreakToken\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseLineBreakToken\u0028\u0029",
             "name": "parseLineBreakToken",
             "summary": "Converts\u0020line\u002Dbreak\u0020placeholder\u0020token\u0020to\u0020HTML\u0020break\u0020tags.",
-            "url": "classes/EditorMarkupParser.html#method_parseLineBreakToken"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseLineBreakToken"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseBoldToken\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseBoldToken\u0028\u0029",
             "name": "parseBoldToken",
             "summary": "Converts\u0020\u0060\u005Btext\u005D\u0060\u0020to\u0020\u0060\u003Cstrong\u003Etext\u003C\/strong\u003E\u0060.",
-            "url": "classes/EditorMarkupParser.html#method_parseBoldToken"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseBoldToken"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseItalicToken\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseItalicToken\u0028\u0029",
             "name": "parseItalicToken",
             "summary": "Converts\u0020escaped\u0020\u0060\u003Ctext\u003E\u0060\u0020markers\u0020to\u0020\u0060\u003Cem\u003Etext\u003C\/em\u003E\u0060.",
-            "url": "classes/EditorMarkupParser.html#method_parseItalicToken"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseItalicToken"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseCurlyReferenceToken\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseCurlyReferenceToken\u0028\u0029",
             "name": "parseCurlyReferenceToken",
             "summary": "Parses\u0020\u0060\u007B...\u007D\u0060\u0020references\u0020as\u0020email\/URL\u0020links\u0020when\u0020valid.",
-            "url": "classes/EditorMarkupParser.html#method_parseCurlyReferenceToken"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseCurlyReferenceToken"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AparseCurlyReference\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AparseCurlyReference\u0028\u0029",
             "name": "parseCurlyReference",
             "summary": "Parses\u0020one\u0020curly\u002Dbrace\u0020reference\u0020payload.",
-            "url": "classes/EditorMarkupParser.html#method_parseCurlyReference"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_parseCurlyReference"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ArestoreEscapedTokens\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ArestoreEscapedTokens\u0028\u0029",
             "name": "restoreEscapedTokens",
             "summary": "Restores\u0020placeholder\u0020tokens\u0020back\u0020to\u0020literal\u0020characters.",
-            "url": "classes/EditorMarkupParser.html#method_restoreEscapedTokens"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_restoreEscapedTokens"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AopenListIfNeeded\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AopenListIfNeeded\u0028\u0029",
             "name": "openListIfNeeded",
             "summary": "Opens\u0020target\u0020list\u0020type\u0020if\u0020needed\u0020and\u0020closes\u0020previous\u0020list\u0020when\u0020switching.",
-            "url": "classes/EditorMarkupParser.html#method_openListIfNeeded"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_openListIfNeeded"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003AcloseListIfOpen\u0028\u0029",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003AcloseListIfOpen\u0028\u0029",
             "name": "closeListIfOpen",
             "summary": "Closes\u0020the\u0020currently\u0020open\u0020list\u0020if\u0020one\u0020is\u0020active.",
-            "url": "classes/EditorMarkupParser.html#method_closeListIfOpen"
+            "url": "classes/App-Services-EditorMarkupParser.html#method_closeListIfOpen"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_BREAK",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_BREAK",
             "name": "TOKEN_BREAK",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_BREAK"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_BREAK"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_HASH",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_HASH",
             "name": "TOKEN_HASH",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_HASH"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_HASH"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_LT",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_LT",
             "name": "TOKEN_LT",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_LT"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_LT"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_GT",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_GT",
             "name": "TOKEN_GT",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_GT"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_GT"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_LB",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_LB",
             "name": "TOKEN_LB",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_LB"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_LB"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_RB",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_RB",
             "name": "TOKEN_RB",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_RB"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_RB"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_LC",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_LC",
             "name": "TOKEN_LC",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_LC"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_LC"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_RC",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_RC",
             "name": "TOKEN_RC",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_RC"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_RC"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_SLASH",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_SLASH",
             "name": "TOKEN_SLASH",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_SLASH"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_SLASH"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003ATOKEN_BACKSLASH",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003ATOKEN_BACKSLASH",
             "name": "TOKEN_BACKSLASH",
             "summary": "",
-            "url": "classes/EditorMarkupParser.html#constant_TOKEN_BACKSLASH"
+            "url": "classes/App-Services-EditorMarkupParser.html#constant_TOKEN_BACKSLASH"
         },                {
-            "fqsen": "\\EditorMarkupParser\u003A\u003A\u0024mediaSourceResolver",
+            "fqsen": "\\App\\Services\\EditorMarkupParser\u003A\u003A\u0024mediaSourceResolver",
             "name": "mediaSourceResolver",
             "summary": "Optional\u0020callback\u0020used\u0020to\u0020resolve\u0020media\u0020sources\u0020\u0028e.g.\u0020attachment\u0020aliases\u0029\nbefore\u0020image\/embed\u0020rendering.",
-            "url": "classes/EditorMarkupParser.html#property_mediaSourceResolver"
+            "url": "classes/App-Services-EditorMarkupParser.html#property_mediaSourceResolver"
         },                {
-            "fqsen": "\\FlashManager",
+            "fqsen": "\\App\\Services\\FlashManager",
             "name": "FlashManager",
             "summary": "Session\u002Dbacked\u0020flash\u0020message\u0020manager\u0020for\u0020user\u002Dfacing\u0020notifications.",
-            "url": "classes/FlashManager.html"
+            "url": "classes/App-Services-FlashManager.html"
         },                {
-            "fqsen": "\\FlashManager\u003A\u003AaddFlash\u0028\u0029",
+            "fqsen": "\\App\\Services\\FlashManager\u003A\u003AaddFlash\u0028\u0029",
             "name": "addFlash",
             "summary": "Appends\u0020a\u0020flash\u0020message\u0020to\u0020the\u0020session\u0020store.",
-            "url": "classes/FlashManager.html#method_addFlash"
+            "url": "classes/App-Services-FlashManager.html#method_addFlash"
         },                {
-            "fqsen": "\\FlashManager\u003A\u003AgetFlashes\u0028\u0029",
+            "fqsen": "\\App\\Services\\FlashManager\u003A\u003AgetFlashes\u0028\u0029",
             "name": "getFlashes",
             "summary": "Retrieves\u0020all\u0020queued\u0020flash\u0020messages\u0020and\u0020increments\u0020the\u0020display\u0020counter.",
-            "url": "classes/FlashManager.html#method_getFlashes"
+            "url": "classes/App-Services-FlashManager.html#method_getFlashes"
         },                {
-            "fqsen": "\\FlashManager\u003A\u003AhasFlashes\u0028\u0029",
+            "fqsen": "\\App\\Services\\FlashManager\u003A\u003AhasFlashes\u0028\u0029",
             "name": "hasFlashes",
             "summary": "Returns\u0020whether\u0020there\u0020are\u0020any\u0020pending\u0020flash\u0020messages\u0020in\u0020the\u0020session.",
-            "url": "classes/FlashManager.html#method_hasFlashes"
+            "url": "classes/App-Services-FlashManager.html#method_hasFlashes"
         },                {
-            "fqsen": "\\GoogleCalendarService",
+            "fqsen": "\\App\\Services\\GoogleCalendarService",
             "name": "GoogleCalendarService",
             "summary": "Minimal\u0020Google\u0020Calendar\u0020API\u0020client\u0020for\u0020inserting\u0020and\u0020deleting\u0020events.",
-            "url": "classes/GoogleCalendarService.html"
+            "url": "classes/App-Services-GoogleCalendarService.html"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method___construct"
+            "url": "classes/App-Services-GoogleCalendarService.html#method___construct"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AinsertTimedEvent\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AinsertTimedEvent\u0028\u0029",
             "name": "insertTimedEvent",
             "summary": "Inserts\u0020a\u0020timed\u0020Google\u0020Calendar\u0020event\u0020using\u0020a\u0020simplified\u0020input\u0020signature.",
-            "url": "classes/GoogleCalendarService.html#method_insertTimedEvent"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_insertTimedEvent"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AlistEvents\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AlistEvents\u0028\u0029",
             "name": "listEvents",
             "summary": "Lists\u0020Google\u0020Calendar\u0020events\u0020with\u0020optional\u0020query\u0020parameters.",
-            "url": "classes/GoogleCalendarService.html#method_listEvents"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_listEvents"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AinsertEvent\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AinsertEvent\u0028\u0029",
             "name": "insertEvent",
             "summary": "Inserts\u0020a\u0020Google\u0020Calendar\u0020event\u0020using\u0020the\u0020raw\u0020Calendar\u0020API\u0020payload.",
-            "url": "classes/GoogleCalendarService.html#method_insertEvent"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_insertEvent"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AdestroyEvent\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AdestroyEvent\u0028\u0029",
             "name": "destroyEvent",
             "summary": "Deletes\u0020a\u0020Google\u0020Calendar\u0020event\u0020by\u0020its\u0020Google\u002Dassigned\u0020event\u0020ID.",
-            "url": "classes/GoogleCalendarService.html#method_destroyEvent"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_destroyEvent"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003Arequest\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003Arequest\u0028\u0029",
             "name": "request",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_request"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_request"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AfetchAccessToken\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AfetchAccessToken\u0028\u0029",
             "name": "fetchAccessToken",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_fetchAccessToken"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_fetchAccessToken"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AbuildSignedJwt\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AbuildSignedJwt\u0028\u0029",
             "name": "buildSignedJwt",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_buildSignedJwt"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_buildSignedJwt"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AloadDefaultConfig\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AloadDefaultConfig\u0028\u0029",
             "name": "loadDefaultConfig",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_loadDefaultConfig"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_loadDefaultConfig"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AassertConfiguration\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AassertConfiguration\u0028\u0029",
             "name": "assertConfiguration",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_assertConfiguration"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_assertConfiguration"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AeventsEndpoint\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AeventsEndpoint\u0028\u0029",
             "name": "eventsEndpoint",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_eventsEndpoint"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_eventsEndpoint"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AformatDateTime\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AformatDateTime\u0028\u0029",
             "name": "formatDateTime",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_formatDateTime"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_formatDateTime"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AnormalizePrivateKey\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AnormalizePrivateKey\u0028\u0029",
             "name": "normalizePrivateKey",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_normalizePrivateKey"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_normalizePrivateKey"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AnormalizeOptionalString\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AnormalizeOptionalString\u0028\u0029",
             "name": "normalizeOptionalString",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_normalizeOptionalString"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_normalizeOptionalString"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AdecodeJsonBody\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AdecodeJsonBody\u0028\u0029",
             "name": "decodeJsonBody",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_decodeJsonBody"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_decodeJsonBody"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003Abase64UrlEncode\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003Abase64UrlEncode\u0028\u0029",
             "name": "base64UrlEncode",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_base64UrlEncode"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_base64UrlEncode"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AcompactBody\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AcompactBody\u0028\u0029",
             "name": "compactBody",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_compactBody"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_compactBody"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AsendCurlRequest\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AsendCurlRequest\u0028\u0029",
             "name": "sendCurlRequest",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_sendCurlRequest"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_sendCurlRequest"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003AparseHeaders\u0028\u0029",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AparseHeaders\u0028\u0029",
             "name": "parseHeaders",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#method_parseHeaders"
+            "url": "classes/App-Services-GoogleCalendarService.html#method_parseHeaders"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003ACALENDAR_SCOPE",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003ACALENDAR_SCOPE",
             "name": "CALENDAR_SCOPE",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#constant_CALENDAR_SCOPE"
+            "url": "classes/App-Services-GoogleCalendarService.html#constant_CALENDAR_SCOPE"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024calendarId",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024calendarId",
             "name": "calendarId",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_calendarId"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_calendarId"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024serviceAccountEmail",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024serviceAccountEmail",
             "name": "serviceAccountEmail",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_serviceAccountEmail"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_serviceAccountEmail"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024privateKey",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024privateKey",
             "name": "privateKey",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_privateKey"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_privateKey"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024delegatedUser",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024delegatedUser",
             "name": "delegatedUser",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_delegatedUser"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_delegatedUser"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024tokenUri",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024tokenUri",
             "name": "tokenUri",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_tokenUri"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_tokenUri"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024baseUri",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024baseUri",
             "name": "baseUri",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_baseUri"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_baseUri"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024timeoutSeconds",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024timeoutSeconds",
             "name": "timeoutSeconds",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_timeoutSeconds"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_timeoutSeconds"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024defaultTimeZone",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024defaultTimeZone",
             "name": "defaultTimeZone",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_defaultTimeZone"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_defaultTimeZone"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024httpClient",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024httpClient",
             "name": "httpClient",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_httpClient"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_httpClient"
         },                {
-            "fqsen": "\\GoogleCalendarService\u003A\u003A\u0024clock",
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003A\u0024clock",
             "name": "clock",
             "summary": "",
-            "url": "classes/GoogleCalendarService.html#property_clock"
+            "url": "classes/App-Services-GoogleCalendarService.html#property_clock"
         },                {
-            "fqsen": "\\GuestAuth",
+            "fqsen": "\\App\\Services\\GuestAuth",
             "name": "GuestAuth",
             "summary": "A\u0020minimal\u0020auth\u0020stub\u0020that\u0020represents\u0020an\u0020unauthenticated\u0020\u0028guest\u0029\u0020user.",
-            "url": "classes/GuestAuth.html"
+            "url": "classes/App-Services-GuestAuth.html"
         },                {
-            "fqsen": "\\GuestAuth\u003A\u003AisLoggedIn\u0028\u0029",
+            "fqsen": "\\App\\Services\\GuestAuth\u003A\u003AisLoggedIn\u0028\u0029",
             "name": "isLoggedIn",
             "summary": "Always\u0020returns\u0020false\u0020\u2013\u0020the\u0020guest\u0020is\u0020never\u0020logged\u0020in.",
-            "url": "classes/GuestAuth.html#method_isLoggedIn"
+            "url": "classes/App-Services-GuestAuth.html#method_isLoggedIn"
         },                {
-            "fqsen": "\\GuestAuth\u003A\u003AgetUserId\u0028\u0029",
+            "fqsen": "\\App\\Services\\GuestAuth\u003A\u003AgetUserId\u0028\u0029",
             "name": "getUserId",
             "summary": "Always\u0020returns\u0020null\u0020\u2013\u0020no\u0020user\u0020ID\u0020for\u0020a\u0020guest.",
-            "url": "classes/GuestAuth.html#method_getUserId"
+            "url": "classes/App-Services-GuestAuth.html#method_getUserId"
         },                {
-            "fqsen": "\\GuestAuth\u003A\u003AhasRole\u0028\u0029",
+            "fqsen": "\\App\\Services\\GuestAuth\u003A\u003AhasRole\u0028\u0029",
             "name": "hasRole",
             "summary": "Always\u0020returns\u0020false\u0020\u2013\u0020a\u0020guest\u0020has\u0020no\u0020roles.",
-            "url": "classes/GuestAuth.html#method_hasRole"
+            "url": "classes/App-Services-GuestAuth.html#method_hasRole"
         },                {
-            "fqsen": "\\RecaptchaService",
+            "fqsen": "\\App\\Services\\RecaptchaService",
             "name": "RecaptchaService",
             "summary": "Verifies\u0020Google\u0020reCAPTCHA\u0020tokens\u0020for\u0020login\u0020forms.",
-            "url": "classes/RecaptchaService.html"
+            "url": "classes/App-Services-RecaptchaService.html"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/RecaptchaService.html#method___construct"
+            "url": "classes/App-Services-RecaptchaService.html#method___construct"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003AisEnabled\u0028\u0029",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003AisEnabled\u0028\u0029",
             "name": "isEnabled",
             "summary": "",
-            "url": "classes/RecaptchaService.html#method_isEnabled"
+            "url": "classes/App-Services-RecaptchaService.html#method_isEnabled"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003AgetV3SiteKey\u0028\u0029",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003AgetV3SiteKey\u0028\u0029",
             "name": "getV3SiteKey",
             "summary": "",
-            "url": "classes/RecaptchaService.html#method_getV3SiteKey"
+            "url": "classes/App-Services-RecaptchaService.html#method_getV3SiteKey"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003AgetV2SiteKey\u0028\u0029",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003AgetV2SiteKey\u0028\u0029",
             "name": "getV2SiteKey",
             "summary": "",
-            "url": "classes/RecaptchaService.html#method_getV2SiteKey"
+            "url": "classes/App-Services-RecaptchaService.html#method_getV2SiteKey"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003AverifyLogin\u0028\u0029",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003AverifyLogin\u0028\u0029",
             "name": "verifyLogin",
             "summary": "",
-            "url": "classes/RecaptchaService.html#method_verifyLogin"
+            "url": "classes/App-Services-RecaptchaService.html#method_verifyLogin"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003AverifyV3\u0028\u0029",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003AverifyV3\u0028\u0029",
             "name": "verifyV3",
             "summary": "",
-            "url": "classes/RecaptchaService.html#method_verifyV3"
+            "url": "classes/App-Services-RecaptchaService.html#method_verifyV3"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003AverifyToken\u0028\u0029",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003AverifyToken\u0028\u0029",
             "name": "verifyToken",
             "summary": "",
-            "url": "classes/RecaptchaService.html#method_verifyToken"
+            "url": "classes/App-Services-RecaptchaService.html#method_verifyToken"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003AsendVerificationRequest\u0028\u0029",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003AsendVerificationRequest\u0028\u0029",
             "name": "sendVerificationRequest",
             "summary": "",
-            "url": "classes/RecaptchaService.html#method_sendVerificationRequest"
+            "url": "classes/App-Services-RecaptchaService.html#method_sendVerificationRequest"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003AVERIFY_ENDPOINT",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003AVERIFY_ENDPOINT",
             "name": "VERIFY_ENDPOINT",
             "summary": "",
-            "url": "classes/RecaptchaService.html#constant_VERIFY_ENDPOINT"
+            "url": "classes/App-Services-RecaptchaService.html#constant_VERIFY_ENDPOINT"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003A\u0024config",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003A\u0024config",
             "name": "config",
             "summary": "",
-            "url": "classes/RecaptchaService.html#property_config"
+            "url": "classes/App-Services-RecaptchaService.html#property_config"
         },                {
-            "fqsen": "\\RecaptchaService\u003A\u003A\u0024httpClient",
+            "fqsen": "\\App\\Services\\RecaptchaService\u003A\u003A\u0024httpClient",
             "name": "httpClient",
             "summary": "",
-            "url": "classes/RecaptchaService.html#property_httpClient"
+            "url": "classes/App-Services-RecaptchaService.html#property_httpClient"
         },                {
-            "fqsen": "\\SeoMetaService",
+            "fqsen": "\\App\\Services\\SeoMetaService",
             "name": "SeoMetaService",
             "summary": "Builds\u0020SEO\u0020metadata\u0020for\u0020HTML\u0020head\u0020tags.",
-            "url": "classes/SeoMetaService.html"
+            "url": "classes/App-Services-SeoMetaService.html"
         },                {
-            "fqsen": "\\SeoMetaService\u003A\u003Abuild\u0028\u0029",
+            "fqsen": "\\App\\Services\\SeoMetaService\u003A\u003Abuild\u0028\u0029",
             "name": "build",
             "summary": "Build\u0020SEO\u0020metadata\u0020values\u0020from\u0020request\u0020and\u0020page\u0020context.",
-            "url": "classes/SeoMetaService.html#method_build"
+            "url": "classes/App-Services-SeoMetaService.html#method_build"
         },                {
-            "fqsen": "\\SeoMetaService\u003A\u003AresolveDescription\u0028\u0029",
+            "fqsen": "\\App\\Services\\SeoMetaService\u003A\u003AresolveDescription\u0028\u0029",
             "name": "resolveDescription",
             "summary": "",
-            "url": "classes/SeoMetaService.html#method_resolveDescription"
+            "url": "classes/App-Services-SeoMetaService.html#method_resolveDescription"
         },                {
-            "fqsen": "\\SeoMetaService\u003A\u003AnormalizeText\u0028\u0029",
+            "fqsen": "\\App\\Services\\SeoMetaService\u003A\u003AnormalizeText\u0028\u0029",
             "name": "normalizeText",
             "summary": "",
-            "url": "classes/SeoMetaService.html#method_normalizeText"
+            "url": "classes/App-Services-SeoMetaService.html#method_normalizeText"
         },                {
-            "fqsen": "\\SeoMetaService\u003A\u003Atruncate\u0028\u0029",
+            "fqsen": "\\App\\Services\\SeoMetaService\u003A\u003Atruncate\u0028\u0029",
             "name": "truncate",
             "summary": "",
-            "url": "classes/SeoMetaService.html#method_truncate"
+            "url": "classes/App-Services-SeoMetaService.html#method_truncate"
         },                {
-            "fqsen": "\\StaticPageGenerator",
+            "fqsen": "\\App\\Services\\StaticPageGenerator",
             "name": "StaticPageGenerator",
             "summary": "Generates\u0020static\u0020HTML\u0020snapshots\u0020of\u0020public\u0020pages\u0020\u0028posts\/\u0020and\u0020events\/\u0029\u0020and\nsaves\u0020them\u0020under\u0020\/pregenerated\u0020so\u0020that\u0020index.php\u0020can\u0020serve\u0020them\u0020directly\nwithout\u0020going\u0020through\u0020PHP\u0020routing\u0020for\u0020each\u0020anonymous\u0020request.",
-            "url": "classes/StaticPageGenerator.html"
+            "url": "classes/App-Services-StaticPageGenerator.html"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Resolves\u0020the\u0020absolute\u0020path\u0020to\u0020the\u0020pregenerated\/\u0020output\u0020directory.",
-            "url": "classes/StaticPageGenerator.html#method___construct"
+            "url": "classes/App-Services-StaticPageGenerator.html#method___construct"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003AregenerateAll\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003AregenerateAll\u0028\u0029",
             "name": "regenerateAll",
             "summary": "Regenerate\u0020every\u0020public\u0020HTML\u0020page\u0020for\u0020both\u0020posts\u0020and\u0020events.",
-            "url": "classes/StaticPageGenerator.html#method_regenerateAll"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_regenerateAll"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003AregeneratePosts\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003AregeneratePosts\u0028\u0029",
             "name": "regeneratePosts",
             "summary": "Regenerates\u0020all\u0020static\u0020index\u0020and\u0020show\u0020pages\u0020for\u0020posts.",
-            "url": "classes/StaticPageGenerator.html#method_regeneratePosts"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_regeneratePosts"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003AgeneratePostsIndex\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003AgeneratePostsIndex\u0028\u0029",
             "name": "generatePostsIndex",
             "summary": "Generates\u0020\u0028or\u0020overwrites\u0029\u0020the\u0020static\u0020index\u0020page\u0020for\u0020a\u0020given\u0020posts\u0020page\u0020number.",
-            "url": "classes/StaticPageGenerator.html#method_generatePostsIndex"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_generatePostsIndex"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003AgeneratePostShow\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003AgeneratePostShow\u0028\u0029",
             "name": "generatePostShow",
             "summary": "Generates\u0020\u0028or\u0020overwrites\u0029\u0020the\u0020static\u0020show\u0020page\u0020for\u0020a\u0020single\u0020Post.",
-            "url": "classes/StaticPageGenerator.html#method_generatePostShow"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_generatePostShow"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003AregenerateEvents\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003AregenerateEvents\u0028\u0029",
             "name": "regenerateEvents",
             "summary": "Regenerates\u0020all\u0020static\u0020index\u0020and\u0020show\u0020pages\u0020for\u0020events.",
-            "url": "classes/StaticPageGenerator.html#method_regenerateEvents"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_regenerateEvents"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003AgenerateEventsIndex\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003AgenerateEventsIndex\u0028\u0029",
             "name": "generateEventsIndex",
             "summary": "Generates\u0020\u0028or\u0020overwrites\u0029\u0020the\u0020static\u0020index\u0020page\u0020for\u0020a\u0020given\u0020events\u0020page\u0020number.",
-            "url": "classes/StaticPageGenerator.html#method_generateEventsIndex"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_generateEventsIndex"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003AgenerateEventShow\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003AgenerateEventShow\u0028\u0029",
             "name": "generateEventShow",
             "summary": "Generates\u0020\u0028or\u0020overwrites\u0029\u0020the\u0020static\u0020show\u0020page\u0020for\u0020a\u0020single\u0020Event.",
-            "url": "classes/StaticPageGenerator.html#method_generateEventShow"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_generateEventShow"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003AcaptureRender\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003AcaptureRender\u0028\u0029",
             "name": "captureRender",
             "summary": "Renders\u0020the\u0020given\u0020view\u0020with\u0020\u0024data\u0020as\u0020a\u0020guest\u0020user\u0020and\u0020returns\u0020the\u0020complete\nHTML\u0020string\u0020\u0028including\u0020the\u0020application\u0020layout\u0029.",
-            "url": "classes/StaticPageGenerator.html#method_captureRender"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_captureRender"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003ArestoreFlashes\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003ArestoreFlashes\u0028\u0029",
             "name": "restoreFlashes",
             "summary": "Restores\u0020previously\u0020stashed\u0020session\u0020flash\u0020state.",
-            "url": "classes/StaticPageGenerator.html#method_restoreFlashes"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_restoreFlashes"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003Asave\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Write\u0020\u0024html\u0020to\u0020\u0024relativePath\u0020inside\u0020the\u0020pregenerated\/\u0020directory.",
-            "url": "classes/StaticPageGenerator.html#method_save"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_save"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003ApruneIndexPages\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003ApruneIndexPages\u0028\u0029",
             "name": "pruneIndexPages",
             "summary": "Delete\u0020all\u0020index_N.html\u0020files\u0020where\u0020N\u0020\u003E\u0020\u0024totalPages\u0020for\u0020the\u0020given\u0020resource.",
-            "url": "classes/StaticPageGenerator.html#method_pruneIndexPages"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_pruneIndexPages"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003ApruneShowPages\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003ApruneShowPages\u0028\u0029",
             "name": "pruneShowPages",
             "summary": "Delete\u0020show\u0020pages\u0020\u0028numeric\u0020ID\u0020files\u0029\u0020for\u0020resources\u0020that\u0020are\u0020no\u0020longer\npublicly\u0020visible.",
-            "url": "classes/StaticPageGenerator.html#method_pruneShowPages"
+            "url": "classes/App-Services-StaticPageGenerator.html#method_pruneShowPages"
         },                {
-            "fqsen": "\\StaticPageGenerator\u003A\u003A\u0024outputDir",
+            "fqsen": "\\App\\Services\\StaticPageGenerator\u003A\u003A\u0024outputDir",
             "name": "outputDir",
             "summary": "Absolute\u0020path\u0020to\u0020the\u0020pregenerated\/\u0020directory.",
-            "url": "classes/StaticPageGenerator.html#property_outputDir"
+            "url": "classes/App-Services-StaticPageGenerator.html#property_outputDir"
         },                {
-            "fqsen": "\\StaticPageRouter",
+            "fqsen": "\\App\\Services\\StaticPageRouter",
             "name": "StaticPageRouter",
             "summary": "Resolves\u0020incoming\u0020HTTP\u0020requests\u0020to\u0020pregenerated\u0020static\u0020HTML\u0020files.",
-            "url": "classes/StaticPageRouter.html"
+            "url": "classes/App-Services-StaticPageRouter.html"
         },                {
-            "fqsen": "\\StaticPageRouter\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageRouter\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/StaticPageRouter.html#method___construct"
+            "url": "classes/App-Services-StaticPageRouter.html#method___construct"
         },                {
-            "fqsen": "\\StaticPageRouter\u003A\u003Aresolve\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageRouter\u003A\u003Aresolve\u0028\u0029",
             "name": "resolve",
             "summary": "Determine\u0020which\u0020pregenerated\u0020file\u0020should\u0020be\u0020served\u0020for\u0020a\u0020given\u0020request,\ntaking\u0020the\u0020HTTP\u0020method\u0020and\u0020login\u0020state\u0020into\u0020account.",
-            "url": "classes/StaticPageRouter.html#method_resolve"
+            "url": "classes/App-Services-StaticPageRouter.html#method_resolve"
         },                {
-            "fqsen": "\\StaticPageRouter\u003A\u003AcandidatePath\u0028\u0029",
+            "fqsen": "\\App\\Services\\StaticPageRouter\u003A\u003AcandidatePath\u0028\u0029",
             "name": "candidatePath",
             "summary": "Map\u0020a\u0020request\u0020path\u0020to\u0020the\u0020expected\u0020file\u0020path\u0020without\u0020checking\u0020whether\nthe\u0020file\u0020actually\u0020exists\u0020on\u0020disk.\u0020Useful\u0020for\u0020testing\u0020the\u0020path\u0020logic\nin\u0020isolation.",
-            "url": "classes/StaticPageRouter.html#method_candidatePath"
+            "url": "classes/App-Services-StaticPageRouter.html#method_candidatePath"
         },                {
-            "fqsen": "\\StaticPageRouter\u003A\u003A\u0024baseDir",
+            "fqsen": "\\App\\Services\\StaticPageRouter\u003A\u003A\u0024baseDir",
             "name": "baseDir",
             "summary": "Absolute\u0020path\u0020to\u0020the\u0020pregenerated\/\u0020directory.",
-            "url": "classes/StaticPageRouter.html#property_baseDir"
+            "url": "classes/App-Services-StaticPageRouter.html#property_baseDir"
         },                {
-            "fqsen": "\\ViewManager",
+            "fqsen": "\\App\\Services\\ViewManager",
             "name": "ViewManager",
             "summary": "View\u0020rendering\u0020coordinator\u0020for\u0020templates,\u0020partials,\u0020form\u0020helpers,\u0020and\u0020layout\u0020output.",
-            "url": "classes/ViewManager.html"
+            "url": "classes/App-Services-ViewManager.html"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "The\u0020constructor\u0020method\u0020for\u0020the\u0020ViewManager\u0020class.",
-            "url": "classes/ViewManager.html#method___construct"
+            "url": "classes/App-Services-ViewManager.html#method___construct"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003Arender\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003Arender\u0028\u0029",
             "name": "render",
             "summary": "Renders\u0020a\u0020view\u0020with\u0020the\u0020given\u0020data.\u0020It\u0020extracts\u0020the\u0020data\u0020into\u0020variables,\ncaptures\u0020the\u0020output\u0020of\u0020including\u0020the\u0020view\u0020file,\u0020and\u0020stores\u0020it\u0020in\u0020the\u0020\u0024content\u0020property.",
-            "url": "classes/ViewManager.html#method_render"
+            "url": "classes/App-Services-ViewManager.html#method_render"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AapplySeoMetadata\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AapplySeoMetadata\u0028\u0029",
             "name": "applySeoMetadata",
             "summary": "Stores\u0020SEO\u002Drelated\u0020metadata\u0020for\u0020the\u0020current\u0020view\u0020render\u0020cycle.",
-            "url": "classes/ViewManager.html#method_applySeoMetadata"
+            "url": "classes/App-Services-ViewManager.html#method_applySeoMetadata"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AresolveSeoTitle\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AresolveSeoTitle\u0028\u0029",
             "name": "resolveSeoTitle",
             "summary": "Resolves\u0020the\u0020page\u0020title\u0020used\u0020in\u0020SEO\u0020tags\u0020and\u0020\u003Ctitle\u003E.",
-            "url": "classes/ViewManager.html#method_resolveSeoTitle"
+            "url": "classes/App-Services-ViewManager.html#method_resolveSeoTitle"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AresolveExplicitMetaDescription\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AresolveExplicitMetaDescription\u0028\u0029",
             "name": "resolveExplicitMetaDescription",
             "summary": "Resolves\u0020an\u0020explicitly\u0020provided\u0020meta\u0020description,\u0020if\u0020any.",
-            "url": "classes/ViewManager.html#method_resolveExplicitMetaDescription"
+            "url": "classes/App-Services-ViewManager.html#method_resolveExplicitMetaDescription"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AresolveMetaDescriptionSource\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AresolveMetaDescriptionSource\u0028\u0029",
             "name": "resolveMetaDescriptionSource",
             "summary": "Resolves\u0020the\u0020best\u0020source\u0020text\u0020for\u0020generated\u0020meta\u0020descriptions.",
-            "url": "classes/ViewManager.html#method_resolveMetaDescriptionSource"
+            "url": "classes/App-Services-ViewManager.html#method_resolveMetaDescriptionSource"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AgetTitle\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AgetTitle\u0028\u0029",
             "name": "getTitle",
             "summary": "Returns\u0020the\u0020currently\u0020resolved\u0020page\u0020title.",
-            "url": "classes/ViewManager.html#method_getTitle"
+            "url": "classes/App-Services-ViewManager.html#method_getTitle"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AgetMetaDescription\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AgetMetaDescription\u0028\u0029",
             "name": "getMetaDescription",
             "summary": "Returns\u0020an\u0020explicit\u0020page\u0020meta\u0020description,\u0020when\u0020set.",
-            "url": "classes/ViewManager.html#method_getMetaDescription"
+            "url": "classes/App-Services-ViewManager.html#method_getMetaDescription"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AgetMetaDescriptionSource\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AgetMetaDescriptionSource\u0028\u0029",
             "name": "getMetaDescriptionSource",
             "summary": "Returns\u0020the\u0020source\u0020text\u0020used\u0020for\u0020generated\u0020meta\u0020descriptions.",
-            "url": "classes/ViewManager.html#method_getMetaDescriptionSource"
+            "url": "classes/App-Services-ViewManager.html#method_getMetaDescriptionSource"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AisShowPage\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AisShowPage\u0028\u0029",
             "name": "isShowPage",
             "summary": "Indicates\u0020whether\u0020the\u0020current\u0020view\u0020is\u0020a\u0020detail\/show\u0020page.",
-            "url": "classes/ViewManager.html#method_isShowPage"
+            "url": "classes/App-Services-ViewManager.html#method_isShowPage"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AinferMetaDescriptionSource\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AinferMetaDescriptionSource\u0028\u0029",
             "name": "inferMetaDescriptionSource",
             "summary": "Infers\u0020a\u0020fallback\u0020text\u0020source\u0020for\u0020show\u002Dpage\u0020meta\u0020descriptions.",
-            "url": "classes/ViewManager.html#method_inferMetaDescriptionSource"
+            "url": "classes/App-Services-ViewManager.html#method_inferMetaDescriptionSource"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003ArenderPartial\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003ArenderPartial\u0028\u0029",
             "name": "renderPartial",
             "summary": "Render\u0020a\u0020partial\u0020view\u0020with\u0020the\u0020given\u0020variables.",
-            "url": "classes/ViewManager.html#method_renderPartial"
+            "url": "classes/App-Services-ViewManager.html#method_renderPartial"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003ArenderErrors\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003ArenderErrors\u0028\u0029",
             "name": "renderErrors",
             "summary": "Render\u0020validation\u0020errors\u0020for\u0020the\u0020current\u0020view.\u0020If\u0020there\u0020are\u0020any\u0020errors\u0020in\u0020the\u0020\u0024this\u002D\u003Eerrors\u0020property,\nit\u0020renders\u0020the\u0020\u0022layouts\/forms\/_errors\u0022\u0020partial\u0020view\u0020and\u0020passes\u0020the\u0020errors\u0020to\u0020it.",
-            "url": "classes/ViewManager.html#method_renderErrors"
+            "url": "classes/App-Services-ViewManager.html#method_renderErrors"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003ArenderTextarea\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003ArenderTextarea\u0028\u0029",
             "name": "renderTextarea",
             "summary": "Renders\u0020a\u0020textarea\u0020form\u0020field\u0020for\u0020a\u0020given\u0020object\u0027s\u0020attribute,\u0020with\u0020optional\u0020validation\u0020error\u0020highlighting.",
-            "url": "classes/ViewManager.html#method_renderTextarea"
+            "url": "classes/App-Services-ViewManager.html#method_renderTextarea"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003ArenderInput\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003ArenderInput\u0028\u0029",
             "name": "renderInput",
             "summary": "Renders\u0020an\u0020input\u0020form\u0020field\u0020for\u0020a\u0020given\u0020object\u0027s\u0020attribute,\u0020with\u0020optional\u0020validation\u0020error\u0020highlighting.",
-            "url": "classes/ViewManager.html#method_renderInput"
+            "url": "classes/App-Services-ViewManager.html#method_renderInput"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003ArenderDestroyButton\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003ArenderDestroyButton\u0028\u0029",
             "name": "renderDestroyButton",
             "summary": "Render\u0020a\u0020destroy\u0020button\u0020for\u0020a\u0020simple\u0020path\ne.g.\u0020\/posts\/\u003Aid\/destroy,\u0020\/votings\/\u003Aid\/destroy,\u0020etc.",
-            "url": "classes/ViewManager.html#method_renderDestroyButton"
+            "url": "classes/App-Services-ViewManager.html#method_renderDestroyButton"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003ArenderCSRFToken\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003ArenderCSRFToken\u0028\u0029",
             "name": "renderCSRFToken",
             "summary": "Render\u0020a\u0020CSRF\u0020token\u0020input\u0020for\u0020a\u0020form\nUsage\u003A\u0020call\u0020\u0024this\u002D\u003ErenderCSRFToken\u0028\u0027\/posts\u0027\u0029\u0020inside\u0020a\u0020form\u0020that\u0020submits\u0020to\u0020\/posts,\nor\u0020\u0024this\u002D\u003ErenderCSRFToken\u0028\u0027\/posts\/\u0027\u0020.\u0020\u0024post\u002D\u003Eid\u0029\u0020for\u0020a\u0020form\u0020that\u0020submits\u0020to\u0020\/posts\/\u003Aid,\u0020etc.",
-            "url": "classes/ViewManager.html#method_renderCSRFToken"
+            "url": "classes/App-Services-ViewManager.html#method_renderCSRFToken"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003ArenderIcon\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003ArenderIcon\u0028\u0029",
             "name": "renderIcon",
             "summary": "Renders\u0020an\u0020inline\u0020SVG\u0020icon\u0020from\u0020the\u0020Heroicons\u0020library\u0020\u0028https\u003A\/\/heroicons.com\u0029.",
-            "url": "classes/ViewManager.html#method_renderIcon"
+            "url": "classes/App-Services-ViewManager.html#method_renderIcon"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A__destruct\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A__destruct\u0028\u0029",
             "name": "__destruct",
             "summary": "The\u0020destructor\u0020method\u0020for\u0020the\u0020ViewManager\u0020class.\u0020This\u0020method\u0020is\u0020called\u0020when\u0020the\u0020object\u0020is\u0020destroyed,\nwhich\u0020typically\u0020happens\u0020at\u0020the\u0020end\u0020of\u0020the\u0020request\u0020lifecycle.",
-            "url": "classes/ViewManager.html#method___destruct"
+            "url": "classes/App-Services-ViewManager.html#method___destruct"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003AdisableLayout\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AdisableLayout\u0028\u0029",
             "name": "disableLayout",
             "summary": "Disables\u0020layout\u0020rendering\u0020in\u0020__destruct\u0028\u0029,\u0020useful\u0020for\u0020JSON\u0020endpoints.",
-            "url": "classes/ViewManager.html#method_disableLayout"
+            "url": "classes/App-Services-ViewManager.html#method_disableLayout"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003ArenderJson\u0028\u0029",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003ArenderJson\u0028\u0029",
             "name": "renderJson",
             "summary": "Sends\u0020a\u0020JSON\u0020response\u0020and\u0020disables\u0020layout\u0020rendering.",
-            "url": "classes/ViewManager.html#method_renderJson"
+            "url": "classes/App-Services-ViewManager.html#method_renderJson"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024content",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024content",
             "name": "content",
             "summary": "",
-            "url": "classes/ViewManager.html#property_content"
+            "url": "classes/App-Services-ViewManager.html#property_content"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024controller",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024controller",
             "name": "controller",
             "summary": "",
-            "url": "classes/ViewManager.html#property_controller"
+            "url": "classes/App-Services-ViewManager.html#property_controller"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024action",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024action",
             "name": "action",
             "summary": "",
-            "url": "classes/ViewManager.html#property_action"
+            "url": "classes/App-Services-ViewManager.html#property_action"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024title",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024title",
             "name": "title",
             "summary": "",
-            "url": "classes/ViewManager.html#property_title"
+            "url": "classes/App-Services-ViewManager.html#property_title"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024metaDescription",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024metaDescription",
             "name": "metaDescription",
             "summary": "",
-            "url": "classes/ViewManager.html#property_metaDescription"
+            "url": "classes/App-Services-ViewManager.html#property_metaDescription"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024metaDescriptionSource",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024metaDescriptionSource",
             "name": "metaDescriptionSource",
             "summary": "",
-            "url": "classes/ViewManager.html#property_metaDescriptionSource"
+            "url": "classes/App-Services-ViewManager.html#property_metaDescriptionSource"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024view",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024view",
             "name": "view",
             "summary": "",
-            "url": "classes/ViewManager.html#property_view"
+            "url": "classes/App-Services-ViewManager.html#property_view"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024controllerData",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024controllerData",
             "name": "controllerData",
             "summary": "",
-            "url": "classes/ViewManager.html#property_controllerData"
+            "url": "classes/App-Services-ViewManager.html#property_controllerData"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024auth",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024auth",
             "name": "auth",
             "summary": "",
-            "url": "classes/ViewManager.html#property_auth"
+            "url": "classes/App-Services-ViewManager.html#property_auth"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024errors",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024errors",
             "name": "errors",
             "summary": "",
-            "url": "classes/ViewManager.html#property_errors"
+            "url": "classes/App-Services-ViewManager.html#property_errors"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024pagination",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024pagination",
             "name": "pagination",
             "summary": "",
-            "url": "classes/ViewManager.html#property_pagination"
+            "url": "classes/App-Services-ViewManager.html#property_pagination"
         },                {
-            "fqsen": "\\ViewManager\u003A\u003A\u0024shouldRenderLayout",
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024shouldRenderLayout",
             "name": "shouldRenderLayout",
             "summary": "",
-            "url": "classes/ViewManager.html#property_shouldRenderLayout"
+            "url": "classes/App-Services-ViewManager.html#property_shouldRenderLayout"
         },                {
             "fqsen": "\\Router",
             "name": "Router",
@@ -2361,10 +2361,15 @@ Search.appendIndex(
             "summary": "Sets\u0020the\u0020minimum\u0020log\u0020level\u003B\u0020messages\u0020below\u0020this\u0020level\u0020are\u0020suppressed.",
             "url": "classes/Logger.html#method_setLevel"
         },                {
-            "fqsen": "\\Logger\u003A\u003Alog\u0028\u0029",
-            "name": "log",
+            "fqsen": "\\Logger\u003A\u003Apsr\u0028\u0029",
+            "name": "psr",
+            "summary": "Returns\u0020a\u0020PSR\u002D3\u0020compatible\u0020logger\u0020adapter\u0020for\u0020dependency\u0020injection.",
+            "url": "classes/Logger.html#method_psr"
+        },                {
+            "fqsen": "\\Logger\u003A\u003AwriteLog\u0028\u0029",
+            "name": "writeLog",
             "summary": "Formats\u0020and\u0020writes\u0020a\u0020log\u0020entry\u0020to\u0020stderr\u0020if\u0020the\u0020level\u0020meets\u0020the\u0020minimum\u0020threshold.",
-            "url": "classes/Logger.html#method_log"
+            "url": "classes/Logger.html#method_writeLog"
         },                {
             "fqsen": "\\Logger\u003A\u003Adebug\u0028\u0029",
             "name": "debug",
@@ -2391,6 +2396,11 @@ Search.appendIndex(
             "summary": "Logs\u0020an\u0020error\u002Dlevel\u0020message.",
             "url": "classes/Logger.html#method_error"
         },                {
+            "fqsen": "\\Logger\u003A\u003A\u0024psrAdapter",
+            "name": "psrAdapter",
+            "summary": "",
+            "url": "classes/Logger.html#property_psrAdapter"
+        },                {
             "fqsen": "\\Logger\u003A\u003A\u0024minLevel",
             "name": "minLevel",
             "summary": "",
@@ -2405,6 +2415,56 @@ Search.appendIndex(
             "name": "timestampFormat",
             "summary": "",
             "url": "classes/Logger.html#property_timestampFormat"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter",
+            "name": "LoggerPsrAdapter",
+            "summary": "Thin\u0020PSR\u002D3\u0020adapter\u0020that\u0020delegates\u0020to\u0020the\u0020static\u0020Logger\u0020facade.",
+            "url": "classes/LoggerPsrAdapter.html"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter\u003A\u003Aemergency\u0028\u0029",
+            "name": "emergency",
+            "summary": "",
+            "url": "classes/LoggerPsrAdapter.html#method_emergency"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter\u003A\u003Aalert\u0028\u0029",
+            "name": "alert",
+            "summary": "Logs\u0020emergency\u002Dlevel\u0020message\u0020\u0028mapped\u0020to\u0020ERROR\u0020severity\u0020in\u0020internal\u0020logger\u0029.",
+            "url": "classes/LoggerPsrAdapter.html#method_alert"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter\u003A\u003Acritical\u0028\u0029",
+            "name": "critical",
+            "summary": "Logs\u0020alert\u002Dlevel\u0020message\u0020\u0028mapped\u0020to\u0020ERROR\u0020severity\u0020in\u0020internal\u0020logger\u0029.",
+            "url": "classes/LoggerPsrAdapter.html#method_critical"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter\u003A\u003Aerror\u0028\u0029",
+            "name": "error",
+            "summary": "Logs\u0020critical\u002Dlevel\u0020message\u0020\u0028mapped\u0020to\u0020ERROR\u0020severity\u0020in\u0020internal\u0020logger\u0029.",
+            "url": "classes/LoggerPsrAdapter.html#method_error"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter\u003A\u003Awarning\u0028\u0029",
+            "name": "warning",
+            "summary": "Logs\u0020notice\u002Dlevel\u0020message\u0020\u0028mapped\u0020to\u0020INFO\u0020severity\u0020in\u0020internal\u0020logger\u0029.",
+            "url": "classes/LoggerPsrAdapter.html#method_warning"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter\u003A\u003Anotice\u0028\u0029",
+            "name": "notice",
+            "summary": "Generic\u0020PSR\u002D3\u0020log\u0020entry\u0020point.",
+            "url": "classes/LoggerPsrAdapter.html#method_notice"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter\u003A\u003Ainfo\u0028\u0029",
+            "name": "info",
+            "summary": "",
+            "url": "classes/LoggerPsrAdapter.html#method_info"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter\u003A\u003Adebug\u0028\u0029",
+            "name": "debug",
+            "summary": "",
+            "url": "classes/LoggerPsrAdapter.html#method_debug"
+        },                {
+            "fqsen": "\\LoggerPsrAdapter\u003A\u003Alog\u0028\u0029",
+            "name": "log",
+            "summary": "",
+            "url": "classes/LoggerPsrAdapter.html#method_log"
         },                {
             "fqsen": "\\LogLevel",
             "name": "LogLevel",
@@ -2446,10 +2506,125 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/LogLevel.html#enumcase_ERROR"
         },                {
+            "fqsen": "\\Psr\\Log\\LogLevel",
+            "name": "LogLevel",
+            "summary": "",
+            "url": "classes/Psr-Log-LogLevel.html"
+        },                {
+            "fqsen": "\\Psr\\Log\\LogLevel\u003A\u003AEMERGENCY",
+            "name": "EMERGENCY",
+            "summary": "",
+            "url": "classes/Psr-Log-LogLevel.html#constant_EMERGENCY"
+        },                {
+            "fqsen": "\\Psr\\Log\\LogLevel\u003A\u003AALERT",
+            "name": "ALERT",
+            "summary": "",
+            "url": "classes/Psr-Log-LogLevel.html#constant_ALERT"
+        },                {
+            "fqsen": "\\Psr\\Log\\LogLevel\u003A\u003ACRITICAL",
+            "name": "CRITICAL",
+            "summary": "",
+            "url": "classes/Psr-Log-LogLevel.html#constant_CRITICAL"
+        },                {
+            "fqsen": "\\Psr\\Log\\LogLevel\u003A\u003AERROR",
+            "name": "ERROR",
+            "summary": "",
+            "url": "classes/Psr-Log-LogLevel.html#constant_ERROR"
+        },                {
+            "fqsen": "\\Psr\\Log\\LogLevel\u003A\u003AWARNING",
+            "name": "WARNING",
+            "summary": "",
+            "url": "classes/Psr-Log-LogLevel.html#constant_WARNING"
+        },                {
+            "fqsen": "\\Psr\\Log\\LogLevel\u003A\u003ANOTICE",
+            "name": "NOTICE",
+            "summary": "",
+            "url": "classes/Psr-Log-LogLevel.html#constant_NOTICE"
+        },                {
+            "fqsen": "\\Psr\\Log\\LogLevel\u003A\u003AINFO",
+            "name": "INFO",
+            "summary": "",
+            "url": "classes/Psr-Log-LogLevel.html#constant_INFO"
+        },                {
+            "fqsen": "\\Psr\\Log\\LogLevel\u003A\u003ADEBUG",
+            "name": "DEBUG",
+            "summary": "",
+            "url": "classes/Psr-Log-LogLevel.html#constant_DEBUG"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface",
+            "name": "LoggerInterface",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface\u003A\u003Aemergency\u0028\u0029",
+            "name": "emergency",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html#method_emergency"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface\u003A\u003Aalert\u0028\u0029",
+            "name": "alert",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html#method_alert"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface\u003A\u003Acritical\u0028\u0029",
+            "name": "critical",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html#method_critical"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface\u003A\u003Aerror\u0028\u0029",
+            "name": "error",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html#method_error"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface\u003A\u003Awarning\u0028\u0029",
+            "name": "warning",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html#method_warning"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface\u003A\u003Anotice\u0028\u0029",
+            "name": "notice",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html#method_notice"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface\u003A\u003Ainfo\u0028\u0029",
+            "name": "info",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html#method_info"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface\u003A\u003Adebug\u0028\u0029",
+            "name": "debug",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html#method_debug"
+        },                {
+            "fqsen": "\\Psr\\Log\\LoggerInterface\u003A\u003Alog\u0028\u0029",
+            "name": "log",
+            "summary": "",
+            "url": "classes/Psr-Log-LoggerInterface.html#method_log"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
+        },                {
+            "fqsen": "\\App\\Controllers",
+            "name": "Controllers",
+            "summary": "",
+            "url": "namespaces/app-controllers.html"
+        },                {
+            "fqsen": "\\App",
+            "name": "App",
+            "summary": "",
+            "url": "namespaces/app.html"
+        },                {
+            "fqsen": "\\App\\Models",
+            "name": "Models",
+            "summary": "",
+            "url": "namespaces/app-models.html"
+        },                {
+            "fqsen": "\\App\\Services",
+            "name": "Services",
+            "summary": "",
+            "url": "namespaces/app-services.html"
         },                {
             "fqsen": "\\ActiveModel\\Validations",
             "name": "Validations",
@@ -2460,5 +2635,15 @@ Search.appendIndex(
             "name": "ActiveModel",
             "summary": "",
             "url": "namespaces/activemodel.html"
+        },                {
+            "fqsen": "\\Psr\\Log",
+            "name": "Log",
+            "summary": "",
+            "url": "namespaces/psr-log.html"
+        },                {
+            "fqsen": "\\Psr",
+            "name": "Psr",
+            "summary": "",
+            "url": "namespaces/psr.html"
         }            ]
 );

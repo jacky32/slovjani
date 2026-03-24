@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
 /**
  * Builds SEO metadata for HTML head tags.
  *
@@ -111,3 +113,5 @@ class SeoMetaService
     return rtrim($slice) . '...';
   }
 }
+
+class_alias(__NAMESPACE__ . '\\SeoMetaService', 'SeoMetaService');

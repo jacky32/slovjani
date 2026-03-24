@@ -2,6 +2,11 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
+use App\Models\Event;
+use App\Models\Post;
+
 /**
  * Generates static HTML snapshots of public pages (posts/ and events/) and
  * saves them under /pregenerated so that index.php can serve them directly
@@ -37,10 +42,10 @@ class StaticPageGenerator
    */
   public function regenerateAll(): void
   {
-    Logger::info("StaticPageGenerator: starting full regeneration");
+    \Logger::info("StaticPageGenerator: starting full regeneration");
     $this->regeneratePosts();
     $this->regenerateEvents();
-    Logger::info("StaticPageGenerator: regeneration complete");
+    \Logger::info("StaticPageGenerator: regeneration complete");
   }
 
   /**
@@ -223,11 +228,11 @@ class StaticPageGenerator
       // and the layout HTML is captured rather than sent to the response.
       unset($viewManager);
       $html = ob_get_clean();
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       ob_end_clean();
       // Restore flashes before re-throwing
       $this->restoreFlashes($savedFlashes, $savedFlashCount);
-      Logger::error("StaticPageGenerator: render failed for $view: " . $e->getMessage());
+      \Logger::error("StaticPageGenerator: render failed for $view: " . $e->getMessage());
       throw $e;
     }
 
@@ -271,7 +276,7 @@ class StaticPageGenerator
     }
 
     file_put_contents($fullPath, $html);
-    Logger::debug("StaticPageGenerator: saved pregenerated/$relativePath");
+    \Logger::debug("StaticPageGenerator: saved pregenerated/$relativePath");
   }
 
   /**
@@ -288,7 +293,7 @@ class StaticPageGenerator
     foreach (glob($dir . '/index_*.html') ?: [] as $file) {
       if (preg_match('/index_(\d+)\.html$/', $file, $m) && (int) $m[1] > $totalPages) {
         unlink($file);
-        Logger::debug("StaticPageGenerator: pruned $file");
+        \Logger::debug("StaticPageGenerator: pruned $file");
       }
     }
   }
@@ -313,8 +318,10 @@ class StaticPageGenerator
       $id = (int) basename($file, '.html');
       if (!in_array($id, $visibleIds, true)) {
         unlink($file);
-        Logger::debug("StaticPageGenerator: pruned $file");
+        \Logger::debug("StaticPageGenerator: pruned $file");
       }
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\StaticPageGenerator', 'StaticPageGenerator');

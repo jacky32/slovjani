@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Models;
+
 /**
  * User account model with role masks and owned resources.
  *
@@ -74,3 +78,5 @@ class User extends ApplicationRecord
     parent::__construct($data, self::$db_attributes, self::$relations);
   }
 }
+
+class_alias(__NAMESPACE__ . '\\User', 'User');

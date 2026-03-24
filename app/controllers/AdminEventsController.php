@@ -1,11 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\Event;
+use App\Services\AttachmentMarkupMediaSourceResolver;
+use App\Services\EditorMarkupParser;
+use App\Services\GoogleCalendarService;
+use App\Services\StaticPageGenerator;
+use Logger;
+
 /**
  * Admin CRUD controller for events and related publishing actions.
  *
  * @package Controllers
  */
-
 class AdminEventsController extends AdminController
 {
   private $id;
@@ -105,14 +115,14 @@ class AdminEventsController extends AdminController
         $google_event = (new GoogleCalendarService($event->is_publicly_visible))->insertTimedEvent($event->name, $event->datetime_start, $event->datetime_end);
         $event->google_calendar_event_id = $google_event['id'] ?? null;
         $event->save();
-      } catch (Exception $e) {
+      } catch (\Exception $e) {
         Logger::error("Failed to create event in Google Calendar: " . $e->getMessage());
         $this->addFlash('error', t("events.create.google_calendar_creation_failed"));
       }
       (new StaticPageGenerator())->regenerateAll();
       $this->addFlash('success', t("events.create.success"));
       header("Location: /admin/events");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       Logger::error("Failed to create event: " . $e->getMessage());
       $this->addFlash('error', $e->getMessage());
@@ -193,7 +203,7 @@ class AdminEventsController extends AdminController
               $event->datetime_end
             );
             $event->google_calendar_event_id = $google_event['id'] ?? null;
-          } catch (Exception $e) {
+          } catch (\Exception $e) {
             Logger::error("Failed to update Google Calendar event with ID " . $event->google_calendar_event_id . ": " . $e->getMessage());
             $this->addFlash('error', t("events.update.google_calendar_update_failed"));
           }
@@ -210,7 +220,7 @@ class AdminEventsController extends AdminController
         }
         header("Location: /admin/events");
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
@@ -245,7 +255,7 @@ class AdminEventsController extends AdminController
         if ($event->google_calendar_event_id) {
           try {
             (new GoogleCalendarService($event->is_publicly_visible))->destroyEvent($event->google_calendar_event_id);
-          } catch (Exception $e) {
+          } catch (\Exception $e) {
             Logger::error("Failed to delete Google Calendar event with ID " . $event->google_calendar_event_id . ": " . $e->getMessage());
             $this->addFlash('error', t("events.destroy.google_calendar_deletion_failed"));
           }
@@ -264,9 +274,11 @@ class AdminEventsController extends AdminController
         $this->addFlash('error', t("error"));
       }
       header("Location: /admin/events");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/events");
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AdminEventsController', 'AdminEventsController');

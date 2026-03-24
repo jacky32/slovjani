@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
+use Closure;
+
 /**
  * Minimal Google Calendar API client for inserting and deleting events.
  *
@@ -93,7 +97,7 @@ class GoogleCalendarService
       method: 'GET',
       url: $this->eventsEndpoint() . '?' . http_build_query($queryParams, '', '&', PHP_QUERY_RFC3986)
     );
-    Logger::info("Listed Google Calendar events with query: " . json_encode($queryParams));
+    \Logger::info("Listed Google Calendar events with query: " . json_encode($queryParams));
     return $this->decodeJsonBody($response['body'] ?? '', 'Google Calendar list events response was not valid JSON.');
   }
 
@@ -121,7 +125,7 @@ class GoogleCalendarService
   {
     $normalizedEventId = trim($eventId);
     if ($normalizedEventId === '') {
-      throw new InvalidArgumentException('Google Calendar event ID cannot be empty.');
+      throw new \InvalidArgumentException('Google Calendar event ID cannot be empty.');
     }
 
     $this->request(
@@ -151,7 +155,7 @@ class GoogleCalendarService
     $responseBody = (string) ($response['body'] ?? '');
 
     if ($status < 200 || $status >= 300) {
-      throw new RuntimeException(sprintf(
+      throw new \RuntimeException(sprintf(
         'Google Calendar API request failed with status %d: %s',
         $status,
         $this->compactBody($responseBody)
@@ -181,7 +185,7 @@ class GoogleCalendarService
     $responseBody = (string) ($response['body'] ?? '');
 
     if ($status < 200 || $status >= 300) {
-      throw new RuntimeException(sprintf(
+      throw new \RuntimeException(sprintf(
         'Google OAuth token request failed with status %d: %s',
         $status,
         $this->compactBody($responseBody)
@@ -192,7 +196,7 @@ class GoogleCalendarService
     $accessToken = $payload['access_token'] ?? null;
 
     if (!is_string($accessToken) || trim($accessToken) === '') {
-      throw new RuntimeException('Google OAuth token response did not contain an access token.');
+      throw new \RuntimeException('Google OAuth token response did not contain an access token.');
     }
 
     return $accessToken;
@@ -222,13 +226,13 @@ class GoogleCalendarService
 
     $privateKey = openssl_pkey_get_private($this->privateKey);
     if ($privateKey === false) {
-      throw new RuntimeException('Google service account private key is invalid.');
+      throw new \RuntimeException('Google service account private key is invalid.');
     }
 
     $signature = '';
     $signResult = openssl_sign($unsignedToken, $signature, $privateKey, OPENSSL_ALGO_SHA256);
     if ($signResult !== true) {
-      throw new RuntimeException('Failed to sign the Google OAuth JWT assertion.');
+      throw new \RuntimeException('Failed to sign the Google OAuth JWT assertion.');
     }
 
     return $unsignedToken . '.' . $this->base64UrlEncode($signature);
@@ -260,7 +264,7 @@ class GoogleCalendarService
     }
 
     if ($missing !== []) {
-      throw new InvalidArgumentException(
+      throw new \InvalidArgumentException(
         'Google Calendar configuration is incomplete. Missing: ' . implode(', ', $missing)
       );
     }
@@ -274,9 +278,9 @@ class GoogleCalendarService
   private function formatDateTime(string $dateTime, string $timeZone): string
   {
     try {
-      return (new DateTimeImmutable($dateTime, new DateTimeZone($timeZone)))->format(DateTimeInterface::RFC3339);
-    } catch (Exception $exception) {
-      throw new InvalidArgumentException('Invalid event datetime provided: ' . $dateTime, 0, $exception);
+      return (new \DateTimeImmutable($dateTime, new \DateTimeZone($timeZone)))->format(\DateTimeInterface::RFC3339);
+    } catch (\Exception $exception) {
+      throw new \InvalidArgumentException('Invalid event datetime provided: ' . $dateTime, 0, $exception);
     }
   }
 
@@ -306,8 +310,8 @@ class GoogleCalendarService
 
     try {
       $decoded = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
-    } catch (JsonException $exception) {
-      throw new RuntimeException($errorMessage, 0, $exception);
+    } catch (\JsonException $exception) {
+      throw new \RuntimeException($errorMessage, 0, $exception);
     }
 
     return is_array($decoded) ? $decoded : [];
@@ -331,12 +335,12 @@ class GoogleCalendarService
   private function sendCurlRequest(string $method, string $url, array $headers, ?string $body, int $timeoutSeconds): array
   {
     if (!function_exists('curl_init')) {
-      throw new RuntimeException('The cURL extension is required for Google Calendar API requests.');
+      throw new \RuntimeException('The cURL extension is required for Google Calendar API requests.');
     }
 
     $handle = curl_init();
     if ($handle === false) {
-      throw new RuntimeException('Unable to initialise cURL for Google Calendar API requests.');
+      throw new \RuntimeException('Unable to initialise cURL for Google Calendar API requests.');
     }
 
     $options = [
@@ -357,7 +361,7 @@ class GoogleCalendarService
 
     if ($rawResponse === false) {
       $error = curl_error($handle);
-      throw new RuntimeException('Google Calendar API request failed: ' . $error);
+      throw new \RuntimeException('Google Calendar API request failed: ' . $error);
     }
 
     $status = (int) curl_getinfo($handle, CURLINFO_HTTP_CODE);
@@ -391,3 +395,5 @@ class GoogleCalendarService
     return $parsedHeaders;
   }
 }
+
+class_alias(__NAMESPACE__ . '\\GoogleCalendarService', 'GoogleCalendarService');

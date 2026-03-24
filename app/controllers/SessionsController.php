@@ -1,5 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\User;
+use App\Services\DefaultAdminBootstrapper;
+use Logger;
+
 /**
  * Authentication controller for login and logout session actions.
  *
@@ -33,7 +41,7 @@ class SessionsController extends ApplicationController
       header("Location: /");
     } else {
       $this->render("sessions/new", [
-        "users" => \User::all(),
+        "users" => User::all(),
         "recaptchaEnabled" => $this->recaptchaService?->isEnabled() ?? false,
         "recaptchaV3SiteKey" => $this->recaptchaService?->getV3SiteKey() ?? '',
         "recaptchaV2SiteKey" => $this->recaptchaService?->getV2SiteKey() ?? '',
@@ -63,7 +71,7 @@ class SessionsController extends ApplicationController
       DefaultAdminBootstrapper::ensureExists($this->auth);
       $this->addFlash('success', t('sessions.bootstrap_default_admin.success'));
       header('Location: /login');
-    } catch (Exception $exception) {
+    } catch (\Exception $exception) {
       $this->addFlash('error', t('sessions.bootstrap_default_admin.failed'));
       Logger::error('Default admin bootstrap action failed: ' . $exception->getMessage());
       header('Location: /login');
@@ -130,3 +138,5 @@ class SessionsController extends ApplicationController
     header("Location: /");
   }
 }
+
+class_alias(__NAMESPACE__ . '\\SessionsController', 'SessionsController');

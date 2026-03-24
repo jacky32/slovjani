@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Models;
+
 /**
  * Event domain model with visibility and scheduling attributes.
  *
@@ -91,3 +95,5 @@ class Event extends ApplicationRecord
   }
 
 }
+
+class_alias(__NAMESPACE__ . '\\Event', 'Event');

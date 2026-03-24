@@ -1,11 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\Voting;
+use App\Services\AttachmentMarkupMediaSourceResolver;
+use App\Services\EditorMarkupParser;
+
 /**
  * Admin CRUD controller for votings and lifecycle management.
  *
  * @package Controllers
  */
-
 class AdminVotingsController extends AdminController
 {
   private $id;
@@ -104,7 +111,7 @@ class AdminVotingsController extends AdminController
       $voting->save();
       $this->addFlash('success', t("votings.create.success"));
       header("Location: /admin/votings");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
@@ -178,7 +185,7 @@ class AdminVotingsController extends AdminController
         }
         header("Location: /admin/votings");
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
@@ -220,9 +227,11 @@ class AdminVotingsController extends AdminController
         $this->addFlash('error', t("error"));
       }
       header("Location: /admin/votings");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/votings");
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AdminVotingsController', 'AdminVotingsController');

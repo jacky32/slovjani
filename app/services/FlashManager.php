@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
 /**
  * Session-backed flash message manager for user-facing notifications.
  *
@@ -20,7 +22,7 @@ class FlashManager
   public static function addFlash($type, $message)
   {
     if (!in_array($type, ['success', 'error', 'info', 'warning'])) {
-      throw new InvalidArgumentException("Invalid flash type: $type");
+      throw new \InvalidArgumentException("Invalid flash type: $type");
     }
     if (!isset($_SESSION['FLASHES'])) {
       $_SESSION['FLASHES'] = [];
@@ -61,3 +63,5 @@ class FlashManager
     return isset($_SESSION['FLASHES']) && count($_SESSION['FLASHES']) > 0;
   }
 }
+
+class_alias(__NAMESPACE__ . '\\FlashManager', 'FlashManager');

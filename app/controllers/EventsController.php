@@ -1,5 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\Event;
+use App\Services\AttachmentMarkupMediaSourceResolver;
+use App\Services\EditorMarkupParser;
+
 /**
  * Public read-only controller for listing and viewing visible events.
  *
@@ -66,3 +74,5 @@ class EventsController extends ApplicationController
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\EventsController', 'EventsController');

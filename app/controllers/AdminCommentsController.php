@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\Comment;
+use App\Models\Event;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Voting;
+
 /**
  * Admin controller for managing comments on posts, users, events, and votings.
  *
@@ -49,7 +59,7 @@ class AdminCommentsController extends AdminController
       $comment->save();
       $this->addFlash('success', t("comments.create.success"));
       header("Location: /admin/{$this->resource_type}/{$this->resource_id}");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
@@ -94,7 +104,7 @@ class AdminCommentsController extends AdminController
         }
         header("Location: /admin/{$this->resource_type}/{$this->resource_id}/comments/{$this->comment_id}/edit");
       }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
@@ -135,7 +145,7 @@ class AdminCommentsController extends AdminController
         $this->addFlash('error', t("comments.destroy.error"));
       }
       header("Location: /admin/{$this->resource_type}/{$this->resource_id}");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/{$this->resource_type}/{$this->resource_id}");
     }
@@ -164,7 +174,7 @@ class AdminCommentsController extends AdminController
    *
    * @return Post|User|Event|Voting|null The found resource, or null for unknown types.
    */
-  private function findResource()
+  private function findResource(): Post|User|Event|Voting|null
   {
     switch ($this->resource_type) {
       case 'posts':
@@ -180,3 +190,5 @@ class AdminCommentsController extends AdminController
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AdminCommentsController', 'AdminCommentsController');

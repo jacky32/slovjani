@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
 /**
  * View rendering coordinator for templates, partials, form helpers, and layout output.
  *
@@ -26,10 +28,10 @@ class ViewManager
   /**
    * The constructor method for the ViewManager class.
    * It initializes the object with the given authentication service and determines the current controller based on the debug backtrace.
-   * @param \Delight\Auth\Auth|\GuestAuth $auth The authentication service (or a GuestAuth stub) to be used for rendering views.
+   * @param \Delight\Auth\Auth|GuestAuth $auth The authentication service (or a GuestAuth stub) to be used for rendering views.
    * @param string|null $controllerOverride When provided, skips the backtrace and uses this value as the active controller name. Used by StaticPageGenerator.
    */
-  public function __construct(\Delight\Auth\Auth|\GuestAuth $auth, ?string $controllerOverride = null)
+  public function __construct(\Delight\Auth\Auth|GuestAuth $auth, ?string $controllerOverride = null)
   {
     $this->auth = $auth;
     if ($controllerOverride !== null) {
@@ -214,7 +216,7 @@ class ViewManager
     ob_start();
     include "app/views/$filename.html.php";
     echo ob_get_clean();
-    Logger::debug("Rendered partial: app/views/$filename.html.php");
+    \Logger::debug("Rendered partial: app/views/$filename.html.php");
     return;
   }
 
@@ -239,10 +241,10 @@ class ViewManager
    * @param bool $required Whether the field is required (default: true). If true, the "required" attribute will be added to the textarea.
    * @return string The HTML string for the textarea form field.
    */
-  public function renderTextarea(ActiveModel $object, string $attribute, bool $required = true): string
+  public function renderTextarea(\ActiveModel $object, string $attribute, bool $required = true): string
   {
     $fieldId = toSnakeCase($object::class) . "-" . $attribute . "-input";
-    $placeholder = t("attributes." . strtolower($object::class) . "." . $attribute);
+    $placeholder = t("attributes." . toSnakeCase($object::class) . "." . $attribute);
     $name = toSnakeCase($object::class) . "[" . $attribute . "]";
     $label = $object::humanAttributeName($attribute);
     $currentValue = (string) ($object->{$attribute} ?? '');
@@ -273,11 +275,11 @@ class ViewManager
    * @param bool $required Whether the field is required (default: true). If true, the "required" attribute will be added to the input.
    * @return string The HTML string for the input form field.
    */
-  public function renderInput(ActiveModel $object, string $attribute, string $type = "text", bool $required = true): string
+  public function renderInput(\ActiveModel $object, string $attribute, string $type = "text", bool $required = true): string
   {
     $fieldId = toSnakeCase($object::class) . "-" . $attribute . "-input";
     $label = $object::humanAttributeName($attribute);
-    $placeholder = t("attributes." . strtolower($object::class) . "." . $attribute);
+    $placeholder = t("attributes." . toSnakeCase($object::class) . "." . $attribute);
     $name = toSnakeCase($object::class) . "[" . $attribute . "]";
     $rawValue = (string) ($object->{$attribute} ?? '');
     $value = htmlspecialchars($rawValue);
@@ -308,7 +310,7 @@ class ViewManager
    * @param ActiveModel $object The object for which to render the destroy button
    * @return string The HTML for the destroy button, or an empty string if the user is not the creator of the object
    */
-  public function renderDestroyButton(ActiveModel $object): string
+  public function renderDestroyButton(\ActiveModel $object): string
   {
     if ($object->creator_id == $this->auth->getUserId()) {
       $path = "/" . toSnakeCase($object::class) . "s/" . $object->id . "/destroy";
@@ -429,3 +431,5 @@ class ViewManager
     exit();
   }
 }
+
+class_alias(__NAMESPACE__ . '\\ViewManager', 'ViewManager');

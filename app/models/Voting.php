@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Models;
+
 /**
  * Voting model with questions, status lifecycle, and participation helpers.
  *
@@ -84,3 +88,5 @@ class Voting extends ApplicationRecord
     return $users_question !== null;
   }
 }
+
+class_alias(__NAMESPACE__ . '\\Voting', 'Voting');

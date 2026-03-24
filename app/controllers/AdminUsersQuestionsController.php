@@ -1,11 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\User;
+use App\Models\UsersQuestion;
+use App\Models\Voting;
+use App\Services\AttachmentMarkupMediaSourceResolver;
+use App\Services\EditorMarkupParser;
+
 /**
  * Admin controller handling user responses for voting questions.
  *
  * @package Controllers
  */
-
 class AdminUsersQuestionsController extends AdminController
 {
   private $voting_id;
@@ -63,13 +72,13 @@ class AdminUsersQuestionsController extends AdminController
       $this->verifyCSRF('/admin/votings/' . $this->voting_id . '/users_questions');
       $voting = Voting::find($this->voting_id);
       if ($voting->status != "IN_PROGRESS") {
-        throw new Exception(t("users_questions.create.voting_not_active"));
+        throw new \Exception(t("users_questions.create.voting_not_active"));
       }
       $valid_question_ids = $voting->questions->pluck('id');
       // Create new voting
       foreach ($request['users_question'] as $questionData) {
         if (!in_array($questionData['question_id'], $valid_question_ids)) {
-          throw new Exception(t("users_questions.create.invalid_question"));
+          throw new \Exception(t("users_questions.create.invalid_question"));
         }
         $users_question = new UsersQuestion([
           'chosen_option' => $questionData['chosen_option'],
@@ -80,7 +89,7 @@ class AdminUsersQuestionsController extends AdminController
       }
       $this->addFlash('success', t("users_questions.create.success"));
       header("Location: /admin/votings/" . $this->voting_id);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors[] = $e->getMessage();
       // if ($e instanceof \ActiveModel\ValidationException) {
       $this->addFlash('error', $e->getMessage());
@@ -120,7 +129,7 @@ class AdminUsersQuestionsController extends AdminController
       // Find voting and check ownership
       $voting = Voting::find($this->voting_id);
       if ($voting->status != "IN_PROGRESS") {
-        throw new Exception(t("users_questions.destroy.voting_not_active"));
+        throw new \Exception(t("users_questions.destroy.voting_not_active"));
       }
       $user = User::find($this->auth->getUserId());
       $users_question = $user->users_questions->find($this->users_question_id);
@@ -137,9 +146,11 @@ class AdminUsersQuestionsController extends AdminController
         $this->addFlash('error', t("error"));
       }
       header("Location: /admin/votings/" . $this->voting_id);
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/votings");
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AdminUsersQuestionsController', 'AdminUsersQuestionsController');

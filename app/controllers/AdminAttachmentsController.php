@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\Attachment;
+use App\Models\Event;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Voting;
+
 /**
  * Admin controller for creating, serving, and deleting resource attachments.
  *
@@ -104,15 +114,15 @@ class AdminAttachmentsController extends AdminController
           // File moved successfully
         } else {
           $attachment->destroy(); // Rollback attachment record if file move fails
-          throw new Exception(t("attachments.create.file_move_error"));
+          throw new \Exception(t("attachments.create.file_move_error"));
         }
       } else {
-        throw new Exception("Error uploading file: " . $_FILES['attachment']['error'][0]);
+        throw new \Exception("Error uploading file: " . $_FILES['attachment']['error'][0]);
       }
       $attachment->save();
       $this->addFlash('success', t("attachments.create.success"));
       header("Location: /admin/{$this->resource_type}/{$this->resource_id}");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
@@ -154,7 +164,7 @@ class AdminAttachmentsController extends AdminController
         $this->addFlash('error', t("attachments.destroy.error"));
       }
       header("Location: /admin/{$this->resource_type}/{$this->resource_id}");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/{$this->resource_type}/{$this->resource_id}");
     }
@@ -165,7 +175,7 @@ class AdminAttachmentsController extends AdminController
    *
    * @return Post|User|Event|Voting|null The found resource, or null for unknown types.
    */
-  private function findResource()
+  private function findResource(): Post|User|Event|Voting|null
   {
     switch ($this->resource_type) {
       case 'posts':
@@ -181,3 +191,5 @@ class AdminAttachmentsController extends AdminController
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AdminAttachmentsController', 'AdminAttachmentsController');

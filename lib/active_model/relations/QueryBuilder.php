@@ -265,8 +265,11 @@ class QueryBuilder
    * @param int|null $start_id     When provided and $current_page is null, the page containing this record ID is used.
    * @return Pagination
    */
-  public function paginate(int|null $current_page = 1, int|null $start_id = null): Pagination
+  public function paginate(int|null $current_page = 1, int|string|null $start_id = null): Pagination
   {
+    if ($start_id && is_string($start_id) && ctype_digit($start_id)) {
+      $start_id = (int) $start_id;
+    }
     return new Pagination($this, $current_page, $start_id);
   }
 

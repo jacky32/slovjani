@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Models;
+
 /**
  * Post domain model with publish-state workflow.
  *
@@ -68,3 +72,5 @@ class Post extends ApplicationRecord
   // Methods
 
 }
+
+class_alias(__NAMESPACE__ . '\\Post', 'Post');

@@ -29,11 +29,15 @@ trait UniquenessValidator
     foreach ($attributes as $attribute) {
       $table = toSnakeCase((new \ReflectionClass($this))->getShortName()) . "s";
 
-      $query = "SELECT 1 as count FROM {$table} WHERE {$this->getConditionStringFromAttributes($attribute)}" . $this->getIdCondition();
+      $query = "SELECT 1 FROM {$table} WHERE {$this->getConditionStringFromAttributes($attribute)}" . $this->getIdCondition() . " LIMIT 1";
       \Logger::sql($query);
       $database = new \Database();
       $connection = $database->getConnection();
       $result = $connection->query($query);
+      if ($result === false) {
+        continue;
+      }
+
       $row = $result->fetch_assoc();
       $this->addViolationToExceptions($caught_exceptions, $attribute, $row);
     }
@@ -45,10 +49,14 @@ trait UniquenessValidator
    * If the attribute is an array, it assumes a composite unique key and adds a message indicating that the combination of attributes must be unique. If it's a single attribute, it adds a message indicating that the attribute must be unique.
    * @param array $caught_exceptions Reference to the array where caught exceptions are stored. This array will be modified if a uniqueness violation is found.
    * @param array|string $attribute The attribute(s) that were validated for uniqueness. Can be a single attribute name or an array of attribute names for composite keys.
-   * @param array $row The result row from the uniqueness query, which contains the count of records that match the uniqueness condition. If the count is greater than 0, it indicates a violation of uniqueness.
+   * @param array|null $row The result row from the uniqueness query, which contains the count of records that match the uniqueness condition. If the count is greater than 0, it indicates a violation of uniqueness.
    */
-  private function addViolationToExceptions(array &$caught_exceptions, array|string $attribute, array $row): void
+  private function addViolationToExceptions(array &$caught_exceptions, array|string $attribute, ?array $row): void
   {
+    if ($row === null) {
+      return;
+    }
+
     if ($row['count'] > 0) {
       if (is_array($attribute)) {
         $attr_names = implode(", ", $attribute);

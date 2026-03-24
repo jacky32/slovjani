@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
+use App\Models\User;
+
 /**
  * Ensures a first administrator account exists on fresh installations.
  *
@@ -28,9 +32,9 @@ class DefaultAdminBootstrapper
         getenv('DEFAULT_ADMIN_USERNAME') ?: 'admin'
       );
       $auth->admin()->addRoleForUserById($newUserId, \Delight\Auth\Role::ADMIN);
-      Logger::info('Bootstrapped default admin account.');
+      \Logger::info('Bootstrapped default admin account.');
     } catch (\Throwable $exception) {
-      Logger::error('Default admin bootstrap failed: ' . $exception->getMessage());
+      \Logger::error('Default admin bootstrap failed: ' . $exception->getMessage());
       throw $exception;
     }
   }
@@ -41,3 +45,5 @@ class DefaultAdminBootstrapper
     return $count > 0;
   }
 }
+
+class_alias(__NAMESPACE__ . '\\DefaultAdminBootstrapper', 'DefaultAdminBootstrapper');

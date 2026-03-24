@@ -1,5 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Services\FlashManager;
+use App\Services\RecaptchaService;
+use App\Services\ViewManager;
+
 /**
  * Base controller that provides shared auth, rendering, CSRF, and flash helpers.
  *
@@ -10,7 +18,7 @@ class ApplicationController
   protected $errors = [];
   protected $viewManager;
   protected $auth;
-  protected PDO $connection;
+  protected \PDO $connection;
   protected ?RecaptchaService $recaptchaService = null;
 
   /**
@@ -20,12 +28,12 @@ class ApplicationController
   public function __construct()
   {
     // TODO: close the PDO connection?
-    $this->connection = new PDO("mysql:host=" . getenv("MYSQL_HOST") . ";dbname=" . getenv("MYSQL_DATABASE"), getenv("MYSQL_USER"), getenv("MYSQL_PASSWORD"));
+    $this->connection = new \PDO("mysql:host=" . getenv("MYSQL_HOST") . ";dbname=" . getenv("MYSQL_DATABASE"), getenv("MYSQL_USER"), getenv("MYSQL_PASSWORD"));
     $this->auth = new \Delight\Auth\Auth($this->connection);
     $this->recaptchaService = new RecaptchaService();
     $this->viewManager = new ViewManager($this->auth);
 
-    // set_exception_handler(function (Exception $exception) {
+    // set_exception_handler(function (\Exception $exception) {
     //   error_log("  ");
     //   error_log($exception->getMessage());
     //   error_log("  ");
@@ -38,18 +46,18 @@ class ApplicationController
    * Regenerates the session token after each successful check.
    *
    * @param string $formAction The form action path used to generate and verify the HMAC token.
-   * @throws Exception If the token is missing or does not match.
+   * @throws \Exception If the token is missing or does not match.
    */
   protected function verifyCSRF($formAction)
   {
     // CSRF protection
     if (empty($_POST['token'])) {
-      throw new Exception(t("errors.csrf_token_missing"));
+      throw new \Exception(t("errors.csrf_token_missing"));
     }
     $calc = hash_hmac('sha256', $formAction, $_SESSION['token']);
     $_SESSION['token'] = bin2hex(random_bytes(32)); // Regenerate token after use
     if (!hash_equals($calc, $_POST['token'])) {
-      throw new Exception(t("errors.csrf_token_invalid"));
+      throw new \Exception(t("errors.csrf_token_invalid"));
     }
   }
 
@@ -77,3 +85,5 @@ class ApplicationController
     $this->viewManager->render($view, $data);
   }
 }
+
+class_alias(__NAMESPACE__ . '\\ApplicationController', 'ApplicationController');

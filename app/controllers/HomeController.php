@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
 /**
  * Controller for the application landing page.
  *
  * @package Controllers
  */
-
 class HomeController extends ApplicationController
 {
   /**
@@ -28,3 +31,5 @@ class HomeController extends ApplicationController
     $this->render("home/index", []);
   }
 }
+
+class_alias(__NAMESPACE__ . '\\HomeController', 'HomeController');

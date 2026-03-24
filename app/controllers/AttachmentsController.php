@@ -1,5 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\Event;
+use App\Models\Post;
+
 /**
  * Public controller for serving attachments attached to visible resources.
  *
@@ -50,7 +57,7 @@ class AttachmentsController extends ApplicationController
    *
    * @return Post|Event|null The found resource, or null for unknown types.
    */
-  private function findResource()
+  private function findResource(): Post|Event|null
   {
     switch ($this->resource_type) {
       case 'posts':
@@ -62,3 +69,5 @@ class AttachmentsController extends ApplicationController
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AttachmentsController', 'AttachmentsController');

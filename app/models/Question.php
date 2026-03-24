@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Models;
+
 /**
  * Question model belonging to a voting with user responses.
  *
@@ -49,3 +53,5 @@ class Question extends ApplicationRecord
   // Methods
 
 }
+
+class_alias(__NAMESPACE__ . '\\Question', 'Question');

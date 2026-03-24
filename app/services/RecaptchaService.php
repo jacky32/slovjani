@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
 /**
  * Verifies Google reCAPTCHA tokens for login forms.
  *
@@ -85,7 +87,7 @@ class RecaptchaService
 
     $v2Secret = trim((string) ($this->config['v2_secret_key'] ?? ''));
     if ($v2Secret === '') {
-      Logger::warning('reCAPTCHA v2 secret key is missing.');
+      \Logger::warning('reCAPTCHA v2 secret key is missing.');
       return [
         'success' => false,
         'requires_v2' => false,
@@ -95,8 +97,8 @@ class RecaptchaService
 
     try {
       $v2Response = $this->verifyToken(secret: $v2Secret, token: $v2Token, remoteIp: $remoteIp);
-    } catch (RuntimeException $exception) {
-      Logger::warning('reCAPTCHA v2 verification failed: ' . $exception->getMessage());
+    } catch (\RuntimeException $exception) {
+      \Logger::warning('reCAPTCHA v2 verification failed: ' . $exception->getMessage());
       return [
         'success' => false,
         'requires_v2' => false,
@@ -135,8 +137,8 @@ class RecaptchaService
 
     try {
       $v3Response = $this->verifyToken(secret: $v3Secret, token: $v3Token, remoteIp: $remoteIp);
-    } catch (RuntimeException $exception) {
-      Logger::warning('reCAPTCHA v3 verification failed: ' . $exception->getMessage());
+    } catch (\RuntimeException $exception) {
+      \Logger::warning('reCAPTCHA v3 verification failed: ' . $exception->getMessage());
       return false;
     }
 
@@ -191,15 +193,17 @@ class RecaptchaService
     $responseBody = @file_get_contents(self::VERIFY_ENDPOINT, false, $context);
 
     if ($responseBody === false) {
-      throw new RuntimeException('Unable to contact reCAPTCHA verification endpoint.');
+      throw new \RuntimeException('Unable to contact reCAPTCHA verification endpoint.');
     }
 
     try {
       $decoded = json_decode($responseBody, true, 512, JSON_THROW_ON_ERROR);
-    } catch (JsonException $exception) {
-      throw new RuntimeException('Invalid response from reCAPTCHA verification endpoint.', 0, $exception);
+    } catch (\JsonException $exception) {
+      throw new \RuntimeException('Invalid response from reCAPTCHA verification endpoint.', 0, $exception);
     }
 
     return is_array($decoded) ? $decoded : [];
   }
 }
+
+class_alias(__NAMESPACE__ . '\\RecaptchaService', 'RecaptchaService');

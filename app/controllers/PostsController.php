@@ -1,5 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\Post;
+use App\Services\AttachmentMarkupMediaSourceResolver;
+use App\Services\EditorMarkupParser;
+
 /**
  * Public read-only controller for published posts and detail pages.
  *
@@ -66,3 +74,5 @@ class PostsController extends ApplicationController
     }
   }
 }
+
+class_alias(__NAMESPACE__ . '\\PostsController', 'PostsController');

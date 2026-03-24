@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
 /**
  * A minimal auth stub that represents an unauthenticated (guest) user.
  * Used by StaticPageGenerator so that rendered HTML never contains
@@ -35,3 +37,5 @@ class GuestAuth
     return false;
   }
 }
+
+class_alias(__NAMESPACE__ . '\\GuestAuth', 'GuestAuth');

@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Models;
+
 /**
  * Join model storing a user's selected answer for a voting question.
  *
@@ -49,3 +53,5 @@ class UsersQuestion extends ApplicationRecord
   // Methods
 
 }
+
+class_alias(__NAMESPACE__ . '\\UsersQuestion', 'UsersQuestion');

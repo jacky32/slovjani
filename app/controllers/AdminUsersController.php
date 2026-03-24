@@ -1,5 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\User;
+
 /**
  * Admin controller for listing, editing, and removing user accounts.
  *
@@ -96,7 +102,7 @@ class AdminUsersController extends AdminController
       $this->verifyCSRF('/admin/users');
 
       if (!$this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-        throw new RuntimeException(t('errors.unauthorized'));
+        throw new \RuntimeException(t('errors.unauthorized'));
       }
 
       $email = trim((string) ($userAttributes['email'] ?? ''));
@@ -105,7 +111,7 @@ class AdminUsersController extends AdminController
       $selectedRole = (string) ($userAttributes['role'] ?? 'none');
 
       if (!array_key_exists($selectedRole, User::AVAILABLE_ROLES)) {
-        throw new RuntimeException(t('users.create.invalid_role'));
+        throw new \RuntimeException(t('users.create.invalid_role'));
       }
 
       $newUserId = $this->auth->admin()->createUser($email, $password, $username);
@@ -190,7 +196,7 @@ class AdminUsersController extends AdminController
       //   }
       //   header("Location: /admin/users/" . $user->id . "/edit");
       // }
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());
       if ($e instanceof \ActiveModel\ValidationException) {
@@ -232,7 +238,7 @@ class AdminUsersController extends AdminController
         $this->addFlash('error', t("error"));
       }
       header("Location: /admin/users");
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       $this->addFlash('error', $e->getMessage());
       header("Location: /admin/users/" . $this->id);
     }
@@ -259,3 +265,5 @@ class AdminUsersController extends AdminController
     ]);
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AdminUsersController', 'AdminUsersController');

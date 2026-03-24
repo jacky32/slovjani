@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
 /**
  * Controller for fallback error pages such as 404 responses.
  *
@@ -30,3 +34,5 @@ class ErrorsController extends ApplicationController
     $this->render("layouts/errors/404", []);
   }
 }
+
+class_alias(__NAMESPACE__ . '\\ErrorsController', 'ErrorsController');

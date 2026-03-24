@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App\Controllers;
+
+use App\Models\Event;
+use App\Models\Post;
+use App\Models\Voting;
+use App\Services\AttachmentMarkupMediaSourceResolver;
+use App\Services\EditorMarkupParser;
+
 /**
  * Centralized admin preview controller for live parser previews in forms.
  *
@@ -49,3 +59,5 @@ class AdminPreviewsController extends AdminController
     $this->viewManager->renderJson(['html' => $html]);
   }
 }
+
+class_alias(__NAMESPACE__ . '\\AdminPreviewsController', 'AdminPreviewsController');

@@ -6,11 +6,16 @@
       "App\\Services\\": "app/services/"
     },
     "classmap": [
-      "app/services/"
+      "app/controllers/",
+      "app/models/",
+      "app/services/",
+      "db/",
+      "config/"
     ]
   },
   "require": {
-    "delight-im/auth": "*"
+    "delight-im/auth": "*",
+    "psr/log": "^3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^13"

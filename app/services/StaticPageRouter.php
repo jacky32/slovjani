@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace App\Services;
+
 /**
  * Resolves incoming HTTP requests to pregenerated static HTML files.
  *
@@ -93,3 +95,5 @@ class StaticPageRouter
     return null;
   }
 }
+
+class_alias(__NAMESPACE__ . '\\StaticPageRouter', 'StaticPageRouter');
