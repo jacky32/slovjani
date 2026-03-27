@@ -46,7 +46,7 @@ errors:
   home_page: úvodní stránku
 
 menu:
-  root: Medžuslovjansky jezyk
+  root: O nás
   posts: Zprávy
   eoffice: E-kancelář
   users: Kontakty
@@ -62,7 +62,6 @@ menu:
 posts:
   index:
     no_posts_found: Žádné zprávy nebyly nalezeny.
-    placeholder: index stránka zpráv
   new:
     title: Nová zpráva
   show:
@@ -82,8 +81,6 @@ posts:
 events:
   index:
     no_events_found: Žádné činnosti nebyly nalezeny.
-    placeholder: index stránka činnosti
-    admin_placeholder: index stránka admin činnosti
     calendar_title: Veřejný kalendář událostí
     admin_calendar_title: Administrátorský kalendář událostí
   new:
@@ -108,7 +105,6 @@ events:
 votings:
   index:
     no_votings_found: Žádné hlasování nebylo nalezeno.
-    placeholder: index stránka hlasování
   new:
     title: Nové hlasování
   edit:
@@ -188,7 +184,6 @@ sessions:
 users:
   index:
     no_users_found: Žádní uživatelé nebyli nalezeni.
-    placeholder: index stránka kontaktů
   new:
     title: Nový uživatel
   create:
