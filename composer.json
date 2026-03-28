@@ -14,7 +14,7 @@
       "lib/"
     ],
     "files": [
-      "lib/helpers.php"
+      "lib/Helpers.php"
     ]
   },
   "require": {
