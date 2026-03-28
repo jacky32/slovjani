@@ -100,19 +100,25 @@ if ($pregeneratedFile !== null) {
 }
 // Continue with normal PHP routing for all other requests (including logged-in users and non-GET requests).
 
-$appConfig = require './config/Application.php';
 require __DIR__ . '/vendor/autoload.php';
 
-// Load .env variables into environment
-$env = file_get_contents(__DIR__ . "/.env");
-$lines = explode("\n", $env);
+// Load .env variables into environment before reading config values.
+$envFile = __DIR__ . '/.env';
+if (is_readable($envFile)) {
+  $env = file_get_contents($envFile);
+  if ($env !== false) {
+    $lines = explode("\n", $env);
 
-foreach ($lines as $line) {
-  preg_match("/([^#]+)\=(.*)/", $line, $matches);
-  if (isset($matches[2])) {
-    putenv(trim($line));
+    foreach ($lines as $line) {
+      preg_match('/([^#]+)\=(.*)/', $line, $matches);
+      if (isset($matches[2])) {
+        putenv(trim($line));
+      }
+    }
   }
 }
+
+$appConfig = require './config/Application.php';
 
 // Uncomment to reset DB schema
 // ScriptManager::loadSchema($appConfig['connection'], true);
