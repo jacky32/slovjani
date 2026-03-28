@@ -44,7 +44,18 @@ if (!function_exists('toPascalCase')) {
 if (!function_exists('t')) {
   function t(string $key, array $params = []): string
   {
-    $translations = yaml_parse_file('config/locales/cs.yml');
+    static $translations = null;
+
+    if ($translations === null) {
+      $localePath = __DIR__ . '/../config/locales/cs.yml';
+      if (!is_readable($localePath)) {
+        $translations = [];
+      } else {
+        $parsed = yaml_parse_file($localePath);
+        $translations = is_array($parsed) ? $parsed : [];
+      }
+    }
+
     $keys = explode('.', $key);
     $value = $translations;
     foreach ($keys as $k) {
