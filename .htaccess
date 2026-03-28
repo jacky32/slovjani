@@ -4,8 +4,9 @@ Options -Indexes
   RewriteEngine On
   RewriteBase /
 
-  RewriteCond %{REQUEST_URI} !^/index\.php$
+RewriteCond %{REQUEST_URI} !^/index\.php$
 
-  # Route all app requests through the front controller, including /public/*.
-  RewriteRule ^ index.php [L,QSA]
+# Route all app requests through the front controller, including /public/\*.
+
+RewriteRule ^ index.php [L,QSA]
 </IfModule>
