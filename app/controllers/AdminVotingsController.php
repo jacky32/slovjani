@@ -167,9 +167,9 @@ class AdminVotingsController extends AdminController
       // Verify CSRF token
       $this->verifyCSRF('/admin/votings/' . $this->id);
 
-      // Find voting and check ownership
+      // Find voting
       $voting = Voting::find($this->id);
-      if ($voting && $voting->creator_id == $this->auth->getUserId()) {
+      if ($voting) {
         foreach (Voting::getDbAttributes() as $attribute) {
           if (isset($request['voting'][$attribute])) {
             $voting->{$attribute} = $request['voting'][$attribute];
@@ -181,8 +181,6 @@ class AdminVotingsController extends AdminController
       } else {
         if (!$voting) {
           $this->addFlash('error', t("votings.show.voting_not_found"));
-        } else if ($voting->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
-          $this->addFlash('error', t("votings.update.unauthorized"));
         }
         header("Location: /admin/votings");
       }
@@ -225,16 +223,14 @@ class AdminVotingsController extends AdminController
       // Verify CSRF token
       $this->verifyCSRF('/admin/votings/destroy');
 
-      // Find voting and check ownership
+      // Find voting
       $voting = Voting::find($this->id);
-      if ($voting && $voting->creator_id == $this->auth->getUserId()) {
+      if ($voting) {
         $voting->destroy();
         $this->addFlash('success', t("votings.destroy.success"));
       } else {
         if (!$voting) {
           $this->addFlash('error', t("votings.destroy.not_found"));
-        } else if ($voting->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', t("votings.destroy.unauthorized"));
         }
         $this->addFlash('error', t("error"));
       }

@@ -127,10 +127,10 @@ class AdminQuestionsController extends AdminController
       // Verify CSRF token
       $this->verifyCSRF('/admin/votings/' . $this->voting_id . '/questions/' . $this->question_id);
 
-      // Find voting and check ownership
+      // Find voting and question
       $voting = Voting::find($this->voting_id);
       $question = $voting->questions->find($this->question_id);
-      if ($voting && $question && $voting->creator_id == $this->auth->getUserId()) {
+      if ($voting && $question) {
         $question->name = $request['question']['name'];
         $question->description = $request['question']['description'];
         $question->save();
@@ -139,8 +139,6 @@ class AdminQuestionsController extends AdminController
       } else {
         if (!$voting) {
           $this->addFlash('error', t("votings.show.voting_not_found"));
-        } else if ($voting->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
-          $this->addFlash('error', t("questions.update.unauthorized"));
         }
         header("Location: /admin/votings");
       }
@@ -183,8 +181,6 @@ class AdminQuestionsController extends AdminController
       } else {
         if (!$voting) {
           $this->addFlash('error', t("votings.show.voting_not_found"));
-        } else if ($voting->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', t("questions.destroy.unauthorized"));
         }
         $this->addFlash('error', t("error"));
       }

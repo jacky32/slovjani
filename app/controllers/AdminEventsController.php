@@ -26,7 +26,6 @@ class AdminEventsController extends AdminController
   public function __construct()
   {
     parent::__construct();
-
     preg_match('/admin\/events\/(\d+)/', $_SERVER['REQUEST_URI'], $matches);
     $this->id = $matches[1] ?? null;
   }
@@ -102,6 +101,13 @@ class AdminEventsController extends AdminController
     try {
       // Verify CSRF token
       $this->verifyCSRF('/admin/events');
+
+      if (!$this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
+        $this->addFlash('error', t("errors.unauthorized"));
+        header("Location: /admin/events");
+        exit();
+      }
+
       // Create new event
       $event = new Event([
         'name' => $request['event']['name'],
@@ -179,10 +185,16 @@ class AdminEventsController extends AdminController
       // Verify CSRF token
       $this->verifyCSRF('/admin/events/' . $this->id);
 
-      // Find event and check ownership
+      if (!$this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
+        $this->addFlash('error', t("errors.unauthorized"));
+        header("Location: /admin/events");
+        exit();
+      }
+
+      // Find event
       $event = Event::find($this->id);
       $previous_publicly_visible = $event ? (bool) $event->is_publicly_visible : false;
-      if ($event && $event->creator_id == $this->auth->getUserId()) {
+      if ($event) {
         foreach (Event::getDbAttributes() as $attribute) {
           if ($attribute == "is_publicly_visible") {
             $event->{$attribute} = $request['event'][$attribute] ? true : 0;
@@ -216,8 +228,6 @@ class AdminEventsController extends AdminController
       } else {
         if (!$event) {
           $this->addFlash('error', t("events.show.event_not_found"));
-        } else if ($event->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
-          $this->addFlash('error', t("events.update.unauthorized"));
         }
         header("Location: /admin/events");
       }
@@ -249,9 +259,15 @@ class AdminEventsController extends AdminController
       // Verify CSRF token
       $this->verifyCSRF('/admin/events/destroy');
 
-      // Find event and check ownership
+      if (!$this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
+        $this->addFlash('error', t("errors.unauthorized"));
+        header("Location: /admin/events");
+        exit();
+      }
+
+      // Find event
       $event = Event::find($this->id);
-      if ($event && $event->creator_id == $this->auth->getUserId()) {
+      if ($event) {
         $wasPubliclyVisible = (bool) $event->is_publicly_visible;
         if ($event->google_calendar_event_id) {
           try {
@@ -269,8 +285,6 @@ class AdminEventsController extends AdminController
       } else {
         if (!$event) {
           $this->addFlash('error', t("events.destroy.event_not_found"));
-        } else if ($event->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', t("events.destroy.unauthorized"));
         }
         $this->addFlash('error', t("error"));
       }

@@ -166,9 +166,9 @@ class AdminPostsController extends AdminController
       // Verify CSRF token
       $this->verifyCSRF('/admin/posts/' . $this->id);
 
-      // Find post and check ownership
+      // Find post
       $post = Post::find($this->id);
-      if ($post && $post->creator_id == $this->auth->getUserId()) {
+      if ($post) {
         $oldStatus = $post->status;
         $post->name = $request['post']['name'];
         $post->body = $request['post']['body'];
@@ -182,10 +182,8 @@ class AdminPostsController extends AdminController
       } else {
         if (!$post) {
           $this->addFlash('error', t("posts.show.post_not_found"));
-        } else if ($post->creator_id != $this->auth->getUserId()) { // TODO: Authorization check - move to users role
-          $this->addFlash('error', t("posts.update.unauthorized"));
         }
-        header("Location: /admin/posts/" . $post->id . "/edit");
+        header("Location: /admin/posts/" . $this->id . "/edit");
       }
     } catch (\Exception $e) {
       $errors = [];
@@ -215,9 +213,9 @@ class AdminPostsController extends AdminController
       // Verify CSRF token
       $this->verifyCSRF('/admin/posts/' . $this->id . '/destroy');
 
-      // Find post and check ownership
+      // Find post
       $post = Post::find($this->id);
-      if ($post && $post->creator_id == $this->auth->getUserId()) {
+      if ($post) {
         $wasPublished = $post->status === 'PUBLISHED';
         $post->destroy();
         if ($wasPublished) {
@@ -227,8 +225,6 @@ class AdminPostsController extends AdminController
       } else {
         if (!$post) {
           $this->addFlash('error', t("posts.destroy.not_found"));
-        } else if ($post->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', t("posts.destroy.unauthorized"));
         }
         $this->addFlash('error', t("error"));
       }

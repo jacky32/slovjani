@@ -151,16 +151,14 @@ class AdminAttachmentsController extends AdminController
       // Verify CSRF token
       $this->verifyCSRF("/admin/{$this->resource_type}/{$this->resource_id}/attachments/{$this->attachment_id}/destroy");
 
-      // Find post and check ownership
+      // Find attachment
       $attachment = $this->resource->attachments->find($this->attachment_id);
-      if ($attachment && $attachment->creator_id == $this->auth->getUserId()) {
+      if ($attachment) {
         $attachment->destroy();
         $this->addFlash('success', t("attachments.destroy.success"));
       } else {
         if (!$attachment) {
           $this->addFlash('error', t("attachments.show.attachment_not_found"));
-        } else if ($attachment->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', t("attachments.destroy.unauthorized"));
         }
         $this->addFlash('error', t("attachments.destroy.error"));
       }

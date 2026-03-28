@@ -177,25 +177,29 @@ class AdminUsersController extends AdminController
       // Verify CSRF token
       $this->verifyCSRF('/admin/users/' . $this->id);
 
-      // Find user and check ownership
+      // Find user and check authorization
       $user = User::find($this->id);
-      // if ($user && $this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-      if ($user) {
+      $isAdmin = $this->auth->hasRole(\Delight\Auth\Role::ADMIN);
+      $isCurrentUser = $user && ((int) $user->id === (int) $this->auth->getUserId());
+      if ($user && ($isAdmin || $isCurrentUser)) {
         $user->email = $request['user']['email'];
         $user->username = $request['user']['username'];
-        $user->roles_mask = intval(User::AVAILABLE_ROLES[$request['user']['role']]) ?? 0;
+        if ($isAdmin) {
+          $user->roles_mask = intval(User::AVAILABLE_ROLES[$request['user']['role']] ?? 0);
+        }
         $user->save();
         $this->addFlash('success', t("users.update.success"));
         header("Location: /admin/users/" . $user->id);
+      } else {
+        if (!$user) {
+          $this->addFlash('error', t("users.show.user_not_found"));
+          header("Location: /admin/users");
+          return;
+        }
+
+        $this->addFlash('error', t("users.update.unauthorized"));
+        header("Location: /admin/users/" . $user->id . "/edit");
       }
-      // } else {
-      //   if (!$user) {
-      //     $this->addFlash('error', t("users.show.user_not_found"));
-      //   } else if (!$this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
-      //     $this->addFlash('error', t("users.update.unauthorized"));
-      //   }
-      //   header("Location: /admin/users/" . $user->id . "/edit");
-      // }
     } catch (\Exception $e) {
       $errors = [];
       $this->addFlash('error', $e->getMessage());

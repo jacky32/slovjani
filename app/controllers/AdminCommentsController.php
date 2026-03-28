@@ -133,13 +133,13 @@ class AdminCommentsController extends AdminController
       $this->verifyCSRF("/admin/{$this->resource_type}/{$this->resource_id}/comments/{$this->comment_id}/destroy");
 
       $comment = $this->findComment();
-      if ($comment && $comment->creator_id == $this->auth->getUserId()) {
+      if ($comment && ($comment->creator_id == $this->auth->getUserId() || $this->auth->hasRole(\Delight\Auth\Role::ADMIN))) {
         $comment->destroy();
         $this->addFlash('success', t("comments.destroy.success"));
       } else {
         if (!$comment) {
           $this->addFlash('error', t("comments.show.comment_not_found"));
-        } else if ($comment->creator_id != $this->auth->getUserId()) {
+        } else if ($comment->creator_id != $this->auth->getUserId() && !$this->auth->hasRole(\Delight\Auth\Role::ADMIN)) {
           $this->addFlash('error', t("comments.destroy.unauthorized"));
         }
         $this->addFlash('error', t("comments.destroy.error"));
@@ -190,4 +190,3 @@ class AdminCommentsController extends AdminController
     }
   }
 }
-

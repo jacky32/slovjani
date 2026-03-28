@@ -140,8 +140,6 @@ class AdminUsersQuestionsController extends AdminController
       } else {
         if (!$voting) {
           $this->addFlash('error', t("users_questions.destroy.not_found"));
-        } else if ($voting->creator_id != $this->auth->getUserId()) {
-          $this->addFlash('error', t("users_questions.destroy.unauthorized"));
         }
         $this->addFlash('error', t("error"));
       }
@@ -152,4 +150,3 @@ class AdminUsersQuestionsController extends AdminController
     }
   }
 }
-
