@@ -27,18 +27,14 @@ class ApplicationController
    */
   public function __construct()
   {
-    // TODO: close the PDO connection?
     $this->connection = new \PDO("mysql:host=" . getenv("MYSQL_HOST") . ";dbname=" . getenv("MYSQL_DATABASE"), getenv("MYSQL_USER"), getenv("MYSQL_PASSWORD"));
     $this->auth = new \Delight\Auth\Auth($this->connection);
     $this->recaptchaService = new RecaptchaService();
     $this->viewManager = new ViewManager($this->auth);
 
-    // set_exception_handler(function (\Exception $exception) {
-    //   error_log("  ");
-    //   error_log($exception->getMessage());
-    //   error_log("  ");
-    //   $this->addFlash('error', $exception->getMessage());
-    // });
+    // $newUserId = $this->auth->admin()->createUser("admin@123.cz", "123456", "Admin");
+    // $roleMask = (int) \App\Models\User::AVAILABLE_ROLES['admin'];
+    // $this->auth->admin()->addRoleForUserById($newUserId, $roleMask);
   }
 
   /**
@@ -85,4 +81,3 @@ class ApplicationController
     $this->viewManager->render($view, $data);
   }
 }
-

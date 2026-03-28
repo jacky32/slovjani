@@ -69,7 +69,7 @@
   }
 }
 
-#header-text.menu {
+#header-text .menu {
   display: flex;
 }
 
@@ -80,6 +80,79 @@
 
 #container {
   padding: 157px 0px 0px 0px;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+@media screen and (max-width: 1279px) {
+  #header {
+    position: sticky;
+    top: 0;
+    padding: 0.75rem 0.75rem 0.5rem 0.75rem;
+    display: block;
+    z-index: 20;
+  }
+
+  #header-text {
+    margin-top: 0.3rem;
+  }
+
+  #header-text .menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.7rem;
+    align-items: center;
+  }
+
+  #header-text .menu li {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  #container {
+    padding: 0;
+    display: block;
+    width: 100%;
+  }
+
+  #leftpane,
+  #onepane,
+  #syspane {
+    padding: 1rem 0.75rem;
+  }
+
+  #rightpane,
+  #nextpane {
+    padding: 0.75rem;
+  }
+
+  #leftpane .listarticles {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.45;
+  }
+
+  #leftpane .listarticles > li {
+    display: block;
+    margin: 0 0 0.4rem 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #header-text .menu {
+    gap: 0.2rem 0.55rem;
+  }
 }
 
 textarea {
