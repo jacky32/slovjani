@@ -10,7 +10,7 @@ RUN composer install \
   --no-progress \
   --no-autoloader
 
-FROM php:8.4-cli-bookworm
+FROM php:8.5-cli-bookworm
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends libyaml-dev \

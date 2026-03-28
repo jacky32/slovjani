@@ -1,6 +1,6 @@
 
 # Use the official PHP image
-FROM php:8.4-apache
+FROM php:8.5-apache
 RUN apt-get update && \
   apt-get upgrade -y && \
   apt-get install -y git
