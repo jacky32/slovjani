@@ -82,11 +82,20 @@ if (!function_exists('t')) {
 if (!function_exists('asset_path')) {
   function asset_path($path)
   {
-    $filePath = __DIR__ . '/../public' . $path;
+    $normalizedPath = (string) $path;
+    if (str_starts_with($normalizedPath, '/public/')) {
+      $normalizedPath = substr($normalizedPath, 7);
+    } elseif ($normalizedPath === '/public') {
+      $normalizedPath = '/';
+    }
+
+    $filePath = __DIR__ . '/../public' . $normalizedPath;
+
     if (file_exists($filePath)) {
       $mtime = filemtime($filePath);
-      return $path . '?v=' . $mtime;
+      return $normalizedPath . '?v=' . $mtime;
     }
-    return $path;
+
+    return $normalizedPath;
   }
 }
