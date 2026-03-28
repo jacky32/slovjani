@@ -150,7 +150,7 @@ Logger::info("Started " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_U
 Logger::info("Processing " . $controllerName . "#" . $action);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $filtered = array_map(function ($key) {
-    return in_array($key, ['password', 'token']) ? '[FILTERED]' : $_POST[$key];
+    return in_array($key, ['old_password', 'new_password', 'password', 'token']) ? '[FILTERED]' : $_POST[$key];
   }, array_keys($_POST));
   Logger::info("POST params: ", $filtered);
 }

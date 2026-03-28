@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\User;
+use Logger;
 
 /**
  * Admin controller for listing, editing, and removing user accounts.
@@ -184,7 +185,7 @@ class AdminUsersController extends AdminController
       if ($user && ($isAdmin || $isCurrentUser)) {
         $user->email = $request['user']['email'];
         $user->username = $request['user']['username'];
-        if ($isCurrentUser && ($request['user']['password'] ?? '') !== '') {
+        if ($isCurrentUser && ($request['user']['old_password'] ?? '') !== '' && ($request['user']['new_password'] ?? '') !== '') {
           $this->auth->changePassword($request['user']['old_password'], $request['user']['new_password']);
         }
         if ($isAdmin) {
