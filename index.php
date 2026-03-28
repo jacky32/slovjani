@@ -25,15 +25,19 @@ function applyDefaultSecurityHeaders(): void
   header('X-Frame-Options: DENY');
 }
 
-$uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+$requestPath = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+$uri = $requestPath;
+if (str_starts_with($requestPath, '/public/')) {
+  $uri = substr($requestPath, 7);
+} elseif ($requestPath === '/public') {
+  $uri = '/';
+}
 
 // Define allowed static file extensions
 $allowedExtensions = ['css', 'js', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'ico', 'woff', 'woff2', 'ttf', 'otf', 'eot', 'webmanifest'];
 
 // Check if file exists in public directory
 $filePath = __DIR__ . '/public' . $uri;
-$publicUri = '/public' . $uri;
-
 // Prevent path traversal attacks
 $realPath = realpath($filePath);
 $publicDir = realpath(__DIR__ . '/public');
