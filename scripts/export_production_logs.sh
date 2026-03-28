@@ -20,11 +20,11 @@ mkdir -p "$(dirname -- "$LOG_FILE")"
 
 if [ "$FOLLOW" = "--follow" ]; then
   docker compose -f compose.production.yaml --env-file .env.production \
-    logs -f --timestamps --no-color nginx php_app mysql | tee -a "$LOG_FILE"
+    logs -f --timestamps --no-color nginx slovjani mysql | tee -a "$LOG_FILE"
   exit 0
 fi
 
 docker compose -f compose.production.yaml --env-file .env.production \
-  logs --timestamps --no-color nginx php_app mysql >> "$LOG_FILE"
+  logs --timestamps --no-color nginx slovjani mysql >> "$LOG_FILE"
 
 echo "Logs appended to $LOG_FILE"

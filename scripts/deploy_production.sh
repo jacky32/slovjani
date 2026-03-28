@@ -20,7 +20,7 @@ docker compose -f compose.production.yaml --env-file .env.production ps
 if [ "${LOG_FILE:-}" != "" ]; then
   mkdir -p "$(dirname -- "$LOG_FILE")"
   docker compose -f compose.production.yaml --env-file .env.production \
-    logs --timestamps --no-color nginx php_app mysql >> "$LOG_FILE"
+    logs --timestamps --no-color nginx slovjani mysql >> "$LOG_FILE"
   echo "Startup logs exported to $LOG_FILE"
 fi
 

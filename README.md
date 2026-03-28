@@ -33,7 +33,7 @@ docker compose -f compose.production.yaml --env-file .env.production down
 4. Check production logs:
 
 ```bash
-docker compose -f compose.production.yaml --env-file .env.production logs -f nginx php_app mysql
+docker compose -f compose.production.yaml --env-file .env.production logs -f nginx slovjani mysql
 ```
 
 5. Export logs into a specific file:
@@ -51,13 +51,13 @@ Follow and continuously append logs:
 # Compile composer packages to /vendor
 
 ```bash
-  docker compose exec php_app composer install --no-dev --prefer-dist
+  docker compose exec slovjani composer install --no-dev --prefer-dist
 ```
 
 # autoload
 
 ```bash
- docker compose exec php_app composer dump-autoload
+ docker compose exec slovjani composer dump-autoload
 ```
 
 # External libraries used

@@ -1,14 +1,14 @@
 x-common-variables: &common-variables
   MYSQL_HOST: mysql
   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-abcd}
-  MYSQL_USER: ${MYSQL_USER:-php_app}
+  MYSQL_USER: ${MYSQL_USER:-slovjani}
   MYSQL_PASSWORD: ${MYSQL_PASSWORD:-abcd}
-  MYSQL_DATABASE: ${MYSQL_DATABASE:-php_app_development}
+  MYSQL_DATABASE: ${MYSQL_DATABASE:-slovjani_development}
   MYSQL_PORT: ${MYSQL_PORT:-3306}
 
 services:
   mysql:
-    container_name: php_app-mysql
+    container_name: slovjani-mysql
     image: mysql:8.4
     command: mysqld -h 127.0.0.1 -P 3306
     environment:
@@ -33,8 +33,8 @@ services:
           "-h",
           "localhost",
           "-u",
-          "php_app",
-          "--password=php_app",
+          "slovjani",
+          "--password=slovjani",
         ]
       interval: 5s
       timeout: 5s
@@ -44,8 +44,8 @@ services:
     stdin_open: true
     tty: true
 
-  php_app:
-    container_name: php_app
+  slovjani:
+    container_name: slovjani
     hostname: php-app-host
     environment:
       <<: *common-variables
