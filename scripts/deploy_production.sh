@@ -9,6 +9,37 @@ if [ ! -f ".env.production" ]; then
   exit 1
 fi
 
+read_env_value() {
+  key="$1"
+  # Read the last matching key from .env.production, ignoring comments.
+  sed -n "s/^${key}=//p" .env.production | tail -n 1
+}
+
+# Backward-compatible port mapping:
+# - preferred: NGINX_HTTP_PORT
+# - legacy aliases: NGINX_PORT / nginx_port
+if [ "${NGINX_HTTP_PORT:-}" = "" ]; then
+  if [ "${NGINX_PORT:-}" != "" ]; then
+    NGINX_HTTP_PORT="$NGINX_PORT"
+  elif [ "${nginx_port:-}" != "" ]; then
+    NGINX_HTTP_PORT="$nginx_port"
+  else
+    nginx_port_from_file="$(read_env_value "NGINX_PORT")"
+    if [ "$nginx_port_from_file" = "" ]; then
+      nginx_port_from_file="$(read_env_value "nginx_port")"
+    fi
+
+    if [ "$nginx_port_from_file" != "" ]; then
+      NGINX_HTTP_PORT="$nginx_port_from_file"
+    fi
+  fi
+
+  if [ "${NGINX_HTTP_PORT:-}" != "" ]; then
+    export NGINX_HTTP_PORT
+    echo "Using NGINX_HTTP_PORT=$NGINX_HTTP_PORT"
+  fi
+fi
+
 compose() {
   docker compose -f compose.production.yaml --env-file .env.production "$@"
 }
