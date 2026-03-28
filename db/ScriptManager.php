@@ -10,40 +10,6 @@ declare(strict_types=1);
 class ScriptManager
 {
   /**
-   * Normalizes host/port from config, supporting both host:port and separate keys.
-   *
-   * @param array<string, mixed> $connectionParams
-   * @return array{0: string, 1: int|null}
-   */
-  private static function resolveHostAndPort(array $connectionParams): array
-  {
-    $host = (string) ($connectionParams['host'] ?? 'localhost');
-    $port = null;
-
-    if (strpos($host, ':') !== false) {
-      [$parsedHost, $parsedPort] = explode(':', $host, 2);
-      if ($parsedHost !== '') {
-        $host = $parsedHost;
-      }
-      if (ctype_digit($parsedPort)) {
-        $port = (int) $parsedPort;
-      }
-    }
-
-    $configPort = $connectionParams['port'] ?? null;
-    if ($configPort !== null && $configPort !== '' && ctype_digit((string) $configPort)) {
-      $port = (int) $configPort;
-    }
-
-    // Force TCP when an explicit port is used; localhost may otherwise use a socket.
-    if ($port !== null && strtolower($host) === 'localhost') {
-      $host = '127.0.0.1';
-    }
-
-    return [$host, $port];
-  }
-
-  /**
    * Opens a MySQL server connection without selecting a database.
    *
    * @param array<string, mixed> $connectionParams
@@ -51,14 +17,13 @@ class ScriptManager
    */
   private static function connectToServer(array $connectionParams): \mysqli
   {
-    [$host, $port] = self::resolveHostAndPort($connectionParams);
     try {
       $db = new \mysqli(
-        $host,
+        (string) ($connectionParams['host'] ?? 'localhost'),
         (string) ($connectionParams['user'] ?? ''),
         (string) ($connectionParams['password'] ?? ''),
         null,
-        $port
+        (int) ($connectionParams['port'] ?? 3306)
       );
     } catch (\mysqli_sql_exception $exception) {
       throw new \RuntimeException('Connection failed: ' . $exception->getMessage(), 0, $exception);
@@ -181,14 +146,13 @@ class ScriptManager
    */
   public static function connectToDatabase($connectionParams)
   {
-    [$host, $port] = self::resolveHostAndPort($connectionParams);
     try {
       $db = new \mysqli(
-        $host,
+        (string) ($connectionParams['host'] ?? 'localhost'),
         (string) ($connectionParams['user'] ?? ''),
         (string) ($connectionParams['password'] ?? ''),
         (string) ($connectionParams['dbname'] ?? ''),
-        $port
+        (int) ($connectionParams['port'] ?? 3306)
       );
     } catch (\mysqli_sql_exception $exception) {
       throw new \RuntimeException('Connection failed: ' . $exception->getMessage(), 0, $exception);
