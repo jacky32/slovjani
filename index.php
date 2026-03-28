@@ -125,10 +125,8 @@ if (is_readable($envFile)) {
 
 $appConfig = require './config/Application.php';
 
-// Uncomment to reset DB schema
+// Optional reset helper for local development only.
 // ScriptManager::loadSchema($appConfig['connection'], true);
-// Uncomment to load DB and tables without dropping existing DB
-ScriptManager::loadSchema($appConfig['connection']);
 
 // router
 $router = new Router();

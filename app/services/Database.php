@@ -30,19 +30,8 @@ class Database
     $appConfig = require 'config/Application.php';
     $this->connectionParams = $appConfig['connection'];
 
+    \ScriptManager::ensureSchemaReady($this->connectionParams);
     $this->db = $this->connect();
-
-    if (mysqli_connect_errno()) {
-      printf("Connect failed: %s\n", mysqli_connect_error());
-      if (strpos(mysqli_connect_error(), "Unknown database") !== NULL) {
-        \ScriptManager::loadSchema($this->connectionParams);
-      }
-      $this->db = $this->connect();
-    }
-
-    if (mysqli_connect_errno()) {
-      throw new \Exception(sprintf("Connect failed: %s\n", mysqli_connect_error()));
-    }
   }
 
 
@@ -67,4 +56,3 @@ class Database
     return $this->db;
   }
 }
-
