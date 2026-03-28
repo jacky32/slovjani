@@ -1,5 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Applies default security headers for dynamic responses.
+ */
+function applyDefaultSecurityHeaders(): void
+{
+  $cspDirectives = [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "object-src 'none'",
+    "frame-ancestors 'none'",
+    "script-src 'self' 'unsafe-inline' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/",
+    "style-src 'self' 'unsafe-inline' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/",
+    "img-src 'self' data: https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/",
+    "connect-src 'self' https://www.google.com/recaptcha/",
+    "frame-src 'self' https://calendar.google.com https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/",
+  ];
+
+  header('Content-Security-Policy: ' . implode('; ', $cspDirectives));
+  header('X-Content-Type-Options: nosniff');
+  header('X-Frame-Options: DENY');
+}
+
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 // Define allowed static file extensions
@@ -51,6 +76,7 @@ if ($realPath && $publicDir && strpos($realPath, $publicDir) === 0 && is_file($r
 
 // Start the session early so we can check login state before the pregen shortcut.
 session_start();
+applyDefaultSecurityHeaders();
 
 // Check for pregenerated static HTML before booting the full app.
 require_once __DIR__ . '/app/services/StaticPageRouter.php';
