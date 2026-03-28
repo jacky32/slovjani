@@ -9,7 +9,7 @@
 
       <?= $this->renderInput($user, "email") ?><br>
       <?= $this->renderInput($user, "username") ?><br>
-      <?php if (!$user->id): ?>
+      <?php if (!$user->id || $user->id == $this->auth->getUserId()): ?>
         <?= $this->renderInput($user, "password", "password") ?><br>
       <?php endif; ?>
 

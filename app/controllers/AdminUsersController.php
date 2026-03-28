@@ -184,6 +184,9 @@ class AdminUsersController extends AdminController
       if ($user && ($isAdmin || $isCurrentUser)) {
         $user->email = $request['user']['email'];
         $user->username = $request['user']['username'];
+        if ($isCurrentUser && ($request['user']['password'] ?? '') !== '') {
+          $this->auth->changePassword($_POST['oldPassword'], $_POST['newPassword']);
+        }
         if ($isAdmin) {
           $user->roles_mask = intval(User::AVAILABLE_ROLES[$request['user']['role']] ?? 0);
         }
@@ -269,4 +272,3 @@ class AdminUsersController extends AdminController
     ]);
   }
 }
-
