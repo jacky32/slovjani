@@ -7,7 +7,7 @@
       </a>
     <?php endif; ?>
 
-    <?php if ($voting->status == "DRAFT" && $voting->creator_id == $this->auth->getUserId()): ?>
+    <?php if ($voting->status == "DRAFT" && $this->auth->hasRole(\App\Models\User::AVAILABLE_ROLES['admin'])): ?>
       <form action='/admin/votings/<?= $voting->id ?>/questions/<?= $question->id ?>/destroy' method='POST'>
         <?php $this->renderCSRFToken('/admin/votings/' . $voting->id . '/questions/' . $question->id . '/destroy'); ?>
         <input type='hidden' name='id' value='<?= $question->id ?>' />

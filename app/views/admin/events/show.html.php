@@ -24,16 +24,14 @@
     <?php if (!empty($parsed_description)): ?>
       <div class="show-section__description post-parsed-content"><?= $parsed_description ?></div>
     <?php endif; ?>
-    <?php if ($event->creator_id == $this->auth->getUserId()): ?>
-      <div class="action-buttons show-section__actions">
-        <a href='/admin/events/<?= $event->id ?>/edit' class='button'><?= $this->renderIcon('pencil-square') ?> <?= t("edit") ?></a>
-        <form action='/admin/events/<?= $event->id ?>/destroy' method='POST'>
-          <?php $this->renderCSRFToken('/admin/events/destroy'); ?>
-          <input type='hidden' name='id' value='<?= $event->id ?>' />
-          <button class='button button--danger' type='submit'><?= $this->renderIcon('trash') ?> <?= t("delete") ?></button>
-        </form>
-      </div>
-    <?php endif; ?>
+    <div class="action-buttons show-section__actions">
+      <a href='/admin/events/<?= $event->id ?>/edit' class='button'><?= $this->renderIcon('pencil-square') ?> <?= t("edit") ?></a>
+      <form action='/admin/events/<?= $event->id ?>/destroy' method='POST'>
+        <?php $this->renderCSRFToken('/admin/events/destroy'); ?>
+        <input type='hidden' name='id' value='<?= $event->id ?>' />
+        <button class='button button--danger' type='submit'><?= $this->renderIcon('trash') ?> <?= t("delete") ?></button>
+      </form>
+    </div>
   </div>
 
   <div class="show-section">
