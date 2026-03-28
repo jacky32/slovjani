@@ -191,7 +191,7 @@ class EditorMarkupParser
    */
   private function parseSmallHeading(string $content): string
   {
-    return '<h2 class="small-heading text-center">' . $this->parseInline($content) . '</h2>';
+    return '<h2 class="text-center small-heading">' . $this->parseInline($content) . '</h2>';
   }
 
   /**
@@ -295,7 +295,6 @@ class EditorMarkupParser
 
     return $this->restoreEscapedTokens($content);
   }
-
   /**
    * Replaces escaped control sequences with neutral placeholders.
    *
@@ -307,65 +306,36 @@ class EditorMarkupParser
    */
   private function parseEscapedTokens(string $content): string
   {
+    $tokenMap = [
+      '#' => self::TOKEN_HASH,
+      '<' => self::TOKEN_LT,
+      '>' => self::TOKEN_GT,
+      '[' => self::TOKEN_LB,
+      ']' => self::TOKEN_RB,
+      '{' => self::TOKEN_LC,
+      '}' => self::TOKEN_RC,
+      '/' => self::TOKEN_SLASH,
+    ];
+
     // `\/<`-style forms should render as literal `\<` (not as a line break).
-    $content = preg_replace_callback('~\\\\/(?:\\\\)?([#<>\[\]\{\}/])~', function (array $matches): string {
-      $token = match ($matches[1]) {
-        '#' => self::TOKEN_HASH,
-        '<' => self::TOKEN_LT,
-        '>' => self::TOKEN_GT,
-        '[' => self::TOKEN_LB,
-        ']' => self::TOKEN_RB,
-        '{' => self::TOKEN_LC,
-        '}' => self::TOKEN_RC,
-        '/' => self::TOKEN_SLASH,
-        default => $matches[0],
-      };
+    $content = preg_replace_callback(
+      '~\\\\/(?:\\\\)?([#<>\[\]\{\}/])~',
+      fn(array $m): string => self::TOKEN_BACKSLASH . ($tokenMap[$m[1]] ?? $m[0]),
+      $content
+    ) ?? $content;
 
-      return self::TOKEN_BACKSLASH . $token;
-    }, $content) ?? $content;
+    // Handle remaining escaped symbols in sequence
+    $patterns = [
+      '~\\\\\\\\([#<>\[\]\{\}/])~',       // e.g. `\\<`
+      '~\\\\([#<>\[\]\{\}])~',            // e.g. `\<`
+      '~/\\\\(?:\\\\)?([#<>\[\]\{\}/])~', // e.g. `/\<`
+    ];
 
-    // Handle double-backslash escaped symbols first (e.g. `\\<`) so they do
-    // not get interpreted as a line-break marker (`\\`).
-    $content = preg_replace_callback('~\\\\\\\\([#<>\[\]\{\}/])~', function (array $matches): string {
-      return match ($matches[1]) {
-        '#' => self::TOKEN_HASH,
-        '<' => self::TOKEN_LT,
-        '>' => self::TOKEN_GT,
-        '[' => self::TOKEN_LB,
-        ']' => self::TOKEN_RB,
-        '{' => self::TOKEN_LC,
-        '}' => self::TOKEN_RC,
-        '/' => self::TOKEN_SLASH,
-        default => $matches[0],
-      };
-    }, $content) ?? $content;
-
-    $content = preg_replace_callback('~\\\\([#<>\[\]\{\}])~', function (array $matches): string {
-      return match ($matches[1]) {
-        '#' => self::TOKEN_HASH,
-        '<' => self::TOKEN_LT,
-        '>' => self::TOKEN_GT,
-        '[' => self::TOKEN_LB,
-        ']' => self::TOKEN_RB,
-        '{' => self::TOKEN_LC,
-        '}' => self::TOKEN_RC,
-        default => $matches[0],
-      };
-    }, $content) ?? $content;
-
-    $content = preg_replace_callback('~/\\\\(?:\\\\)?([#<>\[\]\{\}/])~', function (array $matches): string {
-      return match ($matches[1]) {
-        '#' => self::TOKEN_HASH,
-        '<' => self::TOKEN_LT,
-        '>' => self::TOKEN_GT,
-        '[' => self::TOKEN_LB,
-        ']' => self::TOKEN_RB,
-        '{' => self::TOKEN_LC,
-        '}' => self::TOKEN_RC,
-        '/' => self::TOKEN_SLASH,
-        default => $matches[0],
-      };
-    }, $content) ?? $content;
+    $content = preg_replace_callback(
+      $patterns,
+      fn(array $m): string => $tokenMap[$m[1]] ?? $m[0],
+      $content
+    ) ?? $content;
 
     return str_replace(['\\/', '\\\\'], [self::TOKEN_BACKSLASH, self::TOKEN_BREAK], $content);
   }
@@ -501,4 +471,3 @@ class EditorMarkupParser
     }
   }
 }
-

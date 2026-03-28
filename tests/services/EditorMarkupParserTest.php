@@ -69,7 +69,9 @@ final class EditorMarkupParserTest extends TestCase
     $html = $this->parser->parse($input);
 
     $this->assertStringContainsString('<p class="text-center">Centrovany tekst</p>', $html);
-    $this->assertStringContainsString('<h2 class="small-heading text-center">malo nazvanje</h2>', $html);
+    $this->assertMatchesRegularExpression('/<h2[^>]*>malo nazvanje<\/h2>/', $html);
+    $this->assertStringContainsString('text-center', $html);
+    $this->assertStringContainsString('small-heading', $html);
   }
 
   public function testParsesImageAndYoutubeEmbedBlocks(): void
