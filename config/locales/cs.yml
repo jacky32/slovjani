@@ -252,6 +252,8 @@ attributes:
     username: Jméno
     email: Email
     password: Heslo
+    old_password: Staré heslo
+    new_password: Nové heslo
     role: Role
   voting:
     name: Název

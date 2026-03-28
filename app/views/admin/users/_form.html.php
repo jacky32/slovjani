@@ -9,8 +9,11 @@
 
       <?= $this->renderInput($user, "email") ?><br>
       <?= $this->renderInput($user, "username") ?><br>
-      <?php if (!$user->id || $user->id == $this->auth->getUserId()): ?>
+      <?php if (!$user->id): ?>
         <?= $this->renderInput($user, "password", "password") ?><br>
+      <?php elseif ($user->id === $this->auth->getUserId()): ?>
+        <?= $this->renderInput($user, "old_password", "password") ?><br>
+        <?= $this->renderInput($user, "new_password", "password") ?><br>
       <?php endif; ?>
 
       <label for="status-select"><?= \App\Models\User::humanAttributeName("role") ?></label>
