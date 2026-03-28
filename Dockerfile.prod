@@ -8,7 +8,7 @@ RUN composer install \
   --prefer-dist \
   --no-interaction \
   --no-progress \
-  --optimize-autoloader
+  --no-autoloader
 
 FROM php:8.4-cli-bookworm
 
@@ -21,8 +21,14 @@ RUN apt-get update \
 
 WORKDIR /var/www/html
 
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 COPY . .
 COPY --from=vendor /app/vendor ./vendor
+
+RUN composer dump-autoload \
+  --no-dev \
+  --optimize \
+  --classmap-authoritative
 
 RUN mkdir -p /var/www/html/uploads /var/www/html/public/uploads \
   && chown -R www-data:www-data /var/www/html/uploads /var/www/html/public/uploads \
