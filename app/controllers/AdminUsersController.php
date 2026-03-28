@@ -185,13 +185,13 @@ class AdminUsersController extends AdminController
       if ($user && ($isAdmin || $isCurrentUser)) {
         $user->email = $request['user']['email'];
         $user->username = $request['user']['username'];
-        if ($isCurrentUser && ($request['user']['old_password'] ?? '') !== '' && ($request['user']['new_password'] ?? '') !== '') {
-          $this->auth->changePassword($request['user']['old_password'], $request['user']['new_password']);
-        }
         if ($isAdmin) {
           $user->roles_mask = intval(User::AVAILABLE_ROLES[$request['user']['role']] ?? 0);
         }
         $user->save();
+        if ($isCurrentUser && ($request['user']['old_password'] ?? '') !== '' && ($request['user']['new_password'] ?? '') !== '') {
+          $this->auth->changePassword($request['user']['old_password'], $request['user']['new_password']);
+        }
         $this->addFlash('success', t("users.update.success"));
         header("Location: /admin/users/" . $user->id);
       } else {
