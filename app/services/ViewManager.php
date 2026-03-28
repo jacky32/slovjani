@@ -11,6 +11,8 @@ namespace App\Services;
  */
 class ViewManager
 {
+  private const VIEWS_ROOT = __DIR__ . '/../views';
+
   private $content;
   private $controller;
   private $action;
@@ -74,7 +76,7 @@ class ViewManager
     $this->applySeoMetadata($view, $data);
 
     ob_start();
-    include "app/views/$view.html.php";
+    include self::VIEWS_ROOT . "/$view.html.php";
     $this->content = ob_get_clean();
     return $this->content;
   }
@@ -214,7 +216,7 @@ class ViewManager
       extract($vars);
     }
     ob_start();
-    include "app/views/$filename.html.php";
+    include self::VIEWS_ROOT . "/$filename.html.php";
     echo ob_get_clean();
     \Logger::debug("Rendered partial: app/views/$filename.html.php");
     return;
@@ -336,7 +338,7 @@ class ViewManager
   public function renderCSRFToken(string $formAction): void
   {
     ob_start();
-    include 'app/views/layouts/forms/_csrf_token.html.php';
+    include self::VIEWS_ROOT . '/layouts/forms/_csrf_token.html.php';
     echo ob_get_clean();
     return;
   }
@@ -398,7 +400,7 @@ class ViewManager
   public function __destruct()
   {
     if ($this->shouldRenderLayout) {
-      include 'app/views/layouts/application.html.php';
+      include self::VIEWS_ROOT . '/layouts/application.html.php';
     }
   }
 
