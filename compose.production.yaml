@@ -36,7 +36,6 @@ services:
       - appnet
 
   slovjani:
-    container_name: slovjani-prod
     build:
       context: .
       dockerfile: Dockerfile.prod
@@ -127,8 +126,11 @@ services:
 
 volumes:
   mysql-data:
+    name: slovjani-mysql-data
   uploads-data:
+    name: slovjani-uploads-data
   public-uploads-data:
+    name: slovjani-public-uploads-data
 
 networks:
   appnet:
