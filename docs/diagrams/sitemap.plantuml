@@ -14,66 +14,67 @@ class "Homepage\n/" as Home <<Public>>
 
 package "Public Section" as PublicSection {
     class "About\n/" as PublicHome <<Public>> {
-        + Association description
-        + Photo gallery
-        + Links to other pages
+        + view association description
+        + browse photo gallery
+        + follow links to related pages
     }
 
     class "Posts (Public)\n/posts\n/posts/:id" as PublicPosts <<Public>> {
-        + list of published posts
-        + post detail
+        + list published posts
+        + view post detail
     }
 
     class "Activities (Public)\n/events\n/events/:id" as PublicEvents <<Public>> {
-        + public events calendar
-        + event detail
+        + browse public events calendar
+        + view event detail
     }
 }
 
 package "Authentication" as AuthSection {
     class "Login\n/login" as Login <<Auth>> {
-        + GET new
-        + POST create
-        + optional bootstrap default admin
+        + GET /login (new)
+        + POST /login (create)
+        + optionally bootstrap default admin
     }
 
     class "Logout\n/logout" as Logout <<Auth>> {
-        + POST destroy
+        + POST /logout (destroy)
     }
 }
 
 package "Admin Section (login required)" as AdminSection {
     class "Posts (Internal)\n/admin/posts" as AdminPosts <<Admin>> {
-        + CRUD
-        + comment threads
-        + attachments
+        + manage posts (CRUD)
+        + manage comment threads
+        + manage attachments
     }
 
     class "Activities (Internal)\n/admin/events" as AdminEvents <<Admin>> {
-        + CRUD
-        + public and private events
-        + comment threads
-        + attachments
+        + manage events (CRUD)
+        + set public/private visibility
+        + manage comment threads
+        + manage attachments
     }
 
     class "Voting\n/admin/votings" as AdminVotings <<Admin>> {
-        + voting CRUD
-        + questions (/questions)
-        + user votes (/users_questions)
-        + comment threads
-        + attachments
+        + manage votings (CRUD)
+        + manage questions (/questions)
+        + manage user votes (/users_questions)
+        + manage comment threads
+        + manage attachments
     }
 
     class "Contacts / Users\n/admin/users" as AdminUsers <<Admin>> {
-        + members list
-        + member detail
-        + user management
-        + comment threads
-        + attachments
+        + list members
+        + view member detail
+        + manage users (CRUD)
+        + manage comment threads
+        + manage attachments
     }
 
     class "Preview API\n/admin/previews/preview_markup" as AdminPreview <<Admin>> {
-        + POST preview_markup
+        + POST /admin/previews/preview_markup
+        + render markup preview
     }
 }
 
