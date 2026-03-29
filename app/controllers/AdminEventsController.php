@@ -114,12 +114,12 @@ class AdminEventsController extends AdminController
         'description' => $request['event']['description'],
         'datetime_start' => $request['event']['datetime_start'],
         'datetime_end' => $request['event']['datetime_end'],
-        'is_publicly_visible' => isset($request['event']['is_publicly_visible']) ? true : 0,
+        'is_publicly_visible' => isset($request['event']['is_publicly_visible']) ? 1 : 0,
         'creator_id' => $this->auth->getUserId()
       ]);
       $event->save();
       try {
-        $google_event = (new GoogleCalendarService($event->is_publicly_visible))->insertTimedEvent($event->name, $event->datetime_start, $event->datetime_end);
+        $google_event = (new GoogleCalendarService((bool) $event->is_publicly_visible))->insertTimedEvent($event->name, $event->datetime_start, $event->datetime_end);
         $event->google_calendar_event_id = $google_event['id'] ?? null;
         $event->save();
       } catch (\Exception $e) {
@@ -197,28 +197,42 @@ class AdminEventsController extends AdminController
       if ($event) {
         foreach (Event::getDbAttributes() as $attribute) {
           if ($attribute == "is_publicly_visible") {
-            $event->{$attribute} = $request['event'][$attribute] ? true : 0;
+            $event->{$attribute} = isset($request['event'][$attribute]) && $request['event'][$attribute] ? 1 : 0;
           } else if (isset($request['event'][$attribute])) {
             $event->{$attribute} = $request['event'][$attribute];
           }
         }
-        if ($event->google_calendar_event_id && ($previous_publicly_visible != $event->is_publicly_visible)) {
-          try {
-            (new GoogleCalendarService($previous_publicly_visible))->destroyEvent(
-              $event->google_calendar_event_id,
-              $event->name,
-              $event->datetime_start,
-              $event->datetime_end
-            );
-            $google_event = (new GoogleCalendarService($event->is_publicly_visible))->insertTimedEvent(
-              $event->name,
-              $event->datetime_start,
-              $event->datetime_end
-            );
-            $event->google_calendar_event_id = $google_event['id'] ?? null;
-          } catch (\Exception $e) {
-            Logger::error("Failed to update Google Calendar event with ID " . $event->google_calendar_event_id . ": " . $e->getMessage());
-            $this->addFlash('error', t("events.update.google_calendar_update_failed"));
+        // Handle Google Calendar event updates
+        if ($event->google_calendar_event_id) {
+          $visibility_changed = $previous_publicly_visible != $event->is_publicly_visible;
+
+          if ($visibility_changed) {
+            // Visibility changed: destroy old event and create new one
+            try {
+              (new GoogleCalendarService((bool) $previous_publicly_visible))->destroyEvent($event->google_calendar_event_id);
+              $google_event = (new GoogleCalendarService((bool) $event->is_publicly_visible))->insertTimedEvent(
+                $event->name,
+                $event->datetime_start,
+                $event->datetime_end
+              );
+              $event->google_calendar_event_id = $google_event['id'] ?? null;
+            } catch (\Exception $e) {
+              Logger::error("Failed to update Google Calendar event with ID " . $event->google_calendar_event_id . ": " . $e->getMessage());
+              $this->addFlash('error', t("events.update.google_calendar_update_failed"));
+            }
+          } else {
+            // Visibility unchanged: update the event in place
+            try {
+              (new GoogleCalendarService((bool) $event->is_publicly_visible))->updateTimedEvent(
+                $event->google_calendar_event_id,
+                $event->name,
+                $event->datetime_start,
+                $event->datetime_end
+              );
+            } catch (\Exception $e) {
+              Logger::error("Failed to update Google Calendar event with ID " . $event->google_calendar_event_id . ": " . $e->getMessage());
+              $this->addFlash('error', t("events.update.google_calendar_update_failed"));
+            }
           }
         }
         $event->save();
@@ -271,7 +285,7 @@ class AdminEventsController extends AdminController
         $wasPubliclyVisible = (bool) $event->is_publicly_visible;
         if ($event->google_calendar_event_id) {
           try {
-            (new GoogleCalendarService($event->is_publicly_visible))->destroyEvent($event->google_calendar_event_id);
+            (new GoogleCalendarService((bool) $event->is_publicly_visible))->destroyEvent($event->google_calendar_event_id);
           } catch (\Exception $e) {
             Logger::error("Failed to delete Google Calendar event with ID " . $event->google_calendar_event_id . ": " . $e->getMessage());
             $this->addFlash('error', t("events.destroy.google_calendar_deletion_failed"));

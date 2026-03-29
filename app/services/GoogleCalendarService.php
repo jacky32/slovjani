@@ -89,6 +89,35 @@ class GoogleCalendarService
   }
 
   /**
+   * Updates an existing Google Calendar event with new datetime and/or name.
+   *
+   * @return array<string, mixed>
+   */
+  public function updateTimedEvent(
+    string $eventId,
+    string $summary,
+    string $startDateTime,
+    string $endDateTime,
+    ?string $description = null,
+    ?string $timeZone = null
+  ): array {
+    $resolvedTimeZone = $timeZone ?: $this->defaultTimeZone;
+    $event = $this->updateEvent($eventId, [
+      'summary' => $summary,
+      'description' => $description,
+      'start' => [
+        'dateTime' => $this->formatDateTime($startDateTime, $resolvedTimeZone),
+        'timeZone' => $resolvedTimeZone,
+      ],
+      'end' => [
+        'dateTime' => $this->formatDateTime($endDateTime, $resolvedTimeZone),
+        'timeZone' => $resolvedTimeZone,
+      ],
+    ]);
+    return $event;
+  }
+
+  /**
    * Lists Google Calendar events with optional query parameters.
    */
   public function listEvents(array $queryParams = []): array
@@ -116,6 +145,28 @@ class GoogleCalendarService
     );
 
     return $this->decodeJsonBody($response['body'] ?? '', 'Google Calendar insert response was not valid JSON.');
+  }
+
+  /**
+   * Updates an existing Google Calendar event using the raw Calendar API payload.
+   *
+   * @param array<string, mixed> $eventData
+   * @return array<string, mixed>
+   */
+  public function updateEvent(string $eventId, array $eventData): array
+  {
+    $normalizedEventId = trim($eventId);
+    if ($normalizedEventId === '') {
+      throw new \InvalidArgumentException('Google Calendar event ID cannot be empty.');
+    }
+
+    $response = $this->request(
+      method: 'PATCH',
+      url: $this->eventsEndpoint() . '/' . rawurlencode($normalizedEventId),
+      payload: $eventData
+    );
+
+    return $this->decodeJsonBody($response['body'] ?? '', 'Google Calendar update response was not valid JSON.');
   }
 
   /**
@@ -395,4 +446,3 @@ class GoogleCalendarService
     return $parsedHeaders;
   }
 }
-
