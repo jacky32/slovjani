@@ -99,7 +99,6 @@ class Collection implements \IteratorAggregate, \Countable, \ArrayAccess
 
   /**
    * Each iterator
-   * TODO: Nahradit foreach v Controllers a dalších místech, kde se iteruje přes kolekce, tímto each() pro konzistentnější styl a možnost přidat další funkce do řetězce.
    */
   public function each(callable $callback): self
   {
@@ -126,8 +125,6 @@ class Collection implements \IteratorAggregate, \Countable, \ArrayAccess
    * @param mixed $offset Array key to check.
    * @return bool
    */
-  // TODO: Remove unused methods
-  // ArrayAccess
   public function offsetExists(mixed $offset): bool
   {
     return isset($this->items[$offset]);

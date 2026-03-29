@@ -164,7 +164,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="db/ScriptManager.php"><a href="files/db-scriptmanager.html"><abbr title="db/ScriptManager.php">ScriptManager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">10</span>
 
     </aside>
 
@@ -205,12 +205,40 @@
 <dd>Creates a mysqli connection to the specified database.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/ScriptManager.html#method_ensureSchemaReady">ensureSchemaReady()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Ensures schema is initialized and checks drift against db/schema.sql.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/ScriptManager.html#method_loadSchema">loadSchema()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Executes the schema SQL file against the server, optionally dropping and
 recreating the database first.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ScriptManager.html#method_connectToServer">connectToServer()</a>
+    <span>
+                                &nbsp;: <abbr title="\mysqli">mysqli</abbr>    </span>
+</dt>
+<dd>Opens a MySQL server connection without selecting a database.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ScriptManager.html#method_existingTablesInDatabase">existingTablesInDatabase()</a>
+    <span>
+                                &nbsp;: array&lt;int, string&gt;    </span>
+</dt>
+<dd>Returns current table names in a database schema.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a class="" href="classes/ScriptManager.html#method_expectedTablesFromSchema">expectedTablesFromSchema()</a>
+    <span>
+                                &nbsp;: array&lt;int, string&gt;    </span>
+</dt>
+<dd>Returns expected table names parsed from db/schema.sql.</dd>
 
     </dl>
 
@@ -240,7 +268,7 @@ recreating the database first.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="db/ScriptManager.php"><a href="files/db-scriptmanager.html"><abbr title="db/ScriptManager.php">ScriptManager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">147</span>
 
     </aside>
 
@@ -287,6 +315,55 @@ recreating the database first.</dd>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_ensureSchemaReady">
+        ensureSchemaReady()
+        <a href="classes/ScriptManager.html#method_ensureSchemaReady" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="db/ScriptManager.php"><a href="files/db-scriptmanager.html"><abbr title="db/ScriptManager.php">ScriptManager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">107</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Ensures schema is initialized and checks drift against db/schema.sql.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">ensureSchemaReady</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$connectionParams</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>If the target database has no tables, it is automatically initialized by
+executing db/schema.sql. If tables exist but differ from schema.sql, a
+warning is emitted to stderr.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$connectionParams</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_loadSchema">
         loadSchema()
         <a href="classes/ScriptManager.html#method_loadSchema" class="headerlink"><i class="fas fa-link"></i></a>
@@ -295,7 +372,7 @@ recreating the database first.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="db/ScriptManager.php"><a href="files/db-scriptmanager.html"><abbr title="db/ScriptManager.php">ScriptManager.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">176</span>
 
     </aside>
 
@@ -354,6 +431,150 @@ recreating the database first.</p>
         
     
     
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_connectToServer">
+        connectToServer()
+        <a href="classes/ScriptManager.html#method_connectToServer" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="db/ScriptManager.php"><a href="files/db-scriptmanager.html"><abbr title="db/ScriptManager.php">ScriptManager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">18</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Opens a MySQL server connection without selecting a database.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">connectToServer</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$connectionParams</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\mysqli">mysqli</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$connectionParams</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\mysqli">mysqli</abbr></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_existingTablesInDatabase">
+        existingTablesInDatabase()
+        <a href="classes/ScriptManager.html#method_existingTablesInDatabase" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="db/ScriptManager.php"><a href="files/db-scriptmanager.html"><abbr title="db/ScriptManager.php">ScriptManager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">66</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns current table names in a database schema.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">existingTablesInDatabase</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type"><abbr title="\mysqli">mysqli</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$serverConn</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$databaseName</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, string&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$serverConn</span>
+                : <span class="phpdocumentor-argument-list__argument__type"><abbr title="\mysqli">mysqli</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$databaseName</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;int, string&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_expectedTablesFromSchema">
+        expectedTablesFromSchema()
+        <a href="classes/ScriptManager.html#method_expectedTablesFromSchema" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="db/ScriptManager.php"><a href="files/db-scriptmanager.html"><abbr title="db/ScriptManager.php">ScriptManager.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">44</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns expected table names parsed from db/schema.sql.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">expectedTablesFromSchema</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, string&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;int, string&gt;</span>
+            </section>
+
 </article>
             </section>
 
@@ -471,7 +692,11 @@ recreating the database first.</p>
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/ScriptManager.html#method_connectToDatabase">connectToDatabase()</a></li>
+                                            <li class=""><a href="classes/ScriptManager.html#method_ensureSchemaReady">ensureSchemaReady()</a></li>
                                             <li class=""><a href="classes/ScriptManager.html#method_loadSchema">loadSchema()</a></li>
+                                            <li class=""><a href="classes/ScriptManager.html#method_connectToServer">connectToServer()</a></li>
+                                            <li class=""><a href="classes/ScriptManager.html#method_existingTablesInDatabase">existingTablesInDatabase()</a></li>
+                                            <li class=""><a href="classes/ScriptManager.html#method_expectedTablesFromSchema">expectedTablesFromSchema()</a></li>
                                     </ul>
             </li>
                     </ul>

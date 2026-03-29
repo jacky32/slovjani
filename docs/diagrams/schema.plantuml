@@ -160,12 +160,12 @@ package "App" as AppSection {
   class Attachment {
     id : Integer <<PK>>
     resource_id : Integer
-    resource_type : String
-    visible_name : String
-    file_name : String
+    resource_type : Text
+    visible_name : Text
+    file_name : Text
     file_size : Integer
-    file_type : String
-    token : String
+    file_type : Text
+    token : Text
     is_publicly_visible : Boolean
     creator_id : Integer
     created_at : Datetime
@@ -175,8 +175,8 @@ package "App" as AppSection {
   class Comment {
     id : Integer <<PK>>
     resource_id : Integer
-    resource_type : String
-    body : String
+    resource_type : Text
+    body : Text
     parent_comment_id : Integer
     creator_id : Integer
     created_at : Datetime

@@ -232,7 +232,7 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a class="" href="classes/ActiveModel.html#property_validation_callbacks">$validation_callbacks</a>
+    <a class="" href="classes/App-Models-Voting.html#property_validation_callbacks">$validation_callbacks</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
@@ -405,6 +405,34 @@
 <dd>Chainable where query - returns QueryBuilder</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_canBeCompletedNow">canBeCompletedNow()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Determines whether the voting can be ended now.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_countDistinctUsersWhoVoted">countDistinctUsersWhoVoted()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Counts distinct users who submitted at least one answer in this voting.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_countEligibleUsersForCompletion">countEligibleUsersForCompletion()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Counts users eligible for the &quot;all users voted&quot; completion shortcut.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_currentTimestamp">currentTimestamp()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Returns UNIX timestamp for the current moment.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Attributes.html#method_getAttribute">getAttribute()</a>
     <span>
                                 &nbsp;: mixed    </span>
@@ -419,11 +447,32 @@
 <dd>Get a relation by name</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_hasAtLeastOneQuestion">hasAtLeastOneQuestion()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Returns true when voting includes at least one question.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Attributes.html#method_hasAttribute">hasAttribute()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>Check if an attribute exists</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_hasReachedEndDatetime">hasReachedEndDatetime()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Determines whether the current time is at or after datetime_end.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_hasReachedStartDatetime">hasReachedStartDatetime()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Determines whether the current time is at or after datetime_start.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Relations.html#method_hasRelation">hasRelation()</a>
@@ -433,6 +482,13 @@
 <dd>Check if a relation exists</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_haveAllUsersVoted">haveAllUsersVoted()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Returns true when every user has submitted at least one answer.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Attributes.html#method_initializeAttributes">initializeAttributes()</a>
     <span>
                                 &nbsp;: mixed    </span>
@@ -440,11 +496,25 @@
 <dd>Initialize attributes from data array based on db_attributes</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_isTransitioningToStatus">isTransitioningToStatus()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Checks whether this save attempts a transition into a given status.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/Attributes.html#method_setAttribute">setAttribute()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>Set an attribute value</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/App-Models-Voting.html#method_validate_status_lifecycle">validate_status_lifecycle()</a>
+    <span>
+                                &nbsp;: array&lt;int, array{class: string, attribute: string, message: string}&gt;    </span>
+</dt>
+<dd>Validates lifecycle transitions for starting and ending voting.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/Relations.html#method_setHasManyRelation">setHasManyRelation()</a>
@@ -661,15 +731,15 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
 >
     <h4 class="phpdocumentor-element__name" id="property_validation_callbacks">
         $validation_callbacks
-        <a href="classes/ActiveModel.html#property_validation_callbacks" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/App-Models-Voting.html#property_validation_callbacks" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                             </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/active_model/ActiveModel.php"><a href="files/lib-active-model-activemodel.html"><abbr title="lib/active_model/ActiveModel.php">ActiveModel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -679,7 +749,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
         <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$validation_callbacks</span>
-     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+     = <span class="phpdocumentor-signature__default-value">[&#039;validate_status_lifecycle&#039;]</span></code>
 
     
     
@@ -785,7 +855,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">64</span>
+    <span class="phpdocumentor-element-found-in__line">68</span>
 
     </aside>
 
@@ -1359,7 +1429,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</d
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">77</span>
+    <span class="phpdocumentor-element-found-in__line">81</span>
 
     </aside>
 
@@ -1781,6 +1851,162 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_canBeCompletedNow">
+        canBeCompletedNow()
+        <a href="classes/App-Models-Voting.html#method_canBeCompletedNow" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">172</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Determines whether the voting can be ended now.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">canBeCompletedNow</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_countDistinctUsersWhoVoted">
+        countDistinctUsersWhoVoted()
+        <a href="classes/App-Models-Voting.html#method_countDistinctUsersWhoVoted" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">229</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Counts distinct users who submitted at least one answer in this voting.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">countDistinctUsersWhoVoted</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_countEligibleUsersForCompletion">
+        countEligibleUsersForCompletion()
+        <a href="classes/App-Models-Voting.html#method_countEligibleUsersForCompletion" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">221</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Counts users eligible for the &quot;all users voted&quot; completion shortcut.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">countEligibleUsersForCompletion</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_currentTimestamp">
+        currentTimestamp()
+        <a href="classes/App-Models-Voting.html#method_currentTimestamp" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">213</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns UNIX timestamp for the current moment.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">currentTimestamp</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getAttribute">
         getAttribute()
         <a href="classes/Attributes.html#method_getAttribute" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1871,6 +2097,45 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_hasAtLeastOneQuestion">
+        hasAtLeastOneQuestion()
+        <a href="classes/App-Models-Voting.html#method_hasAtLeastOneQuestion" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">192</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns true when voting includes at least one question.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">hasAtLeastOneQuestion</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_hasAttribute">
         hasAttribute()
         <a href="classes/Attributes.html#method_hasAttribute" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1909,6 +2174,84 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
         
     
     
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_hasReachedEndDatetime">
+        hasReachedEndDatetime()
+        <a href="classes/App-Models-Voting.html#method_hasReachedEndDatetime" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">180</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Determines whether the current time is at or after datetime_end.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">hasReachedEndDatetime</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_hasReachedStartDatetime">
+        hasReachedStartDatetime()
+        <a href="classes/App-Models-Voting.html#method_hasReachedStartDatetime" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">160</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Determines whether the current time is at or after datetime_start.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">hasReachedStartDatetime</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1961,6 +2304,45 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_haveAllUsersVoted">
+        haveAllUsersVoted()
+        <a href="classes/App-Models-Voting.html#method_haveAllUsersVoted" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">200</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns true when every user has submitted at least one answer.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">haveAllUsersVoted</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_initializeAttributes">
         initializeAttributes()
         <a href="classes/Attributes.html#method_initializeAttributes" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1999,6 +2381,55 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
         
     
     
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_isTransitioningToStatus">
+        isTransitioningToStatus()
+        <a href="classes/App-Models-Voting.html#method_isTransitioningToStatus" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">139</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Checks whether this save attempts a transition into a given status.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">isTransitioningToStatus</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$target_status</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$target_status</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2051,6 +2482,45 @@ Post::where(['author_id' =&gt; 1])-&gt;where(['status' =&gt; 'active'])-&gt;orde
         
     
     
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_validate_status_lifecycle">
+        validate_status_lifecycle()
+        <a href="classes/App-Models-Voting.html#method_validate_status_lifecycle" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/models/Voting.php"><a href="files/app-models-voting.html"><abbr title="app/models/Voting.php">Voting.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">100</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Validates lifecycle transitions for starting and ending voting.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">validate_status_lifecycle</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, array{class: string, attribute: string, message: string}&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;int, array{class: string, attribute: string, message: string}&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2224,7 +2694,7 @@ foreign key condition and, for polymorphic associations, the type constraint.</p
                                                     <li class=""><a href="classes/ActiveModel.html#property_db">$db</a></li>
                                                     <li class=""><a href="classes/App-Models-Voting.html#property_db_attributes">$db_attributes</a></li>
                                                     <li class=""><a href="classes/App-Models-Voting.html#property_relations">$relations</a></li>
-                                                    <li class=""><a href="classes/ActiveModel.html#property_validation_callbacks">$validation_callbacks</a></li>
+                                                    <li class=""><a href="classes/App-Models-Voting.html#property_validation_callbacks">$validation_callbacks</a></li>
                                                     <li class=""><a href="classes/App-Models-Voting.html#property_validations">$validations</a></li>
                                                     <li class=""><a href="classes/Relations.html#property__loaded_relations">$_loaded_relations</a></li>
                                             </ul>
@@ -2254,12 +2724,22 @@ foreign key condition and, for polymorphic associations, the type constraint.</p
                                             <li class=""><a href="classes/ActiveModel.html#method_update">update()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_validate">validate()</a></li>
                                             <li class=""><a href="classes/ActiveModel.html#method_where">where()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_canBeCompletedNow">canBeCompletedNow()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_countDistinctUsersWhoVoted">countDistinctUsersWhoVoted()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_countEligibleUsersForCompletion">countEligibleUsersForCompletion()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_currentTimestamp">currentTimestamp()</a></li>
                                             <li class=""><a href="classes/Attributes.html#method_getAttribute">getAttribute()</a></li>
                                             <li class=""><a href="classes/Relations.html#method_getRelation">getRelation()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_hasAtLeastOneQuestion">hasAtLeastOneQuestion()</a></li>
                                             <li class=""><a href="classes/Attributes.html#method_hasAttribute">hasAttribute()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_hasReachedEndDatetime">hasReachedEndDatetime()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_hasReachedStartDatetime">hasReachedStartDatetime()</a></li>
                                             <li class=""><a href="classes/Relations.html#method_hasRelation">hasRelation()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_haveAllUsersVoted">haveAllUsersVoted()</a></li>
                                             <li class=""><a href="classes/Attributes.html#method_initializeAttributes">initializeAttributes()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_isTransitioningToStatus">isTransitioningToStatus()</a></li>
                                             <li class=""><a href="classes/Attributes.html#method_setAttribute">setAttribute()</a></li>
+                                            <li class=""><a href="classes/App-Models-Voting.html#method_validate_status_lifecycle">validate_status_lifecycle()</a></li>
                                             <li class=""><a href="classes/Relations.html#method_setHasManyRelation">setHasManyRelation()</a></li>
                                     </ul>
             </li>

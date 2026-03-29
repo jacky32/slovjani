@@ -776,6 +776,11 @@ Search.appendIndex(
             "summary": "Initialises\u0020the\u0020User\u0020with\u0020the\u0020provided\u0020attribute\u0020data.",
             "url": "classes/App-Models-User.html#method___construct"
         },                {
+            "fqsen": "\\App\\Models\\User\u003A\u003AwithAnyRole\u0028\u0029",
+            "name": "withAnyRole",
+            "summary": "Scope\u0020for\u0020users\u0020with\u0020any\u0020role\u0020\u0028admin\u0020or\u0020collaborator\u0029.",
+            "url": "classes/App-Models-User.html#method_withAnyRole"
+        },                {
             "fqsen": "\\App\\Models\\User\u003A\u003AAVAILABLE_ROLES",
             "name": "AVAILABLE_ROLES",
             "summary": "",
@@ -841,6 +846,56 @@ Search.appendIndex(
             "summary": "Checks\u0020whether\u0020a\u0020user\u0020has\u0020already\u0020submitted\u0020at\u0020least\u0020one\u0020answer\u0020in\u0020this\u0020voting.",
             "url": "classes/App-Models-Voting.html#method_hasUserVoted"
         },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003Avalidate_status_lifecycle\u0028\u0029",
+            "name": "validate_status_lifecycle",
+            "summary": "Validates\u0020lifecycle\u0020transitions\u0020for\u0020starting\u0020and\u0020ending\u0020voting.",
+            "url": "classes/App-Models-Voting.html#method_validate_status_lifecycle"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AisTransitioningToStatus\u0028\u0029",
+            "name": "isTransitioningToStatus",
+            "summary": "Checks\u0020whether\u0020this\u0020save\u0020attempts\u0020a\u0020transition\u0020into\u0020a\u0020given\u0020status.",
+            "url": "classes/App-Models-Voting.html#method_isTransitioningToStatus"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AhasReachedStartDatetime\u0028\u0029",
+            "name": "hasReachedStartDatetime",
+            "summary": "Determines\u0020whether\u0020the\u0020current\u0020time\u0020is\u0020at\u0020or\u0020after\u0020datetime_start.",
+            "url": "classes/App-Models-Voting.html#method_hasReachedStartDatetime"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AcanBeCompletedNow\u0028\u0029",
+            "name": "canBeCompletedNow",
+            "summary": "Determines\u0020whether\u0020the\u0020voting\u0020can\u0020be\u0020ended\u0020now.",
+            "url": "classes/App-Models-Voting.html#method_canBeCompletedNow"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AhasReachedEndDatetime\u0028\u0029",
+            "name": "hasReachedEndDatetime",
+            "summary": "Determines\u0020whether\u0020the\u0020current\u0020time\u0020is\u0020at\u0020or\u0020after\u0020datetime_end.",
+            "url": "classes/App-Models-Voting.html#method_hasReachedEndDatetime"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AhasAtLeastOneQuestion\u0028\u0029",
+            "name": "hasAtLeastOneQuestion",
+            "summary": "Returns\u0020true\u0020when\u0020voting\u0020includes\u0020at\u0020least\u0020one\u0020question.",
+            "url": "classes/App-Models-Voting.html#method_hasAtLeastOneQuestion"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AhaveAllUsersVoted\u0028\u0029",
+            "name": "haveAllUsersVoted",
+            "summary": "Returns\u0020true\u0020when\u0020every\u0020user\u0020has\u0020submitted\u0020at\u0020least\u0020one\u0020answer.",
+            "url": "classes/App-Models-Voting.html#method_haveAllUsersVoted"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AcurrentTimestamp\u0028\u0029",
+            "name": "currentTimestamp",
+            "summary": "Returns\u0020UNIX\u0020timestamp\u0020for\u0020the\u0020current\u0020moment.",
+            "url": "classes/App-Models-Voting.html#method_currentTimestamp"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AcountEligibleUsersForCompletion\u0028\u0029",
+            "name": "countEligibleUsersForCompletion",
+            "summary": "Counts\u0020users\u0020eligible\u0020for\u0020the\u0020\u0022all\u0020users\u0020voted\u0022\u0020completion\u0020shortcut.",
+            "url": "classes/App-Models-Voting.html#method_countEligibleUsersForCompletion"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003AcountDistinctUsersWhoVoted\u0028\u0029",
+            "name": "countDistinctUsersWhoVoted",
+            "summary": "Counts\u0020distinct\u0020users\u0020who\u0020submitted\u0020at\u0020least\u0020one\u0020answer\u0020in\u0020this\u0020voting.",
+            "url": "classes/App-Models-Voting.html#method_countDistinctUsersWhoVoted"
+        },                {
             "fqsen": "\\App\\Models\\Voting\u003A\u003A\u0024db_attributes",
             "name": "db_attributes",
             "summary": "",
@@ -855,6 +910,11 @@ Search.appendIndex(
             "name": "validations",
             "summary": "",
             "url": "classes/App-Models-Voting.html#property_validations"
+        },                {
+            "fqsen": "\\App\\Models\\Voting\u003A\u003A\u0024validation_callbacks",
+            "name": "validation_callbacks",
+            "summary": "",
+            "url": "classes/App-Models-Voting.html#property_validation_callbacks"
         },                {
             "fqsen": "\\App\\Services\\AttachmentMarkupMediaSourceResolver",
             "name": "AttachmentMarkupMediaSourceResolver",
@@ -1181,6 +1241,11 @@ Search.appendIndex(
             "summary": "Inserts\u0020a\u0020timed\u0020Google\u0020Calendar\u0020event\u0020using\u0020a\u0020simplified\u0020input\u0020signature.",
             "url": "classes/App-Services-GoogleCalendarService.html#method_insertTimedEvent"
         },                {
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AupdateTimedEvent\u0028\u0029",
+            "name": "updateTimedEvent",
+            "summary": "Updates\u0020an\u0020existing\u0020Google\u0020Calendar\u0020event\u0020with\u0020new\u0020datetime\u0020and\/or\u0020name.",
+            "url": "classes/App-Services-GoogleCalendarService.html#method_updateTimedEvent"
+        },                {
             "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AlistEvents\u0028\u0029",
             "name": "listEvents",
             "summary": "Lists\u0020Google\u0020Calendar\u0020events\u0020with\u0020optional\u0020query\u0020parameters.",
@@ -1190,6 +1255,11 @@ Search.appendIndex(
             "name": "insertEvent",
             "summary": "Inserts\u0020a\u0020Google\u0020Calendar\u0020event\u0020using\u0020the\u0020raw\u0020Calendar\u0020API\u0020payload.",
             "url": "classes/App-Services-GoogleCalendarService.html#method_insertEvent"
+        },                {
+            "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AupdateEvent\u0028\u0029",
+            "name": "updateEvent",
+            "summary": "Updates\u0020an\u0020existing\u0020Google\u0020Calendar\u0020event\u0020using\u0020the\u0020raw\u0020Calendar\u0020API\u0020payload.",
+            "url": "classes/App-Services-GoogleCalendarService.html#method_updateEvent"
         },                {
             "fqsen": "\\App\\Services\\GoogleCalendarService\u003A\u003AdestroyEvent\u0028\u0029",
             "name": "destroyEvent",
@@ -1636,6 +1706,11 @@ Search.appendIndex(
             "summary": "Sends\u0020a\u0020JSON\u0020response\u0020and\u0020disables\u0020layout\u0020rendering.",
             "url": "classes/App-Services-ViewManager.html#method_renderJson"
         },                {
+            "fqsen": "\\App\\Services\\ViewManager\u003A\u003AVIEWS_ROOT",
+            "name": "VIEWS_ROOT",
+            "summary": "",
+            "url": "classes/App-Services-ViewManager.html#constant_VIEWS_ROOT"
+        },                {
             "fqsen": "\\App\\Services\\ViewManager\u003A\u003A\u0024content",
             "name": "content",
             "summary": "",
@@ -1760,6 +1835,26 @@ Search.appendIndex(
             "name": "ScriptManager",
             "summary": "Database\u0020script\u0020utility\u0020for\u0020opening\u0020raw\u0020connections\u0020and\u0020loading\u0020schema\u0020SQL.",
             "url": "classes/ScriptManager.html"
+        },                {
+            "fqsen": "\\ScriptManager\u003A\u003AconnectToServer\u0028\u0029",
+            "name": "connectToServer",
+            "summary": "Opens\u0020a\u0020MySQL\u0020server\u0020connection\u0020without\u0020selecting\u0020a\u0020database.",
+            "url": "classes/ScriptManager.html#method_connectToServer"
+        },                {
+            "fqsen": "\\ScriptManager\u003A\u003AexpectedTablesFromSchema\u0028\u0029",
+            "name": "expectedTablesFromSchema",
+            "summary": "Returns\u0020expected\u0020table\u0020names\u0020parsed\u0020from\u0020db\/schema.sql.",
+            "url": "classes/ScriptManager.html#method_expectedTablesFromSchema"
+        },                {
+            "fqsen": "\\ScriptManager\u003A\u003AexistingTablesInDatabase\u0028\u0029",
+            "name": "existingTablesInDatabase",
+            "summary": "Returns\u0020current\u0020table\u0020names\u0020in\u0020a\u0020database\u0020schema.",
+            "url": "classes/ScriptManager.html#method_existingTablesInDatabase"
+        },                {
+            "fqsen": "\\ScriptManager\u003A\u003AensureSchemaReady\u0028\u0029",
+            "name": "ensureSchemaReady",
+            "summary": "Ensures\u0020schema\u0020is\u0020initialized\u0020and\u0020checks\u0020drift\u0020against\u0020db\/schema.sql.",
+            "url": "classes/ScriptManager.html#method_ensureSchemaReady"
         },                {
             "fqsen": "\\ScriptManager\u003A\u003AconnectToDatabase\u0028\u0029",
             "name": "connectToDatabase",
@@ -2003,7 +2098,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Collection\u003A\u003Aeach\u0028\u0029",
             "name": "each",
-            "summary": "Each\u0020iterator\nTODO\u003A\u0020Nahradit\u0020foreach\u0020v\u0020Controllers\u0020a\u0020dal\u0161\u00EDch\u0020m\u00EDstech,\u0020kde\u0020se\u0020iteruje\u0020p\u0159es\u0020kolekce,\u0020t\u00EDmto\u0020each\u0028\u0029\u0020pro\u0020konzistentn\u011Bj\u0161\u00ED\u0020styl\u0020a\u0020mo\u017Enost\u0020p\u0159idat\u0020dal\u0161\u00ED\u0020funkce\u0020do\u0020\u0159et\u011Bzce.",
+            "summary": "Each\u0020iterator",
             "url": "classes/Collection.html#method_each"
         },                {
             "fqsen": "\\Collection\u003A\u003AgetIterator\u0028\u0029",
@@ -2333,22 +2428,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\toSnakeCase\u0028\u0029",
             "name": "toSnakeCase",
-            "summary": "Converts\u0020a\u0020string\u0020to\u0020snake_case.",
+            "summary": "",
             "url": "namespaces/default.html#function_toSnakeCase"
         },                {
             "fqsen": "\\toPascalCase\u0028\u0029",
             "name": "toPascalCase",
-            "summary": "Converts\u0020a\u0020string\u0020to\u0020PascalCase.",
+            "summary": "",
             "url": "namespaces/default.html#function_toPascalCase"
         },                {
             "fqsen": "\\t\u0028\u0029",
             "name": "t",
-            "summary": "Simple\u0020translation\u0020function\u0020that\u0020loads\u0020translations\u0020from\u0020a\u0020YAML\u0020file.",
+            "summary": "",
             "url": "namespaces/default.html#function_t"
         },                {
             "fqsen": "\\asset_path\u0028\u0029",
             "name": "asset_path",
-            "summary": "Returns\u0020a\u0020cache\u002Dbusted\u0020public\u0020asset\u0020path\u0020by\u0020appending\u0020the\u0020file\u0027s\u0020mtime\u0020as\u0020a\nquery\u002Dstring\u0020version\u0020parameter.",
+            "summary": "",
             "url": "namespaces/default.html#function_asset_path"
         },                {
             "fqsen": "\\Logger",

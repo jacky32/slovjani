@@ -327,6 +327,20 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
 </dt>
 <dd>Lists Google Calendar events with optional query parameters.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Services-GoogleCalendarService.html#method_updateEvent">updateEvent()</a>
+    <span>
+                                &nbsp;: array&lt;string, mixed&gt;    </span>
+</dt>
+<dd>Updates an existing Google Calendar event using the raw Calendar API payload.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Services-GoogleCalendarService.html#method_updateTimedEvent">updateTimedEvent()</a>
+    <span>
+                                &nbsp;: array&lt;string, mixed&gt;    </span>
+</dt>
+<dd>Updates an existing Google Calendar event with new datetime and/or name.</dd>
+
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a class="" href="classes/App-Services-GoogleCalendarService.html#method_assertConfiguration">assertConfiguration()</a>
     <span>
@@ -899,7 +913,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">124</span>
+    <span class="phpdocumentor-element-found-in__line">175</span>
 
     </aside>
 
@@ -944,7 +958,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">110</span>
+    <span class="phpdocumentor-element-found-in__line">139</span>
 
     </aside>
 
@@ -1070,7 +1084,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">123</span>
 
     </aside>
 
@@ -1108,6 +1122,146 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
                     <article
         class="phpdocumentor-element
             -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_updateEvent">
+        updateEvent()
+        <a href="classes/App-Services-GoogleCalendarService.html#method_updateEvent" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">156</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Updates an existing Google Calendar event using the raw Calendar API payload.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">updateEvent</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$eventId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$eventData</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$eventId</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$eventData</span>
+                : <span class="phpdocumentor-argument-list__argument__type">array&lt;string, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_updateTimedEvent">
+        updateTimedEvent()
+        <a href="classes/App-Services-GoogleCalendarService.html#method_updateTimedEvent" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">96</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Updates an existing Google Calendar event with new datetime and/or name.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">updateTimedEvent</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$eventId</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$summary</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$startDateTime</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$endDateTime</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$description</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$timeZone</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$eventId</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$summary</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$startDateTime</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$endDateTime</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$description</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-argument-list__argument__name">$timeZone</span>
+                : <span class="phpdocumentor-argument-list__argument__type">string|null</span>
+                 = <span class="phpdocumentor-argument-list__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        
+    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
             -private
                                                         "
 >
@@ -1119,7 +1273,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">252</span>
+    <span class="phpdocumentor-element-found-in__line">303</span>
 
     </aside>
 
@@ -1153,7 +1307,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">320</span>
+    <span class="phpdocumentor-element-found-in__line">371</span>
 
     </aside>
 
@@ -1201,7 +1355,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">205</span>
+    <span class="phpdocumentor-element-found-in__line">256</span>
 
     </aside>
 
@@ -1239,7 +1393,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">325</span>
+    <span class="phpdocumentor-element-found-in__line">376</span>
 
     </aside>
 
@@ -1287,7 +1441,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">305</span>
+    <span class="phpdocumentor-element-found-in__line">356</span>
 
     </aside>
 
@@ -1342,7 +1496,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">273</span>
+    <span class="phpdocumentor-element-found-in__line">324</span>
 
     </aside>
 
@@ -1380,7 +1534,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">168</span>
+    <span class="phpdocumentor-element-found-in__line">219</span>
 
     </aside>
 
@@ -1418,7 +1572,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">278</span>
+    <span class="phpdocumentor-element-found-in__line">329</span>
 
     </aside>
 
@@ -1473,7 +1627,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">244</span>
+    <span class="phpdocumentor-element-found-in__line">295</span>
 
     </aside>
 
@@ -1511,7 +1665,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">292</span>
+    <span class="phpdocumentor-element-found-in__line">343</span>
 
     </aside>
 
@@ -1559,7 +1713,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">287</span>
+    <span class="phpdocumentor-element-found-in__line">338</span>
 
     </aside>
 
@@ -1607,7 +1761,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">382</span>
+    <span class="phpdocumentor-element-found-in__line">433</span>
 
     </aside>
 
@@ -1655,7 +1809,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">140</span>
+    <span class="phpdocumentor-element-found-in__line">191</span>
 
     </aside>
 
@@ -1717,7 +1871,7 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/services/GoogleCalendarService.php"><a href="files/app-services-googlecalendarservice.html"><abbr title="app/services/GoogleCalendarService.php">GoogleCalendarService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">335</span>
+    <span class="phpdocumentor-element-found-in__line">386</span>
 
     </aside>
 
@@ -1922,6 +2076,8 @@ signed JWT for an OAuth access token before calling Calendar API endpoints.</p>
                                             <li class=""><a href="classes/App-Services-GoogleCalendarService.html#method_insertEvent">insertEvent()</a></li>
                                             <li class=""><a href="classes/App-Services-GoogleCalendarService.html#method_insertTimedEvent">insertTimedEvent()</a></li>
                                             <li class=""><a href="classes/App-Services-GoogleCalendarService.html#method_listEvents">listEvents()</a></li>
+                                            <li class=""><a href="classes/App-Services-GoogleCalendarService.html#method_updateEvent">updateEvent()</a></li>
+                                            <li class=""><a href="classes/App-Services-GoogleCalendarService.html#method_updateTimedEvent">updateTimedEvent()</a></li>
                                             <li class=""><a href="classes/App-Services-GoogleCalendarService.html#method_assertConfiguration">assertConfiguration()</a></li>
                                             <li class=""><a href="classes/App-Services-GoogleCalendarService.html#method_base64UrlEncode">base64UrlEncode()</a></li>
                                             <li class=""><a href="classes/App-Services-GoogleCalendarService.html#method_buildSignedJwt">buildSignedJwt()</a></li>

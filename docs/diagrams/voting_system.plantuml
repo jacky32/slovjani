@@ -6,6 +6,8 @@ skinparam linetype ortho
 class User {
   id : Integer <<PK>>
   username : String
+  email : String
+  password : String
   roles_mask : Integer
   created_at : Datetime
   updated_at : Datetime

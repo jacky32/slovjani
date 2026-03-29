@@ -9,8 +9,8 @@ skinparam class {
   BackgroundColor #f8f8f8
 }
 skinparam linetype ortho
-skinparam nodesep 85
-skinparam ranksep 75
+skinparam nodesep 65
+skinparam ranksep 55
 skinparam packageStyle rectangle
 skinparam ArrowThickness 1
 skinparam NoteBackgroundColor #fffdf2
@@ -38,43 +38,85 @@ enum VoteOption {
 
 package "Core ORM" {
   class ActiveModel {
-    +validates()
-    +errors
+    +validate()
     +save()
+    +create()
+    +update()
     +destroy()
-    +all()
-    +where()
-    +find()
-    +exists()
+    +getDbAttributes(): array
+    +humanAttributeName(attribute: string): string
   }
 
-  class ApplicationRecord
+  class ApplicationRecord {
+  }
+
+  class QueryBuilder {
+    +where(conditions: array|string, value: mixed = null): self
+    +whereNot(conditions: array|string, value: mixed = null): self
+    +orderBy(column: string, direction: string): self
+    +limit(limit: int): self
+    +offset(offset: int): self
+    +get(): Collection
+    +all(): Collection
+    +first(): ?object
+    +find(id: int|string): ?object
+    +count(): int
+    +exists(): bool
+    +pluck(column: string|array): array
+  }
+
+  class Collection {
+    -items: array
+    +first(): ?object
+    +last(): ?object
+    +isEmpty(): bool
+    +isNotEmpty(): bool
+    +count(): int
+    +map(callback: callable): self
+    +filter(callback: callable): self
+    +find(callback: callable): ?object
+    +pluck(attribute: string): array
+    +toArray(): array
+    +each(callback: callable): self
+  }
 }
 
-package "Domain" {
+package "Domain" as DomainPkg {
   interface Attachable
   interface Commentable
 
   class User {
-    +AVAILABLE_ROLES
+    +AVAILABLE_ROLES: array
+    +{static} withAnyRole(): QueryBuilder
   }
 
   class Post {
-    +publiclyVisible()
+    +{static} publiclyVisible(): QueryBuilder
   }
 
-  class Event
+  class Event {
+    +#{validate_datetime_range}(): array
+  }
 
   class Voting {
-    +hasUserVoted(userId)
+    +hasUserVoted(userId: int): bool
+    +#{validate_status_lifecycle}(): array
+    +#{isTransitioningToStatus}(status: string): bool
+    +#{hasAtLeastOneQuestion}(): bool
+    +#{hasReachedStartDatetime}(): bool
   }
 
-  class Question
+  class Question {
+  }
 
-  class UsersQuestion
+  class UsersQuestion {
+  }
 
-  class Attachment
-  class Comment
+  class Attachment {
+  }
+
+  class Comment {
+  }
 }
 
 ' Layout hints for a wider, less cramped view
@@ -92,20 +134,16 @@ Attachment -[hidden]- Comment
 
 ' Inheritance from the common ORM/domain base
 ActiveModel <|-- ApplicationRecord
-
-note right of ApplicationRecord
-  Base class for all
-  domain models.
-end note
+ApplicationRecord ..> DomainPkg : inherited by domain models
 
 ' Core ownership and composition
-Voting "1" -down-> "0..*" Question : contains
-Question "1" -down-> "0..*" UsersQuestion : receives answers
-User "1" -right-> "0..*" UsersQuestion : submits answers
-
 User "1" -up-> "0..*" Post : creates
 User "1" -> "0..*" Event : creates
 User "1" -down-> "0..*" Voting : creates
+
+Voting "1" -down-> "0..*" Question : contains
+Question "1" -down-> "0..*" UsersQuestion : receives answers
+User "1" -right-> "0..*" UsersQuestion : submits answers
 
 
 ' Polymorphic resource interactions in business logic
@@ -146,6 +184,18 @@ end note
 note left of Comment
   Comment target is polymorphic
   and comments can be threaded.
+end note
+
+note bottom of QueryBuilder
+  Static query methods (where, all, find, etc.)
+  return QueryBuilder or Collection for chaining.
+  Accessible via Model::where(...) scopes.
+end note
+
+note bottom of ApplicationRecord
+  All domain models inherit from ApplicationRecord
+  which provides ORM capabilities: save(),
+  validate(), create(), update(), destroy().
 end note
 
 @enduml
