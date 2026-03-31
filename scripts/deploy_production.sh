@@ -15,23 +15,11 @@ read_env_value() {
   sed -n "s/^${key}=//p" .env.production | tail -n 1
 }
 
-# Backward-compatible port mapping:
-# - preferred: NGINX_HTTP_PORT
-# - legacy aliases: NGINX_PORT / nginx_port
+# NGINX_HTTP_PORT can be provided via environment or .env.production.
 if [ "${NGINX_HTTP_PORT:-}" = "" ]; then
-  if [ "${NGINX_PORT:-}" != "" ]; then
-    NGINX_HTTP_PORT="$NGINX_PORT"
-  elif [ "${nginx_port:-}" != "" ]; then
-    NGINX_HTTP_PORT="$nginx_port"
-  else
-    nginx_port_from_file="$(read_env_value "NGINX_PORT")"
-    if [ "$nginx_port_from_file" = "" ]; then
-      nginx_port_from_file="$(read_env_value "nginx_port")"
-    fi
-
-    if [ "$nginx_port_from_file" != "" ]; then
-      NGINX_HTTP_PORT="$nginx_port_from_file"
-    fi
+  nginx_http_port_from_file="$(read_env_value "NGINX_HTTP_PORT")"
+  if [ "$nginx_http_port_from_file" != "" ]; then
+    NGINX_HTTP_PORT="$nginx_http_port_from_file"
   fi
 
   if [ "${NGINX_HTTP_PORT:-}" != "" ]; then
